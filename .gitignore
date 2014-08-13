@@ -1,0 +1,20 @@
+## CocoaPods
+
+Pods
+
+## Node
+
+node_modules
+
+## OS X
+
+.DS_Store
+
+## Other
+
+.pt
+
+## Xcode
+
+*.xccheckout
+xcuserdata
