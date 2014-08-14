@@ -25,9 +25,13 @@ PODS:
     - ContentfulDeliveryAPI
   - HRCoder (1.3.1)
   - ISO8601DateFormatter (0.7)
+  - JNWCollectionView (1.2):
+    - JNWScrollView
+  - JNWScrollView (0.1)
 
 DEPENDENCIES:
   - ContentfulManagementAPI
+  - JNWCollectionView
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
@@ -35,5 +39,7 @@ SPEC CHECKSUMS:
   ContentfulManagementAPI: 5b84a18c2adc434826743f5c3e46e2f1da361360
   HRCoder: 0952826ddf4213a11be775d01446f61a5df987a4
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
+  JNWCollectionView: 879df2734740bdad82806dc381de2090d6c08a58
+  JNWScrollView: 1c343fd858ab1d7826f83cb9d6dc0d1753f0bdea
 
 COCOAPODS: 0.33.1

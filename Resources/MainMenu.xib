@@ -58,32 +58,88 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Window" id="aUF-d1-5bR">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="File" id="dMs-cI-mzQ">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Edit" id="5QF-Oa-p0T">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Format" id="jxT-CU-nIS">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="View" id="H8h-7b-M4v">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
             </items>
         </menu>
-        <window title="image-uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Contentful Image Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="290" y="148" width="699" height="564"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images" customClass="JNWCollectionView">
+                        <rect key="frame" x="183" y="0.0" width="516" height="564"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" id="0Lk-no-bwt">
+                            <rect key="frame" x="1" y="1" width="514" height="562"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWi-Os-Lwx">
+                                    <rect key="frame" x="0.0" y="0.0" width="514" height="562"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="9A3-I5-YH9">
+                            <rect key="frame" x="1" y="547" width="514" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lH6-5M-7qf">
+                            <rect key="frame" x="500" y="1" width="15" height="562"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <scrollView appearanceType="aqua" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grA-As-ZiJ" customClass="JNWCollectionView">
+                        <rect key="frame" x="-1" y="-1" width="183" height="566"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" misplaced="YES" id="u7D-jK-JAV">
+                            <rect key="frame" x="1" y="1" width="181" height="564"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-nA-5Ym">
+                                    <rect key="frame" x="0.0" y="0.0" width="181" height="564"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="wg2-rd-U90">
+                            <rect key="frame" x="1" y="549" width="181" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rfX-R2-vMh">
+                            <rect key="frame" x="167" y="1" width="15" height="564"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="leading" secondItem="grA-As-ZiJ" secondAttribute="trailing" id="Baj-mQ-uag"/>
+                    <constraint firstAttribute="bottom" secondItem="UVq-Jw-jv9" secondAttribute="bottom" id="Dr9-1q-RQz"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="183" id="H7i-RI-4c3"/>
+                    <constraint firstAttribute="trailing" secondItem="UVq-Jw-jv9" secondAttribute="trailing" id="VC7-aR-TYt"/>
+                    <constraint firstItem="grA-As-ZiJ" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="csZ-v0-06J"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="bottom" secondItem="grA-As-ZiJ" secondAttribute="bottom" id="lqN-o4-VQ9"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="grA-As-ZiJ" secondAttribute="top" id="mXn-tx-QjX"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="rAd-Ro-bw6"/>
+                </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="fp6-a2-taM">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="ifp-qI-CMu"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="TdT-hh-OQq"/>
+                    <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Toolbar Item" tag="-1" id="n3S-Uf-gSJ"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="n3S-Uf-gSJ"/>
+                    <toolbarItem reference="TdT-hh-OQq"/>
+                </defaultToolbarItems>
+            </toolbar>
         </window>
+        <viewController nibName="" id="tEa-S3-mQX" userLabel="ImageViewController" customClass="BBUImageViewController">
+            <connections>
+                <outlet property="view" destination="UVq-Jw-jv9" id="A2Z-ac-Gd3"/>
+            </connections>
+        </viewController>
     </objects>
 </document>
