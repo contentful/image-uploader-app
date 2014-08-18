@@ -8,6 +8,13 @@
 
 #import "JNWCollectionViewCell.h"
 
+@class CMAAsset;
+
 @interface BBUImageCell : JNWCollectionViewCell
+
+@property (nonatomic) CMAAsset* asset;
+@property (nonatomic) NSString* assetDescription;
+@property (nonatomic) NSImage* image;
+@property (nonatomic) NSString* title;
 
 @end
