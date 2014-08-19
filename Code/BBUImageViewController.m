@@ -12,6 +12,7 @@
 #import "BBUDraggedFile.h"
 #import "BBUImageCell.h"
 #import "BBUImageViewController.h"
+#import "CMAClient+SharedClient.h"
 
 @interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource>
 
@@ -51,6 +52,26 @@
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
+
+    [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
+        [draggedFiles enumerateObjectsUsingBlock:^(BBUDraggedFile* draggedFile,
+                                                   NSUInteger idx, BOOL *stop) {
+            BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
+
+            [space createAssetWithTitle:nil
+                            description:nil
+                           fileToUpload:nil
+                                success:^(CDAResponse *response, CMAAsset *asset) {
+                                    cell.asset = asset;
+                                } failure:^(CDAResponse *response, NSError *error) {
+                                    // TODO: Error handling
+                                    NSLog(@"Error: %@", error);
+                                }];
+        }];
+    } failure:^(CDAResponse *response, NSError *error) {
+        // TODO: Error handling
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 #pragma mark - JNWCollectionViewDataSource

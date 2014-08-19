@@ -36,6 +36,7 @@
 -(NSTextField *)descriptionTextField {
     if (!_descriptionTextField) {
         _descriptionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
+        _descriptionTextField.delegate = self;
         [_descriptionTextField.cell setPlaceholderString:NSLocalizedString(@"Description", nil)];
         [self addSubview:_descriptionTextField];
     }
@@ -47,11 +48,11 @@
     self.imageView.width = self.width - 20.0;
     self.imageView.y = self.height - self.imageView.height - 10.0;
 
-    self.descriptionTextField.width = self.imageView.width;
-    self.descriptionTextField.y = NSMaxY(self.titleTextField.frame) + 10.0;
-
     self.titleTextField.width = self.imageView.width;
     self.titleTextField.y = 20.0;
+
+    self.descriptionTextField.width = self.imageView.width;
+    self.descriptionTextField.y = NSMaxY(self.titleTextField.frame) + 10.0;
 
     [super drawRect:dirtyRect];
 }
@@ -97,6 +98,7 @@
 - (NSTextField *)titleTextField {
     if (!_titleTextField) {
         _titleTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
+        _titleTextField.delegate = self;
         [_titleTextField.cell setPlaceholderString:NSLocalizedString(@"Title", nil)];
         [self addSubview:_titleTextField];
     }
@@ -115,7 +117,9 @@
         self.asset.title = fieldEditor.string;
     }
 
-    [self.asset updateWithSuccess:nil failure:^(CDAResponse *response, NSError *error) {
+    [self.asset updateWithSuccess:^{
+        NSLog(@"Update successful.");
+    } failure:^(CDAResponse *response, NSError *error) {
         // TODO: Error handling
         NSLog(@"Error: %@", error);
     }];
