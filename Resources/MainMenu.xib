@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A314h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A329f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -68,7 +68,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images" customClass="BBUCollectionView">
+                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images view" customClass="BBUCollectionView">
                         <rect key="frame" x="183" y="0.0" width="516" height="564"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" id="0Lk-no-bwt">
@@ -86,7 +86,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lH6-5M-7qf">
-                            <rect key="frame" x="499" y="1" width="16" height="562"/>
+                            <rect key="frame" x="500" y="1" width="15" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -108,7 +108,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rfX-R2-vMh">
-                            <rect key="frame" x="166" y="1" width="16" height="564"/>
+                            <rect key="frame" x="167" y="1" width="15" height="564"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -126,13 +126,12 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="fp6-a2-taM">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="ifp-qI-CMu"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="TdT-hh-OQq"/>
-                    <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Toolbar Item" tag="-1" id="n3S-Uf-gSJ"/>
+                    <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Select All" tag="-1" image="select-all" id="n3S-Uf-gSJ" userLabel="Select All button"/>
+                    <toolbarItem implicitItemIdentifier="7AB0D48D-9C2F-46D3-8E71-308D67C6F3CB" label="Publish" paletteLabel="Publish" tag="-1" image="NSRefreshTemplate" id="yow-Y9-ZsW" userLabel="Publish button"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="n3S-Uf-gSJ"/>
-                    <toolbarItem reference="TdT-hh-OQq"/>
+                    <toolbarItem reference="yow-Y9-ZsW"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -141,5 +140,14 @@
                 <outlet property="view" destination="UVq-Jw-jv9" id="A2Z-ac-Gd3"/>
             </connections>
         </viewController>
+        <viewController id="0Mq-EW-DQb" userLabel="MenuViewController" customClass="BBUMenuViewController">
+            <connections>
+                <outlet property="view" destination="grA-As-ZiJ" id="LYW-JW-B9v"/>
+            </connections>
+        </viewController>
     </objects>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="select-all" width="512" height="512"/>
+    </resources>
 </document>
