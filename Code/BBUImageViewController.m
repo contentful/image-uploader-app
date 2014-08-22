@@ -8,6 +8,7 @@
 
 #import <JNWCollectionView/JNWCollectionView.h>
 
+#import "BBUAssetUploadOperation.h"
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
 #import "BBUImageCell.h"
@@ -53,16 +54,36 @@
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
 
+    // TODO: Lock UI while creating assets?
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         [draggedFiles enumerateObjectsUsingBlock:^(BBUDraggedFile* draggedFile,
                                                    NSUInteger idx, BOOL *stop) {
             BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
+            cell.draggedFile = draggedFile;
 
             [space createAssetWithTitle:nil
                             description:nil
                            fileToUpload:nil
                                 success:^(CDAResponse *response, CMAAsset *asset) {
-                                    cell.asset = asset;
+                                    draggedFile.asset = asset;
+
+                                    BBUAssetUploadOperation* operation = [[BBUAssetUploadOperation alloc] initWithDraggedFile:draggedFile];
+
+                                    __weak typeof(operation) weakOperation = operation;
+                                    operation.completionBlock = ^{
+                                        NSError* error = weakOperation.error;
+
+                                        if (error) {
+                                            NSAlert* alert = [NSAlert alertWithError:error];
+                                            [alert runModal];
+                                        } else {
+                                            // TODO: Notification!
+                                            NSLog(@"Upload successful.");
+                                        }
+                                    };
+
+                                    // TODO: Proper queue management
+                                    [[NSOperationQueue mainQueue] addOperation:operation];
                                 } failure:^(CDAResponse *response, NSError *error) {
                                     // TODO: Error handling
                                     NSLog(@"Error: %@", error);

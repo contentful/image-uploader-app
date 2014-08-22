@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class CMAAsset;
+
 @interface BBUDraggedFile : NSObject
 
+@property (nonatomic) CMAAsset* asset;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
 @property (nonatomic) NSString* originalFileName;

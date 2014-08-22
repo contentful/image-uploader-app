@@ -8,6 +8,7 @@
 
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 
+#import "BBUDraggedFile.h"
 #import "BBUImageCell.h"
 #import "NSView+Geometry.h"
 
@@ -83,6 +84,26 @@
     self.descriptionTextField.stringValue = assetDescription;
 }
 
+- (void)setDraggedFile:(BBUDraggedFile *)draggedFile {
+    if (_draggedFile == draggedFile) {
+        return;
+    }
+
+    _draggedFile = draggedFile;
+
+    if (self.draggedFile.asset) {
+        self.assetDescription = self.draggedFile.asset.description;
+    }
+
+    if (self.draggedFile.image) {
+        self.image = self.draggedFile.image;
+    }
+
+    if (self.draggedFile.asset.title) {
+        self.title = self.draggedFile.asset.title;
+    }
+}
+
 - (void)setImage:(NSImage *)image {
     self.imageView.image = image;
 }
@@ -110,15 +131,24 @@
 
 -(BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     if (control == self.descriptionTextField) {
-        self.asset.description = fieldEditor.string;
+        self.draggedFile.asset.description = fieldEditor.string;
     }
 
     if (control == self.titleTextField) {
-        self.asset.title = fieldEditor.string;
+        self.draggedFile.asset.title = fieldEditor.string;
     }
 
-    [self.asset updateWithSuccess:^{
-        NSLog(@"Update successful.");
+    [self.draggedFile.asset updateWithSuccess:^{
+        if (self.draggedFile.asset.fields[@"file"]) {
+            [self.draggedFile.asset processWithSuccess:^{
+                NSLog(@"Update successful.");
+            } failure:^(CDAResponse *response, NSError *error) {
+                // TODO: Error handling
+                NSLog(@"Error: %@", error);
+            }];
+        } else {
+            NSLog(@"Update successful.");
+        }
     } failure:^(CDAResponse *response, NSError *error) {
         // TODO: Error handling
         NSLog(@"Error: %@", error);

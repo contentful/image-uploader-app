@@ -12,8 +12,8 @@
 
 @interface BBUImageCell : JNWCollectionViewCell
 
-@property (nonatomic) CMAAsset* asset;
 @property (nonatomic) NSString* assetDescription;
+@property (nonatomic) BBUDraggedFile* draggedFile;
 @property (nonatomic) NSImage* image;
 @property (nonatomic) NSString* title;
 

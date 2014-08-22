@@ -21,13 +21,13 @@
 		A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D4A818199BEE970021EEA6 /* MainMenu.xib */; };
 		A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EF194D199CA00C00AE864E /* BBUImageViewController.m */; };
 		A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EF1950199CA50A00AE864E /* BBUImageCell.m */; };
+		A1F35BCF19A6174E00654922 /* Pods-image-uploader.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A1F35BCE19A6174E00654922 /* Pods-image-uploader.xcconfig */; };
+		A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */; };
 		A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F834D919A2033300282AE9 /* BBUCollectionView.m */; };
 		A23D4E3A868943879EE69000 /* libPods-image-uploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79302297BDDD4879A2F47997 /* libPods-image-uploader.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2AF6243CADE96026202A1847 /* Pods-image-uploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.debug.xcconfig"; path = "Pods/Pods-image-uploader.debug.xcconfig"; sourceTree = "<group>"; };
-		5705AFF0DEAB06F5F793866F /* Pods-image-uploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.release.xcconfig"; path = "Pods/Pods-image-uploader.release.xcconfig"; sourceTree = "<group>"; };
 		79302297BDDD4879A2F47997 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFile.h; sourceTree = "<group>"; };
 		A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFile.m; sourceTree = "<group>"; };
@@ -56,6 +56,9 @@
 		A1EF194D199CA00C00AE864E /* BBUImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUImageViewController.m; sourceTree = "<group>"; };
 		A1EF194F199CA50A00AE864E /* BBUImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUImageCell.h; sourceTree = "<group>"; };
 		A1EF1950199CA50A00AE864E /* BBUImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUImageCell.m; sourceTree = "<group>"; };
+		A1F35BCE19A6174E00654922 /* Pods-image-uploader.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.xcconfig"; path = "Pods/Pods-image-uploader.xcconfig"; sourceTree = SOURCE_ROOT; };
+		A1F35BD019A6262D00654922 /* BBUAssetUploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAssetUploadOperation.h; sourceTree = "<group>"; };
+		A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAssetUploadOperation.m; sourceTree = "<group>"; };
 		A1F834D819A2033300282AE9 /* BBUCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUCollectionView.h; sourceTree = "<group>"; };
 		A1F834D919A2033300282AE9 /* BBUCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,8 +84,6 @@
 				A1D4A7DF199BED850021EEA6 /* Products */,
 				A1D4A815199BEDCC0021EEA6 /* Resources */,
 				A1D4A7E8199BED850021EEA6 /* Supporting Files */,
-				2AF6243CADE96026202A1847 /* Pods-image-uploader.debug.xcconfig */,
-				5705AFF0DEAB06F5F793866F /* Pods-image-uploader.release.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +111,8 @@
 			children = (
 				A1D4A7F3199BED850021EEA6 /* BBUAppDelegate.h */,
 				A1D4A7F4199BED850021EEA6 /* BBUAppDelegate.m */,
+				A1F35BD019A6262D00654922 /* BBUAssetUploadOperation.h */,
+				A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */,
 				A1F834D819A2033300282AE9 /* BBUCollectionView.h */,
 				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
 				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
@@ -137,6 +140,7 @@
 				A1D4A7E9199BED850021EEA6 /* image-uploader-Info.plist */,
 				A1D4A7EF199BED850021EEA6 /* image-uploader-Prefix.pch */,
 				A1D4A7ED199BED850021EEA6 /* main.m */,
+				A1F35BCE19A6174E00654922 /* Pods-image-uploader.xcconfig */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -206,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F35BCF19A6174E00654922 /* Pods-image-uploader.xcconfig in Resources */,
 				A1D4A7FA199BED850021EEA6 /* Images.xcassets in Resources */,
 				A1D4A817199BEE8E0021EEA6 /* Credits.rtf in Resources */,
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
@@ -260,6 +265,7 @@
 				A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */,
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,
 				A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */,
+				A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */,
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
 				A1D4A7EE199BED850021EEA6 /* main.m in Sources */,
 				A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */,
@@ -343,7 +349,7 @@
 		};
 		A1D4A810199BED850021EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2AF6243CADE96026202A1847 /* Pods-image-uploader.debug.xcconfig */;
+			baseConfigurationReference = A1F35BCE19A6174E00654922 /* Pods-image-uploader.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -357,7 +363,7 @@
 		};
 		A1D4A811199BED850021EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5705AFF0DEAB06F5F793866F /* Pods-image-uploader.release.xcconfig */;
+			baseConfigurationReference = A1F35BCE19A6174E00654922 /* Pods-image-uploader.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
