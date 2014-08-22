@@ -17,11 +17,11 @@ PODS:
   - AFNetworking/Reachability (2.3.1)
   - AFNetworking/Security (2.3.1)
   - AFNetworking/Serialization (2.3.1)
-  - ContentfulDeliveryAPI (1.4.1):
+  - ContentfulDeliveryAPI (HEAD based on 1.4.1):
     - AFNetworking
     - HRCoder
     - ISO8601DateFormatter
-  - ContentfulManagementAPI (0.2.0):
+  - ContentfulManagementAPI (HEAD based on 0.2.0):
     - ContentfulDeliveryAPI
   - HRCoder (1.3.1)
   - IAmUpload (0.1.0):
@@ -32,7 +32,8 @@ PODS:
   - JNWScrollView (0.1)
 
 DEPENDENCIES:
-  - ContentfulManagementAPI
+  - ContentfulDeliveryAPI (HEAD)
+  - ContentfulManagementAPI (HEAD)
   - IAmUpload (from `https://github.com/neonichu/IAmUpload.git`)
   - JNWCollectionView
 
