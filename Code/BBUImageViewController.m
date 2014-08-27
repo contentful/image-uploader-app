@@ -56,8 +56,8 @@
 
     // TODO: Lock UI while creating assets?
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
-        [draggedFiles enumerateObjectsUsingBlock:^(BBUDraggedFile* draggedFile,
-                                                   NSUInteger idx, BOOL *stop) {
+        for (BBUDraggedFile* draggedFile in draggedFiles) {
+            NSUInteger idx = [self.files indexOfObject:draggedFile];
             BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
             cell.draggedFile = draggedFile;
 
@@ -88,7 +88,7 @@
                                     // TODO: Error handling
                                     NSLog(@"Error: %@", error);
                                 }];
-        }];
+        }
     } failure:^(CDAResponse *response, NSError *error) {
         // TODO: Error handling
         NSLog(@"Error: %@", error);
