@@ -19,6 +19,7 @@
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSMutableArray* files;
+@property (nonatomic) NSOperationQueue* uploadQueue;
 
 @end
 
@@ -28,6 +29,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
+    self.uploadQueue = [NSOperationQueue new];
+    self.uploadQueue.maxConcurrentOperationCount = 3;
 
     self.files = [@[] mutableCopy];
 
@@ -83,16 +87,15 @@
                                         }
                                     };
 
-                                    // TODO: Proper queue management
-                                    [[NSOperationQueue mainQueue] addOperation:operation];
+                                    [self.uploadQueue addOperation:operation];
                                 } failure:^(CDAResponse *response, NSError *error) {
-                                    // TODO: Error handling
-                                    NSLog(@"Error: %@", error);
+                                    NSAlert* alert = [NSAlert alertWithError:error];
+                                    [alert runModal];
                                 }];
         }
     } failure:^(CDAResponse *response, NSError *error) {
-        // TODO: Error handling
-        NSLog(@"Error: %@", error);
+        NSAlert* alert = [NSAlert alertWithError:error];
+        [alert runModal];
     }];
 }
 
