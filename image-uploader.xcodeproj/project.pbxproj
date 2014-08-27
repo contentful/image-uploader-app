@@ -184,7 +184,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BBU;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Contentful GmbH";
 			};
 			buildConfigurationList = A1D4A7D9199BED850021EEA6 /* Build configuration list for PBXProject "image-uploader" */;
