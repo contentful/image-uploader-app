@@ -30,11 +30,13 @@ PODS:
   - JNWCollectionView (1.2):
     - JNWScrollView
   - JNWScrollView (0.1)
+  - Realm (0.83.0)
 
 DEPENDENCIES:
   - ContentfulManagementAPI
   - IAmUpload (from `https://github.com/neonichu/IAmUpload.git`)
   - JNWCollectionView
+  - Realm
 
 EXTERNAL SOURCES:
   IAmUpload:
@@ -49,5 +51,6 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
   JNWCollectionView: 879df2734740bdad82806dc381de2090d6c08a58
   JNWScrollView: 1c343fd858ab1d7826f83cb9d6dc0d1753f0bdea
+  Realm: b37a36efdb3b592febd267e3ebab464c25b4a3bb
 
 COCOAPODS: 0.33.1
