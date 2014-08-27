@@ -54,7 +54,6 @@
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
 
-    // TODO: Lock UI while creating assets?
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         for (BBUDraggedFile* draggedFile in draggedFiles) {
             NSUInteger idx = [self.files indexOfObject:draggedFile];
@@ -66,6 +65,8 @@
                            fileToUpload:nil
                                 success:^(CDAResponse *response, CMAAsset *asset) {
                                     draggedFile.asset = asset;
+                                    
+                                    cell.editable = YES;
 
                                     BBUAssetUploadOperation* operation = [[BBUAssetUploadOperation alloc] initWithDraggedFile:draggedFile];
 
@@ -100,6 +101,7 @@
 -(JNWCollectionViewCell *)collectionView:(JNWCollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BBUImageCell* imageCell = (BBUImageCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+    imageCell.editable = NO;
 
     BBUDraggedFile* draggedFile = self.files[[indexPath indexAtPosition:1]];
     imageCell.image = draggedFile.image;

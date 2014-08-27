@@ -104,6 +104,15 @@
     }
 }
 
+- (void)setEditable:(BOOL)editable {
+    _editable = editable;
+
+    self.imageView.alphaValue = editable ? 1.0 : 0.5;
+
+    [self.descriptionTextField setEditable:editable];
+    [self.titleTextField setEditable:editable];
+}
+
 - (void)setImage:(NSImage *)image {
     self.imageView.image = image;
 }
@@ -143,15 +152,15 @@
             [self.draggedFile.asset processWithSuccess:^{
                 NSLog(@"Update successful.");
             } failure:^(CDAResponse *response, NSError *error) {
-                // TODO: Error handling
-                NSLog(@"Error: %@", error);
+                NSAlert* alert = [NSAlert alertWithError:error];
+                [alert runModal];
             }];
         } else {
             NSLog(@"Update successful.");
         }
     } failure:^(CDAResponse *response, NSError *error) {
-        // TODO: Error handling
-        NSLog(@"Error: %@", error);
+        NSAlert* alert = [NSAlert alertWithError:error];
+        [alert runModal];
     }];
 
     return YES;
