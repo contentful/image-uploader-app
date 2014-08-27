@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class CMAAsset;
+@class CMASpace;
 
 @interface BBUDraggedFile : NSObject
 
 @property (nonatomic) CMAAsset* asset;
+@property (nonatomic) CMASpace* space;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
 @property (nonatomic) NSString* originalFileName;
