@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10FC6D419AE11BB00C45BA3 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC6D319AE11BB00C45BA3 /* success.png */; };
+		A10FC6D619AE11D600C45BA3 /* failure.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC6D519AE11D600C45BA3 /* failure.png */; };
 		A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */; };
 		A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61C219A23105006B1551 /* NSView+Geometry.m */; };
 		A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		79302297BDDD4879A2F47997 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10FC6D319AE11BB00C45BA3 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		A10FC6D519AE11D600C45BA3 /* failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failure.png; sourceTree = "<group>"; };
 		A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFile.h; sourceTree = "<group>"; };
 		A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFile.m; sourceTree = "<group>"; };
 		A15A61C119A23105006B1551 /* NSView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Geometry.h"; sourceTree = "<group>"; };
@@ -148,9 +152,11 @@
 		A1D4A815199BEDCC0021EEA6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A10FC6D519AE11D600C45BA3 /* failure.png */,
 				A1D4A7F9199BED850021EEA6 /* Images.xcassets */,
 				A1D4A818199BEE970021EEA6 /* MainMenu.xib */,
 				A19FB0D019A342F900A5659C /* select-all.png */,
+				A10FC6D319AE11BB00C45BA3 /* success.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -211,9 +217,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1F35BCF19A6174E00654922 /* Pods-image-uploader.xcconfig in Resources */,
+				A10FC6D419AE11BB00C45BA3 /* success.png in Resources */,
 				A1D4A7FA199BED850021EEA6 /* Images.xcassets in Resources */,
 				A1D4A817199BEE8E0021EEA6 /* Credits.rtf in Resources */,
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
+				A10FC6D619AE11D600C45BA3 /* failure.png in Resources */,
 				A19FB0D119A342F900A5659C /* select-all.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
