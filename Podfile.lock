@@ -21,7 +21,7 @@ PODS:
     - AFNetworking
     - HRCoder
     - ISO8601DateFormatter
-  - ContentfulManagementAPI (HEAD based on 0.2.0):
+  - ContentfulManagementAPI (0.3.0):
     - ContentfulDeliveryAPI
   - HRCoder (1.3.1)
   - IAmUpload (0.1.0):
@@ -32,7 +32,7 @@ PODS:
   - JNWScrollView (0.1)
 
 DEPENDENCIES:
-  - ContentfulManagementAPI (HEAD)
+  - ContentfulManagementAPI
   - IAmUpload (from `https://github.com/neonichu/IAmUpload.git`)
   - JNWCollectionView
 
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   ContentfulDeliveryAPI: a8fc1965a7af354c8c1fe7567f62dd67016da15f
-  ContentfulManagementAPI: 5b84a18c2adc434826743f5c3e46e2f1da361360
+  ContentfulManagementAPI: 61b35defa3dd6ad45bd36e698352fbd64b01c8a7
   HRCoder: 0952826ddf4213a11be775d01446f61a5df987a4
   IAmUpload: b22bf2591ee9e2ddbd585927934408da9a56b71a
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
