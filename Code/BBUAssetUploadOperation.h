@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern const NSUInteger kProcessingFailedErrorCode;
+
 @class BBUDraggedFile;
 
 @interface BBUAssetUploadOperation : NSOperation
