@@ -19,6 +19,7 @@
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSMutableArray* files;
+@property (nonatomic) NSUInteger numberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
 
 @end
@@ -52,6 +53,26 @@
     return (BBUCollectionView*)self.view;
 }
 
+- (void)postSuccessNotificationIfNeeded {
+    if (self.uploadQueue.operationCount == 0) {
+        NSUserNotification* note = [NSUserNotification new];
+        note.title = NSLocalizedString(@"Upload completed", nil);
+        note.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%d file(s) successfully uploaded.", nil), self.numberOfUploads];
+
+        [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:note];
+
+        self.numberOfUploads = 0;
+    }
+}
+
+- (void)setCellStatus:(BBUImageCell*)cell withError:(NSError*)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.error = error;
+        cell.showFailure = error != nil;
+        cell.showSuccess = error == nil;
+    });
+}
+
 #pragma mark - BBUCollectionViewDelegate
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
@@ -81,18 +102,19 @@
                                         NSError* error = weakOperation.error;
 
                                         if (error) {
-                                            NSAlert* alert = [NSAlert alertWithError:error];
-                                            [alert runModal];
+                                            [self setCellStatus:cell withError:error];
                                         } else {
-                                            // TODO: Notification!
-                                            NSLog(@"Upload successful.");
+                                            self.numberOfUploads++;
+
+                                            [self setCellStatus:cell withError:nil];
                                         }
+
+                                        [self postSuccessNotificationIfNeeded];
                                     };
 
                                     [self.uploadQueue addOperation:operation];
                                 } failure:^(CDAResponse *response, NSError *error) {
-                                    NSAlert* alert = [NSAlert alertWithError:error];
-                                    [alert runModal];
+                                    [self setCellStatus:cell withError:error];
                                 }];
         }
     } failure:^(CDAResponse *response, NSError *error) {

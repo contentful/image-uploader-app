@@ -9,14 +9,18 @@
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 
 #import "BBUDraggedFile.h"
+#import "BBUGeometryHelper.h"
 #import "BBUImageCell.h"
 #import "NSView+Geometry.h"
 
 @interface BBUImageCell () <NSTextFieldDelegate>
 
+@property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
+@property (nonatomic, readonly) NSImageView* failureImageView;
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
+@property (nonatomic, readonly) NSImageView* successImageView;
 @property (nonatomic, readonly) NSTextField* titleTextField;
 
 @end
@@ -26,11 +30,18 @@
 @implementation BBUImageCell
 
 @synthesize descriptionTextField = _descriptionTextField;
+@synthesize failureImageView = _failureImageView;
 @synthesize imageView = _imageView;
 @synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
+@synthesize successImageView = _successImageView;
 
 #pragma mark -
+
+- (NSRect)actualImageRect {
+    NSRect imageRect = NSMakeRect(0.0, 0.0, self.image.size.width, self.image.size.height);
+    return fitRectIntoRectWithDimension(imageRect, self.imageView.bounds, RectAxisVertical);
+}
 
 - (NSString *)assetDescription {
     return self.descriptionTextField.stringValue;
@@ -61,7 +72,24 @@
     self.progressIndicator.y = self.imageView.y + (self.imageView.height -
                                                    self.progressIndicator.height) / 2;
 
+    self.successImageView.x = self.actualImageRect.size.width + self.imageView.x;
+    self.successImageView.y = self.imageView.y;
+
+    self.failureImageView.x = self.successImageView.x;
+    self.failureImageView.y = self.successImageView.y + 5.0;
+
     [super drawRect:dirtyRect];
+}
+
+- (NSImageView *)failureImageView {
+    if (!_failureImageView) {
+        _failureImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
+        _failureImageView.hidden = YES;
+        _failureImageView.image = [NSImage imageNamed:@"failure"];
+        [self addSubview:_failureImageView];
+    }
+
+    return _failureImageView;
 }
 
 - (NSImage *)image {
@@ -144,8 +172,31 @@
     self.imageView.image = image;
 }
 
+-(void)setShowFailure:(BOOL)showFailure {
+    _showFailure = showFailure;
+
+    self.failureImageView.hidden = !showFailure;
+}
+
+-(void)setShowSuccess:(BOOL)showSuccess {
+    _showSuccess = showSuccess;
+
+    self.successImageView.hidden = !showSuccess;
+}
+
 - (void)setTitle:(NSString *)title {
     self.titleTextField.stringValue = title;
+}
+
+-(NSImageView *)successImageView {
+    if (!_successImageView) {
+        _successImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
+        _successImageView.hidden = YES;
+        _successImageView.image = [NSImage imageNamed:@"success"];
+        [self addSubview:_successImageView];
+    }
+
+    return _successImageView;
 }
 
 - (NSString *)title {
@@ -174,20 +225,30 @@
         self.draggedFile.asset.title = fieldEditor.string;
     }
 
+    self.editable = NO;
+
     [self.draggedFile.asset updateWithSuccess:^{
         if (self.draggedFile.asset.fields[@"file"]) {
             [self.draggedFile.asset processWithSuccess:^{
-                NSLog(@"Update successful.");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.editable = YES;
+                });
             } failure:^(CDAResponse *response, NSError *error) {
-                NSAlert* alert = [NSAlert alertWithError:error];
-                [alert runModal];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.error = error;
+                    self.showFailure = YES;
+                });
             }];
         } else {
-            NSLog(@"Update successful.");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.editable = YES;
+            });
         }
     } failure:^(CDAResponse *response, NSError *error) {
-        NSAlert* alert = [NSAlert alertWithError:error];
-        [alert runModal];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.error = error;
+            self.showFailure = YES;
+        });
     }];
 
     return YES;

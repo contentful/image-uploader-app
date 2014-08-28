@@ -18,6 +18,7 @@
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
 		A1B91A1B19AF1B66005F99F3 /* select-all@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */; };
+		A1B91A1E19AF2EB6005F99F3 /* BBUGeometryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B91A1D19AF2EB6005F99F3 /* BBUGeometryHelper.m */; };
 		A1B91A2119AF4FB5005F99F3 /* failure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */; };
 		A1B91A2219AF4FB5005F99F3 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A2019AF4FB5005F99F3 /* success@2x.png */; };
 		A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D4A7E1199BED850021EEA6 /* Cocoa.framework */; };
@@ -64,6 +65,8 @@
 		A19FB0D519A347BE00A5659C /* BBUMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuCell.h; sourceTree = "<group>"; };
 		A19FB0D619A347BE00A5659C /* BBUMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuCell.m; sourceTree = "<group>"; };
 		A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-all@2x.png"; sourceTree = "<group>"; };
+		A1B91A1C19AF2EB6005F99F3 /* BBUGeometryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUGeometryHelper.h; sourceTree = "<group>"; };
+		A1B91A1D19AF2EB6005F99F3 /* BBUGeometryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUGeometryHelper.m; sourceTree = "<group>"; };
 		A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failure@2x.png"; sourceTree = "<group>"; };
 		A1B91A2019AF4FB5005F99F3 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
 		A1D4A7DE199BED850021EEA6 /* image-uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +148,8 @@
 				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
 				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
 				A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */,
+				A1B91A1C19AF2EB6005F99F3 /* BBUGeometryHelper.h */,
+				A1B91A1D19AF2EB6005F99F3 /* BBUGeometryHelper.m */,
 				A1EF194F199CA50A00AE864E /* BBUImageCell.h */,
 				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
 				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
@@ -322,6 +327,7 @@
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
 				A1D4A7EE199BED850021EEA6 /* main.m in Sources */,
 				A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */,
+				A1B91A1E19AF2EB6005F99F3 /* BBUGeometryHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
