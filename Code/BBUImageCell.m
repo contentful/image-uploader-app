@@ -101,6 +101,8 @@
 
     if (self.draggedFile.asset.title) {
         self.title = self.draggedFile.asset.title;
+    } else {
+        self.title = [self.draggedFile.originalFileName stringByDeletingPathExtension];
     }
 }
 

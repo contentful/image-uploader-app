@@ -61,13 +61,9 @@
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         for (BBUDraggedFile* draggedFile in draggedFiles) {
             NSUInteger idx = [self.files indexOfObject:draggedFile];
-            NSString* title = [draggedFile.originalFileName stringByDeletingPathExtension];
-
             BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
-            cell.draggedFile = draggedFile;
-            cell.title = title;
 
-            [space createAssetWithTitle:@{ space.defaultLocale: title }
+            [space createAssetWithTitle:@{ space.defaultLocale: cell.title }
                             description:nil
                            fileToUpload:nil
                                 success:^(CDAResponse *response, CMAAsset *asset) {
@@ -111,7 +107,7 @@
     imageCell.editable = NO;
 
     BBUDraggedFile* draggedFile = self.files[[indexPath indexAtPosition:1]];
-    imageCell.image = draggedFile.image;
+    imageCell.draggedFile = draggedFile;
 
     return imageCell;
 }
