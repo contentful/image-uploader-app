@@ -69,8 +69,10 @@
                                 success:^(CDAResponse *response, CMAAsset *asset) {
                                     draggedFile.asset = asset;
                                     draggedFile.space = space;
-                                    
-                                    cell.editable = YES;
+
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        cell.editable = YES;
+                                    });
 
                                     BBUAssetUploadOperation* operation = [[BBUAssetUploadOperation alloc] initWithDraggedFile:draggedFile];
 
