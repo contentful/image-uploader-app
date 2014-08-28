@@ -17,6 +17,7 @@
 		A19FB0D119A342F900A5659C /* select-all.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FB0D019A342F900A5659C /* select-all.png */; };
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
+		A1B91A1B19AF1B66005F99F3 /* select-all@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */; };
 		A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D4A7E1199BED850021EEA6 /* Cocoa.framework */; };
 		A1D4A7EE199BED850021EEA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D4A7ED199BED850021EEA6 /* main.m */; };
 		A1D4A7F5199BED850021EEA6 /* BBUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D4A7F4199BED850021EEA6 /* BBUAppDelegate.m */; };
@@ -60,6 +61,7 @@
 		A19FB0D319A3445500A5659C /* BBUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuViewController.m; sourceTree = "<group>"; };
 		A19FB0D519A347BE00A5659C /* BBUMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuCell.h; sourceTree = "<group>"; };
 		A19FB0D619A347BE00A5659C /* BBUMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuCell.m; sourceTree = "<group>"; };
+		A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-all@2x.png"; sourceTree = "<group>"; };
 		A1D4A7DE199BED850021EEA6 /* image-uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D4A7E1199BED850021EEA6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A1D4A7E4199BED850021EEA6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -174,6 +176,7 @@
 				A1D4A7F9199BED850021EEA6 /* Images.xcassets */,
 				A1D4A818199BEE970021EEA6 /* MainMenu.xib */,
 				A19FB0D019A342F900A5659C /* select-all.png */,
+				A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */,
 				A10FC6D319AE11BB00C45BA3 /* success.png */,
 			);
 			path = Resources;
@@ -241,6 +244,7 @@
 				A1D4A817199BEE8E0021EEA6 /* Credits.rtf in Resources */,
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
 				A10FC6D619AE11D600C45BA3 /* failure.png in Resources */,
+				A1B91A1B19AF1B66005F99F3 /* select-all@2x.png in Resources */,
 				A19FB0D119A342F900A5659C /* select-all.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
