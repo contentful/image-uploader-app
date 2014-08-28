@@ -16,6 +16,7 @@
 
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
 @property (nonatomic, readonly) NSImageView* imageView;
+@property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
 @property (nonatomic, readonly) NSTextField* titleTextField;
 
 @end
@@ -27,6 +28,7 @@
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize imageView = _imageView;
 @synthesize titleTextField = _titleTextField;
+@synthesize progressIndicator = _progressIndicator;
 
 #pragma mark -
 
@@ -55,6 +57,10 @@
     self.descriptionTextField.width = self.imageView.width;
     self.descriptionTextField.y = NSMaxY(self.titleTextField.frame) + 10.0;
 
+    self.progressIndicator.x = (self.imageView.width - self.progressIndicator.width) / 2;
+    self.progressIndicator.y = self.imageView.y + (self.imageView.height -
+                                                   self.progressIndicator.height) / 2;
+
     [super drawRect:dirtyRect];
 }
 
@@ -78,6 +84,16 @@
         self.backgroundColor = [NSColor clearColor];
     }
     return self;
+}
+
+-(NSProgressIndicator *)progressIndicator {
+    if (!_progressIndicator) {
+        _progressIndicator = [[NSProgressIndicator alloc]
+                              initWithFrame:NSMakeRect(0.0, 0.0, 64.0, 64.0)];
+        [self addSubview:_progressIndicator];
+    }
+
+    return _progressIndicator;
 }
 
 - (void)setAssetDescription:(NSString *)assetDescription {
@@ -108,6 +124,15 @@
 
 - (void)setEditable:(BOOL)editable {
     _editable = editable;
+
+    if (editable) {
+        [self.progressIndicator stopAnimation:nil];
+        self.progressIndicator.hidden = YES;
+    } else {
+        self.progressIndicator.hidden = NO;
+        self.progressIndicator.style = NSProgressIndicatorSpinningStyle;
+        [self.progressIndicator startAnimation:nil];
+    }
 
     self.imageView.alphaValue = editable ? 1.0 : 0.5;
 
