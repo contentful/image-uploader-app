@@ -48,11 +48,11 @@
 
     switch ([indexPath indexAtPosition:1]) {
         case 0:
-            cell.title = NSLocalizedString(@"Foo", nil);
+            cell.title = NSLocalizedString(@"Description", nil);
             break;
 
         case 1:
-            cell.title = NSLocalizedString(@"Bar", nil);
+            cell.title = NSLocalizedString(@"Title", nil);
             break;
     }
 
