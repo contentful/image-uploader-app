@@ -26,6 +26,14 @@ NSRect fitRectIntoRectWithDimension(NSRect inner, NSRect outer, RectAxis dimensi
         result = NSZeroRect;
     }
 
+    if (isnan(result.size.width)) {
+        result.size.width = 0;
+    }
+
+    if (isnan(result.size.height)) {
+        result.size.height = 0;
+    }
+
     return (result);
 }
 
