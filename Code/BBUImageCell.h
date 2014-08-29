@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
-#import "JNWCollectionViewCell.h"
+#import <IAmUpload/BBUFileUpload.h>
+#import <JNWCollectionView/JNWCollectionViewCell.h>
 
 @class CMAAsset;
 
@@ -17,6 +18,7 @@
 @property (nonatomic, getter = isEditable) BOOL editable;
 @property (nonatomic) NSError* error;
 @property (nonatomic) NSImage* image;
+@property (nonatomic, readonly, copy) BBUProgressHandler progressHandler;
 @property (nonatomic) BOOL showFailure;
 @property (nonatomic) BOOL showSuccess;
 @property (nonatomic) NSString* title;

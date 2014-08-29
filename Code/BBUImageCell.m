@@ -18,9 +18,11 @@
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
 @property (nonatomic, readonly) NSImageView* failureImageView;
 @property (nonatomic, readonly) NSImageView* imageView;
+@property (nonatomic, copy) BBUProgressHandler progressHandler;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
 @property (nonatomic, readonly) NSImageView* successImageView;
 @property (nonatomic, readonly) NSTextField* titleTextField;
+@property (nonatomic, readonly) NSProgressIndicator* uploadIndicator;
 
 @end
 
@@ -34,6 +36,7 @@
 @synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
 @synthesize successImageView = _successImageView;
+@synthesize uploadIndicator = _uploadIndicator;
 
 #pragma mark -
 
@@ -70,6 +73,9 @@
     self.progressIndicator.x = (self.imageView.width - self.progressIndicator.width) / 2;
     self.progressIndicator.y = self.imageView.y + (self.imageView.height -
                                                    self.progressIndicator.height) / 2;
+
+    self.uploadIndicator.width = self.width - 20.0;
+    self.uploadIndicator.y = self.imageView.y - 10.0;
 
     self.successImageView.x = self.actualImageRect.size.width + self.imageView.x;
     self.successImageView.y = self.imageView.y;
@@ -109,6 +115,29 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [NSColor clearColor];
+
+        NSProgressIndicator* indicator = self.uploadIndicator;
+        __weak typeof(self) welf = self;
+
+        self.progressHandler = ^(NSUInteger bytesWritten,
+                                 long long totalBytesWritten,
+                                 long long totalBytesExpectedToWrite) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (indicator.hidden) {
+                    indicator.hidden = NO;
+
+                    [indicator removeFromSuperview];
+                    [welf addSubview:indicator];
+                }
+
+                indicator.doubleValue = totalBytesWritten;
+                indicator.maxValue = totalBytesExpectedToWrite;
+
+                if (indicator.doubleValue == indicator.maxValue) {
+                    indicator.hidden = YES;
+                }
+            });
+        };
     }
     return self;
 }
@@ -117,6 +146,7 @@
     if (!_progressIndicator) {
         _progressIndicator = [[NSProgressIndicator alloc]
                               initWithFrame:NSMakeRect(0.0, 0.0, 64.0, 64.0)];
+        _progressIndicator.style = NSProgressIndicatorSpinningStyle;
         [self addSubview:_progressIndicator];
     }
 
@@ -157,7 +187,6 @@
         self.progressIndicator.hidden = YES;
     } else {
         self.progressIndicator.hidden = NO;
-        self.progressIndicator.style = NSProgressIndicatorSpinningStyle;
         [self.progressIndicator startAnimation:nil];
     }
 
@@ -211,6 +240,20 @@
     }
 
     return _titleTextField;
+}
+
+-(NSProgressIndicator *)uploadIndicator {
+    if (!_uploadIndicator) {
+        _uploadIndicator = [[NSProgressIndicator alloc]
+                            initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 44.0)];
+        _uploadIndicator.doubleValue = 0.0;
+        _uploadIndicator.hidden = YES;
+        _uploadIndicator.maxValue = 1000.0;
+        _uploadIndicator.style = NSProgressIndicatorBarStyle;
+        [self addSubview:_uploadIndicator];
+    }
+
+    return _uploadIndicator;
 }
 
 #pragma mark - NSTextFieldDelegate

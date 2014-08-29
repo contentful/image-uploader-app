@@ -96,6 +96,7 @@
                                     });
 
                                     BBUAssetUploadOperation* operation = [[BBUAssetUploadOperation alloc] initWithDraggedFile:draggedFile];
+                                    operation.cell = cell;
 
                                     __weak typeof(operation) weakOperation = operation;
                                     operation.completionBlock = ^{

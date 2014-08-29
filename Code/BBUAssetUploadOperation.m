@@ -11,6 +11,7 @@
 
 #import "BBUAssetUploadOperation.h"
 #import "BBUDraggedFile.h"
+#import "BBUImageCell.h"
 
 const NSUInteger kProcessingFailedErrorCode = 0xFF;
 
@@ -39,6 +40,10 @@ static const NSTimeInterval kProcessWait = 5.0;
 }
 
 - (void)changeOperationStatusWithDone:(BOOL)done error:(NSError*)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.cell.editable = YES;
+    });
+
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
 
@@ -118,6 +123,10 @@ static const NSTimeInterval kProcessWait = 5.0;
             return;
         }
 
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.cell.editable = NO;
+        });
+
         NSDictionary* uploads = @{ self.draggedFile.space.defaultLocale: uploadURL.absoluteString };
 
         [self.draggedFile.asset updateWithLocalizedUploads:uploads success:^{
@@ -129,11 +138,7 @@ static const NSTimeInterval kProcessWait = 5.0;
         } failure:^(CDAResponse *response, NSError *error) {
             [self changeOperationStatusWithDone:YES error:error];
         }];
-    } progressHandler:^(NSUInteger bytesWritten,
-                        long long totalBytesWritten,
-                        long long totalBytesExpectedToWrite) {
-        // TODO: Implement progress ahndler
-    }];
+    } progressHandler:self.cell.progressHandler];
 }
 
 -(dispatch_time_t)time {
