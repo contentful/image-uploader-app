@@ -16,7 +16,7 @@
 
 @property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
-@property (nonatomic, readonly) NSImageView* failureImageView;
+@property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, copy) BBUProgressHandler progressHandler;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
@@ -31,7 +31,7 @@
 @implementation BBUImageCell
 
 @synthesize descriptionTextField = _descriptionTextField;
-@synthesize failureImageView = _failureImageView;
+@synthesize failureButton = _failureButton;
 @synthesize imageView = _imageView;
 @synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
@@ -80,21 +80,24 @@
     self.successImageView.x = self.actualImageRect.size.width + self.imageView.x;
     self.successImageView.y = self.imageView.y;
 
-    self.failureImageView.x = self.successImageView.x;
-    self.failureImageView.y = self.successImageView.y + 5.0;
+    self.failureButton.x = self.successImageView.x;
+    self.failureButton.y = self.successImageView.y + 5.0;
 
     [super drawRect:dirtyRect];
 }
 
-- (NSImageView *)failureImageView {
-    if (!_failureImageView) {
-        _failureImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
-        _failureImageView.hidden = YES;
-        _failureImageView.image = [NSImage imageNamed:@"failure"];
-        [self addSubview:_failureImageView];
+- (NSButton *)failureButton {
+    if (!_failureButton) {
+        _failureButton = [[NSButton alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
+        _failureButton.action = @selector(failureClicked:);
+        _failureButton.bordered = NO;
+        _failureButton.hidden = YES;
+        _failureButton.image = [NSImage imageNamed:@"failure"];
+        _failureButton.target = self;
+        [self addSubview:_failureButton];
     }
 
-    return _failureImageView;
+    return _failureButton;
 }
 
 - (NSImage *)image {
@@ -203,7 +206,7 @@
 -(void)setShowFailure:(BOOL)showFailure {
     _showFailure = showFailure;
 
-    self.failureImageView.hidden = !showFailure;
+    self.failureButton.hidden = !showFailure;
 
     if (showFailure) {
         self.successImageView.hidden = YES;
@@ -216,7 +219,7 @@
     self.successImageView.hidden = !showSuccess;
 
     if (showSuccess) {
-        self.failureImageView.hidden = YES;
+        self.failureButton.hidden = YES;
     }
 }
 
@@ -262,6 +265,13 @@
     }
 
     return _uploadIndicator;
+}
+
+#pragma mark - Actions
+
+-(void)failureClicked:(id)sender {
+    NSAlert* alert = [NSAlert alertWithError:self.error];
+    [alert runModal];
 }
 
 #pragma mark - NSTextFieldDelegate
