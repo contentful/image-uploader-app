@@ -167,7 +167,7 @@
 
     _draggedFile = draggedFile;
 
-    if (self.draggedFile.asset) {
+    if (self.draggedFile.asset.description) {
         self.assetDescription = self.draggedFile.asset.description;
     }
 

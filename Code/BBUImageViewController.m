@@ -88,7 +88,7 @@
             NSUInteger idx = [self.files indexOfObject:draggedFile];
             BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
 
-            [space createAssetWithTitle:@{ space.defaultLocale: cell.title }
+            [space createAssetWithTitle:@{ space.defaultLocale: cell.title ?: @"" }
                             description:nil
                            fileToUpload:nil
                                 success:^(CDAResponse *response, CMAAsset *asset) {
