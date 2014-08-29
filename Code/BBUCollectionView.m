@@ -41,7 +41,10 @@
                                                                                    error:nil];
             file.image = [[NSImage alloc] initWithContentsOfURL:url];
             file.originalFileName = url.path.lastPathComponent;
-            [draggedImages addObject:file];
+
+            if (file.image) {
+                [draggedImages addObject:file];
+            }
         }];
 
     if ([self.draggingDelegate respondsToSelector:@selector(collectionView:didDragFiles:)]) {

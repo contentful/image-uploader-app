@@ -81,6 +81,10 @@
 
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         for (BBUDraggedFile* draggedFile in draggedFiles) {
+            if (!draggedFile.image) {
+                continue;
+            }
+
             NSUInteger idx = [self.files indexOfObject:draggedFile];
             BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
 
