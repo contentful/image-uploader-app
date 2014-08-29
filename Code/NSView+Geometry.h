@@ -8,6 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum RectAxis {
+    RectAxisHorizontal,
+    RectAxisVertical
+} RectAxis;
+
+NSRect fitRectIntoRectWithDimension(NSRect inner, NSRect outer, RectAxis dimension);
+
 @interface NSView (Geometry)
 
 @property (nonatomic) CGFloat x, y, width, height;

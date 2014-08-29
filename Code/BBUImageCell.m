@@ -9,7 +9,6 @@
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 
 #import "BBUDraggedFile.h"
-#import "BBUGeometryHelper.h"
 #import "BBUImageCell.h"
 #import "NSView+Geometry.h"
 
