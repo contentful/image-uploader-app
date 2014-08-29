@@ -204,12 +204,20 @@
     _showFailure = showFailure;
 
     self.failureImageView.hidden = !showFailure;
+
+    if (showFailure) {
+        self.successImageView.hidden = YES;
+    }
 }
 
 -(void)setShowSuccess:(BOOL)showSuccess {
     _showSuccess = showSuccess;
 
     self.successImageView.hidden = !showSuccess;
+
+    if (showSuccess) {
+        self.failureImageView.hidden = YES;
+    }
 }
 
 - (void)setTitle:(NSString *)title {
