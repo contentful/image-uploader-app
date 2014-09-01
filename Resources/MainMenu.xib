@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="BBUAppDelegate">
             <connections>
+                <outlet property="spaceSelection" destination="9QD-XY-SR8" id="l7n-WM-fad"/>
                 <outlet property="spaceSelectionMenu" destination="imo-yg-q2Z" id="VxH-JW-Deh"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -342,8 +343,14 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="fp6-a2-taM">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Select All" tag="-1" image="select-all" id="n3S-Uf-gSJ" userLabel="Select All button"/>
-                    <toolbarItem implicitItemIdentifier="7AB0D48D-9C2F-46D3-8E71-308D67C6F3CB" label="Publish" paletteLabel="Publish" tag="-1" image="NSRefreshTemplate" id="yow-Y9-ZsW" userLabel="Publish button"/>
+                    <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Select All" tag="-1" image="select-all" id="n3S-Uf-gSJ" userLabel="Select All button">
+                        <size key="minSize" width="45" height="32"/>
+                        <size key="maxSize" width="45" height="32"/>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="7AB0D48D-9C2F-46D3-8E71-308D67C6F3CB" label="Publish" paletteLabel="Publish" tag="-1" image="NSRefreshTemplate" id="yow-Y9-ZsW" userLabel="Publish button">
+                        <size key="minSize" width="45" height="32"/>
+                        <size key="maxSize" width="45" height="32"/>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9861535B-A244-4EB7-82AD-ED0190D86E17" label="" paletteLabel="Space Selection" image="NSAddTemplate" id="9QD-XY-SR8" userLabel="Space selection">
                         <nil key="toolTip"/>
                         <size key="minSize" width="45" height="25"/>
@@ -351,7 +358,7 @@
                         <popUpButton key="view" id="X3F-13-t2Y">
                             <rect key="frame" x="0.0" y="16" width="100" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" id="iJN-8m-EFG" customClass="DTPopUpButtonCell">
+                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="noArrow" id="iJN-8m-EFG" customClass="DTPopUpButtonCell">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="imo-yg-q2Z">
@@ -371,6 +378,7 @@
                     <toolbarItem reference="9QD-XY-SR8"/>
                 </defaultToolbarItems>
             </toolbar>
+            <point key="canvasLocation" x="903.5" y="493"/>
         </window>
         <viewController nibName="" id="tEa-S3-mQX" userLabel="ImageViewController" customClass="BBUImageViewController">
             <connections>

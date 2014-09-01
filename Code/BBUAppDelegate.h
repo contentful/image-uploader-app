@@ -12,5 +12,6 @@
 
 @property (weak) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSMenu *spaceSelectionMenu;
+@property (weak) IBOutlet NSToolbarItem *spaceSelection;
 
 @end

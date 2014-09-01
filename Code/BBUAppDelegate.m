@@ -58,7 +58,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     spaces = [spaces sortedArrayUsingComparator:^NSComparisonResult(CMASpace* space1, CMASpace* space2) {
         return [space1.name localizedStandardCompare:space2.name];
     }];
-    [CMAClient sharedClient].sharedSpaceKey = [spaces[0] identifier];
+    [self selectSpace:spaces[0]];
 
     [spaces enumerateObjectsUsingBlock:^(CMASpace* space, NSUInteger idx, BOOL *stop) {
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:space.name
@@ -98,8 +98,13 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     return [[NSApp windows][0] contentView];
 }
 
+- (void)selectSpace:(CMASpace*)space {
+    self.spaceSelection.label = space.name;
+    [CMAClient sharedClient].sharedSpaceKey = space.identifier;
+}
+
 - (void)spaceSelected:(NSMenuItem*)menuItem {
-    [CMAClient sharedClient].sharedSpaceKey = [menuItem.representedObject identifier];
+    [self selectSpace:menuItem.representedObject];
 }
 
 - (void)startOAuthFlow {
