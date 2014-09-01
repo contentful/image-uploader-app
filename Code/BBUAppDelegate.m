@@ -14,6 +14,14 @@
 
 static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
+@interface BBUAppDelegate ()
+
+@property (nonatomic, readonly) NSView* mainView;
+
+@end
+
+#pragma mark -
+
 @implementation BBUAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -21,7 +29,44 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
     if ([SSKeychain accountsForService:kContentfulServiceType].count == 0) {
         [self startOAuthFlow];
+    } else {
+        [self fetchSpaces];
     }
+}
+
+- (void)fetchSpaces {
+    [DJProgressHUD showStatus:NSLocalizedString(@"Fetching Spaces...", nil)
+                     FromView:self.mainView];
+
+    [[CMAClient sharedClient] fetchAllSpacesWithSuccess:^(CDAResponse *response, CDAArray *array) {
+        [self fillMenuWithSpaces:array.items];
+
+        [DJProgressHUD dismiss];
+    } failure:^(CDAResponse *response, NSError *error) {
+        [DJProgressHUD dismiss];
+
+        NSAlert* alert = [NSAlert alertWithError:error];
+        [alert runModal];
+    }];
+}
+
+- (void)fillMenuWithSpaces:(NSArray*)spaces {
+    while ([self.spaceSelectionMenu.itemArray count] > 1) {
+        [self.spaceSelectionMenu removeItemAtIndex:1];
+    }
+
+    spaces = [spaces sortedArrayUsingComparator:^NSComparisonResult(CMASpace* space1, CMASpace* space2) {
+        return [space1.name localizedStandardCompare:space2.name];
+    }];
+    [CMAClient sharedClient].sharedSpaceKey = [spaces[0] identifier];
+
+    [spaces enumerateObjectsUsingBlock:^(CMASpace* space, NSUInteger idx, BOOL *stop) {
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:space.name
+                                                          action:@selector(spaceSelected:)
+                                                   keyEquivalent:@""];
+        menuItem.representedObject = space;
+        [self.spaceSelectionMenu addItem:menuItem];
+    }];
 }
 
 - (void)getUrl:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
@@ -44,13 +89,22 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
         [SSKeychain setPassword:components[1]
                      forService:kContentfulServiceType
                         account:kContentfulServiceType];
+
+        [self fetchSpaces];
     }
 }
 
+- (NSView*)mainView {
+    return [[NSApp windows][0] contentView];
+}
+
+- (void)spaceSelected:(NSMenuItem*)menuItem {
+    [CMAClient sharedClient].sharedSpaceKey = [menuItem.representedObject identifier];
+}
+
 - (void)startOAuthFlow {
-    NSView* mainView = [[NSApp windows][0] contentView];
     [DJProgressHUD showStatus:NSLocalizedString(@"Waiting for authentication...", nil)
-                     FromView:mainView];
+                     FromView:self.mainView];
 
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", kClientID]];
     [[NSWorkspace sharedWorkspace] openURL:url];

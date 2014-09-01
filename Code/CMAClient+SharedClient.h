@@ -12,6 +12,8 @@ extern NSString* const kContentfulServiceType;
 
 @interface CMAClient (SharedClient)
 
+@property (nonatomic) NSString* sharedSpaceKey;
+
 +(instancetype)sharedClient;
 
 -(CDARequest*)fetchSharedSpaceWithSuccess:(CMASpaceFetchedBlock)success

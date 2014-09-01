@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="BBUAppDelegate">
             <connections>
+                <outlet property="spaceSelectionMenu" destination="imo-yg-q2Z" id="VxH-JW-Deh"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -282,7 +283,7 @@
         <window title="Contentful Image Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -302,7 +303,7 @@
                             <rect key="frame" x="1" y="547" width="514" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lH6-5M-7qf">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="lH6-5M-7qf">
                             <rect key="frame" x="500" y="1" width="15" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -322,7 +323,7 @@
                             <rect key="frame" x="1" y="549" width="181" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rfX-R2-vMh">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="rfX-R2-vMh">
                             <rect key="frame" x="167" y="1" width="15" height="564"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -343,10 +344,31 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Select All" tag="-1" image="select-all" id="n3S-Uf-gSJ" userLabel="Select All button"/>
                     <toolbarItem implicitItemIdentifier="7AB0D48D-9C2F-46D3-8E71-308D67C6F3CB" label="Publish" paletteLabel="Publish" tag="-1" image="NSRefreshTemplate" id="yow-Y9-ZsW" userLabel="Publish button"/>
+                    <toolbarItem implicitItemIdentifier="9861535B-A244-4EB7-82AD-ED0190D86E17" label="" paletteLabel="Space Selection" image="NSAddTemplate" id="9QD-XY-SR8" userLabel="Space selection">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="45" height="25"/>
+                        <size key="maxSize" width="100" height="32"/>
+                        <popUpButton key="view" id="X3F-13-t2Y">
+                            <rect key="frame" x="0.0" y="16" width="100" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" id="iJN-8m-EFG" customClass="DTPopUpButtonCell">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="imo-yg-q2Z">
+                                    <items>
+                                        <menuItem state="on" image="NSAddTemplate" hidden="YES" id="WBH-Yd-c6b"/>
+                                        <menuItem title="Item 2" id="5kU-df-pcX"/>
+                                        <menuItem title="Item 3" id="wyO-zI-ko7"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="n3S-Uf-gSJ"/>
                     <toolbarItem reference="yow-Y9-ZsW"/>
+                    <toolbarItem reference="9QD-XY-SR8"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -362,6 +384,7 @@
         </viewController>
     </objects>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="select-all" width="32" height="32"/>
     </resources>

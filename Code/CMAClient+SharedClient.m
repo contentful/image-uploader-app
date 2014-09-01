@@ -11,9 +11,9 @@
 
 #import "CMAClient+SharedClient.h"
 
-NSString* const kContentfulServiceType = @"com.contentful";
+NSString* const kContentfulServiceType  = @"com.contentful";
 static const char* kSharedSpace         = "SharedSpace";
-static NSString* const kSharedSpaceKey  = @"8d116e2ik5be";
+static const char* kSharedSpaceKey      = "SharedSpaceKey";
 
 @interface CMAClient ()
 
@@ -48,7 +48,8 @@ static NSString* const kSharedSpaceKey  = @"8d116e2ik5be";
         return nil;
     }
 
-    return [self fetchSpaceWithIdentifier:kSharedSpaceKey
+    NSParameterAssert(self.sharedSpaceKey);
+    return [self fetchSpaceWithIdentifier:self.sharedSpaceKey
                                   success:^(CDAResponse *response, CMASpace *space) {
                                       self.sharedSpace = space;
 
@@ -64,8 +65,16 @@ static NSString* const kSharedSpaceKey  = @"8d116e2ik5be";
     objc_setAssociatedObject(self, kSharedSpace, sharedSpace, OBJC_ASSOCIATION_RETAIN);
 }
 
+-(void)setSharedSpaceKey:(NSString *)sharedSpaceKey {
+    objc_setAssociatedObject(self, kSharedSpaceKey, sharedSpaceKey, OBJC_ASSOCIATION_RETAIN);
+}
+
 -(CMASpace *)sharedSpace {
     return objc_getAssociatedObject(self, kSharedSpace);
+}
+
+-(NSString *)sharedSpaceKey {
+    return objc_getAssociatedObject(self, kSharedSpaceKey);
 }
 
 @end
