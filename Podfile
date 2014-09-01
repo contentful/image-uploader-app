@@ -4,7 +4,7 @@ target "image-uploader" do
 
 pod 'ContentfulManagementAPI'
 pod 'IAmUpload', :git => 'https://github.com/neonichu/IAmUpload.git'
-pod 'JNWCollectionView'
+pod 'JNWCollectionView', :inhibit_warnings => true
 pod 'Realm'
 
 end
