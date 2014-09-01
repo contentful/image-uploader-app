@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, copy) BBUProgressHandler progressHandler;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
-@property (nonatomic, readonly) NSImageView* successImageView;
+@property (nonatomic, readonly) NSButton* successButton;
 @property (nonatomic, readonly) NSTextField* titleTextField;
 @property (nonatomic, readonly) NSProgressIndicator* uploadIndicator;
 
@@ -35,7 +35,7 @@
 @synthesize imageView = _imageView;
 @synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
-@synthesize successImageView = _successImageView;
+@synthesize successButton = _successButton;
 @synthesize uploadIndicator = _uploadIndicator;
 
 #pragma mark -
@@ -77,11 +77,11 @@
     self.uploadIndicator.width = self.width - 20.0;
     self.uploadIndicator.y = self.imageView.y - 10.0;
 
-    self.successImageView.x = self.actualImageRect.size.width + self.imageView.x;
-    self.successImageView.y = self.imageView.y;
+    self.successButton.x = self.actualImageRect.size.width + self.imageView.x;
+    self.successButton.y = self.imageView.y;
 
-    self.failureButton.x = self.successImageView.x;
-    self.failureButton.y = self.successImageView.y + 5.0;
+    self.failureButton.x = self.successButton.x;
+    self.failureButton.y = self.successButton.y + 5.0;
 
     [super drawRect:dirtyRect];
 }
@@ -209,14 +209,14 @@
     self.failureButton.hidden = !showFailure;
 
     if (showFailure) {
-        self.successImageView.hidden = YES;
+        self.successButton.hidden = YES;
     }
 }
 
 -(void)setShowSuccess:(BOOL)showSuccess {
     _showSuccess = showSuccess;
 
-    self.successImageView.hidden = !showSuccess;
+    self.successButton.hidden = !showSuccess;
 
     if (showSuccess) {
         self.failureButton.hidden = YES;
@@ -227,15 +227,18 @@
     self.titleTextField.stringValue = title;
 }
 
--(NSImageView *)successImageView {
-    if (!_successImageView) {
-        _successImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
-        _successImageView.hidden = YES;
-        _successImageView.image = [NSImage imageNamed:@"success"];
-        [self addSubview:_successImageView];
+-(NSButton *)successButton {
+    if (!_successButton) {
+        _successButton = [[NSButton alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
+        _successButton.action = @selector(successClicked:);
+        _successButton.bordered = NO;
+        _successButton.hidden = YES;
+        _successButton.image = [NSImage imageNamed:@"success"];
+        _successButton.target = self;
+        [self addSubview:_successButton];
     }
 
-    return _successImageView;
+    return _successButton;
 }
 
 - (NSString *)title {
@@ -272,6 +275,17 @@
 -(void)failureClicked:(id)sender {
     NSAlert* alert = [NSAlert alertWithError:self.error];
     [alert runModal];
+}
+
+-(void)successClicked:(id)sender {
+    NSString* url = self.draggedFile.asset.URL.absoluteString;
+
+    if (!url) {
+        return;
+    }
+
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:url forType:NSStringPboardType];
 }
 
 #pragma mark - NSTextFieldDelegate
