@@ -32,5 +32,16 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.contentful.image-uploader.url</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>contentful-uploader</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

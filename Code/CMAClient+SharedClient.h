@@ -8,6 +8,8 @@
 
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 
+extern NSString* const kContentfulServiceType;
+
 @interface CMAClient (SharedClient)
 
 +(instancetype)sharedClient;

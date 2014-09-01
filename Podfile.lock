@@ -23,6 +23,7 @@ PODS:
     - ISO8601DateFormatter
   - ContentfulManagementAPI (0.3.0):
     - ContentfulDeliveryAPI
+  - DJProgressHUD (0.0.1)
   - HRCoder (1.3.1)
   - IAmUpload (0.1.0):
     - AFNetworking (~> 2.3)
@@ -31,14 +32,19 @@ PODS:
     - JNWScrollView
   - JNWScrollView (0.1)
   - Realm (0.83.0)
+  - SSKeychain (1.2.2)
 
 DEPENDENCIES:
   - ContentfulManagementAPI
+  - DJProgressHUD (from `vendor/DJProgressHUD.podspec`)
   - IAmUpload (from `https://github.com/neonichu/IAmUpload.git`)
   - JNWCollectionView
   - Realm
+  - SSKeychain
 
 EXTERNAL SOURCES:
+  DJProgressHUD:
+    :podspec: vendor/DJProgressHUD.podspec
   IAmUpload:
     :git: https://github.com/neonichu/IAmUpload.git
 
@@ -46,11 +52,13 @@ SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   ContentfulDeliveryAPI: a8fc1965a7af354c8c1fe7567f62dd67016da15f
   ContentfulManagementAPI: 61b35defa3dd6ad45bd36e698352fbd64b01c8a7
+  DJProgressHUD: 6d8a7a42768beacca4452bd59b1e2663061b7c1d
   HRCoder: 0952826ddf4213a11be775d01446f61a5df987a4
   IAmUpload: b22bf2591ee9e2ddbd585927934408da9a56b71a
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
   JNWCollectionView: 879df2734740bdad82806dc381de2090d6c08a58
   JNWScrollView: 1c343fd858ab1d7826f83cb9d6dc0d1753f0bdea
   Realm: b37a36efdb3b592febd267e3ebab464c25b4a3bb
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 
 COCOAPODS: 0.33.1

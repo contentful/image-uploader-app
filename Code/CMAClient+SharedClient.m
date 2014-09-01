@@ -7,9 +7,11 @@
 //
 
 #import <objc/runtime.h>
+#import <SSKeychain/SSKeychain.h>
 
 #import "CMAClient+SharedClient.h"
 
+NSString* const kContentfulServiceType = @"com.contentful";
 static const char* kSharedSpace         = "SharedSpace";
 static NSString* const kSharedSpaceKey  = @"8d116e2ik5be";
 
@@ -27,8 +29,7 @@ static NSString* const kSharedSpaceKey  = @"8d116e2ik5be";
     static dispatch_once_t once;
     static CMAClient *sharedClient;
     dispatch_once(&once, ^ {
-        NSString* token = [[[NSProcessInfo processInfo] environment]
-                           valueForKey:@"CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN"];
+        NSString* token = [SSKeychain passwordForService:kContentfulServiceType account:kContentfulServiceType];
 
         sharedClient = [[CMAClient alloc] initWithAccessToken:token];
     });
