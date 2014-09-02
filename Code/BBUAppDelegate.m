@@ -27,7 +27,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 
-    if ([SSKeychain accountsForService:kContentfulServiceType].count == 0) {
+    if ([SSKeychain passwordForService:kContentfulServiceType account:kContentfulServiceType].length == 0) {
         [self startOAuthFlow];
     } else {
         [self fetchSpaces];
