@@ -64,11 +64,11 @@
     self.imageView.width = self.width - 20.0;
     self.imageView.y = self.height - self.imageView.height - 10.0;
 
-    self.titleTextField.width = self.imageView.width;
-    self.titleTextField.y = 20.0;
-
     self.descriptionTextField.width = self.imageView.width;
-    self.descriptionTextField.y = NSMaxY(self.titleTextField.frame) + 10.0;
+    self.descriptionTextField.y = 20.0;
+
+    self.titleTextField.width = self.imageView.width;
+    self.titleTextField.y = NSMaxY(self.descriptionTextField.frame) + 10.0;
 
     self.progressIndicator.x = (self.imageView.width - self.progressIndicator.width) / 2;
     self.progressIndicator.y = self.imageView.y + (self.imageView.height -
