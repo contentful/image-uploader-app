@@ -332,14 +332,15 @@
 }
 
 -(void)successClicked:(id)sender {
-    NSString* url = self.draggedFile.asset.URL.absoluteString;
+    NSString* assetId = self.draggedFile.asset.identifier;
+    NSString* spaceId = self.draggedFile.space.identifier;
 
-    if (!url) {
+    if (!assetId || !spaceId) {
         return;
     }
 
-    [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:url forType:NSStringPboardType];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets/%@", spaceId, assetId]];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 #pragma mark - NSTextFieldDelegate
