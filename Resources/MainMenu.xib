@@ -284,7 +284,7 @@
         <window title="Contentful Image Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
                     <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="rAd-Ro-bw6"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="fp6-a2-taM">
+            <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="small" id="fp6-a2-taM">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Select All" tag="-1" image="select-all" id="n3S-Uf-gSJ" userLabel="Select All button">
                         <size key="minSize" width="45" height="32"/>
@@ -351,19 +351,20 @@
                         <size key="minSize" width="45" height="32"/>
                         <size key="maxSize" width="45" height="32"/>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="9861535B-A244-4EB7-82AD-ED0190D86E17" label="" paletteLabel="Space Selection" image="NSAddTemplate" id="9QD-XY-SR8" userLabel="Space selection">
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
+                    <toolbarItem implicitItemIdentifier="ECC3326B-542F-4CE0-97B0-DA9689AFDA9F" label="" paletteLabel="Space Selection" image="NSFolder" id="9QD-XY-SR8" userLabel="Space selection">
                         <nil key="toolTip"/>
                         <size key="minSize" width="45" height="25"/>
                         <size key="maxSize" width="100" height="32"/>
                         <popUpButton key="view" id="X3F-13-t2Y">
                             <rect key="frame" x="0.0" y="16" width="100" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" enabled="NO" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="noArrow" id="iJN-8m-EFG" customClass="DTPopUpButtonCell">
+                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="I" alignment="left" lineBreakMode="truncatingTail" enabled="NO" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="arrowAtCenter" id="iJN-8m-EFG">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="imo-yg-q2Z">
                                     <items>
-                                        <menuItem state="on" image="NSAddTemplate" hidden="YES" id="WBH-Yd-c6b"/>
+                                        <menuItem state="on" image="NSFolder" hidden="YES" id="WBH-Yd-c6b"/>
                                         <menuItem title="Item 2" id="5kU-df-pcX"/>
                                         <menuItem title="Item 3" id="wyO-zI-ko7"/>
                                     </items>
@@ -373,8 +374,7 @@
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="n3S-Uf-gSJ"/>
-                    <toolbarItem reference="yow-Y9-ZsW"/>
+                    <toolbarItem reference="KiG-gI-mbh"/>
                     <toolbarItem reference="9QD-XY-SR8"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -392,7 +392,8 @@
         </viewController>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="I" width="128" height="128"/>
+        <image name="NSFolder" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="select-all" width="32" height="32"/>
     </resources>
