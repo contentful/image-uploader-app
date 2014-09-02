@@ -20,6 +20,7 @@
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSMutableArray* files;
 @property (nonatomic) NSUInteger numberOfUploads;
+@property (nonatomic) NSUInteger totalNumberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
 
 @end
@@ -57,11 +58,12 @@
     if (self.uploadQueue.operationCount == 0) {
         NSUserNotification* note = [NSUserNotification new];
         note.title = NSLocalizedString(@"Upload completed", nil);
-        note.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%d file(s) successfully uploaded.", nil), self.numberOfUploads];
+        note.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%d of %d file(s) successfully uploaded.", nil), self.numberOfUploads, self.totalNumberOfUploads];
 
         [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:note];
 
         self.numberOfUploads = 0;
+        self.totalNumberOfUploads = 0;
     }
 }
 
@@ -84,6 +86,8 @@
             if (!draggedFile.image) {
                 continue;
             }
+
+            self.totalNumberOfUploads++;
 
             NSUInteger idx = [self.files indexOfObject:draggedFile];
             BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
