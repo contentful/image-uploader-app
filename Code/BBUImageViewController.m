@@ -162,10 +162,10 @@
 -(JNWCollectionViewCell *)collectionView:(JNWCollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BBUImageCell* imageCell = (BBUImageCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
-    imageCell.editable = NO;
 
     BBUDraggedFile* draggedFile = self.files[[indexPath indexAtPosition:1]];
     imageCell.draggedFile = draggedFile;
+    imageCell.editable = draggedFile.asset.URL != nil;
 
     return imageCell;
 }
