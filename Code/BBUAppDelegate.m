@@ -10,12 +10,14 @@
 #import <SSKeychain/SSKeychain.h>
 
 #import "BBUAppDelegate.h"
+#import "BBUHelpView.h"
 #import "CMAClient+SharedClient.h"
 
 static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
 @interface BBUAppDelegate ()
 
+@property (nonatomic, readonly) BBUHelpView* helpView;
 @property (nonatomic, readonly) NSView* mainView;
 
 @end
@@ -23,6 +25,10 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 #pragma mark -
 
 @implementation BBUAppDelegate
+
+@synthesize helpView = _helpView;
+
+#pragma mark -
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
@@ -55,6 +61,8 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 }
 
 - (void)fillMenuWithSpaces:(NSArray*)spaces {
+    self.spaceSelection.enabled = YES;
+
     while ([self.spaceSelectionMenu.itemArray count] > 1) {
         [self.spaceSelectionMenu removeItemAtIndex:1];
     }
@@ -98,6 +106,14 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     }
 }
 
+- (BBUHelpView *)helpView {
+    if (!_helpView) {
+        _helpView = [[BBUHelpView alloc] initWithFrame:self.mainView.bounds];
+    }
+
+    return _helpView;
+}
+
 - (NSView*)mainView {
     return [[NSApp windows][0] contentView];
 }
@@ -112,8 +128,11 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 }
 
 - (void)startOAuthFlow {
+    self.helpView.helpText = NSLocalizedString(@"Please log into Contentful with your browser.", nil);
+    [self.mainView addSubview:self.helpView];
+
     [DJProgressHUD showStatus:NSLocalizedString(@"Waiting for authentication...", nil)
-                     FromView:self.mainView];
+                     FromView:self.helpView];
 
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", kClientID]];
     [[NSWorkspace sharedWorkspace] openURL:url];
