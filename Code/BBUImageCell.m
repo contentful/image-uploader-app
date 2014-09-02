@@ -15,6 +15,7 @@
 @interface BBUImageCell () <NSTextFieldDelegate>
 
 @property (nonatomic, readonly) NSRect actualImageRect;
+@property (nonatomic, readonly) NSButton* deleteButton;
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
 @property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
@@ -30,6 +31,7 @@
 
 @implementation BBUImageCell
 
+@synthesize deleteButton = _deleteButton;
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize failureButton = _failureButton;
 @synthesize imageView = _imageView;
@@ -49,6 +51,34 @@
     return self.descriptionTextField.stringValue;
 }
 
+-(void)delete {
+    [self.draggedFile.asset deleteWithSuccess:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.progressIndicator.hidden = YES;
+        });
+    } failure:^(CDAResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.editable = YES;
+            self.error = error;
+            self.showFailure = YES;
+        });
+    }];
+}
+
+-(NSButton *)deleteButton {
+    if (!_deleteButton) {
+        _deleteButton = [[NSButton alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
+        _deleteButton.action = @selector(deleteClicked:);
+        _deleteButton.bordered = NO;
+        _deleteButton.hidden = YES;
+        _deleteButton.image = [NSImage imageNamed:@"close"];
+        _deleteButton.target = self;
+        [self addSubview:_deleteButton];
+    }
+
+    return _deleteButton;
+}
+
 -(NSTextField *)descriptionTextField {
     if (!_descriptionTextField) {
         _descriptionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
@@ -61,6 +91,8 @@
 }
 
 -(void)drawRect:(NSRect)dirtyRect {
+     self.deleteButton.y = self.height - self.deleteButton.height;
+
     self.imageView.width = self.width - 20.0;
     self.imageView.y = self.height - self.imageView.height - 10.0;
 
@@ -186,9 +218,13 @@
     _editable = editable;
 
     if (editable) {
+        self.deleteButton.hidden = NO;
+
         [self.progressIndicator stopAnimation:nil];
         self.progressIndicator.hidden = YES;
     } else {
+        self.deleteButton.hidden = YES;
+
         self.progressIndicator.hidden = NO;
         [self.progressIndicator startAnimation:nil];
     }
@@ -271,6 +307,24 @@
 }
 
 #pragma mark - Actions
+
+-(void)deleteClicked:(id)sender {
+    self.editable = NO;
+
+    if (self.draggedFile.asset.published) {
+        [self.draggedFile.asset unpublishWithSuccess:^{
+            [self delete];
+        } failure:^(CDAResponse *response, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.editable = YES;
+                self.error = error;
+                self.showFailure = YES;
+            });
+        }];
+    } else {
+        [self delete];
+    }
+}
 
 -(void)failureClicked:(id)sender {
     NSAlert* alert = [NSAlert alertWithError:self.error];
