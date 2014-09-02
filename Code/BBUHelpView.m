@@ -43,6 +43,10 @@
         NSImageView* logo = [[NSImageView alloc] initWithFrame:CGRectMake(0.0, 100.0, frameRect.size.width, frameRect.size.height)];
         logo.image = [NSImage imageNamed:@"contentful_logo_big"];
         [self addSubview:logo];
+
+        for (NSView *aSubview in self.subviews) {
+            [aSubview unregisterDraggedTypes];
+        }
     }
     return self;
 }

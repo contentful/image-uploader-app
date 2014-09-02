@@ -11,6 +11,7 @@
 #import "BBUAssetUploadOperation.h"
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
+#import "BBUHelpView.h"
 #import "BBUImageCell.h"
 #import "BBUImageViewController.h"
 #import "CMAClient+SharedClient.h"
@@ -19,6 +20,7 @@
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSMutableArray* files;
+@property (nonatomic, readonly) BBUHelpView* helpView;
 @property (nonatomic) NSUInteger numberOfUploads;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
@@ -28,6 +30,10 @@
 #pragma mark -
 
 @implementation BBUImageViewController
+
+@synthesize helpView = _helpView;
+
+#pragma mark -
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -54,6 +60,17 @@
     return (BBUCollectionView*)self.view;
 }
 
+- (BBUHelpView *)helpView {
+    if (!_helpView) {
+        _helpView = [[BBUHelpView alloc] initWithFrame:self.view.bounds];
+        _helpView.hidden = YES;
+        _helpView.helpText = NSLocalizedString(@"Drop images here to upload them to Contentful.", nil);
+        [self.view addSubview:_helpView];
+    }
+
+    return _helpView;
+}
+
 - (void)postSuccessNotificationIfNeeded {
     if (self.uploadQueue.operationCount == 0) {
         NSUserNotification* note = [NSUserNotification new];
@@ -75,9 +92,17 @@
     });
 }
 
+- (void)viewWillAppear {
+    [super viewWillAppear];
+
+    self.helpView.hidden = [self collectionView:self.collectionView numberOfItemsInSection:0] > 0;
+}
+
 #pragma mark - BBUCollectionViewDelegate
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
+    self.helpView.hidden = draggedFiles.count > 0;
+
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
 
