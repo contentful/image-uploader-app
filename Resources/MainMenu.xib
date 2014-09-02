@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="BBUAppDelegate">
             <connections>
+                <outlet property="logoutButton" destination="RaG-RO-evY" id="zJ0-r7-Qly"/>
                 <outlet property="spaceSelection" destination="9QD-XY-SR8" id="l7n-WM-fad"/>
                 <outlet property="spaceSelectionMenu" destination="imo-yg-q2Z" id="VxH-JW-Deh"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -351,6 +352,7 @@
                         <size key="minSize" width="45" height="32"/>
                         <size key="maxSize" width="45" height="32"/>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8837BE84-AA32-4347-8CEF-8CF7A72D1165" label="Logout" paletteLabel="Logout" tag="-1" image="NSRemoveTemplate" id="RaG-RO-evY" userLabel="Logout button"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
                     <toolbarItem implicitItemIdentifier="ECC3326B-542F-4CE0-97B0-DA9689AFDA9F" label="" paletteLabel="Space Selection" image="NSFolder" id="9QD-XY-SR8" userLabel="Space selection">
                         <nil key="toolTip"/>
@@ -374,6 +376,7 @@
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
+                    <toolbarItem reference="RaG-RO-evY"/>
                     <toolbarItem reference="KiG-gI-mbh"/>
                     <toolbarItem reference="9QD-XY-SR8"/>
                 </defaultToolbarItems>
@@ -395,6 +398,7 @@
         <image name="I" width="128" height="128"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="select-all" width="32" height="32"/>
     </resources>
 </document>

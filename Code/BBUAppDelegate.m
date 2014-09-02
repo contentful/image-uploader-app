@@ -51,6 +51,10 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     [[CMAClient sharedClient] fetchAllSpacesWithSuccess:^(CDAResponse *response, CDAArray *array) {
         [self fillMenuWithSpaces:array.items];
 
+        self.logoutButton.action = @selector(logoutClicked:);
+        self.logoutButton.enabled = YES;
+        self.logoutButton.target = self;
+
         [DJProgressHUD dismiss];
     } failure:^(CDAResponse *response, NSError *error) {
         [DJProgressHUD dismiss];
@@ -82,6 +86,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 }
 
 - (void)getUrl:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
+    [self.helpView removeFromSuperview];
     [DJProgressHUD dismiss];
 
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
@@ -112,6 +117,11 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     }
 
     return _helpView;
+}
+
+- (void)logoutClicked:(id)sender {
+    [SSKeychain deletePasswordForService:kContentfulServiceType account:kContentfulServiceType];
+    [self startOAuthFlow];
 }
 
 - (NSView*)mainView {

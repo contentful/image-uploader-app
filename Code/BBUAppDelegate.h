@@ -10,8 +10,9 @@
 
 @interface BBUAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (weak) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSMenu *spaceSelectionMenu;
+@property (weak) IBOutlet NSToolbarItem *logoutButton;
 @property (weak) IBOutlet NSToolbarItem *spaceSelection;
+@property (weak) IBOutlet NSMenu *spaceSelectionMenu;
+@property (weak) IBOutlet NSWindow *window;
 
 @end
