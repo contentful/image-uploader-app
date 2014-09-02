@@ -34,6 +34,10 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     }
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)app {
+    return YES;
+}
+
 - (void)fetchSpaces {
     [DJProgressHUD showStatus:NSLocalizedString(@"Fetching Spaces...", nil)
                      FromView:self.mainView];
