@@ -16,9 +16,10 @@
 #import "BBUImageViewController.h"
 #import "CMAClient+SharedClient.h"
 
-@interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource>
+@interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource, NSUserNotificationCenterDelegate>
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
+@property (nonatomic) NSString* currentSpaceId;
 @property (nonatomic) NSMutableArray* files;
 @property (nonatomic, readonly) BBUHelpView* helpView;
 @property (nonatomic) NSUInteger numberOfUploads;
@@ -74,9 +75,11 @@
 - (void)postSuccessNotificationIfNeeded {
     if (self.uploadQueue.operationCount == 0) {
         NSUserNotification* note = [NSUserNotification new];
+        note.actionButtonTitle = NSLocalizedString(@"View on Contentful", nil);
         note.title = NSLocalizedString(@"Upload completed", nil);
         note.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%d of %d file(s) successfully uploaded.", nil), self.numberOfUploads, self.totalNumberOfUploads];
 
+        [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
         [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:note];
 
         self.numberOfUploads = 0;
@@ -107,6 +110,8 @@
     [collectionView reloadData];
 
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
+        self.currentSpaceId = space.identifier;
+
         for (BBUDraggedFile* draggedFile in draggedFiles) {
             if (!draggedFile.image) {
                 continue;
@@ -177,6 +182,14 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(JNWCollectionView *)collectionView {
     return 1;
+}
+
+#pragma mark - NSUserNotificationCenterDelegate
+
+-(void)userNotificationCenter:(NSUserNotificationCenter *)center
+      didActivateNotification:(NSUserNotification *)notification {
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets", self.currentSpaceId]];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 @end
