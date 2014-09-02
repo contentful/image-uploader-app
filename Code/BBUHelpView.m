@@ -25,6 +25,8 @@
 -(instancetype)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
     if (self) {
+        self.autoresizesSubviews = YES;
+        self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         self.wantsLayer = YES;
         self.layer.backgroundColor = [NSColor colorWithRed:60.0/255.0
                                                      green:60.0/255.0

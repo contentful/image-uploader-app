@@ -15,6 +15,7 @@
 #import "BBUImageCell.h"
 #import "BBUImageViewController.h"
 #import "CMAClient+SharedClient.h"
+#import "NSView+Geometry.h"
 
 @interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource, NSUserNotificationCenterDelegate>
 
@@ -99,6 +100,7 @@
     [super viewWillAppear];
 
     self.helpView.hidden = [self collectionView:self.collectionView numberOfItemsInSection:0] > 0;
+    self.helpView.width = self.view.width;
 }
 
 #pragma mark - BBUCollectionViewDelegate
