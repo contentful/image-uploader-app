@@ -59,7 +59,7 @@
     } failure:^(CDAResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.editable = YES;
-            self.error = error;
+            self.draggedFile.error = error;
             self.showFailure = YES;
         });
     }];
@@ -317,7 +317,7 @@
         } failure:^(CDAResponse *response, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.editable = YES;
-                self.error = error;
+                self.draggedFile.error = error;
                 self.showFailure = YES;
             });
         }];
@@ -327,7 +327,7 @@
 }
 
 -(void)failureClicked:(id)sender {
-    NSAlert* alert = [NSAlert alertWithError:self.error];
+    NSAlert* alert = [NSAlert alertWithError:self.draggedFile.error];
     [alert runModal];
 }
 
@@ -364,7 +364,7 @@
                 });
             } failure:^(CDAResponse *response, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.error = error;
+                    self.draggedFile.error = error;
                     self.showFailure = YES;
                 });
             }];
@@ -375,7 +375,7 @@
         }
     } failure:^(CDAResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.error = error;
+            self.draggedFile.error = error;
             self.showFailure = YES;
         });
     }];

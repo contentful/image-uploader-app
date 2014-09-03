@@ -16,7 +16,6 @@
 @property (nonatomic) NSString* assetDescription;
 @property (nonatomic, weak) BBUDraggedFile* draggedFile;
 @property (nonatomic, getter = isEditable) BOOL editable;
-@property (nonatomic) NSError* error;
 @property (nonatomic) NSImage* image;
 @property (nonatomic, readonly, copy) BBUProgressHandler progressHandler;
 @property (nonatomic) BOOL showFailure;

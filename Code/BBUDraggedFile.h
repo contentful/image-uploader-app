@@ -15,6 +15,7 @@
 
 @property (nonatomic) CMAAsset* asset;
 @property (nonatomic) CMASpace* space;
+@property (nonatomic) NSError* error;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
 @property (nonatomic) NSString* originalFileName;

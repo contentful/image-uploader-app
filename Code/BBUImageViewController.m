@@ -90,7 +90,7 @@
 
 - (void)setCellStatus:(BBUImageCell*)cell withError:(NSError*)error {
     dispatch_async(dispatch_get_main_queue(), ^{
-        cell.error = error;
+        cell.draggedFile.error = error;
         cell.showFailure = error != nil;
         cell.showSuccess = error == nil;
     });
