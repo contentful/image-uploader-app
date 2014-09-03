@@ -172,7 +172,7 @@
 
     BBUDraggedFile* draggedFile = self.files[[indexPath indexAtPosition:1]];
     imageCell.draggedFile = draggedFile;
-    imageCell.editable = draggedFile.asset.URL != nil;
+    imageCell.editable = draggedFile.asset.URL != nil || draggedFile.error != nil;
 
     return imageCell;
 }
