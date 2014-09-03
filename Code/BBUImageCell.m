@@ -160,13 +160,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (indicator.hidden) {
                     indicator.hidden = NO;
+                    indicator.maxValue = totalBytesExpectedToWrite;
 
                     [indicator removeFromSuperview];
                     [welf addSubview:indicator];
                 }
 
                 indicator.doubleValue = totalBytesWritten;
-                indicator.maxValue = totalBytesExpectedToWrite;
 
                 if (indicator.doubleValue == indicator.maxValue) {
                     indicator.hidden = YES;
