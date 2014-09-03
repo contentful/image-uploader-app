@@ -103,6 +103,8 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
             return;
         }
 
+        [NSApp activateIgnoringOtherApps:YES];
+
         [SSKeychain setPassword:components[1]
                      forService:kContentfulServiceType
                         account:kContentfulServiceType];
