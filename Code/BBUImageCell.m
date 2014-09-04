@@ -348,7 +348,7 @@
 -(void)updateAsset {
     [self.draggedFile.asset updateWithSuccess:^{
         if (self.draggedFile.asset.fields[@"file"]) {
-            [self.draggedFile.asset processWithSuccess:^{
+            [self.draggedFile.asset publishWithSuccess:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.editable = YES;
                 });
