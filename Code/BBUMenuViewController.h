@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <JNWCollectionView/JNWCollectionView.h>
 
 @interface BBUMenuViewController : NSViewController
+
+@property (nonatomic, weak) IBOutlet JNWCollectionView* relatedCollectionView;
 
 @end

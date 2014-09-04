@@ -8,6 +8,7 @@
 
 #import <JNWCollectionView/JNWCollectionView.h>
 
+#import "BBUImageCell.h"
 #import "BBUMenuCell.h"
 #import "BBUMenuViewController.h"
 #import "NSView+Geometry.h"
@@ -40,6 +41,20 @@
     return (JNWCollectionView*)self.view;
 }
 
+-(void)enumerateCellsInRelatedCollectionViewUsingBlock:(void (^)(BBUImageCell* cell))block {
+    NSParameterAssert(block);
+
+    for (NSIndexPath* indexPath in self.relatedCollectionView.indexPathsForVisibleItems) {
+        BBUImageCell* cell = (BBUImageCell*)[self.relatedCollectionView cellForItemAtIndexPath:indexPath];
+
+        if (!cell.userSelected) {
+            continue;
+        }
+
+        block(cell);
+    }
+}
+
 #pragma mark -
 
 -(JNWCollectionViewCell *)collectionView:(JNWCollectionView *)collectionView
@@ -47,14 +62,34 @@
     BBUMenuCell* cell = (BBUMenuCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
 
     switch ([indexPath indexAtPosition:1]) {
-        case 0:
+        case 0: {
+            cell.textChangedHandler = ^(BBUMenuCell* cell, NSString* text) {
+                [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
+                    cell.title = text;
+                }];
+            };
+
             cell.title = NSLocalizedString(@"Title", nil);
             break;
+        }
 
-        case 1:
+        case 1: {
+            cell.textChangedHandler = ^(BBUMenuCell* cell, NSString* text) {
+                [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
+                    cell.assetDescription = text;
+                }];
+            };
+
             cell.title = NSLocalizedString(@"Description", nil);
             break;
+        }
     }
+
+    cell.endEditingHandler = ^(BBUMenuCell* cell) {
+        [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
+            [cell updateAsset];
+        }];
+    };
 
     return cell;
 }

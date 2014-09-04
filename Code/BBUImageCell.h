@@ -9,6 +9,7 @@
 #import <IAmUpload/BBUFileUpload.h>
 #import <JNWCollectionView/JNWCollectionViewCell.h>
 
+@class BBUDraggedFile;
 @class CMAAsset;
 
 @interface BBUImageCell : JNWCollectionViewCell
@@ -21,5 +22,8 @@
 @property (nonatomic) BOOL showFailure;
 @property (nonatomic) BOOL showSuccess;
 @property (nonatomic) NSString* title;
+@property (nonatomic) BOOL userSelected;
+
+-(void)updateAsset;
 
 @end

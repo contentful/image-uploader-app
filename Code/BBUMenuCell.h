@@ -8,8 +8,15 @@
 
 #import "JNWCollectionViewCell.h"
 
+@class BBUMenuCell;
+
+typedef void(^BBUMenuEndEditing)(BBUMenuCell* menuCell);
+typedef void(^BBUMenuTextChanged)(BBUMenuCell* menuCell, NSString* text);
+
 @interface BBUMenuCell : JNWCollectionViewCell
 
+@property (nonatomic, copy) BBUMenuEndEditing endEditingHandler;
+@property (nonatomic, copy) BBUMenuTextChanged textChangedHandler;
 @property (nonatomic) NSString* title;
 
 @end

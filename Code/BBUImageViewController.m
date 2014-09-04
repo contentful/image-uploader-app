@@ -17,7 +17,7 @@
 #import "CMAClient+SharedClient.h"
 #import "NSView+Geometry.h"
 
-@interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource, NSUserNotificationCenterDelegate>
+@interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource, JNWCollectionViewDelegate, NSUserNotificationCenterDelegate>
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSString* currentSpaceId;
@@ -46,6 +46,7 @@
     self.files = [@[] mutableCopy];
 
     self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
     self.collectionView.draggingDelegate = self;
 
     JNWCollectionViewGridLayout *gridLayout = [JNWCollectionViewGridLayout new];
@@ -184,6 +185,14 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(JNWCollectionView *)collectionView {
     return 1;
+}
+
+#pragma mark - JNWCollectionViewDelegate
+
+-(void)collectionView:(JNWCollectionView *)colview didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BBUImageCell* cell = (BBUImageCell*)[colview cellForItemAtIndexPath:indexPath];
+    cell.userSelected = !cell.userSelected;
+    cell.backgroundColor = cell.userSelected ? [NSColor selectedControlColor] : [NSColor whiteColor];
 }
 
 #pragma mark - NSUserNotificationCenterDelegate

@@ -189,6 +189,7 @@
 }
 
 - (void)setAssetDescription:(NSString *)assetDescription {
+    self.draggedFile.asset.description = assetDescription;
     self.descriptionTextField.stringValue = assetDescription;
 }
 
@@ -260,6 +261,7 @@
 }
 
 - (void)setTitle:(NSString *)title {
+    self.draggedFile.asset.title = title;
     self.titleTextField.stringValue = title;
 }
 
@@ -343,19 +345,7 @@
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
-#pragma mark - NSTextFieldDelegate
-
--(BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    if (control == self.descriptionTextField) {
-        self.draggedFile.asset.description = fieldEditor.string;
-    }
-
-    if (control == self.titleTextField) {
-        self.draggedFile.asset.title = fieldEditor.string;
-    }
-
-    self.editable = NO;
-
+-(void)updateAsset {
     [self.draggedFile.asset updateWithSuccess:^{
         if (self.draggedFile.asset.fields[@"file"]) {
             [self.draggedFile.asset processWithSuccess:^{
@@ -379,6 +369,22 @@
             self.showFailure = YES;
         });
     }];
+}
+
+#pragma mark - NSTextFieldDelegate
+
+-(BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    if (control == self.descriptionTextField) {
+        self.draggedFile.asset.description = fieldEditor.string;
+    }
+
+    if (control == self.titleTextField) {
+        self.draggedFile.asset.title = fieldEditor.string;
+    }
+
+    self.editable = NO;
+
+    [self updateAsset];
 
     return YES;
 }

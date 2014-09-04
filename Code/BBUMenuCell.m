@@ -9,7 +9,7 @@
 #import "BBUMenuCell.h"
 #import "NSView+Geometry.h"
 
-@interface BBUMenuCell ()
+@interface BBUMenuCell () <NSTextFieldDelegate>
 
 @property (nonatomic, readonly) NSTextField* entryField;
 @property (nonatomic, readonly) NSTextField* titleLabel;
@@ -40,8 +40,7 @@
 - (NSTextField *)entryField {
     if (!_entryField) {
         _entryField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
-        _entryField.alphaValue = 0.5;
-        _entryField.editable = NO;
+        _entryField.delegate = self;
         [_entryField.cell setPlaceholderString:self.title];
         [self addSubview:_entryField];
     }
@@ -67,6 +66,20 @@
     }
 
     return _titleLabel;
+}
+
+#pragma mark - NSTextFieldDelegate
+
+-(void)controlTextDidEndEditing:(NSNotification *)obj {
+    if (self.endEditingHandler) {
+        self.endEditingHandler(self);
+    }
+}
+
+-(void)controlTextDidChange:(NSNotification *)obj {
+    if (self.textChangedHandler) {
+        self.textChangedHandler(self, self.entryField.stringValue);
+    }
 }
 
 @end
