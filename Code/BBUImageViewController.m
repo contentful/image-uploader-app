@@ -37,6 +37,16 @@
 
 #pragma mark -
 
+- (void)allowResizing:(BOOL)resizing {
+    NSWindow* window = [NSApp windows][0];
+
+    if (resizing) {
+        [window setStyleMask:[window styleMask] | NSResizableWindowMask];
+    } else {
+        [window setStyleMask:[window styleMask] & ~NSResizableWindowMask];
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 
@@ -86,6 +96,10 @@
 
         self.numberOfUploads = 0;
         self.totalNumberOfUploads = 0;
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self allowResizing:YES];
+        });
     }
 }
 
@@ -111,6 +125,8 @@
 
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
+
+    [self allowResizing:NO];
 
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         self.currentSpaceId = space.identifier;
