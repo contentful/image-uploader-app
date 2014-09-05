@@ -14,10 +14,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        NSMutableArray* draggedTypes = [[NSImage imagePasteboardTypes] mutableCopy];
-        [draggedTypes addObjectsFromArray:[NSImage imageFileTypes]];
-        [draggedTypes addObject:NSFilenamesPboardType];
-        [self registerForDraggedTypes:draggedTypes];
+        self.draggingEnabled = YES;
     }
     return self;
 }
@@ -55,6 +52,19 @@
 
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     return [NSImage canInitWithPasteboard:[sender draggingPasteboard]];
+}
+
+-(void)setDraggingEnabled:(BOOL)draggingEnabled {
+    _draggingEnabled = draggingEnabled;
+
+    if (draggingEnabled) {
+        NSMutableArray* draggedTypes = [[NSImage imagePasteboardTypes] mutableCopy];
+        [draggedTypes addObjectsFromArray:[NSImage imageFileTypes]];
+        [draggedTypes addObject:NSFilenamesPboardType];
+        [self registerForDraggedTypes:draggedTypes];
+    } else {
+        [self unregisterDraggedTypes];
+    }
 }
 
 @end

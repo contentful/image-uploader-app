@@ -21,5 +21,6 @@
 @interface BBUCollectionView : JNWCollectionView <NSDraggingDestination>
 
 @property (nonatomic, weak) id<BBUCollectionViewDelegate> draggingDelegate;
+@property (nonatomic) BOOL draggingEnabled;
 
 @end
