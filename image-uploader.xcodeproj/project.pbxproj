@@ -14,6 +14,7 @@
 		A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */; };
 		A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61C219A23105006B1551 /* NSView+Geometry.m */; };
 		A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */; };
+		A176579119B7121400BACF81 /* S3Uploader.m in Sources */ = {isa = PBXBuildFile; fileRef = A176579019B7121400BACF81 /* S3Uploader.m */; };
 		A19FB0D119A342F900A5659C /* select-all.png in Resources */ = {isa = PBXBuildFile; fileRef = A19FB0D019A342F900A5659C /* select-all.png */; };
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
@@ -63,6 +64,8 @@
 		A15A61C219A23105006B1551 /* NSView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Geometry.m"; sourceTree = "<group>"; };
 		A15A61C419A23E9E006B1551 /* CMAClient+SharedClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CMAClient+SharedClient.h"; sourceTree = "<group>"; };
 		A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CMAClient+SharedClient.m"; sourceTree = "<group>"; };
+		A176578F19B7121400BACF81 /* S3Uploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Uploader.h; sourceTree = "<group>"; };
+		A176579019B7121400BACF81 /* S3Uploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Uploader.m; sourceTree = "<group>"; };
 		A19FB0D019A342F900A5659C /* select-all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-all.png"; sourceTree = "<group>"; };
 		A19FB0D219A3445500A5659C /* BBUMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuViewController.h; sourceTree = "<group>"; };
 		A19FB0D319A3445500A5659C /* BBUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuViewController.m; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				A1D4A7F5199BED850021EEA6 /* BBUAppDelegate.m in Sources */,
 				A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */,
 				A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */,
+				A176579119B7121400BACF81 /* S3Uploader.m in Sources */,
 				A1D5CD0119B73269005E6802 /* BBUPostImageUploader.m in Sources */,
 				A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */,
 				A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */,
