@@ -20,7 +20,6 @@
 		A1B91A1B19AF1B66005F99F3 /* select-all@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */; };
 		A1B91A2119AF4FB5005F99F3 /* failure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */; };
 		A1B91A2219AF4FB5005F99F3 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A2019AF4FB5005F99F3 /* success@2x.png */; };
-		A1D10BB119B4A798009CA6CA /* DTPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D10BB019B4A798009CA6CA /* DTPopUpButtonCell.m */; };
 		A1D10C2219B5B46F009CA6CA /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2019B5B46F009CA6CA /* close.png */; };
 		A1D10C2319B5B46F009CA6CA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2119B5B46F009CA6CA /* close@2x.png */; };
 		A1D10C2619B5C103009CA6CA /* BBUHelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D10C2519B5C103009CA6CA /* BBUHelpView.m */; };
@@ -71,8 +70,6 @@
 		A1B91A1A19AF1B66005F99F3 /* select-all@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-all@2x.png"; sourceTree = "<group>"; };
 		A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failure@2x.png"; sourceTree = "<group>"; };
 		A1B91A2019AF4FB5005F99F3 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
-		A1D10BAF19B4A798009CA6CA /* DTPopUpButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPopUpButtonCell.h; sourceTree = "<group>"; };
-		A1D10BB019B4A798009CA6CA /* DTPopUpButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPopUpButtonCell.m; sourceTree = "<group>"; };
 		A1D10C2019B5B46F009CA6CA /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A1D10C2119B5B46F009CA6CA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		A1D10C2419B5C103009CA6CA /* BBUHelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUHelpView.h; sourceTree = "<group>"; };
@@ -115,6 +112,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1B151A919B9AF7400C9C97E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A1F834D819A2033300282AE9 /* BBUCollectionView.h */,
+				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
+				A1D10C2419B5C103009CA6CA /* BBUHelpView.h */,
+				A1D10C2519B5C103009CA6CA /* BBUHelpView.m */,
+				A19FB0D519A347BE00A5659C /* BBUMenuCell.h */,
+				A19FB0D619A347BE00A5659C /* BBUMenuCell.m */,
+				A15A61C119A23105006B1551 /* NSView+Geometry.h */,
+				A15A61C219A23105006B1551 /* NSView+Geometry.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		A1B151AA19B9AFB200C9C97E /* Asset Handling */ = {
+			isa = PBXGroup;
+			children = (
+				A1F35BD019A6262D00654922 /* BBUAssetUploadOperation.h */,
+				A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */,
+				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
+				A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */,
+				A15A61C419A23E9E006B1551 /* CMAClient+SharedClient.h */,
+				A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */,
+			);
+			name = "Asset Handling";
+			sourceTree = "<group>";
+		};
+		A1B151AB19B9B12D00C9C97E /* Uploading */ = {
+			isa = PBXGroup;
+			children = (
+				A1D5CCFF19B73269005E6802 /* BBUPostImageUploader.h */,
+				A1D5CD0019B73269005E6802 /* BBUPostImageUploader.m */,
+				A176578F19B7121400BACF81 /* S3Uploader.h */,
+				A176579019B7121400BACF81 /* S3Uploader.m */,
+			);
+			name = Uploading;
+			sourceTree = "<group>";
+		};
 		A1D4A7D5199BED850021EEA6 = {
 			isa = PBXGroup;
 			children = (
@@ -149,30 +185,17 @@
 		A1D4A7E7199BED850021EEA6 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				A1B151AA19B9AFB200C9C97E /* Asset Handling */,
+				A1B151A919B9AF7400C9C97E /* UI */,
+				A1B151AB19B9B12D00C9C97E /* Uploading */,
 				A1D4A7F3199BED850021EEA6 /* BBUAppDelegate.h */,
 				A1D4A7F4199BED850021EEA6 /* BBUAppDelegate.m */,
-				A1F35BD019A6262D00654922 /* BBUAssetUploadOperation.h */,
-				A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */,
-				A1F834D819A2033300282AE9 /* BBUCollectionView.h */,
-				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
-				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
-				A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */,
-				A1D10C2419B5C103009CA6CA /* BBUHelpView.h */,
-				A1D10C2519B5C103009CA6CA /* BBUHelpView.m */,
 				A1EF194F199CA50A00AE864E /* BBUImageCell.h */,
 				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
 				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
 				A1EF194D199CA00C00AE864E /* BBUImageViewController.m */,
-				A19FB0D519A347BE00A5659C /* BBUMenuCell.h */,
-				A19FB0D619A347BE00A5659C /* BBUMenuCell.m */,
 				A19FB0D219A3445500A5659C /* BBUMenuViewController.h */,
 				A19FB0D319A3445500A5659C /* BBUMenuViewController.m */,
-				A15A61C419A23E9E006B1551 /* CMAClient+SharedClient.h */,
-				A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */,
-				A1D10BAF19B4A798009CA6CA /* DTPopUpButtonCell.h */,
-				A1D10BB019B4A798009CA6CA /* DTPopUpButtonCell.m */,
-				A15A61C119A23105006B1551 /* NSView+Geometry.h */,
-				A15A61C219A23105006B1551 /* NSView+Geometry.m */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -340,7 +363,6 @@
 				A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */,
 				A1D10C2619B5C103009CA6CA /* BBUHelpView.m in Sources */,
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,
-				A1D10BB119B4A798009CA6CA /* DTPopUpButtonCell.m in Sources */,
 				A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */,
 				A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */,
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
