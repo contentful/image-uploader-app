@@ -12,7 +12,7 @@
 
 @interface BBUDraggedFile ()
 
-@property (nonatomic) NSError* error;
+//@property (nonatomic) NSError* error;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
 @property (nonatomic) BOOL operationInProgress;
