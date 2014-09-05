@@ -32,15 +32,7 @@
         classes:[NSArray arrayWithObject:[NSPasteboardItem class]]
         searchOptions:nil
         usingBlock:^(NSDraggingItem *draggingItem, NSInteger idx, BOOL *stop) {
-            NSPasteboardItem* item = draggingItem.item;
-            NSString* urlString = [item stringForType:(NSString*)kUTTypeFileURL];
-            NSURL* url = [NSURL URLWithString:urlString];
-
-            BBUDraggedFile* file = [BBUDraggedFile new];
-            file.fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url.path
-                                                                                   error:nil];
-            file.image = [[NSImage alloc] initWithContentsOfURL:url];
-            file.originalFileName = url.path.lastPathComponent;
+            BBUDraggedFile* file = [[BBUDraggedFile alloc] initWithPasteboardItem:draggingItem.item];
 
             if (file.image) {
                 [draggedImages addObject:file];

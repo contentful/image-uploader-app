@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^BBUBoolResultBlock)(BOOL success);
+
 @class CMAAsset;
 @class CMASpace;
 
@@ -15,9 +17,15 @@
 
 @property (nonatomic) CMAAsset* asset;
 @property (nonatomic) CMASpace* space;
-@property (nonatomic) NSError* error;
-@property (nonatomic) NSDictionary* fileAttributes;
-@property (nonatomic) NSImage* image;
-@property (nonatomic) NSString* originalFileName;
+
+@property (nonatomic, readonly) NSError* error;
+@property (nonatomic, readonly) NSDictionary* fileAttributes;
+@property (nonatomic, readonly) NSImage* image;
+@property (nonatomic, readonly) BOOL operationInProgress;
+@property (nonatomic, readonly) NSString* originalFileName;
+
+-(void)deleteWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
+-(instancetype)initWithPasteboardItem:(NSPasteboardItem*)item;
+-(void)updateWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
 
 @end

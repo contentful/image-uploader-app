@@ -17,10 +17,13 @@
 @property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSButton* deleteButton;
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
+@property (nonatomic, getter = isEditable) BOOL editable;
 @property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, copy) BBUProgressHandler progressHandler;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
+@property (nonatomic) BOOL showFailure;
+@property (nonatomic) BOOL showSuccess;
 @property (nonatomic, readonly) NSButton* successButton;
 @property (nonatomic, readonly) NSTextField* titleTextField;
 @property (nonatomic, readonly) NSProgressIndicator* uploadIndicator;
@@ -51,17 +54,14 @@
     return self.descriptionTextField.stringValue;
 }
 
--(void)delete {
-    [self.draggedFile.asset deleteWithSuccess:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
+-(void)deleteAsset {
+    [self.draggedFile deleteWithCompletionHandler:^(BOOL success) {
+        if (success) {
             self.progressIndicator.hidden = YES;
-        });
-    } failure:^(CDAResponse *response, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        } else {
             self.editable = YES;
-            self.draggedFile.error = error;
             self.showFailure = YES;
-        });
+        }
     }];
 }
 
@@ -294,6 +294,16 @@
     return _titleTextField;
 }
 
+- (void)updateAsset {
+    [self.draggedFile updateWithCompletionHandler:^(BOOL success) {
+        if (success) {
+            self.editable = YES;
+        } else {
+            self.showFailure = YES;
+        }
+    }];
+}
+
 -(NSProgressIndicator *)uploadIndicator {
     if (!_uploadIndicator) {
         _uploadIndicator = [[NSProgressIndicator alloc]
@@ -313,19 +323,7 @@
 -(void)deleteClicked:(id)sender {
     self.editable = NO;
 
-    if (self.draggedFile.asset.published) {
-        [self.draggedFile.asset unpublishWithSuccess:^{
-            [self delete];
-        } failure:^(CDAResponse *response, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.editable = YES;
-                self.draggedFile.error = error;
-                self.showFailure = YES;
-            });
-        }];
-    } else {
-        [self delete];
-    }
+    [self deleteAsset];
 }
 
 -(void)failureClicked:(id)sender {
@@ -343,32 +341,6 @@
 
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets/%@", spaceId, assetId]];
     [[NSWorkspace sharedWorkspace] openURL:url];
-}
-
--(void)updateAsset {
-    [self.draggedFile.asset updateWithSuccess:^{
-        if (self.draggedFile.asset.fields[@"file"]) {
-            [self.draggedFile.asset publishWithSuccess:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.editable = YES;
-                });
-            } failure:^(CDAResponse *response, NSError *error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.draggedFile.error = error;
-                    self.showFailure = YES;
-                });
-            }];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.editable = YES;
-            });
-        }
-    } failure:^(CDAResponse *response, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.draggedFile.error = error;
-            self.showFailure = YES;
-        });
-    }];
 }
 
 #pragma mark - NSTextFieldDelegate
