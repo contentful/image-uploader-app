@@ -17,13 +17,10 @@
 @property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSButton* deleteButton;
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
-@property (nonatomic, getter = isEditable) BOOL editable;
 @property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, copy) BBUProgressHandler progressHandler;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
-@property (nonatomic) BOOL showFailure;
-@property (nonatomic) BOOL showSuccess;
 @property (nonatomic, readonly) NSButton* successButton;
 @property (nonatomic, readonly) NSTextField* titleTextField;
 @property (nonatomic, readonly) NSProgressIndicator* uploadIndicator;

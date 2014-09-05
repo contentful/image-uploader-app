@@ -127,6 +127,8 @@
 				A1D10C2519B5C103009CA6CA /* BBUHelpView.m */,
 				A19FB0D519A347BE00A5659C /* BBUMenuCell.h */,
 				A19FB0D619A347BE00A5659C /* BBUMenuCell.m */,
+				A19FB0D219A3445500A5659C /* BBUMenuViewController.h */,
+				A19FB0D319A3445500A5659C /* BBUMenuViewController.m */,
 				A15A61C119A23105006B1551 /* NSView+Geometry.h */,
 				A15A61C219A23105006B1551 /* NSView+Geometry.m */,
 			);
@@ -200,8 +202,6 @@
 				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
 				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
 				A1EF194D199CA00C00AE864E /* BBUImageViewController.m */,
-				A19FB0D219A3445500A5659C /* BBUMenuViewController.h */,
-				A19FB0D319A3445500A5659C /* BBUMenuViewController.m */,
 			);
 			path = Code;
 			sourceTree = "<group>";

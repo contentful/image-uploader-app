@@ -18,7 +18,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 @property (nonatomic) CMAAsset* asset;
 @property (nonatomic) CMASpace* space;
 
-@property (nonatomic, readonly) NSError* error;
+@property (nonatomic) NSError* error; // FIXME: should be read-only
 @property (nonatomic, readonly) NSDictionary* fileAttributes;
 @property (nonatomic, readonly) NSImage* image;
 @property (nonatomic, readonly) BOOL operationInProgress;
