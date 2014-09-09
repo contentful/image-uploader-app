@@ -12,6 +12,7 @@
 
 static NSString* const kS3Bucket    = @"";
 static NSString* const kS3Key       = @"";
+static NSString* const kS3Path      = @"";
 static NSString* const kS3Secret    = @"";
 
 @interface S3Uploader ()
@@ -51,6 +52,7 @@ static NSString* const kS3Secret    = @"";
     static S3Uploader *sharedUploader;
     dispatch_once(&once, ^ {
         sharedUploader = [[S3Uploader alloc] initWithBucket:kS3Bucket key:kS3Key secret:kS3Secret];
+        sharedUploader.path = kS3Path;
     });
     return sharedUploader;
 }
@@ -78,11 +80,16 @@ static NSString* const kS3Secret    = @"";
 
     NSString* contentType = @"image/jpeg";
     NSString* fileName = [[NSUUID UUID].UUIDString stringByAppendingPathExtension:@"jpg"];
-    NSString* resourceName = [NSString stringWithFormat:@"/%@/%@", self.bucket, fileName];
 
+    if (self.path) {
+        fileName = [self.path stringByAppendingPathComponent:fileName];
+    }
+
+    NSURL* fileURL = [self.baseURL URLByAppendingPathComponent:fileName];
+    NSString* resourceName = [NSString stringWithFormat:@"/%@/%@", self.bucket, fileName];
     NSString* dateString = [[self class] rfc2822date];
-    NSString* stringToSign = [NSString stringWithFormat:@"PUT\n\n%@\n%@\n%@", contentType, dateString,
-                              resourceName];
+    NSString* stringToSign = [NSString stringWithFormat:@"PUT\n\n%@\n%@\nx-amz-acl:public-read\n%@",
+                              contentType, dateString, resourceName];
     NSString* signature = [[self class] computeHMACWithString:stringToSign secret:self.secret];
     NSString* authorization = [NSString stringWithFormat:@"AWS %@:%@", self.key, signature];
 
@@ -90,16 +97,26 @@ static NSString* const kS3Secret    = @"";
     sessionConfiguration.HTTPAdditionalHeaders = @{ @"Host": self.baseURL.host,
                                                     @"Date": dateString,
                                                     @"Content-Type": contentType,
+                                                    @"x-amz-acl": @"public-read",
                                                     @"Authorization": authorization };
     NSURLSession* session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
 
-    NSURLSessionUploadTask* task = [session uploadTaskWithRequest:[NSURLRequest requestWithURL:[self.baseURL URLByAppendingPathComponent:fileName]] fromData:data completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!data) {
-            handler(nil, error);
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:fileURL];
+    request.HTTPMethod = @"PUT";
+
+    NSURLSessionUploadTask* task = [session uploadTaskWithRequest:request fromData:data completionHandler:^(NSData *data, NSURLResponse *r, NSError *error) {
+        NSHTTPURLResponse* response = (NSHTTPURLResponse*)r;
+
+        if (response.statusCode >= 200 && response.statusCode < 300) {
+            handler(fileURL, nil);
             return;
         }
 
-        NSLog(@"Foo");
+        if (error) {
+            handler(nil, error);
+        } else {
+            handler(nil, [NSError errorWithDomain:@"com.amazon.s3" code:response.statusCode userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Expected HTTP status 200-299.", nil) }]);
+        }
     }];
 
     [task resume];

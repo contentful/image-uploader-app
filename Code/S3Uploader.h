@@ -11,4 +11,10 @@
 
 @interface S3Uploader : NSObject <BBUFileUpload>
 
+@property (nonatomic, copy) NSString* path;
+
++(instancetype)sharedUploader;
+
+-(instancetype)initWithBucket:(NSString*)bucket key:(NSString*)key secret:(NSString*)secret;
+
 @end

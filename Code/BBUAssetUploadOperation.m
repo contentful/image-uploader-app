@@ -12,7 +12,7 @@
 #import "BBUAssetUploadOperation.h"
 #import "BBUDraggedFile.h"
 #import "BBUImageCell.h"
-#import "BBUPostImageUploader.h"
+#import "S3Uploader.h"
 
 const NSUInteger kProcessingFailedErrorCode = 0xFF;
 
@@ -118,7 +118,7 @@ static const NSTimeInterval kProcessWait = 5.0;
     [self changeOperationStatusWithDone:NO error:nil];
     self.retries = 0;
 
-    [[BBUPostImageUploader sharedUploader] uploadImage:self.draggedFile.image completionHandler:^(NSURL *uploadURL, NSError *error) {
+    [[S3Uploader sharedUploader] uploadImage:self.draggedFile.image completionHandler:^(NSURL *uploadURL, NSError *error) {
         if (!uploadURL) {
             [self changeOperationStatusWithDone:YES error:error];
             return;
