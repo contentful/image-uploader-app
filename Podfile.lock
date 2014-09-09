@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.3.1):
+  - AFNetworking (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.3.1):
+  - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.3.1):
+  - AFNetworking/NSURLSession (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.3.1)
-  - AFNetworking/Security (2.3.1)
-  - AFNetworking/Serialization (2.3.1)
-  - ContentfulDeliveryAPI (1.4.2):
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - ContentfulDeliveryAPI (1.4.3):
     - AFNetworking
     - HRCoder
     - ISO8601DateFormatter
@@ -31,6 +31,7 @@ PODS:
   - JNWCollectionView (1.2):
     - JNWScrollView
   - JNWScrollView (0.1)
+  - MASPreferences (1.1)
   - Realm (0.83.0)
   - SSKeychain (1.2.2)
 
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - DJProgressHUD (from `vendor/DJProgressHUD.podspec`)
   - IAmUpload (from `https://github.com/neonichu/IAmUpload.git`)
   - JNWCollectionView
+  - MASPreferences
   - Realm
   - SSKeychain
 
@@ -49,8 +51,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/neonichu/IAmUpload.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  ContentfulDeliveryAPI: a8fc1965a7af354c8c1fe7567f62dd67016da15f
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  ContentfulDeliveryAPI: 442cc428552c01e029f922f5d1dd6b634a731705
   ContentfulManagementAPI: 61b35defa3dd6ad45bd36e698352fbd64b01c8a7
   DJProgressHUD: 6d8a7a42768beacca4452bd59b1e2663061b7c1d
   HRCoder: 0952826ddf4213a11be775d01446f61a5df987a4
@@ -58,6 +60,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
   JNWCollectionView: 879df2734740bdad82806dc381de2090d6c08a58
   JNWScrollView: 1c343fd858ab1d7826f83cb9d6dc0d1753f0bdea
+  MASPreferences: 971d03da4b3818f8ea0d0ef10b86b02b2c052d17
   Realm: b37a36efdb3b592febd267e3ebab464c25b4a3bb
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 

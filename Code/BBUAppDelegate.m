@@ -7,10 +7,12 @@
 //
 
 #import <DJProgressHUD/DJProgressHUD.h>
+#import <MASPreferences/MASPreferencesWindowController.h>
 #import <SSKeychain/SSKeychain.h>
 
 #import "BBUAppDelegate.h"
 #import "BBUHelpView.h"
+#import "BBUS3SettingsViewController.h"
 #import "CMAClient+SharedClient.h"
 
 static NSString* const kClientID = @"Your-OAuth-Client-Id";
@@ -19,6 +21,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
 @property (nonatomic, readonly) BBUHelpView* helpView;
 @property (nonatomic, readonly) NSView* mainView;
+@property (nonatomic, readonly) MASPreferencesWindowController* preferencesController;
 
 @end
 
@@ -27,6 +30,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 @implementation BBUAppDelegate
 
 @synthesize helpView = _helpView;
+@synthesize preferencesController = _preferencesController;
 
 #pragma mark -
 
@@ -128,6 +132,18 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
 - (NSView*)mainView {
     return [[NSApp windows][0] contentView];
+}
+
+- (IBAction)preferencesClicked:(NSMenuItem *)sender {
+    [self.preferencesController showWindow:nil];
+}
+
+- (MASPreferencesWindowController *)preferencesController {
+    if (!_preferencesController) {
+        _preferencesController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[ [BBUS3SettingsViewController new] ]];
+    }
+
+    return _preferencesController;
 }
 
 - (void)selectSpace:(CMASpace*)space {

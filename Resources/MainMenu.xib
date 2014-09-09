@@ -33,7 +33,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                <connections>
+                                    <action selector="preferencesClicked:" target="Voe-Tx-rLC" id="QdX-a6-ouc"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Hide image-uploader" keyEquivalent="h" id="Olw-nP-bQN">
                                 <connections>
@@ -285,7 +289,7 @@
         <window title="Contentful Image Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,7 +385,7 @@
                     <toolbarItem reference="9QD-XY-SR8"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="903.5" y="493"/>
+            <point key="canvasLocation" x="1009.5" y="499"/>
         </window>
         <viewController nibName="" id="tEa-S3-mQX" userLabel="ImageViewController" customClass="BBUImageViewController">
             <connections>

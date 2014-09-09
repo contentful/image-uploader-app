@@ -7,13 +7,14 @@
 //
 
 #import <CommonCrypto/CommonCrypto.h>
+#import <SSKeychain/SSKeychain.h>
 
 #import "S3Uploader.h"
 
-static NSString* const kS3Bucket    = @"";
-static NSString* const kS3Key       = @"";
-static NSString* const kS3Path      = @"";
-static NSString* const kS3Secret    = @"";
+NSString* const kS3Bucket    = @"S3BucketKey";
+NSString* const kS3Key       = @"S3KeyKey";
+NSString* const kS3Path      = @"S3PathKey";
+NSString* const kS3Secret    = @"S3SecretKey";
 
 @interface S3Uploader ()
 
@@ -51,8 +52,16 @@ static NSString* const kS3Secret    = @"";
     static dispatch_once_t once;
     static S3Uploader *sharedUploader;
     dispatch_once(&once, ^ {
-        sharedUploader = [[S3Uploader alloc] initWithBucket:kS3Bucket key:kS3Key secret:kS3Secret];
-        sharedUploader.path = kS3Path;
+        NSString* bucket = [SSKeychain passwordForService:kS3Bucket account:kS3Bucket];
+        NSString* key = [SSKeychain passwordForService:kS3Key account:kS3Key];
+        NSString* path = [SSKeychain passwordForService:kS3Path account:kS3Path];
+        NSString* secret = [SSKeychain passwordForService:kS3Secret account:kS3Secret];
+
+        sharedUploader = [[S3Uploader alloc] initWithBucket:bucket key:key secret:secret];
+
+        if (path.length > 0) {
+            sharedUploader.path = path;
+        }
     });
     return sharedUploader;
 }

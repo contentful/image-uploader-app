@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <IAmUpload/BBUFileUpload.h>
 
+extern NSString* const kS3Bucket;
+extern NSString* const kS3Key;
+extern NSString* const kS3Path;
+extern NSString* const kS3Secret;
+
 @interface S3Uploader : NSObject <BBUFileUpload>
 
 @property (nonatomic, copy) NSString* path;

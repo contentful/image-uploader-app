@@ -6,6 +6,7 @@ pod 'ContentfulManagementAPI'
 pod 'DJProgressHUD', :podspec => 'vendor/DJProgressHUD.podspec'
 pod 'IAmUpload', :git => 'https://github.com/neonichu/IAmUpload.git'
 pod 'JNWCollectionView', :inhibit_warnings => true
+pod 'MASPreferences'
 pod 'Realm'
 pod 'SSKeychain'
 
