@@ -8,7 +8,6 @@
 
 #import <JNWCollectionView/JNWCollectionView.h>
 
-#import "BBUAssetUploadOperation.h"
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
 #import "BBUHelpView.h"
@@ -67,6 +66,9 @@
     [self.collectionView registerClass:BBUImageCell.class
             forCellWithReuseIdentifier:NSStringFromClass(self.class)];
     [self.collectionView reloadData];
+
+    self.helpView.hidden = [self collectionView:self.collectionView numberOfItemsInSection:0] > 0;
+    self.helpView.width = self.view.window.frame.size.width;
 }
 
 - (BBUCollectionView *)collectionView {
@@ -78,7 +80,7 @@
         _helpView = [[BBUHelpView alloc] initWithFrame:self.view.bounds];
         _helpView.hidden = YES;
         _helpView.helpText = NSLocalizedString(@"Drop images here to upload them to Contentful.", nil);
-        [self.view addSubview:_helpView];
+        [self.view.superview addSubview:_helpView];
     }
 
     return _helpView;
@@ -104,21 +106,6 @@
     }
 }
 
-- (void)setCellStatus:(BBUImageCell*)cell withError:(NSError*)error {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        cell.draggedFile.error = error;
-        cell.showFailure = error != nil;
-        cell.showSuccess = error == nil;
-    });
-}
-
-- (void)viewWillAppear {
-    [super viewWillAppear];
-
-    self.helpView.hidden = [self collectionView:self.collectionView numberOfItemsInSection:0] > 0;
-    self.helpView.width = self.view.width;
-}
-
 #pragma mark - BBUCollectionViewDelegate
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
@@ -140,42 +127,19 @@
 
             self.totalNumberOfUploads++;
 
-            NSUInteger idx = [self.files indexOfObject:draggedFile];
-            BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:idx inSection:0]];
+            NSOperation* operation = [draggedFile creationOperationForSpace:space];
 
-            [space createAssetWithTitle:@{ space.defaultLocale: cell.title ?: @"" }
-                            description:nil
-                           fileToUpload:nil
-                                success:^(CDAResponse *response, CMAAsset *asset) {
-                                    draggedFile.asset = asset;
-                                    draggedFile.space = space;
+            operation.completionBlock = ^{
+                NSError* error = draggedFile.error;
 
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        cell.editable = YES;
-                                    });
+                if (!error) {
+                    self.numberOfUploads++;
+                }
 
-                                    BBUAssetUploadOperation* operation = [[BBUAssetUploadOperation alloc] initWithDraggedFile:draggedFile];
-                                    operation.cell = cell;
+                [self postSuccessNotificationIfNeeded];
+            };
 
-                                    __weak typeof(operation) weakOperation = operation;
-                                    operation.completionBlock = ^{
-                                        NSError* error = weakOperation.error;
-
-                                        if (error) {
-                                            [self setCellStatus:cell withError:error];
-                                        } else {
-                                            self.numberOfUploads++;
-
-                                            [self setCellStatus:cell withError:nil];
-                                        }
-
-                                        [self postSuccessNotificationIfNeeded];
-                                    };
-
-                                    [self.uploadQueue addOperation:operation];
-                                } failure:^(CDAResponse *response, NSError *error) {
-                                    [self setCellStatus:cell withError:error];
-                                }];
+            [self.uploadQueue addOperation:operation];
         }
     } failure:^(CDAResponse *response, NSError *error) {
         NSAlert* alert = [NSAlert alertWithError:error];
@@ -191,7 +155,6 @@
 
     BBUDraggedFile* draggedFile = self.files[[indexPath indexAtPosition:1]];
     imageCell.draggedFile = draggedFile;
-    imageCell.editable = draggedFile.asset.URL != nil || draggedFile.error != nil;
 
     return imageCell;
 }

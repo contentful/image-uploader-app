@@ -8,15 +8,16 @@
 
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 
+#import "BBUAssetUploadOperation.h"
 #import "BBUDraggedFile.h"
 
 @interface BBUDraggedFile ()
 
-//@property (nonatomic) NSError* error;
+@property (nonatomic) CMAAsset* asset;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
-@property (nonatomic) BOOL operationInProgress;
 @property (nonatomic) NSString* originalFileName;
+@property (nonatomic) CMASpace* space;
 
 @end
 
@@ -24,18 +25,39 @@
 
 @implementation BBUDraggedFile
 
+-(BBUAssetUploadOperation *)creationOperationForSpace:(CMASpace *)space {
+    NSParameterAssert(space.defaultLocale);
+
+    self.space = space;
+    return [[BBUAssetUploadOperation alloc] initWithDraggedFile:self];
+}
+
+-(void)createWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
+    NSParameterAssert(completionHandler);
+
+    [self.space createAssetWithTitle:@{ self.space.defaultLocale: self.title ?: @"" }
+                    description:nil
+                   fileToUpload:nil
+                        success:^(CDAResponse *response, CMAAsset *asset) {
+                            self.asset = asset;
+
+                            completionHandler(YES);
+                        } failure:^(CDAResponse *response, NSError *error) {
+                            self.error = error;
+
+                            completionHandler(NO);
+                        }];
+}
+
 -(void)deleteInternalWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
     NSParameterAssert(completionHandler);
 
     [self.asset deleteWithSuccess:^{
-        self.operationInProgress = NO;
-
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandler(YES);
         });
     } failure:^(CDAResponse *response, NSError *error) {
         self.error = error;
-        self.operationInProgress = NO;
 
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandler(NO);
@@ -46,15 +68,12 @@
 -(void)deleteWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
     NSParameterAssert(completionHandler);
 
-    self.operationInProgress = YES;
-
     if (self.asset.published) {
         [self.asset unpublishWithSuccess:^{
             [self deleteInternalWithCompletionHandler:completionHandler];
         } failure:^(CDAResponse *response, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.error = error;
-                self.operationInProgress = NO;
 
                 completionHandler(NO);
             });
@@ -67,6 +86,21 @@
 -(NSString *)description {
     return [NSString stringWithFormat:@"BBUDraggedFile with name '%@', attributes %@",
             self.originalFileName, self.fileAttributes];
+}
+
+-(void)fetchWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
+    NSParameterAssert(completionHandler);
+
+    [self.space fetchAssetWithIdentifier:self.asset.identifier success:^(CDAResponse *response,
+                                                                         CMAAsset *asset) {
+        self.asset = asset;
+
+        completionHandler(YES);
+    } failure:^(CDAResponse *response, NSError *error) {
+        self.error = error;
+
+        completionHandler(NO);
+    }];
 }
 
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem *)item {
@@ -83,42 +117,45 @@
     return self;
 }
 
+-(NSString *)title {
+    return self.asset.title ?: [self.originalFileName stringByDeletingPathExtension];
+}
+
 -(void)updateWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
     NSParameterAssert(completionHandler);
-
-    self.operationInProgress = YES;
 
     [self.asset updateWithSuccess:^{
         if (self.asset.fields[@"file"]) {
             [self.asset publishWithSuccess:^{
-                self.operationInProgress = NO;
-
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completionHandler(YES);
                 });
             } failure:^(CDAResponse *response, NSError *error) {
                 self.error = error;
-                self.operationInProgress = NO;
 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completionHandler(NO);
                 });
             }];
         } else {
-            self.operationInProgress = NO;
-
             dispatch_async(dispatch_get_main_queue(), ^{
                 completionHandler(YES);
             });
         }
     } failure:^(CDAResponse *response, NSError *error) {
         self.error = error;
-        self.operationInProgress = NO;
 
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandler(NO);
         });
     }];
+}
+
+-(NSURL *)url {
+    if (!self.space.identifier || !self.asset.identifier) {
+        return nil;
+    }
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets/%@", self.space.identifier, self.asset.identifier]];
 }
 
 @end

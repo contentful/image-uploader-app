@@ -15,17 +15,18 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 
 @interface BBUDraggedFile : NSObject
 
-@property (nonatomic) CMAAsset* asset;
-@property (nonatomic) CMASpace* space;
-
-@property (nonatomic) NSError* error; // FIXME: should be read-only
-@property (nonatomic, readonly) NSDictionary* fileAttributes;
+@property (nonatomic, readonly) CMAAsset* asset;
+@property (nonatomic) NSError* error;
 @property (nonatomic, readonly) NSImage* image;
-@property (nonatomic, readonly) BOOL operationInProgress;
-@property (nonatomic, readonly) NSString* originalFileName;
+@property (nonatomic, readonly) NSString* title;
+@property (nonatomic, readonly) NSURL* url;
 
--(void)deleteWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
+-(NSOperation*)creationOperationForSpace:(CMASpace*)space;
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem*)item;
+
+-(void)createWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
+-(void)deleteWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
+-(void)fetchWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
 -(void)updateWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
 
 @end

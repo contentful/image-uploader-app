@@ -7,6 +7,7 @@
 //
 
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
+#import <KVOController/FBKVOController.h>
 
 #import "BBUDraggedFile.h"
 #import "BBUImageCell.h"
@@ -17,13 +18,15 @@
 @property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSButton* deleteButton;
 @property (nonatomic, readonly) NSTextField* descriptionTextField;
+@property (nonatomic, getter = isEditable) BOOL editable;
 @property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
-@property (nonatomic, copy) BBUProgressHandler progressHandler;
+@property (nonatomic, readonly) FBKVOController* kvoController;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
+@property (nonatomic) BOOL showFailure;
+@property (nonatomic) BOOL showSuccess;
 @property (nonatomic, readonly) NSButton* successButton;
 @property (nonatomic, readonly) NSTextField* titleTextField;
-@property (nonatomic, readonly) NSProgressIndicator* uploadIndicator;
 
 @end
 
@@ -35,20 +38,25 @@
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize failureButton = _failureButton;
 @synthesize imageView = _imageView;
+@synthesize kvoController = _kvoController;
 @synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
 @synthesize successButton = _successButton;
-@synthesize uploadIndicator = _uploadIndicator;
 
 #pragma mark -
 
 - (NSRect)actualImageRect {
-    NSRect imageRect = NSMakeRect(0.0, 0.0, self.image.size.width, self.image.size.height);
+    NSRect imageRect = NSMakeRect(0.0, 0.0,
+                                  self.imageView.image.size.width, self.imageView.image.size.height);
     return fitRectIntoRectWithDimension(imageRect, self.imageView.bounds, RectAxisVertical);
 }
 
 - (NSString *)assetDescription {
     return self.descriptionTextField.stringValue;
+}
+
+-(void)dealloc {
+    [self.kvoController unobserveAll];
 }
 
 -(void)deleteAsset {
@@ -88,7 +96,9 @@
 }
 
 -(void)drawRect:(NSRect)dirtyRect {
-     self.deleteButton.y = self.height - self.deleteButton.height;
+    self.backgroundColor = [NSColor clearColor];
+
+    self.deleteButton.y = self.height - self.deleteButton.height;
 
     self.imageView.width = self.width - 20.0;
     self.imageView.y = self.height - self.imageView.height - 10.0;
@@ -102,9 +112,6 @@
     self.progressIndicator.x = (self.imageView.width - self.progressIndicator.width) / 2;
     self.progressIndicator.y = self.imageView.y + (self.imageView.height -
                                                    self.progressIndicator.height) / 2;
-
-    self.uploadIndicator.width = self.width - 20.0;
-    self.uploadIndicator.y = self.imageView.y - 10.0;
 
     self.successButton.x = self.actualImageRect.size.width + self.imageView.x;
     self.successButton.y = self.imageView.y;
@@ -129,10 +136,6 @@
     return _failureButton;
 }
 
-- (NSImage *)image {
-    return self.imageView.image;
-}
-
 - (NSImageView *)imageView {
     if (!_imageView) {
         _imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 200.0)];
@@ -142,36 +145,12 @@
     return _imageView;
 }
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = [NSColor clearColor];
-
-        NSProgressIndicator* indicator = self.uploadIndicator;
-        __weak typeof(self) welf = self;
-
-        self.progressHandler = ^(NSUInteger bytesWritten,
-                                 long long totalBytesWritten,
-                                 long long totalBytesExpectedToWrite) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (indicator.hidden) {
-                    indicator.hidden = NO;
-                    indicator.maxValue = totalBytesExpectedToWrite;
-
-                    [indicator removeFromSuperview];
-                    [welf addSubview:indicator];
-                }
-
-                indicator.doubleValue = totalBytesWritten;
-
-                if (indicator.doubleValue == indicator.maxValue) {
-                    indicator.hidden = YES;
-                }
-            });
-        };
+-(FBKVOController *)kvoController {
+    if (!_kvoController) {
+        _kvoController = [[FBKVOController alloc] initWithObserver:self];
     }
-    return self;
+
+    return _kvoController;
 }
 
 -(NSProgressIndicator *)progressIndicator {
@@ -201,15 +180,23 @@
         self.assetDescription = self.draggedFile.asset.description;
     }
 
-    if (self.draggedFile.image) {
-        self.image = self.draggedFile.image;
-    }
+    self.editable = draggedFile.asset.URL || draggedFile.error;
+    self.imageView.image = self.draggedFile.image;
+    self.title = self.draggedFile.title;
 
-    if (self.draggedFile.asset.title) {
-        self.title = self.draggedFile.asset.title;
-    } else {
-        self.title = [self.draggedFile.originalFileName stringByDeletingPathExtension];
-    }
+    [self.kvoController observe:draggedFile keyPath:@"asset" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
+        if (draggedFile.asset.URL) {
+            self.editable = YES;
+            self.showSuccess = YES;
+        }
+    }];
+
+    [self.kvoController observe:draggedFile keyPath:@"error" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
+        if (draggedFile.error) {
+            self.editable = YES;
+            self.showFailure = YES;
+        }
+    }];
 }
 
 - (void)setEditable:(BOOL)editable {
@@ -231,10 +218,6 @@
 
     [self.descriptionTextField setEditable:editable];
     [self.titleTextField setEditable:editable];
-}
-
-- (void)setImage:(NSImage *)image {
-    self.imageView.image = image;
 }
 
 -(void)setShowFailure:(BOOL)showFailure {
@@ -301,20 +284,6 @@
     }];
 }
 
--(NSProgressIndicator *)uploadIndicator {
-    if (!_uploadIndicator) {
-        _uploadIndicator = [[NSProgressIndicator alloc]
-                            initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 44.0)];
-        _uploadIndicator.doubleValue = 0.0;
-        _uploadIndicator.hidden = YES;
-        _uploadIndicator.maxValue = 1000.0;
-        _uploadIndicator.style = NSProgressIndicatorBarStyle;
-        [self addSubview:_uploadIndicator];
-    }
-
-    return _uploadIndicator;
-}
-
 #pragma mark - Actions
 
 -(void)deleteClicked:(id)sender {
@@ -329,15 +298,9 @@
 }
 
 -(void)successClicked:(id)sender {
-    NSString* assetId = self.draggedFile.asset.identifier;
-    NSString* spaceId = self.draggedFile.space.identifier;
-
-    if (!assetId || !spaceId) {
-        return;
+    if (self.draggedFile.url) {
+        [[NSWorkspace sharedWorkspace] openURL:self.draggedFile.url];
     }
-
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets/%@", spaceId, assetId]];
-    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 #pragma mark - NSTextFieldDelegate

@@ -127,6 +127,10 @@
 				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
 				A1D10C2419B5C103009CA6CA /* BBUHelpView.h */,
 				A1D10C2519B5C103009CA6CA /* BBUHelpView.m */,
+				A1EF194F199CA50A00AE864E /* BBUImageCell.h */,
+				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
+				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
+				A1EF194D199CA00C00AE864E /* BBUImageViewController.m */,
 				A19FB0D519A347BE00A5659C /* BBUMenuCell.h */,
 				A19FB0D619A347BE00A5659C /* BBUMenuCell.m */,
 				A19FB0D219A3445500A5659C /* BBUMenuViewController.h */,
@@ -142,12 +146,12 @@
 		A1B151AA19B9AFB200C9C97E /* Asset Handling */ = {
 			isa = PBXGroup;
 			children = (
+				A15A61C419A23E9E006B1551 /* CMAClient+SharedClient.h */,
+				A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */,
 				A1F35BD019A6262D00654922 /* BBUAssetUploadOperation.h */,
 				A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */,
 				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
 				A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */,
-				A15A61C419A23E9E006B1551 /* CMAClient+SharedClient.h */,
-				A15A61C519A23E9E006B1551 /* CMAClient+SharedClient.m */,
 			);
 			name = "Asset Handling";
 			sourceTree = "<group>";
@@ -191,10 +195,6 @@
 				A1D5AC4219C0722200C86F53 /* Upload */,
 				A1D4A7F3199BED850021EEA6 /* BBUAppDelegate.h */,
 				A1D4A7F4199BED850021EEA6 /* BBUAppDelegate.m */,
-				A1EF194F199CA50A00AE864E /* BBUImageCell.h */,
-				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
-				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
-				A1EF194D199CA00C00AE864E /* BBUImageViewController.m */,
 			);
 			path = Code;
 			sourceTree = "<group>";

@@ -23,10 +23,7 @@ static const NSTimeInterval kProcessWait = 5.0;
 
 @property (nonatomic) BOOL done;
 @property (nonatomic) BBUDraggedFile* draggedFile;
-@property (nonatomic) NSError* error;
-@property (nonatomic, readonly) NSString* identifier;
 @property (nonatomic) NSUInteger retries;
-@property (nonatomic, readonly) CMASpace* space;
 @property (nonatomic, readonly) dispatch_time_t time;
 
 @end
@@ -36,54 +33,48 @@ static const NSTimeInterval kProcessWait = 5.0;
 @implementation BBUAssetUploadOperation
 
 - (void)changeOperationStatusToProcessingFailed {
-    NSError* error = [NSError errorWithDomain:@"com.contentful.management" code:kProcessingFailedErrorCode userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Processing uploaded image failed, try again.", nil) }];
-    [self changeOperationStatusWithDone:YES error:error];
+    self.draggedFile.error = [NSError errorWithDomain:@"com.contentful.management" code:kProcessingFailedErrorCode userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Processing uploaded image failed, try again.", nil) }];
+    [self changeOperationStatusWithDone:YES];
 }
 
-- (void)changeOperationStatusWithDone:(BOOL)done error:(NSError*)error {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.cell.editable = YES;
-    });
-
+- (void)changeOperationStatusWithDone:(BOOL)done {
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
 
     self.done = done;
-    self.error = error;
 
     [self didChangeValueForKey:@"isExecuting"];
     [self didChangeValueForKey:@"isFinished"];
 }
 
 -(void)handleProcessing {
-    dispatch_after(self.time, dispatch_get_main_queue(), ^{
-        [self.space fetchAssetWithIdentifier:self.identifier
-                                     success:^(CDAResponse *response, CMAAsset *asset) {
-                                         if (asset.URL) {
-                                             [self.draggedFile.asset publishWithSuccess:^{
-                                                 [self changeOperationStatusWithDone:YES error:nil];
-                                             } failure:^(CDAResponse *response, NSError *error) {
-                                                 [self changeOperationStatusWithDone:YES error:error];
-                                             }];
+    dispatch_after(self.time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.draggedFile fetchWithCompletionHandler:^(BOOL success) {
+            if (!success) {
+                [self changeOperationStatusWithDone:YES];
+                return;
+            }
 
-                                             return;
-                                         }
+            if (self.draggedFile.asset.URL) {
+                [self.draggedFile.asset publishWithSuccess:^{
+                    [self changeOperationStatusWithDone:YES];
+                } failure:^(CDAResponse *response, NSError *error) {
+                    self.draggedFile.error = error;
+                    [self changeOperationStatusWithDone:YES];
+                }];
 
-                                         if (self.retries < kNumberOfRetries) {
-                                             self.retries++;
+                return;
+            }
 
-                                             [self handleProcessing];
-                                         } else {
-                                             [self changeOperationStatusToProcessingFailed];
-                                         }
-                                     } failure:^(CDAResponse *response, NSError *error) {
-                                         [self changeOperationStatusWithDone:YES error:error];
-                                     }];
+            if (self.retries < kNumberOfRetries) {
+                self.retries++;
+
+                [self handleProcessing];
+            } else {
+                [self changeOperationStatusToProcessingFailed];
+            }
+        }];
     });
-}
-
--(NSString *)identifier {
-    return self.draggedFile.asset.identifier;
 }
 
 -(id)initWithDraggedFile:(BBUDraggedFile *)draggedFile {
@@ -106,40 +97,41 @@ static const NSTimeInterval kProcessWait = 5.0;
     return self.done;
 }
 
--(CMASpace *)space {
-    return self.draggedFile.space;
+-(void)start {
+    [self.draggedFile createWithCompletionHandler:^(BOOL success) {
+        if (success) {
+            [self uploadImage];
+        } else {
+            [self changeOperationStatusWithDone:YES];
+        }
+    }];
 }
 
--(void)start {
+-(void)uploadImage {
     NSParameterAssert(self.draggedFile);
     NSParameterAssert(self.draggedFile.asset);
-    NSParameterAssert(self.draggedFile.space.defaultLocale);
 
-    [self changeOperationStatusWithDone:NO error:nil];
+    [self changeOperationStatusWithDone:NO];
     self.retries = 0;
 
     [[BBUS3Uploader sharedUploader] uploadImage:self.draggedFile.image completionHandler:^(NSURL *uploadURL, NSError *error) {
         if (!uploadURL) {
-            [self changeOperationStatusWithDone:YES error:error];
+            [self changeOperationStatusWithDone:YES];
             return;
         }
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.cell.editable = NO;
-        });
-
-        NSDictionary* uploads = @{ self.draggedFile.space.defaultLocale: uploadURL.absoluteString };
+        NSDictionary* uploads = @{ self.draggedFile.asset.locale: uploadURL.absoluteString };
 
         [self.draggedFile.asset updateWithLocalizedUploads:uploads success:^{
             [self.draggedFile.asset processWithSuccess:^{
                 [self handleProcessing];
             } failure:^(CDAResponse *response, NSError *error) {
-                [self changeOperationStatusWithDone:YES error:error];
+                [self changeOperationStatusWithDone:YES];
             }];
         } failure:^(CDAResponse *response, NSError *error) {
-            [self changeOperationStatusWithDone:YES error:error];
+            [self changeOperationStatusWithDone:YES];
         }];
-    } progressHandler:self.cell.progressHandler];
+    } progressHandler:nil];
 }
 
 -(dispatch_time_t)time {
