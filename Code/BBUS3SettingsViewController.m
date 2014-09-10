@@ -9,7 +9,7 @@
 #import <SSKeychain/SSKeychain.h>
 
 #import "BBUS3SettingsViewController.h"
-#import "S3Uploader.h"
+#import "BBUS3Uploader+SharedSettings.h"
 
 @interface BBUS3SettingsViewController ()
 
@@ -25,8 +25,6 @@
 @implementation BBUS3SettingsViewController
 
 -(void)viewDidDisappear {
-    [super viewDidDisappear];
-
     [SSKeychain setPassword:self.awsKeyTextField.stringValue forService:kS3Key account:kS3Key];
     [SSKeychain setPassword:self.awsSecretTextField.stringValue forService:kS3Secret account:kS3Secret];
     [SSKeychain setPassword:self.s3BucketTextField.stringValue forService:kS3Bucket account:kS3Bucket];
