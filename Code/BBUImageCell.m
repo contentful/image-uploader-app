@@ -181,8 +181,11 @@
         self.assetDescription = self.draggedFile.asset.description;
     }
 
+    self.deleteButton.hidden = draggedFile.asset.URL == nil;
     self.editable = draggedFile.asset.URL || draggedFile.error;
     self.imageView.image = self.draggedFile.image;
+    self.showSuccess = draggedFile.asset.URL != nil;
+    self.showFailure = draggedFile.error != nil;
     self.title = self.draggedFile.title;
 
     [self.kvoController observe:draggedFile keyPath:@"asset" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
@@ -198,6 +201,8 @@
             self.showFailure = YES;
         }
     }];
+
+    [self setNeedsDisplay:YES];
 }
 
 - (void)setEditable:(BOOL)editable {
