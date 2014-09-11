@@ -98,11 +98,6 @@
 
         self.numberOfUploads = 0;
         self.totalNumberOfUploads = 0;
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self allowResizing:YES];
-            self.collectionView.draggingEnabled = YES;
-        });
     }
 }
 
@@ -113,9 +108,6 @@
 
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
-
-    [self allowResizing:NO];
-    self.collectionView.draggingEnabled = NO;
 
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         self.currentSpaceId = space.identifier;
