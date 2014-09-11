@@ -113,7 +113,8 @@
     self.progressIndicator.y = self.imageView.y + (self.imageView.height -
                                                    self.progressIndicator.height) / 2;
 
-    self.successButton.x = self.actualImageRect.size.width + self.imageView.x;
+    self.successButton.x = MIN(self.actualImageRect.size.width + self.imageView.x,
+                               self.width - self.successButton.width);
     self.successButton.y = self.imageView.y;
 
     self.failureButton.x = self.successButton.x;
