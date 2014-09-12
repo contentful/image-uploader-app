@@ -20,7 +20,9 @@
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSString* currentSpaceId;
+@property (nonatomic, readonly) NSArray* filteredFiles;
 @property (nonatomic) NSMutableArray* files;
+@property (weak) IBOutlet NSSegmentedControl *filterSelection;
 @property (nonatomic, readonly) BBUHelpView* helpView;
 @property (nonatomic) NSUInteger numberOfUploads;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
@@ -49,6 +51,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
+    self.filterSelection.enabled = NO;
+    self.filterSelection.action = @selector(filterChanged);
+    self.filterSelection.target = self;
+
     self.uploadQueue = [NSOperationQueue new];
     self.uploadQueue.maxConcurrentOperationCount = 3;
 
@@ -73,6 +79,28 @@
 
 - (BBUCollectionView *)collectionView {
     return (BBUCollectionView*)self.view;
+}
+
+- (NSArray *)filteredFiles {
+    NSPredicate* predicate = nil;
+
+    switch (self.filterSelection.selectedSegment) {
+        case 1:
+            predicate = [NSPredicate predicateWithBlock:^BOOL(BBUDraggedFile* file,
+                                                              NSDictionary *bindings) {
+                return file.asset.URL != nil;
+            }];
+            break;
+
+        case 2:
+            predicate = [NSPredicate predicateWithBlock:^BOOL(BBUDraggedFile* file,
+                                                              NSDictionary *bindings) {
+                return file.error != nil;
+            }];
+            break;
+    }
+
+    return predicate ? [self.files filteredArrayUsingPredicate:predicate] : self.files;
 }
 
 - (BBUHelpView *)helpView {
@@ -101,9 +129,16 @@
     }
 }
 
+#pragma mark - Actions
+
+-(void)filterChanged {
+    [self.collectionView reloadData];
+}
+
 #pragma mark - BBUCollectionViewDelegate
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
+    self.filterSelection.enabled = draggedFiles.count > 0;
     self.helpView.hidden = draggedFiles.count > 0;
 
     [self.files addObjectsFromArray:draggedFiles];
@@ -128,7 +163,10 @@
                     self.numberOfUploads++;
                 }
 
-                [self postSuccessNotificationIfNeeded];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [self postSuccessNotificationIfNeeded];
+                });
             };
 
             [self.uploadQueue addOperation:operation];
@@ -145,7 +183,7 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BBUImageCell* imageCell = (BBUImageCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
 
-    BBUDraggedFile* draggedFile = self.files[[indexPath indexAtPosition:1]];
+    BBUDraggedFile* draggedFile = self.filteredFiles[[indexPath indexAtPosition:1]];
     imageCell.draggedFile = draggedFile;
 
     return imageCell;
@@ -153,7 +191,7 @@
 
 -(NSUInteger)collectionView:(JNWCollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return self.files.count;
+    return self.filteredFiles.count;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(JNWCollectionView *)collectionView {
