@@ -21,7 +21,7 @@ PODS:
     - AFNetworking
     - HRCoder
     - ISO8601DateFormatter
-  - ContentfulManagementAPI (0.3.0):
+  - ContentfulManagementAPI (0.3.1):
     - ContentfulDeliveryAPI
   - DJProgressHUD (0.0.1)
   - HRCoder (1.3.2)
@@ -53,7 +53,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   ContentfulDeliveryAPI: 442cc428552c01e029f922f5d1dd6b634a731705
-  ContentfulManagementAPI: 61b35defa3dd6ad45bd36e698352fbd64b01c8a7
+  ContentfulManagementAPI: c03d420429097b9ed907c80bf2fad3dc0ea32dcc
   DJProgressHUD: 6d8a7a42768beacca4452bd59b1e2663061b7c1d
   HRCoder: 492f8e2e0b69b54842564d4bbeb1c0e151d4f95f
   IAmUpload: 9a42931b9c46c3cd5435260e8fbc06bf6335d352
