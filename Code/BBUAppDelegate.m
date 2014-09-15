@@ -71,9 +71,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 - (void)fillMenuWithSpaces:(NSArray*)spaces {
     self.spaceSelection.enabled = YES;
 
-    while ([self.spaceSelectionMenu.itemArray count] > 1) {
-        [self.spaceSelectionMenu removeItemAtIndex:1];
-    }
+    [self.spaceSelectionMenu removeAllItems];
 
     spaces = [spaces sortedArrayUsingComparator:^NSComparisonResult(CMASpace* space1, CMASpace* space2) {
         return [space1.name localizedStandardCompare:space2.name];
