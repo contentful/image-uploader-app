@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10F7FC419C7398B00CF8AEC /* BBUUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10F7FC319C7398B00CF8AEC /* BBUUserInfoView.m */; };
 		A10FC6D419AE11BB00C45BA3 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC6D319AE11BB00C45BA3 /* success.png */; };
 		A10FC6D619AE11D600C45BA3 /* failure.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC6D519AE11D600C45BA3 /* failure.png */; };
 		A10FC71419AE324400C45BA3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10FC71319AE324400C45BA3 /* Realm.framework */; };
@@ -56,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		79302297BDDD4879A2F47997 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10F7FC219C7398B00CF8AEC /* BBUUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUUserInfoView.h; sourceTree = "<group>"; };
+		A10F7FC319C7398B00CF8AEC /* BBUUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUUserInfoView.m; sourceTree = "<group>"; };
 		A10FC6D319AE11BB00C45BA3 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		A10FC6D519AE11D600C45BA3 /* failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failure.png; sourceTree = "<group>"; };
 		A10FC71319AE324400C45BA3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/Realm/realm-cocoapods-0.83.0/osx/Realm.framework"; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				A19FB0D319A3445500A5659C /* BBUMenuViewController.m */,
 				A1CCBD7F19BF259300878BF9 /* BBUS3SettingsViewController.h */,
 				A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */,
+				A10F7FC219C7398B00CF8AEC /* BBUUserInfoView.h */,
+				A10F7FC319C7398B00CF8AEC /* BBUUserInfoView.m */,
 				A15A61C119A23105006B1551 /* NSView+Geometry.h */,
 				A15A61C219A23105006B1551 /* NSView+Geometry.m */,
 			);
@@ -374,6 +379,7 @@
 				A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */,
 				A1D10C2619B5C103009CA6CA /* BBUHelpView.m in Sources */,
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,
+				A10F7FC419C7398B00CF8AEC /* BBUUserInfoView.m in Sources */,
 				A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */,
 				A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */,
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
