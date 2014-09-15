@@ -13,8 +13,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="BBUAppDelegate">
             <connections>
-                <outlet property="logoutButton" destination="RaG-RO-evY" id="zJ0-r7-Qly"/>
-                <outlet property="spaceSelection" destination="9QD-XY-SR8" id="l7n-WM-fad"/>
+                <outlet property="logoutButton" destination="eNy-un-HRI" id="fYD-Gn-XLI"/>
+                <outlet property="spaceSelection" destination="X3F-13-t2Y" id="ZAB-dx-HOc"/>
                 <outlet property="spaceSelectionMenu" destination="imo-yg-q2Z" id="VxH-JW-Deh"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -286,7 +286,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Contentful Image Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
@@ -310,7 +310,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="lH6-5M-7qf">
-                            <rect key="frame" x="499" y="1" width="16" height="562"/>
+                            <rect key="frame" x="500" y="1" width="15" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -321,7 +321,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-nA-5Ym">
-                                    <rect key="frame" x="0.0" y="-1" width="181" height="564"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="181" height="564"/>
                                 </view>
                             </subviews>
                         </clipView>
@@ -329,8 +329,8 @@
                             <rect key="frame" x="1" y="547" width="181" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="rfX-R2-vMh">
-                            <rect key="frame" x="166" y="1" width="16" height="562"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rfX-R2-vMh">
+                            <rect key="frame" x="167" y="1" width="15" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -348,17 +348,27 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="small" id="fp6-a2-taM">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="53102D49-054D-47AC-8C21-6B03244FEB2F" label="Select All" paletteLabel="Select All" tag="-1" image="select-all" id="n3S-Uf-gSJ" userLabel="Select All button">
-                        <size key="minSize" width="45" height="32"/>
-                        <size key="maxSize" width="45" height="32"/>
+                    <toolbarItem implicitItemIdentifier="917A4C71-371B-4B13-B6A2-7A52477D0011" label="" paletteLabel="Space Selection" id="9QD-XY-SR8" userLabel="Space selection">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="45" height="25"/>
+                        <size key="maxSize" width="117" height="36"/>
+                        <popUpButton key="view" id="X3F-13-t2Y">
+                            <rect key="frame" x="0.0" y="14" width="117" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="iJN-8m-EFG">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <menu key="menu" id="imo-yg-q2Z">
+                                    <items>
+                                        <menuItem id="WBH-Yd-c6b"/>
+                                        <menuItem title="Item 2" id="5kU-df-pcX"/>
+                                        <menuItem title="Item 3" id="wyO-zI-ko7"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7AB0D48D-9C2F-46D3-8E71-308D67C6F3CB" label="Publish" paletteLabel="Publish" tag="-1" image="NSRefreshTemplate" id="yow-Y9-ZsW" userLabel="Publish button">
-                        <size key="minSize" width="45" height="32"/>
-                        <size key="maxSize" width="45" height="32"/>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="8837BE84-AA32-4347-8CEF-8CF7A72D1165" label="Logout" paletteLabel="Logout" tag="-1" image="NSRemoveTemplate" id="RaG-RO-evY" userLabel="Logout button"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
-                    <toolbarItem implicitItemIdentifier="7B0EC8D0-3181-4E7E-B307-B265A0FC08FB" label="Filter" paletteLabel="Filter" id="YDp-Vr-n1B">
+                    <toolbarItem implicitItemIdentifier="CBAD9BD6-4A13-4B98-9708-40616DC33EC6" label="Filter" paletteLabel="Filter" id="YDp-Vr-n1B">
                         <nil key="toolTip"/>
                         <size key="minSize" width="108" height="25"/>
                         <size key="maxSize" width="129" height="28"/>
@@ -375,32 +385,56 @@
                             </segmentedCell>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="ECC3326B-542F-4CE0-97B0-DA9689AFDA9F" label="" paletteLabel="Space Selection" image="NSFolder" id="9QD-XY-SR8" userLabel="Space selection">
+                    <toolbarItem implicitItemIdentifier="41EE6344-0E21-4AD0-8EC2-BA24D2D2E1E1" label="" paletteLabel="Select all" id="Eww-EP-DrO">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="45" height="25"/>
-                        <size key="maxSize" width="100" height="32"/>
-                        <popUpButton key="view" id="X3F-13-t2Y">
-                            <rect key="frame" x="0.0" y="14" width="100" height="25"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="86" height="37"/>
+                        <button key="view" id="PIR-SR-aei">
+                            <rect key="frame" x="0.0" y="14" width="86" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" enabled="NO" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="arrowAtCenter" id="iJN-8m-EFG">
+                            <buttonCell key="cell" type="bevel" title="Select all" bezelStyle="regularSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RgJ-xQ-htO">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" id="imo-yg-q2Z">
-                                    <items>
-                                        <menuItem state="on" image="NSFolder" hidden="YES" id="WBH-Yd-c6b"/>
-                                        <menuItem title="Item 2" id="5kU-df-pcX"/>
-                                        <menuItem title="Item 3" id="wyO-zI-ko7"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                        </popUpButton>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                        </button>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="87B2E4A7-EEA8-4C91-A56D-4502C61129F5" label="" paletteLabel="Deselect all" id="gwB-Lc-msl">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="86" height="37"/>
+                        <button key="view" id="VQy-f7-bLL">
+                            <rect key="frame" x="0.0" y="14" width="86" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Deselect all" bezelStyle="regularSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2vV-xG-wZ9">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="BCFF3042-98C0-424D-8D17-7BE3DFA1AAED" label="" paletteLabel="Logout" id="AzD-Y8-zsE">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="86" height="37"/>
+                        <button key="view" id="eNy-un-HRI">
+                            <rect key="frame" x="0.0" y="14" width="86" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Logout" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6ha-e8-kky">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3p-Fe-3ot"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="RaG-RO-evY"/>
-                    <toolbarItem reference="KiG-gI-mbh"/>
-                    <toolbarItem reference="YDp-Vr-n1B"/>
                     <toolbarItem reference="9QD-XY-SR8"/>
+                    <toolbarItem reference="YDp-Vr-n1B"/>
+                    <toolbarItem reference="KiG-gI-mbh"/>
+                    <toolbarItem reference="Eww-EP-DrO"/>
+                    <toolbarItem reference="gwB-Lc-msl"/>
+                    <toolbarItem reference="KiG-gI-mbh"/>
+                    <toolbarItem reference="AzD-Y8-zsE"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -417,10 +451,4 @@
             </connections>
         </viewController>
     </objects>
-    <resources>
-        <image name="NSFolder" width="32" height="32"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="select-all" width="32" height="32"/>
-    </resources>
 </document>

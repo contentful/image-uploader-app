@@ -147,7 +147,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 }
 
 - (void)selectSpace:(CMASpace*)space {
-    self.spaceSelection.label = space.name;
+    self.spaceSelection.title = space.name;
     [CMAClient sharedClient].sharedSpaceKey = space.identifier;
 }
 
