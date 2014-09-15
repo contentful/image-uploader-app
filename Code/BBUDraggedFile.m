@@ -103,6 +103,10 @@
     }];
 }
 
+-(CGFloat)height {
+    return self.image.size.height;
+}
+
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem *)item {
     self = [super init];
     if (self) {
@@ -115,6 +119,10 @@
         self.originalFileName = url.path.lastPathComponent;
     }
     return self;
+}
+
+-(NSUInteger)numberOfBytes {
+    return [self.fileAttributes[NSFileSize] unsignedIntegerValue];
 }
 
 -(NSString *)title {
@@ -156,6 +164,10 @@
         return nil;
     }
     return [NSURL URLWithString:[NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets/%@", self.space.identifier, self.asset.identifier]];
+}
+
+-(CGFloat)width {
+    return self.image.size.width;
 }
 
 @end

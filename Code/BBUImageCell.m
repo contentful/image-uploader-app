@@ -21,6 +21,7 @@
 @property (nonatomic, getter = isEditable) BOOL editable;
 @property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
+@property (nonatomic, readonly) NSTextField* infoLabel;
 @property (nonatomic, readonly) FBKVOController* kvoController;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
 @property (nonatomic) BOOL showFailure;
@@ -38,6 +39,7 @@
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize failureButton = _failureButton;
 @synthesize imageView = _imageView;
+@synthesize infoLabel = _infoLabel;
 @synthesize kvoController = _kvoController;
 @synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
@@ -109,6 +111,9 @@
     self.titleTextField.width = self.imageView.width;
     self.titleTextField.y = NSMaxY(self.descriptionTextField.frame) + 10.0;
 
+    self.infoLabel.width = self.imageView.width;
+    self.infoLabel.y = NSMaxY(self.titleTextField.frame) + 10.0;
+
     self.progressIndicator.x = (self.imageView.width - self.progressIndicator.width) / 2;
     self.progressIndicator.y = self.imageView.y + (self.imageView.height -
                                                    self.progressIndicator.height) / 2;
@@ -144,6 +149,19 @@
     }
 
     return _imageView;
+}
+
+- (NSTextField *)infoLabel {
+    if (!_infoLabel) {
+        _infoLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
+        [_infoLabel setAlignment:NSCenterTextAlignment];
+        [_infoLabel setBordered:NO];
+        [_infoLabel setDrawsBackground:NO];
+        [_infoLabel setEditable:NO];
+        [self addSubview:_infoLabel];
+    }
+
+    return _infoLabel;
 }
 
 -(FBKVOController *)kvoController {
@@ -184,6 +202,7 @@
     self.deleteButton.hidden = draggedFile.asset.URL == nil;
     self.editable = draggedFile.asset.URL || draggedFile.error;
     self.imageView.image = self.draggedFile.image;
+    self.infoLabel.stringValue = [NSString stringWithFormat:@"%d x %d - %@", (int)draggedFile.width, (int)draggedFile.height, [NSByteCountFormatter stringFromByteCount:draggedFile.numberOfBytes countStyle:NSByteCountFormatterCountStyleFile]];
     self.showSuccess = draggedFile.asset.URL != nil;
     self.showFailure = draggedFile.error != nil;
     self.title = self.draggedFile.title;

@@ -66,7 +66,7 @@
 
     JNWCollectionViewGridLayout *gridLayout = [JNWCollectionViewGridLayout new];
     gridLayout.itemPaddingEnabled = NO;
-    gridLayout.itemSize = CGSizeMake(300, 300);
+    gridLayout.itemSize = CGSizeMake(300, 330);
     self.collectionView.collectionViewLayout = gridLayout;
 
     [self.collectionView registerClass:BBUImageCell.class
