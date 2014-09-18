@@ -17,6 +17,14 @@ NSString* const kS3Secret   = @"S3SecretKey";
 
 @implementation BBUS3Uploader (SharedSettings)
 
++(BOOL)hasValidCredentials {
+    NSString* bucket = [SSKeychain passwordForService:kS3Bucket account:kS3Bucket];
+    NSString* key = [SSKeychain passwordForService:kS3Key account:kS3Key];
+    NSString* path = [SSKeychain passwordForService:kS3Path account:kS3Path];
+    NSString* secret = [SSKeychain passwordForService:kS3Secret account:kS3Secret];
+    return bucket && key && path && secret;
+}
+
 +(instancetype)sharedUploader {
     static dispatch_once_t once;
     static BBUS3Uploader *sharedUploader;

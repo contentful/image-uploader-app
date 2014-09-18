@@ -13,6 +13,7 @@
 #import "BBUHelpView.h"
 #import "BBUImageCell.h"
 #import "BBUImageViewController.h"
+#import "BBUS3Uploader+SharedSettings.h"
 #import "CMAClient+SharedClient.h"
 #import "NSView+Geometry.h"
 
@@ -138,6 +139,12 @@
 #pragma mark - BBUCollectionViewDelegate
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
+    if (![BBUS3Uploader hasValidCredentials]) {
+        NSAlert* alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Please provide your Amazon S3 credentials in the Preferences before uploading files.", nil) defaultButton:NSLocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+        [alert runModal];
+        return;
+    }
+
     self.filterSelection.enabled = draggedFiles.count > 0;
     self.helpView.hidden = draggedFiles.count > 0;
 
