@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A361c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,12 +13,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="BBUAppDelegate">
             <connections>
-                <outlet property="foobar" destination="W15-CE-jXx" id="Y7a-wz-aXz"/>
-                <outlet property="logoutButton" destination="eNy-un-HRI" id="fYD-Gn-XLI"/>
                 <outlet property="spaceSelection" destination="X3F-13-t2Y" id="ZAB-dx-HOc"/>
                 <outlet property="spaceSelectionMenu" destination="imo-yg-q2Z" id="VxH-JW-Deh"/>
-                <outlet property="userInfoItem" destination="W15-CE-jXx" id="IQ0-M5-t2H"/>
-                <outlet property="userInfoView" destination="iv9-6j-km6" id="Xhj-eA-i6t"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -292,7 +288,7 @@
         <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,8 +308,8 @@
                             <rect key="frame" x="1" y="547" width="514" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="lH6-5M-7qf">
-                            <rect key="frame" x="500" y="1" width="15" height="562"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="lH6-5M-7qf">
+                            <rect key="frame" x="499" y="1" width="16" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -332,8 +328,8 @@
                             <rect key="frame" x="1" y="547" width="181" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="rfX-R2-vMh">
-                            <rect key="frame" x="167" y="1" width="15" height="562"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rfX-R2-vMh">
+                            <rect key="frame" x="166" y="1" width="16" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -388,54 +384,6 @@
                             </segmentedCell>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="41EE6344-0E21-4AD0-8EC2-BA24D2D2E1E1" label="" paletteLabel="Select all" id="Eww-EP-DrO">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="82" height="32"/>
-                        <size key="maxSize" width="86" height="37"/>
-                        <button key="view" id="PIR-SR-aei">
-                            <rect key="frame" x="0.0" y="14" width="86" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="Select all" bezelStyle="regularSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RgJ-xQ-htO">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
-                            </buttonCell>
-                        </button>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="87B2E4A7-EEA8-4C91-A56D-4502C61129F5" label="" paletteLabel="Deselect all" id="gwB-Lc-msl">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="82" height="32"/>
-                        <size key="maxSize" width="86" height="37"/>
-                        <button key="view" id="VQy-f7-bLL">
-                            <rect key="frame" x="0.0" y="14" width="86" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="Deselect all" bezelStyle="regularSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2vV-xG-wZ9">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="smallSystem"/>
-                            </buttonCell>
-                        </button>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="13555D0F-D1AE-40B8-941C-0447F0F0C2B3" label="" paletteLabel="User info" tag="-1" id="W15-CE-jXx">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="163" height="37"/>
-                        <size key="maxSize" width="163" height="37"/>
-                        <customView key="view" id="iv9-6j-km6" customClass="BBUUserInfoView">
-                            <rect key="frame" x="0.0" y="14" width="163" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </customView>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="BCFF3042-98C0-424D-8D17-7BE3DFA1AAED" label="" paletteLabel="Logout" id="AzD-Y8-zsE">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="82" height="32"/>
-                        <size key="maxSize" width="86" height="37"/>
-                        <button key="view" id="eNy-un-HRI">
-                            <rect key="frame" x="0.0" y="14" width="86" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="Logout" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6ha-e8-kky">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3p-Fe-3ot"/>
                 </allowedToolbarItems>
@@ -443,12 +391,8 @@
                     <toolbarItem reference="9QD-XY-SR8"/>
                     <toolbarItem reference="YDp-Vr-n1B"/>
                     <toolbarItem reference="KiG-gI-mbh"/>
-                    <toolbarItem reference="Eww-EP-DrO"/>
-                    <toolbarItem reference="gwB-Lc-msl"/>
                     <toolbarItem reference="KiG-gI-mbh"/>
-                    <toolbarItem reference="W15-CE-jXx"/>
                     <toolbarItem reference="z3p-Fe-3ot"/>
-                    <toolbarItem reference="AzD-Y8-zsE"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>

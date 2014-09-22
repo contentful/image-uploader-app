@@ -13,7 +13,6 @@
 #import "BBUAppDelegate.h"
 #import "BBUHelpView.h"
 #import "BBUS3SettingsViewController.h"
-#import "BBUUserInfoView.h"
 #import "CMAClient+SharedClient.h"
 
 static NSString* const kClientID = @"Your-OAuth-Client-Id";
@@ -56,28 +55,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     [[CMAClient sharedClient] fetchAllSpacesWithSuccess:^(CDAResponse *response, CDAArray *array) {
         [self fillMenuWithSpaces:array.items];
 
-        self.logoutButton.action = @selector(logoutClicked:);
-        self.logoutButton.enabled = YES;
-        self.logoutButton.target = self;
-
-        [[CMAClient sharedClient] fetchUserWithSuccess:^(CDAResponse *response, CMAUser *user) {
-            [DJProgressHUD dismiss];
-
-            if (!self.userInfoView) {
-                NSView* view = [[BBUUserInfoView alloc] initWithFrame:self.userInfoItem.view.bounds];
-                [self.userInfoItem.view addSubview:view];
-
-                self.userInfoView = (BBUUserInfoView*)view;
-                [self.userInfoView awakeFromNib];
-            }
-
-            self.userInfoView.user = user;
-        } failure:^(CDAResponse *response, NSError *error) {
-            [DJProgressHUD dismiss];
-
-            NSAlert* alert = [NSAlert alertWithError:error];
-            [alert runModal];
-        }];
+        [DJProgressHUD dismiss];
     } failure:^(CDAResponse *response, NSError *error) {
         [DJProgressHUD dismiss];
 
@@ -139,11 +117,6 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     }
 
     return _helpView;
-}
-
-- (void)logoutClicked:(id)sender {
-    [SSKeychain deletePasswordForService:kContentfulServiceType account:kContentfulServiceType];
-    [self startOAuthFlow];
 }
 
 - (NSView*)mainView {
