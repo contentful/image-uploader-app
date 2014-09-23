@@ -126,6 +126,8 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 - (void)selectSpace:(CMASpace*)space {
     self.spaceSelection.title = space.name;
     [CMAClient sharedClient].sharedSpaceKey = space.identifier;
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kContentfulSpaceChanged object:nil userInfo:@{ kContentfulSpaceChanged: space }];
 }
 
 - (void)spaceSelected:(NSMenuItem*)menuItem {
