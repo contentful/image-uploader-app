@@ -42,7 +42,7 @@ static const char* kSharedSpaceKey      = "SharedSpaceKey";
 
 -(CDARequest*)fetchSharedSpaceWithSuccess:(CMASpaceFetchedBlock)success
                                   failure:(CDARequestFailureBlock)failure {
-    if (self.sharedSpace) {
+    if ([self.sharedSpace.identifier isEqualToString:self.sharedSpaceKey]) {
         if (success) {
             success(nil, self.sharedSpace);
         }
