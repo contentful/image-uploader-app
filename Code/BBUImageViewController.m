@@ -10,7 +10,7 @@
 
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
-#import "BBUHelpView.h"
+#import "BBUEmptyViewController.h"
 #import "BBUImageCell.h"
 #import "BBUImageViewController.h"
 #import "BBUS3Uploader+SharedSettings.h"
@@ -24,7 +24,7 @@
 @property (nonatomic, readonly) NSArray* filteredFiles;
 @property (nonatomic) NSMutableArray* files;
 @property (weak) IBOutlet NSSegmentedControl *filterSelection;
-@property (nonatomic, readonly) BBUHelpView* helpView;
+@property (nonatomic, readonly) BBUEmptyViewController* helpViewController;
 @property (nonatomic) NSUInteger numberOfUploads;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
@@ -35,7 +35,7 @@
 
 @implementation BBUImageViewController
 
-@synthesize helpView = _helpView;
+@synthesize helpViewController = _helpViewController;
 
 #pragma mark -
 
@@ -51,6 +51,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowResize)
+                                                 name:NSWindowDidResizeNotification
+                                               object:nil];
+
 
     self.filterSelection.enabled = NO;
     self.filterSelection.action = @selector(filterChanged);
@@ -74,12 +80,20 @@
             forCellWithReuseIdentifier:NSStringFromClass(self.class)];
     [self.collectionView reloadData];
 
-    self.helpView.hidden = [self collectionView:self.collectionView numberOfItemsInSection:0] > 0;
-    self.helpView.width = self.view.window.frame.size.width;
+    self.helpViewController.view.hidden = [self collectionView:self.collectionView
+                                        numberOfItemsInSection:0] > 0;
+    self.helpViewController.view.y = 0.0;
+    self.helpViewController.view.width = self.view.window.frame.size.width;
 }
 
 - (BBUCollectionView *)collectionView {
     return (BBUCollectionView*)self.view;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSWindowDidResizeNotification
+                                                  object:nil];
 }
 
 - (NSArray *)filteredFiles {
@@ -104,15 +118,14 @@
     return predicate ? [self.files filteredArrayUsingPredicate:predicate] : self.files;
 }
 
-- (BBUHelpView *)helpView {
-    if (!_helpView) {
-        _helpView = [[BBUHelpView alloc] initWithFrame:self.view.bounds];
-        _helpView.hidden = YES;
-        _helpView.helpText = NSLocalizedString(@"Drop images here to upload them to Contentful.", nil);
-        [self.view.superview addSubview:_helpView];
+- (BBUEmptyViewController *)helpViewController {
+    if (!_helpViewController) {
+        _helpViewController = [BBUEmptyViewController new];
+        _helpViewController.view.hidden = YES;
+        [self.view.superview addSubview:_helpViewController.view];
     }
 
-    return _helpView;
+    return _helpViewController;
 }
 
 - (void)postSuccessNotificationIfNeeded {
@@ -128,6 +141,11 @@
         self.numberOfUploads = 0;
         self.totalNumberOfUploads = 0;
     }
+}
+
+- (void)windowResize {
+    self.helpViewController.view.width = self.view.window.frame.size.width;
+    self.helpViewController.view.height = self.view.height;
 }
 
 #pragma mark - Actions
@@ -146,7 +164,7 @@
     }
 
     self.filterSelection.enabled = draggedFiles.count > 0;
-    self.helpView.hidden = draggedFiles.count > 0;
+    self.helpViewController.view.hidden = draggedFiles.count > 0;
 
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];

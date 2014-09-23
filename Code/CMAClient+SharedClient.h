@@ -9,6 +9,7 @@
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 
 extern NSString* const kContentfulServiceType;
+extern NSString* const kContentfulSpaceChanged;
 
 @interface CMAClient (SharedClient)
 

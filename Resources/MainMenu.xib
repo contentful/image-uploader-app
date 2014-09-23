@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A361c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -288,14 +288,34 @@
         <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images view" customClass="BBUCollectionView">
-                        <rect key="frame" x="183" y="0.0" width="516" height="564"/>
-                        <clipView key="contentView" id="0Lk-no-bwt">
+                    <scrollView appearanceType="aqua" ambiguous="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grA-As-ZiJ" userLabel="Menu" customClass="JNWCollectionView">
+                        <rect key="frame" x="517" y="0.0" width="183" height="564"/>
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="u7D-jK-JAV">
+                            <rect key="frame" x="1" y="1" width="181" height="562"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-nA-5Ym">
+                                    <rect key="frame" x="0.0" y="0.0" width="181" height="564"/>
+                                </view>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="wg2-rd-U90">
+                            <rect key="frame" x="1" y="547" width="181" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="rfX-R2-vMh">
+                            <rect key="frame" x="166" y="1" width="16" height="562"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <scrollView appearanceType="aqua" ambiguous="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images view" customClass="BBUCollectionView">
+                        <rect key="frame" x="0.0" y="0.0" width="516" height="564"/>
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="0Lk-no-bwt">
                             <rect key="frame" x="1" y="1" width="514" height="562"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -313,36 +333,14 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grA-As-ZiJ" userLabel="Menu" customClass="JNWCollectionView">
-                        <rect key="frame" x="0.0" y="0.0" width="183" height="564"/>
-                        <clipView key="contentView" id="u7D-jK-JAV">
-                            <rect key="frame" x="1" y="1" width="181" height="562"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-nA-5Ym">
-                                    <rect key="frame" x="0.0" y="0.0" width="181" height="564"/>
-                                </view>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="wg2-rd-U90">
-                            <rect key="frame" x="1" y="547" width="181" height="16"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rfX-R2-vMh">
-                            <rect key="frame" x="166" y="1" width="16" height="562"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="leading" secondItem="grA-As-ZiJ" secondAttribute="trailing" id="Baj-mQ-uag"/>
-                    <constraint firstAttribute="bottom" secondItem="UVq-Jw-jv9" secondAttribute="bottom" id="Dr9-1q-RQz"/>
-                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="183" id="H7i-RI-4c3"/>
-                    <constraint firstAttribute="trailing" secondItem="UVq-Jw-jv9" secondAttribute="trailing" id="VC7-aR-TYt"/>
-                    <constraint firstItem="grA-As-ZiJ" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="csZ-v0-06J"/>
-                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="bottom" secondItem="grA-As-ZiJ" secondAttribute="bottom" id="lqN-o4-VQ9"/>
-                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="grA-As-ZiJ" secondAttribute="top" id="mXn-tx-QjX"/>
-                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="rAd-Ro-bw6"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="grA-As-ZiJ" secondAttribute="top" id="9FI-6S-maK"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="X1i-Lc-khE"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="bottom" secondItem="grA-As-ZiJ" secondAttribute="bottom" id="ZIu-dS-CgF"/>
+                    <constraint firstItem="UVq-Jw-jv9" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="dWC-Jw-4Gf"/>
+                    <constraint firstAttribute="trailing" secondItem="UVq-Jw-jv9" secondAttribute="trailing" constant="183" id="qmt-X2-iRY"/>
+                    <constraint firstItem="grA-As-ZiJ" firstAttribute="leading" secondItem="UVq-Jw-jv9" secondAttribute="trailing" constant="1" id="w5V-3k-pgf"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="small" id="fp6-a2-taM">
@@ -350,9 +348,9 @@
                     <toolbarItem implicitItemIdentifier="917A4C71-371B-4B13-B6A2-7A52477D0011" label="" paletteLabel="Space Selection" id="9QD-XY-SR8" userLabel="Space selection">
                         <nil key="toolTip"/>
                         <size key="minSize" width="45" height="25"/>
-                        <size key="maxSize" width="117" height="36"/>
+                        <size key="maxSize" width="117" height="40"/>
                         <popUpButton key="view" id="X3F-13-t2Y">
-                            <rect key="frame" x="0.0" y="14" width="117" height="36"/>
+                            <rect key="frame" x="0.0" y="14" width="117" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="iJN-8m-EFG">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -367,32 +365,66 @@
                             </popUpButtonCell>
                         </popUpButton>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="CBAD9BD6-4A13-4B98-9708-40616DC33EC6" label="Filter" paletteLabel="Filter" id="YDp-Vr-n1B">
+                    <toolbarItem implicitItemIdentifier="CBAD9BD6-4A13-4B98-9708-40616DC33EC6" label="" paletteLabel="Filter" id="YDp-Vr-n1B">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="108" height="25"/>
-                        <size key="maxSize" width="129" height="28"/>
+                        <size key="minSize" width="226" height="27"/>
+                        <size key="maxSize" width="226" height="27"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="DDL-Ji-oG6">
-                            <rect key="frame" x="0.0" y="14" width="112" height="27"/>
+                            <rect key="frame" x="0.0" y="14" width="226" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bY4-js-Wcz">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment label="♻️" width="32" selected="YES"/>
-                                    <segment label="✅" width="32" tag="1"/>
-                                    <segment label="🚫"/>
+                                    <segment label="All media" selected="YES"/>
+                                    <segment label="Uploaded" tag="1"/>
+                                    <segment label="Failed"/>
                                 </segments>
                             </segmentedCell>
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3p-Fe-3ot"/>
+                    <toolbarItem implicitItemIdentifier="0A487CBE-7385-442C-9FE6-70BE7CB34A02" label="" paletteLabel="Sort" image="NSIconViewTemplate" id="1Jn-cz-ipq">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="30" height="30"/>
+                        <size key="maxSize" width="50" height="48"/>
+                        <popUpButton key="view" id="Swn-4W-KVV">
+                            <rect key="frame" x="0.0" y="14" width="50" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="bevel" title="Item 1" bezelStyle="regularSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="uOO-P1-CPe">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" title="OtherViews" id="BV6-dk-wSp">
+                                    <items>
+                                        <menuItem title="Item 1" image="NSIconViewTemplate" hidden="YES" id="TID-1s-lz1"/>
+                                        <menuItem title="Item 2" id="nX5-y0-SZl"/>
+                                        <menuItem title="Item 3" id="NKV-dU-0jW"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8F40BB21-23CD-4A11-9804-FFE82BA34E5A" label="" paletteLabel="About Us" id="iAo-8M-RRU">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="40" height="40"/>
+                        <size key="maxSize" width="52" height="51"/>
+                        <button key="view" horizontalHuggingPriority="750" verticalHuggingPriority="750" id="EEM-9Y-JoE">
+                            <rect key="frame" x="3" y="14" width="52" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="round" title="?" bezelStyle="circular" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ew0-lQ-PoM">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="9QD-XY-SR8"/>
+                    <toolbarItem reference="KiG-gI-mbh"/>
                     <toolbarItem reference="YDp-Vr-n1B"/>
+                    <toolbarItem reference="1Jn-cz-ipq"/>
                     <toolbarItem reference="KiG-gI-mbh"/>
-                    <toolbarItem reference="KiG-gI-mbh"/>
-                    <toolbarItem reference="z3p-Fe-3ot"/>
+                    <toolbarItem reference="iAo-8M-RRU"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -409,4 +441,7 @@
             </connections>
         </viewController>
     </objects>
+    <resources>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
+    </resources>
 </document>

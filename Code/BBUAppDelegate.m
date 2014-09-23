@@ -11,7 +11,6 @@
 #import <SSKeychain/SSKeychain.h>
 
 #import "BBUAppDelegate.h"
-#import "BBUHelpView.h"
 #import "BBUS3SettingsViewController.h"
 #import "CMAClient+SharedClient.h"
 
@@ -19,7 +18,6 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
 @interface BBUAppDelegate ()
 
-@property (nonatomic, readonly) BBUHelpView* helpView;
 @property (nonatomic, readonly) NSView* mainView;
 @property (nonatomic, readonly) MASPreferencesWindowController* preferencesController;
 
@@ -29,7 +27,6 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
 @implementation BBUAppDelegate
 
-@synthesize helpView = _helpView;
 @synthesize preferencesController = _preferencesController;
 
 #pragma mark -
@@ -84,7 +81,6 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 }
 
 - (void)getUrl:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
-    [self.helpView removeFromSuperview];
     [DJProgressHUD dismiss];
 
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
@@ -109,14 +105,6 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
         [self fetchSpaces];
     }
-}
-
-- (BBUHelpView *)helpView {
-    if (!_helpView) {
-        _helpView = [[BBUHelpView alloc] initWithFrame:self.mainView.bounds];
-    }
-
-    return _helpView;
 }
 
 - (NSView*)mainView {
@@ -145,11 +133,8 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
 }
 
 - (void)startOAuthFlow {
-    self.helpView.helpText = NSLocalizedString(@"Please log into Contentful with your browser.", nil);
-    [self.mainView addSubview:self.helpView];
-
     [DJProgressHUD showStatus:NSLocalizedString(@"Waiting for authentication...", nil)
-                     FromView:self.helpView];
+                     FromView:self.mainView];
 
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", kClientID]];
     [[NSWorkspace sharedWorkspace] openURL:url];

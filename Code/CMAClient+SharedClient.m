@@ -12,6 +12,8 @@
 #import "CMAClient+SharedClient.h"
 
 NSString* const kContentfulServiceType  = @"com.contentful";
+NSString* const kContentfulSpaceChanged = @"ContentfulSpaceChangedKey";
+
 static const char* kSharedSpace         = "SharedSpace";
 static const char* kSharedSpaceKey      = "SharedSpaceKey";
 
