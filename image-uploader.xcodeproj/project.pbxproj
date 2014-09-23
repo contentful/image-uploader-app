@@ -57,6 +57,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1D912AB19D19FCF007D00DD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				A1D912AC19D19FD9007D00DD /* Fonts in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +115,7 @@
 		A1D912A419D19EAE007D00DD /* BBUEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUEmptyViewController.h; sourceTree = "<group>"; };
 		A1D912A519D19EAE007D00DD /* BBUEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUEmptyViewController.m; sourceTree = "<group>"; };
 		A1D912A619D19EAE007D00DD /* BBUEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BBUEmptyViewController.xib; path = ../Code/BBUEmptyViewController.xib; sourceTree = "<group>"; };
+		A1D912A919D19EE0007D00DD /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		A1EF194C199CA00C00AE864E /* BBUImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUImageViewController.h; sourceTree = "<group>"; };
 		A1EF194D199CA00C00AE864E /* BBUImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUImageViewController.m; sourceTree = "<group>"; };
 		A1EF194F199CA50A00AE864E /* BBUImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUImageCell.h; sourceTree = "<group>"; };
@@ -232,6 +243,7 @@
 				A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */,
 				A10FC6D519AE11D600C45BA3 /* failure.png */,
 				A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */,
+				A1D912A919D19EE0007D00DD /* Fonts */,
 				A1D4A7F9199BED850021EEA6 /* Images.xcassets */,
 				A1D912A219D19E4C007D00DD /* Logo.png */,
 				A1D4A818199BEE970021EEA6 /* MainMenu.xib */,
@@ -276,6 +288,7 @@
 				251A6A48004640E59EF0B99C /* Copy Pods Resources */,
 				A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */,
 				A12039C519AE357F0097871C /* Embed Frameworks */,
+				A1D912AB19D19FCF007D00DD /* CopyFiles */,
 			);
 			buildRules = (
 			);

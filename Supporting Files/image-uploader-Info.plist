@@ -45,5 +45,7 @@
 	</array>
 	<key>NSUserNotificationAlertStyle</key>
 	<string>alert</string>
+	<key>ATSApplicationFontsPath</key>
+	<string>Fonts</string>
 </dict>
 </plist>
