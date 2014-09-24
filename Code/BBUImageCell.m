@@ -9,25 +9,23 @@
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
 #import <KVOController/FBKVOController.h>
 
+#import "BBUAppStyle.h"
 #import "BBUDraggedFile.h"
 #import "BBUImageCell.h"
 #import "NSView+Geometry.h"
 
-@interface BBUImageCell () <NSTextFieldDelegate>
+@interface BBUImageCell ()
 
 @property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSButton* deleteButton;
-@property (nonatomic, readonly) NSTextField* descriptionTextField;
 @property (nonatomic, getter = isEditable) BOOL editable;
-@property (nonatomic, readonly) NSButton* failureButton;
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, readonly) NSTextField* infoLabel;
 @property (nonatomic, readonly) FBKVOController* kvoController;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
 @property (nonatomic) BOOL showFailure;
 @property (nonatomic) BOOL showSuccess;
-@property (nonatomic, readonly) NSButton* successButton;
-@property (nonatomic, readonly) NSTextField* titleTextField;
+@property (nonatomic, readonly) NSTextField* titleLabel;
 
 @end
 
@@ -36,14 +34,11 @@
 @implementation BBUImageCell
 
 @synthesize deleteButton = _deleteButton;
-@synthesize descriptionTextField = _descriptionTextField;
-@synthesize failureButton = _failureButton;
 @synthesize imageView = _imageView;
 @synthesize infoLabel = _infoLabel;
 @synthesize kvoController = _kvoController;
-@synthesize titleTextField = _titleTextField;
 @synthesize progressIndicator = _progressIndicator;
-@synthesize successButton = _successButton;
+@synthesize titleLabel = _titleLabel;
 
 #pragma mark -
 
@@ -51,10 +46,6 @@
     NSRect imageRect = NSMakeRect(0.0, 0.0,
                                   self.imageView.image.size.width, self.imageView.image.size.height);
     return fitRectIntoRectWithDimension(imageRect, self.imageView.bounds, RectAxisVertical);
-}
-
-- (NSString *)assetDescription {
-    return self.descriptionTextField.stringValue;
 }
 
 -(void)dealloc {
@@ -86,17 +77,6 @@
     return _deleteButton;
 }
 
--(NSTextField *)descriptionTextField {
-    if (!_descriptionTextField) {
-        _descriptionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
-        _descriptionTextField.delegate = self;
-        [_descriptionTextField.cell setPlaceholderString:NSLocalizedString(@"Description", nil)];
-        [self addSubview:_descriptionTextField];
-    }
-
-    return _descriptionTextField;
-}
-
 -(void)drawRect:(NSRect)dirtyRect {
     self.backgroundColor = [NSColor clearColor];
 
@@ -105,46 +85,32 @@
     self.imageView.width = self.width - 20.0;
     self.imageView.y = self.height - self.imageView.height - 10.0;
 
-    self.descriptionTextField.width = self.imageView.width;
-    self.descriptionTextField.y = 20.0;
-
-    self.titleTextField.width = self.imageView.width;
-    self.titleTextField.y = NSMaxY(self.descriptionTextField.frame) + 10.0;
-
     self.infoLabel.width = self.imageView.width;
-    self.infoLabel.y = NSMaxY(self.titleTextField.frame) + 10.0;
+    self.infoLabel.y = 20.0;
 
-    self.progressIndicator.x = (self.imageView.width - self.progressIndicator.width) / 2;
-    self.progressIndicator.y = self.imageView.y + (self.imageView.height -
-                                                   self.progressIndicator.height) / 2;
+    self.titleLabel.width = self.imageView.width;
+    self.titleLabel.y = NSMaxY(self.infoLabel.frame) + 5.0;
 
-    self.successButton.x = MIN(self.actualImageRect.size.width + self.imageView.x,
-                               self.width - self.successButton.width);
-    self.successButton.y = self.imageView.y;
-
-    self.failureButton.x = self.successButton.x;
-    self.failureButton.y = self.successButton.y + 5.0;
+    self.progressIndicator.width = self.imageView.width;
+    self.progressIndicator.y = NSMaxY(self.titleLabel.frame) + 5.0;
 
     [super drawRect:dirtyRect];
-}
-
-- (NSButton *)failureButton {
-    if (!_failureButton) {
-        _failureButton = [[NSButton alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
-        _failureButton.action = @selector(failureClicked:);
-        _failureButton.bordered = NO;
-        _failureButton.hidden = YES;
-        _failureButton.image = [NSImage imageNamed:@"failure"];
-        _failureButton.target = self;
-        [self addSubview:_failureButton];
-    }
-
-    return _failureButton;
 }
 
 - (NSImageView *)imageView {
     if (!_imageView) {
         _imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 200.0)];
+
+#if 0
+        NSShadow *dropShadow = [[NSShadow alloc] init];
+        [dropShadow setShadowColor:[NSColor blackColor]];
+        [dropShadow setShadowOffset:NSMakeSize(0, -3.0)];
+        [dropShadow setShadowBlurRadius:3.0];
+
+        [_imageView setWantsLayer: YES];
+        [_imageView setShadow: dropShadow];
+#endif
+
         [self addSubview:_imageView];
     }
 
@@ -158,6 +124,9 @@
         [_infoLabel setBordered:NO];
         [_infoLabel setDrawsBackground:NO];
         [_infoLabel setEditable:NO];
+        [_infoLabel setFont:[NSFont fontWithName:@"Lucida Grande" size:11.0]];
+        [_infoLabel setHidden:YES];
+        [_infoLabel setTextColor:[BBUAppStyle defaultStyle].textColor];
         [self addSubview:_infoLabel];
     }
 
@@ -175,8 +144,9 @@
 -(NSProgressIndicator *)progressIndicator {
     if (!_progressIndicator) {
         _progressIndicator = [[NSProgressIndicator alloc]
-                              initWithFrame:NSMakeRect(0.0, 0.0, 64.0, 64.0)];
-        _progressIndicator.style = NSProgressIndicatorSpinningStyle;
+                              initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 5.0)];
+        _progressIndicator.indeterminate = YES;
+        _progressIndicator.style = NSProgressIndicatorBarStyle;
         [self addSubview:_progressIndicator];
     }
 
@@ -185,7 +155,6 @@
 
 - (void)setAssetDescription:(NSString *)assetDescription {
     self.draggedFile.asset.description = assetDescription;
-    self.descriptionTextField.stringValue = assetDescription;
 }
 
 - (void)setDraggedFile:(BBUDraggedFile *)draggedFile {
@@ -199,13 +168,12 @@
         self.assetDescription = self.draggedFile.asset.description;
     }
 
-    self.deleteButton.hidden = draggedFile.asset.URL == nil;
+    self.title = self.draggedFile.title;
     self.editable = draggedFile.asset.URL || draggedFile.error;
     self.imageView.image = self.draggedFile.image;
-    self.infoLabel.stringValue = [NSString stringWithFormat:@"%d x %d - %@", (int)draggedFile.width, (int)draggedFile.height, [NSByteCountFormatter stringFromByteCount:draggedFile.numberOfBytes countStyle:NSByteCountFormatterCountStyleFile]];
+    self.infoLabel.stringValue = [NSString stringWithFormat:@"%@, %@, %@", draggedFile.fileType, [NSByteCountFormatter stringFromByteCount:draggedFile.numberOfBytes countStyle:NSByteCountFormatterCountStyleFile], [NSDateFormatter localizedStringFromDate:draggedFile.mtime dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle]];
     self.showSuccess = draggedFile.asset.URL != nil;
     self.showFailure = draggedFile.error != nil;
-    self.title = self.draggedFile.title;
 
     [self.kvoController observe:draggedFile keyPath:@"asset" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
         if (draggedFile.asset.URL) {
@@ -228,75 +196,53 @@
     _editable = editable;
 
     if (editable) {
-        self.deleteButton.hidden = NO;
-
         [self.progressIndicator stopAnimation:nil];
         self.progressIndicator.hidden = YES;
-    } else {
-        self.deleteButton.hidden = YES;
 
+        self.infoLabel.hidden = NO;
+        self.titleLabel.stringValue = self.draggedFile.title;
+    } else {
         self.progressIndicator.hidden = NO;
         [self.progressIndicator startAnimation:nil];
+
+        self.infoLabel.hidden = YES;
+        self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %d%%",
+                                                                                   nil), 0];
     }
 
-    self.imageView.alphaValue = editable ? 1.0 : 0.5;
-
-    [self.descriptionTextField setEditable:editable];
-    [self.titleTextField setEditable:editable];
+    self.imageView.alphaValue = editable ? 1.0 : 0.3;
 }
 
 -(void)setShowFailure:(BOOL)showFailure {
     _showFailure = showFailure;
-
-    self.failureButton.hidden = !showFailure;
-
-    if (showFailure) {
-        self.successButton.hidden = YES;
-    }
 }
 
 -(void)setShowSuccess:(BOOL)showSuccess {
     _showSuccess = showSuccess;
-
-    self.successButton.hidden = !showSuccess;
-
-    if (showSuccess) {
-        self.failureButton.hidden = YES;
-    }
 }
 
 - (void)setTitle:(NSString *)title {
     self.draggedFile.asset.title = title;
-    self.titleTextField.stringValue = title;
-}
-
--(NSButton *)successButton {
-    if (!_successButton) {
-        _successButton = [[NSButton alloc] initWithFrame:NSMakeRect(0.0, 0.0, 32.0, 32.0)];
-        _successButton.action = @selector(successClicked:);
-        _successButton.bordered = NO;
-        _successButton.hidden = YES;
-        _successButton.image = [NSImage imageNamed:@"success"];
-        _successButton.target = self;
-        [self addSubview:_successButton];
-    }
-
-    return _successButton;
+    self.titleLabel.stringValue = title;
 }
 
 - (NSString *)title {
-    return self.titleTextField.stringValue;
+    return self.titleLabel.stringValue;
 }
 
-- (NSTextField *)titleTextField {
-    if (!_titleTextField) {
-        _titleTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
-        _titleTextField.delegate = self;
-        [_titleTextField.cell setPlaceholderString:NSLocalizedString(@"Title", nil)];
-        [self addSubview:_titleTextField];
+- (NSTextField *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
+        [_titleLabel setAlignment:NSCenterTextAlignment];
+        [_titleLabel setBordered:NO];
+        [_titleLabel setDrawsBackground:NO];
+        [_titleLabel setEditable:NO];
+        [_titleLabel setFont:[NSFont fontWithName:@"Lucida Grande" size:13.0]];
+        [_titleLabel setTextColor:[NSColor whiteColor]];
+        [self addSubview:_titleLabel];
     }
 
-    return _titleTextField;
+    return _titleLabel;
 }
 
 - (void)updateAsset {
@@ -315,35 +261,6 @@
     self.editable = NO;
 
     [self deleteAsset];
-}
-
--(void)failureClicked:(id)sender {
-    NSAlert* alert = [NSAlert alertWithError:self.draggedFile.error];
-    [alert runModal];
-}
-
--(void)successClicked:(id)sender {
-    if (self.draggedFile.url) {
-        [[NSWorkspace sharedWorkspace] openURL:self.draggedFile.url];
-    }
-}
-
-#pragma mark - NSTextFieldDelegate
-
--(BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    if (control == self.descriptionTextField) {
-        self.draggedFile.asset.description = fieldEditor.string;
-    }
-
-    if (control == self.titleTextField) {
-        self.draggedFile.asset.title = fieldEditor.string;
-    }
-
-    self.editable = NO;
-
-    [self updateAsset];
-
-    return YES;
 }
 
 @end
