@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import "BBUAppStyle.h"
 #import "BBUEmptyViewController.h"
 #import "CMAClient+SharedClient.h"
 
@@ -23,10 +24,7 @@
     [super awakeFromNib];
 
     self.view.wantsLayer = YES;
-    self.view.layer.backgroundColor = [NSColor colorWithRed:60.0/255.0
-                                                      green:60.0/255.0
-                                                       blue:60.0/255.0
-                                                      alpha:1.0].CGColor;
+    self.view.layer.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor.CGColor;
 
     for (NSView *aSubview in self.view.subviews) {
         [aSubview unregisterDraggedTypes];

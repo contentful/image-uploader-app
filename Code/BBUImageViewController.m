@@ -8,6 +8,7 @@
 
 #import <JNWCollectionView/JNWCollectionView.h>
 
+#import "BBUAppStyle.h"
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
 #import "BBUEmptyViewController.h"
@@ -67,6 +68,7 @@
 
     self.files = [@[] mutableCopy];
 
+    self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.draggingDelegate = self;
