@@ -17,8 +17,10 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 
 @property (nonatomic, readonly) CMAAsset* asset;
 @property (nonatomic) NSError* error;
+@property (nonatomic, readonly) NSString* fileType;
 @property (nonatomic, readonly) CGFloat height;
 @property (nonatomic, readonly) NSImage* image;
+@property (nonatomic, readonly) NSDate* mtime;
 @property (nonatomic, readonly) NSUInteger numberOfBytes;
 @property (nonatomic, readonly) NSString* title;
 @property (nonatomic, readonly) NSURL* url;

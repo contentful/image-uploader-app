@@ -103,6 +103,10 @@
     }];
 }
 
+-(NSString *)fileType {
+    return [self.originalFileName.pathExtension uppercaseString];
+}
+
 -(CGFloat)height {
     return self.image.size.height;
 }
@@ -119,6 +123,10 @@
         self.originalFileName = url.path.lastPathComponent;
     }
     return self;
+}
+
+-(NSDate *)mtime {
+    return self.fileAttributes[NSFileModificationDate];
 }
 
 -(NSUInteger)numberOfBytes {
