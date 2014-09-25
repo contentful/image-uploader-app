@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import <CocoaPods-Keys/ImageUploaderKeys.h>
 #import <DJProgressHUD/DJProgressHUD.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <SSKeychain/SSKeychain.h>
@@ -13,8 +14,6 @@
 #import "BBUAppDelegate.h"
 #import "BBUS3SettingsViewController.h"
 #import "CMAClient+SharedClient.h"
-
-static NSString* const kClientID = @"Your-OAuth-Client-Id";
 
 @interface BBUAppDelegate ()
 
@@ -138,7 +137,7 @@ static NSString* const kClientID = @"Your-OAuth-Client-Id";
     [DJProgressHUD showStatus:NSLocalizedString(@"Waiting for authentication...", nil)
                      FromView:self.mainView];
 
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", kClientID]];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", [ImageUploaderKeys new].contentfulOAuthClient]];
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
