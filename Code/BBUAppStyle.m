@@ -42,11 +42,19 @@
                            alpha:1.0];
 }
 
+-(NSFont*)subtitleFont {
+    return [NSFont fontWithName:@"Lucida Grande" size:11.0];
+}
+
 -(NSColor*)textColor {
     return [NSColor colorWithRed:139.0/255.0
                            green:139.0/255.0
                             blue:139.0/255.0
                            alpha:1.0];
+}
+
+-(NSFont*)titleFont {
+    return [NSFont fontWithName:@"Lucida Grande" size:13.0];
 }
 
 @end

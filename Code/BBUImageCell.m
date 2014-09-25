@@ -124,7 +124,7 @@
         [_infoLabel setBordered:NO];
         [_infoLabel setDrawsBackground:NO];
         [_infoLabel setEditable:NO];
-        [_infoLabel setFont:[NSFont fontWithName:@"Lucida Grande" size:11.0]];
+        [_infoLabel setFont:[BBUAppStyle defaultStyle].subtitleFont];
         [_infoLabel setHidden:YES];
         [_infoLabel setTextColor:[BBUAppStyle defaultStyle].textColor];
         [self addSubview:_infoLabel];
@@ -237,7 +237,7 @@
         [_titleLabel setBordered:NO];
         [_titleLabel setDrawsBackground:NO];
         [_titleLabel setEditable:NO];
-        [_titleLabel setFont:[NSFont fontWithName:@"Lucida Grande" size:13.0]];
+        [_titleLabel setFont:[BBUAppStyle defaultStyle].titleFont];
         [_titleLabel setTextColor:[NSColor whiteColor]];
         [self addSubview:_titleLabel];
     }
