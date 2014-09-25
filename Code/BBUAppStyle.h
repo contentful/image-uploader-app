@@ -13,6 +13,7 @@
 +(instancetype)defaultStyle;
 
 @property (nonatomic, readonly) NSColor* backgroundColor;
+@property (nonatomic, readonly) NSColor* darkBackgroundColor;
 @property (nonatomic, readonly) NSColor* selectionColor;
 @property (nonatomic, readonly) NSColor* textColor;
 

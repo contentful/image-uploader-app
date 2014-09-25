@@ -8,6 +8,7 @@
 
 #import <JNWCollectionView/JNWCollectionView.h>
 
+#import "BBUAppStyle.h"
 #import "BBUImageCell.h"
 #import "BBUMenuCell.h"
 #import "BBUMenuViewController.h"
@@ -26,6 +27,7 @@
 -(void)awakeFromNib {
     [super awakeFromNib];
 
+    self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].darkBackgroundColor;
     self.collectionView.dataSource = self;
 
     JNWCollectionViewGridLayout *gridLayout = [JNWCollectionViewGridLayout new];
