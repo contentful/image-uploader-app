@@ -16,7 +16,6 @@
 @property (nonatomic) NSString* assetDescription;
 @property (nonatomic, weak) BBUDraggedFile* draggedFile;
 @property (nonatomic) NSString* title;
-@property (nonatomic) BOOL userSelected;
 
 -(void)updateAsset;
 

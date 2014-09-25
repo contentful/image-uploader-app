@@ -44,13 +44,8 @@
 -(void)enumerateCellsInRelatedCollectionViewUsingBlock:(void (^)(BBUImageCell* cell))block {
     NSParameterAssert(block);
 
-    for (NSIndexPath* indexPath in self.relatedCollectionView.indexPathsForVisibleItems) {
+    for (NSIndexPath* indexPath in self.relatedCollectionView.indexPathsForSelectedItems) {
         BBUImageCell* cell = (BBUImageCell*)[self.relatedCollectionView cellForItemAtIndexPath:indexPath];
-
-        if (!cell.userSelected) {
-            continue;
-        }
-
         block(cell);
     }
 }

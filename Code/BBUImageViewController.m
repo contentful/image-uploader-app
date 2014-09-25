@@ -225,12 +225,19 @@
     return 1;
 }
 
+-(void)updateSelectionForCellAtIndexPath:(NSIndexPath*)indexPath {
+    BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = cell.selected ? [[BBUAppStyle defaultStyle] selectionColor] : [NSColor clearColor];
+}
+
 #pragma mark - JNWCollectionViewDelegate
 
+-(void)collectionView:(JNWCollectionView *)colview didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateSelectionForCellAtIndexPath:indexPath];
+}
+
 -(void)collectionView:(JNWCollectionView *)colview didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    BBUImageCell* cell = (BBUImageCell*)[colview cellForItemAtIndexPath:indexPath];
-    cell.userSelected = !cell.userSelected;
-    cell.backgroundColor = cell.userSelected ? [NSColor selectedControlColor] : [NSColor whiteColor];
+    [self updateSelectionForCellAtIndexPath:indexPath];
 }
 
 #pragma mark - NSUserNotificationCenterDelegate
