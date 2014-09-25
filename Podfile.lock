@@ -65,4 +65,4 @@ SPEC CHECKSUMS:
   Realm: b37a36efdb3b592febd267e3ebab464c25b4a3bb
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 
-COCOAPODS: 0.34.0.rc1
+COCOAPODS: 0.34.0.rc2
