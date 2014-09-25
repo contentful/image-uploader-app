@@ -23,6 +23,7 @@
 		A1B91A2219AF4FB5005F99F3 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A2019AF4FB5005F99F3 /* success@2x.png */; };
 		A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */; };
 		A1CCBD8319BF259300878BF9 /* BBUS3SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */; };
+		A1D01CEC19D4367000EB9531 /* BBUHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */; };
 		A1D01CEF19D43EE300EB9531 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CED19D43EE300EB9531 /* close.png */; };
 		A1D01CF019D43EE300EB9531 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CEE19D43EE300EB9531 /* Line.png */; };
 		A1D10C2819B5C23F009CA6CA /* contentful_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */; };
@@ -95,6 +96,8 @@
 		A1CCBD7F19BF259300878BF9 /* BBUS3SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUS3SettingsViewController.h; sourceTree = "<group>"; };
 		A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUS3SettingsViewController.m; sourceTree = "<group>"; };
 		A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BBUS3SettingsViewController.xib; path = ../Code/BBUS3SettingsViewController.xib; sourceTree = "<group>"; };
+		A1D01CEA19D4367000EB9531 /* BBUHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUHeaderView.h; sourceTree = "<group>"; };
+		A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUHeaderView.m; sourceTree = "<group>"; };
 		A1D01CED19D43EE300EB9531 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A1D01CEE19D43EE300EB9531 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
 		A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentful_logo_big.png; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
 				A1D912A419D19EAE007D00DD /* BBUEmptyViewController.h */,
 				A1D912A519D19EAE007D00DD /* BBUEmptyViewController.m */,
+				A1D01CEA19D4367000EB9531 /* BBUHeaderView.h */,
+				A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */,
 				A1EF194F199CA50A00AE864E /* BBUImageCell.h */,
 				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
 				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
@@ -418,6 +423,7 @@
 				A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */,
 				A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */,
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,
+				A1D01CEC19D4367000EB9531 /* BBUHeaderView.m in Sources */,
 				A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */,
 				A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */,
 				A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */,

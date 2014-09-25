@@ -9,12 +9,13 @@
 #import <JNWCollectionView/JNWCollectionView.h>
 
 #import "BBUAppStyle.h"
+#import "BBUHeaderView.h"
 #import "BBUImageCell.h"
 #import "BBUMenuCell.h"
 #import "BBUMenuViewController.h"
 #import "NSView+Geometry.h"
 
-@interface BBUMenuViewController () <JNWCollectionViewDataSource>
+@interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewGridLayoutDelegate>
 
 @property (nonatomic, readonly) JNWCollectionView* collectionView;
 
@@ -31,16 +32,24 @@
     self.collectionView.dataSource = self;
 
     JNWCollectionViewGridLayout *gridLayout = [JNWCollectionViewGridLayout new];
+    gridLayout.delegate = self;
     gridLayout.itemSize = CGSizeMake(self.view.width, 50);
     self.collectionView.collectionViewLayout = gridLayout;
 
     [self.collectionView registerClass:BBUMenuCell.class
             forCellWithReuseIdentifier:NSStringFromClass(self.class)];
+    [self.collectionView registerClass:BBUHeaderView.class forSupplementaryViewOfKind:JNWCollectionViewGridLayoutHeaderKind withReuseIdentifier:NSStringFromClass(self.class)];
     [self.collectionView reloadData];
 }
 
 -(JNWCollectionView *)collectionView {
     return (JNWCollectionView*)self.view;
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSTableViewSelectionDidChangeNotification
+                                                  object:nil];
 }
 
 -(void)enumerateCellsInRelatedCollectionViewUsingBlock:(void (^)(BBUImageCell* cell))block {
@@ -52,7 +61,22 @@
     }
 }
 
-#pragma mark -
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(selectionDidChange:)
+                                                     name:NSTableViewSelectionDidChangeNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
+-(void)selectionDidChange:(NSNotification*)note {
+    [self.collectionView reloadData];
+}
+
+#pragma mark - JNWCollectionViewDataSource
 
 -(JNWCollectionViewCell *)collectionView:(JNWCollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,10 +114,19 @@
 
     return cell;
 }
+-(CGFloat)collectionView:(JNWCollectionView *)collectionView heightForHeaderInSection:(NSInteger)index {
+    return self.relatedCollectionView.indexPathsForSelectedItems.count > 0 ? 0.0 : 40.0;
+}
 
 -(NSUInteger)collectionView:(JNWCollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return self.relatedCollectionView.indexPathsForSelectedItems.count > 0 ? 2 : 0;
+}
+
+-(JNWCollectionViewReusableView *)collectionView:(JNWCollectionView *)collectionView viewForSupplementaryViewOfKind:(NSString *)kind inSection:(NSInteger)section {
+    BBUHeaderView* headerView = (BBUHeaderView*)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifer:NSStringFromClass(self.class)];
+    headerView.titleLabel.stringValue = NSLocalizedString(@"No selection", nil);
+    return headerView;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(JNWCollectionView *)collectionView {

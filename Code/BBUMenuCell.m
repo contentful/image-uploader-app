@@ -26,6 +26,7 @@
 #pragma mark -
 
 -(void)drawRect:(NSRect)dirtyRect {
+    self.backgroundColor = [NSColor clearColor];
 
     self.titleLabel.frame = self.bounds;
     self.titleLabel.height = self.height / 2;

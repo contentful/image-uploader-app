@@ -35,6 +35,13 @@
                            alpha:1.0];
 }
 
+-(NSColor*)lightBackgroundColor {
+    return [NSColor colorWithRed:83.0/255.0
+                           green:90.0/255.0
+                            blue:98.0/255.0
+                           alpha:1.0];
+}
+
 -(NSColor*)selectionColor {
     return [NSColor colorWithRed:77.0/255.0
                            green:81.0/255.0

@@ -12,19 +12,21 @@
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
 #import "BBUEmptyViewController.h"
+#import "BBUHeaderView.h"
 #import "BBUImageCell.h"
 #import "BBUImageViewController.h"
 #import "BBUS3Uploader+SharedSettings.h"
 #import "CMAClient+SharedClient.h"
 #import "NSView+Geometry.h"
 
-@interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource, JNWCollectionViewDelegate, NSUserNotificationCenterDelegate>
+@interface BBUImageViewController () <BBUCollectionViewDelegate, JNWCollectionViewDataSource, JNWCollectionViewDelegate, JNWCollectionViewGridLayoutDelegate, NSUserNotificationCenterDelegate>
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSString* currentSpaceId;
 @property (nonatomic, readonly) NSArray* filteredFiles;
 @property (nonatomic) NSMutableArray* files;
 @property (weak) IBOutlet NSSegmentedControl *filterSelection;
+@property (nonatomic) BBUHeaderView* headerView;
 @property (nonatomic, readonly) BBUEmptyViewController* helpViewController;
 @property (nonatomic) NSUInteger numberOfUploads;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
@@ -74,12 +76,16 @@
     self.collectionView.draggingDelegate = self;
 
     JNWCollectionViewGridLayout *gridLayout = [JNWCollectionViewGridLayout new];
+    gridLayout.delegate = self;
     gridLayout.itemPaddingEnabled = NO;
     gridLayout.itemSize = CGSizeMake(300, 290);
     self.collectionView.collectionViewLayout = gridLayout;
 
     [self.collectionView registerClass:BBUImageCell.class
             forCellWithReuseIdentifier:NSStringFromClass(self.class)];
+    [self.collectionView registerClass:BBUHeaderView.class
+            forSupplementaryViewOfKind:JNWCollectionViewGridLayoutHeaderKind
+                   withReuseIdentifier:NSStringFromClass(self.class)];
     [self.collectionView reloadData];
 
     self.helpViewController.view.hidden = [self collectionView:self.collectionView
@@ -145,6 +151,12 @@
     }
 }
 
+- (void)updateHeaderView {
+    NSUInteger percentage = self.totalNumberOfUploads == 0 ? 0 : (self.numberOfUploads / self.totalNumberOfUploads) * 100;
+
+    self.headerView.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploaded %d of %d file(s) %d%% done.", nil), self.numberOfUploads, self.totalNumberOfUploads, percentage];
+}
+
 - (void)windowResize {
     self.helpViewController.view.width = self.view.window.frame.size.width;
     self.helpViewController.view.height = self.view.height;
@@ -166,6 +178,7 @@
     }
 
     self.filterSelection.enabled = draggedFiles.count > 0;
+    self.headerView.hidden = draggedFiles.count == 0;
     self.helpViewController.view.hidden = draggedFiles.count > 0;
 
     [self.files addObjectsFromArray:draggedFiles];
@@ -181,6 +194,10 @@
 
             self.totalNumberOfUploads++;
 
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self updateHeaderView];
+            });
+
             NSOperation* operation = [draggedFile creationOperationForSpace:space];
 
             operation.completionBlock = ^{
@@ -191,8 +208,11 @@
                 }
 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.headerView.hidden = self.uploadQueue.operationCount == 0;
+
                     [self.collectionView reloadData];
                     [self postSuccessNotificationIfNeeded];
+                    [self updateHeaderView];
                 });
             };
 
@@ -221,11 +241,25 @@
     return self.filteredFiles.count;
 }
 
+-(JNWCollectionViewReusableView *)collectionView:(JNWCollectionView *)collectionView viewForSupplementaryViewOfKind:(NSString *)kind inSection:(NSInteger)section {
+    BBUHeaderView* headerView = (BBUHeaderView*)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifer:NSStringFromClass(self.class)];
+    headerView.backgroundColor = [BBUAppStyle defaultStyle].lightBackgroundColor;
+    headerView.hidden = self.headerView.isHidden;
+
+    self.headerView = headerView;
+    self.headerView.closeButton.hidden = NO;
+    
+    return headerView;
+}
+
 -(NSInteger)numberOfSectionsInCollectionView:(JNWCollectionView *)collectionView {
     return 1;
 }
 
 -(void)updateSelectionForCellAtIndexPath:(NSIndexPath*)indexPath {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NSTableViewSelectionDidChangeNotification
+                                                        object:self.collectionView];
+
     BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = cell.selected ? [[BBUAppStyle defaultStyle] selectionColor] : [NSColor clearColor];
 }
@@ -238,6 +272,12 @@
 
 -(void)collectionView:(JNWCollectionView *)colview didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self updateSelectionForCellAtIndexPath:indexPath];
+}
+
+#pragma mark - JNWCollectionViewGridLayoutDelegate
+
+-(CGFloat)collectionView:(JNWCollectionView *)collectionView heightForHeaderInSection:(NSInteger)index {
+    return self.headerView.isHidden ? 0.0 : 40.0;
 }
 
 #pragma mark - NSUserNotificationCenterDelegate
