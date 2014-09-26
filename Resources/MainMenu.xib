@@ -288,7 +288,7 @@
         <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,7 +340,7 @@
                     <constraint firstItem="UVq-Jw-jv9" firstAttribute="bottom" secondItem="grA-As-ZiJ" secondAttribute="bottom" id="ZIu-dS-CgF"/>
                     <constraint firstItem="UVq-Jw-jv9" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="dWC-Jw-4Gf"/>
                     <constraint firstAttribute="trailing" secondItem="UVq-Jw-jv9" secondAttribute="trailing" constant="183" id="qmt-X2-iRY"/>
-                    <constraint firstItem="grA-As-ZiJ" firstAttribute="leading" secondItem="UVq-Jw-jv9" secondAttribute="trailing" constant="1" id="w5V-3k-pgf"/>
+                    <constraint firstItem="grA-As-ZiJ" firstAttribute="leading" secondItem="UVq-Jw-jv9" secondAttribute="trailing" id="w5V-3k-pgf"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="2E82F3DE-736C-4B6D-A420-E0A548A4D969" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="small" id="fp6-a2-taM">

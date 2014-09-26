@@ -70,7 +70,6 @@
 
     self.files = [@[] mutableCopy];
 
-    self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.draggingDelegate = self;
@@ -92,6 +91,12 @@
                                         numberOfItemsInSection:0] > 0;
     self.helpViewController.view.y = 0.0;
     self.helpViewController.view.width = self.view.window.frame.size.width;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+                       self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
+                       self.collectionView.borderType = NSNoBorder;
+                   });
 }
 
 - (BBUCollectionView *)collectionView {

@@ -28,7 +28,6 @@
 -(void)awakeFromNib {
     [super awakeFromNib];
 
-    self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].darkBackgroundColor;
     self.collectionView.dataSource = self;
 
     JNWCollectionViewGridLayout *gridLayout = [JNWCollectionViewGridLayout new];
@@ -40,6 +39,12 @@
             forCellWithReuseIdentifier:NSStringFromClass(self.class)];
     [self.collectionView registerClass:BBUHeaderView.class forSupplementaryViewOfKind:JNWCollectionViewGridLayoutHeaderKind withReuseIdentifier:NSStringFromClass(self.class)];
     [self.collectionView reloadData];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+                       self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].darkBackgroundColor;
+                       self.collectionView.borderType = NSNoBorder;
+                   });
 }
 
 -(JNWCollectionView *)collectionView {
