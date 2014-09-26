@@ -22,6 +22,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 @property (nonatomic, readonly) NSImage* image;
 @property (nonatomic, readonly) NSDate* mtime;
 @property (nonatomic, readonly) NSUInteger numberOfBytes;
+@property (nonatomic) CGFloat progress;
 @property (nonatomic, readonly) NSString* title;
 @property (nonatomic, readonly) NSURL* url;
 @property (nonatomic, readonly) CGFloat width;

@@ -145,7 +145,9 @@
     if (!_progressIndicator) {
         _progressIndicator = [[NSProgressIndicator alloc]
                               initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 5.0)];
-        _progressIndicator.indeterminate = YES;
+        _progressIndicator.doubleValue = self.draggedFile.progress;
+        _progressIndicator.indeterminate = NO;
+        _progressIndicator.maxValue = 1.0;
         _progressIndicator.style = NSProgressIndicatorBarStyle;
         [self addSubview:_progressIndicator];
     }
@@ -189,6 +191,14 @@
         }
     }];
 
+    [self.kvoController observe:draggedFile keyPath:@"progress" options:0 block:^(id observer, id object, NSDictionary *change) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.progressIndicator.doubleValue = self.draggedFile.progress;
+
+            [self updateTitleLabel];
+        });
+    }];
+
     [self setNeedsDisplay:YES];
 }
 
@@ -196,18 +206,15 @@
     _editable = editable;
 
     if (editable) {
-        [self.progressIndicator stopAnimation:nil];
         self.progressIndicator.hidden = YES;
 
         self.infoLabel.hidden = NO;
         self.titleLabel.stringValue = self.draggedFile.title;
     } else {
         self.progressIndicator.hidden = NO;
-        [self.progressIndicator startAnimation:nil];
 
         self.infoLabel.hidden = YES;
-        self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %d%%",
-                                                                                   nil), 0];
+        [self updateTitleLabel];
     }
 
     self.imageView.alphaValue = editable ? 1.0 : 0.3;
@@ -253,6 +260,10 @@
             self.showFailure = YES;
         }
     }];
+}
+
+-(void)updateTitleLabel {
+    self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %.0f%%", nil), self.draggedFile.progress * 100];
 }
 
 #pragma mark - Actions

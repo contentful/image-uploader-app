@@ -42,6 +42,7 @@ static const NSTimeInterval kProcessWait = 5.0;
     [self willChangeValueForKey:@"isExecuting"];
 
     self.done = done;
+    self.draggedFile.progress = done ? 1.0 : self.draggedFile.progress;
 
     [self didChangeValueForKey:@"isExecuting"];
     [self didChangeValueForKey:@"isFinished"];
@@ -54,6 +55,8 @@ static const NSTimeInterval kProcessWait = 5.0;
                 [self changeOperationStatusWithDone:YES];
                 return;
             }
+
+            self.draggedFile.progress = 0.8;
 
             if (self.draggedFile.asset.URL) {
                 [self.draggedFile.asset publishWithSuccess:^{
@@ -120,10 +123,16 @@ static const NSTimeInterval kProcessWait = 5.0;
             return;
         }
 
+        self.draggedFile.progress = 0.4;
+
         NSDictionary* uploads = @{ self.draggedFile.asset.locale: uploadURL.absoluteString };
 
         [self.draggedFile.asset updateWithLocalizedUploads:uploads success:^{
+            self.draggedFile.progress = 0.5;
+
             [self.draggedFile.asset processWithSuccess:^{
+                self.draggedFile.progress = 0.6;
+
                 [self handleProcessing];
             } failure:^(CDAResponse *response, NSError *error) {
                 [self changeOperationStatusWithDone:YES];

@@ -35,11 +35,14 @@
 -(void)createWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
     NSParameterAssert(completionHandler);
 
+    self.progress = 0.0;
+
     [self.space createAssetWithTitle:@{ self.space.defaultLocale: self.title ?: @"" }
                     description:nil
                    fileToUpload:nil
                         success:^(CDAResponse *response, CMAAsset *asset) {
                             self.asset = asset;
+                            self.progress = 0.2;
 
                             completionHandler(YES);
                         } failure:^(CDAResponse *response, NSError *error) {
