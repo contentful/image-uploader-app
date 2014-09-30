@@ -11,6 +11,7 @@
 
 #import "BBUAppStyle.h"
 #import "BBUDraggedFile.h"
+#import "BBUDraggedFileFormatter.h"
 #import "BBUImageCell.h"
 #import "NSView+Geometry.h"
 
@@ -19,12 +20,14 @@
 @property (nonatomic, readonly) NSRect actualImageRect;
 @property (nonatomic, readonly) NSButton* deleteButton;
 @property (nonatomic, getter = isEditable) BOOL editable;
+@property (nonatomic, readonly) NSImageView* failedImageView;
 @property (nonatomic, readonly) NSImageView* imageView;
 @property (nonatomic, readonly) NSTextField* infoLabel;
 @property (nonatomic, readonly) FBKVOController* kvoController;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
 @property (nonatomic) BOOL showFailure;
 @property (nonatomic) BOOL showSuccess;
+@property (nonatomic, readonly) NSImageView* successImageView;
 @property (nonatomic, readonly) NSTextField* titleLabel;
 
 @end
@@ -34,10 +37,12 @@
 @implementation BBUImageCell
 
 @synthesize deleteButton = _deleteButton;
+@synthesize failedImageView = _failedImageView;
 @synthesize imageView = _imageView;
 @synthesize infoLabel = _infoLabel;
 @synthesize kvoController = _kvoController;
 @synthesize progressIndicator = _progressIndicator;
+@synthesize successImageView = _successImageView;
 @synthesize titleLabel = _titleLabel;
 
 #pragma mark -
@@ -78,6 +83,14 @@
 }
 
 -(void)drawRect:(NSRect)dirtyRect {
+    if (self.trackingAreas.count == 0) {
+        NSTrackingArea* trackingArea = [[NSTrackingArea alloc]
+                                        initWithRect:self.bounds
+                                        options:NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways
+                                        owner:self userInfo:nil];
+        [self addTrackingArea:trackingArea];
+    }
+
     self.backgroundColor = [NSColor clearColor];
 
     self.deleteButton.y = self.height - self.deleteButton.height;
@@ -94,7 +107,25 @@
     self.progressIndicator.width = self.imageView.width;
     self.progressIndicator.y = NSMaxY(self.titleLabel.frame) + 5.0;
 
+    self.failedImageView.x = MIN(self.actualImageRect.size.width + self.imageView.x + self.failedImageView.width,
+                                 self.width - self.failedImageView.width);
+    self.failedImageView.y = self.imageView.y + self.actualImageRect.size.height - self.failedImageView.height;
+
+    self.successImageView.x = self.failedImageView.x;
+    self.successImageView.y = self.failedImageView.y;
+
     [super drawRect:dirtyRect];
+}
+
+- (NSImageView *)failedImageView {
+    if (!_failedImageView) {
+        _failedImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 16.0, 16.0)];
+        _failedImageView.hidden = YES;
+        _failedImageView.image = [NSImage imageNamed:@"Failed"];
+        [self addSubview:_failedImageView];
+    }
+
+    return _failedImageView;
 }
 
 - (NSImageView *)imageView {
@@ -141,6 +172,14 @@
     return _kvoController;
 }
 
+-(void)mouseEntered:(NSEvent *)theEvent {
+    self.deleteButton.hidden = NO;
+}
+
+-(void)mouseExited:(NSEvent *)theEvent {
+    self.deleteButton.hidden = YES;
+}
+
 -(NSProgressIndicator *)progressIndicator {
     if (!_progressIndicator) {
         _progressIndicator = [[NSProgressIndicator alloc]
@@ -173,7 +212,7 @@
     self.title = self.draggedFile.title;
     self.editable = draggedFile.asset.URL || draggedFile.error;
     self.imageView.image = self.draggedFile.image;
-    self.infoLabel.stringValue = [NSString stringWithFormat:@"%@, %@, %@", draggedFile.fileType, [NSByteCountFormatter stringFromByteCount:draggedFile.numberOfBytes countStyle:NSByteCountFormatterCountStyleFile], [NSDateFormatter localizedStringFromDate:draggedFile.mtime dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle]];
+    self.infoLabel.stringValue = [[BBUDraggedFileFormatter new] stringForObjectValue:self.draggedFile];
     self.showSuccess = draggedFile.asset.URL != nil;
     self.showFailure = draggedFile.error != nil;
 
@@ -222,15 +261,40 @@
 
 -(void)setShowFailure:(BOOL)showFailure {
     _showFailure = showFailure;
+
+    if (showFailure) {
+        self.failedImageView.hidden = NO;
+        self.successImageView.hidden = YES;
+    } else {
+        self.failedImageView.hidden = YES;
+    }
 }
 
 -(void)setShowSuccess:(BOOL)showSuccess {
     _showSuccess = showSuccess;
+
+    if (showSuccess) {
+        self.failedImageView.hidden = YES;
+        self.successImageView.hidden = NO;
+    } else {
+        self.successImageView.hidden = YES;
+    }
 }
 
 - (void)setTitle:(NSString *)title {
     self.draggedFile.asset.title = title;
     self.titleLabel.stringValue = title;
+}
+
+- (NSImageView *)successImageView {
+    if (!_successImageView) {
+        _successImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 16.0, 16.0)];
+        _successImageView.hidden = YES;
+        _successImageView.image = [NSImage imageNamed:@"Check"];
+        [self addSubview:_successImageView];
+    }
+
+    return _successImageView;
 }
 
 - (NSString *)title {

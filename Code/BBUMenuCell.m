@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import "BBUAppStyle.h"
 #import "BBUMenuCell.h"
 #import "NSView+Geometry.h"
 
@@ -28,19 +29,21 @@
 -(void)drawRect:(NSRect)dirtyRect {
     self.backgroundColor = [NSColor clearColor];
 
-    self.titleLabel.frame = self.bounds;
-    self.titleLabel.height = self.height / 2;
-    self.titleLabel.y = self.titleLabel.height;
+    self.titleLabel.x = 20.0;
+    self.titleLabel.width = self.width - 40.0;
+    self.titleLabel.height = 20.0;
+    self.titleLabel.y = self.height - self.titleLabel.height;
 
-    self.entryField.frame = self.bounds;
-    self.entryField.height = self.titleLabel.height;
+    self.entryField.frame = self.titleLabel.frame;
+    self.entryField.height = self.height - self.titleLabel.height - 10.0;
+    self.entryField.y = 0.0;
 
     [super drawRect:dirtyRect];
 }
 
 - (NSTextField *)entryField {
     if (!_entryField) {
-        _entryField = [[NSTextField alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 20.0)];
+        _entryField = [[NSTextField alloc] initWithFrame:self.bounds];
         _entryField.delegate = self;
         [_entryField.cell setPlaceholderString:self.title];
         [self addSubview:_entryField];
@@ -60,13 +63,19 @@
 -(NSTextField *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[NSTextField alloc] initWithFrame:self.bounds];
-        _titleLabel.alignment = NSCenterTextAlignment;
-        [_titleLabel setDrawsBackground:NO];
+        [_titleLabel setBackgroundColor:[BBUAppStyle defaultStyle].darkBackgroundColor];
+        [_titleLabel setBordered:NO];
         [_titleLabel setEditable:NO];
+        [_titleLabel setFont:[BBUAppStyle defaultStyle].titleFont];
+        [_titleLabel setTextColor:[NSColor whiteColor]];
         [self addSubview:_titleLabel];
     }
 
     return _titleLabel;
+}
+
+-(NSString*)value {
+    return self.entryField.stringValue;
 }
 
 #pragma mark - NSTextFieldDelegate
@@ -81,6 +90,18 @@
     if (self.textChangedHandler) {
         self.textChangedHandler(self, self.entryField.stringValue);
     }
+}
+
+-(BOOL)control:(NSControl*)control
+      textView:(NSTextView*)textView doCommandBySelector:(SEL)commandSelector {
+    BOOL result = NO;
+
+    if (commandSelector == @selector(insertNewline:)) {
+        [textView insertNewlineIgnoringFieldEditor:self];
+        result = YES;
+    }
+
+    return result;
 }
 
 @end

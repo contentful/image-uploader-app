@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A10FC6D619AE11D600C45BA3 /* failure.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC6D519AE11D600C45BA3 /* failure.png */; };
+		A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D832C19D5EBBE00314284 /* BBUDragHintView.m */; };
 		A10FC71419AE324400C45BA3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10FC71319AE324400C45BA3 /* Realm.framework */; };
 		A12039C419AE357F0097871C /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A10FC71319AE324400C45BA3 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */; };
@@ -23,9 +23,12 @@
 		A16E72B119D5E8E900D82C93 /* Rectangle 20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */; };
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
-		A1B91A2119AF4FB5005F99F3 /* failure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */; };
+		A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */; };
+		A1CA2AAA19D9B1C700635092 /* BBUConfirmationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA2AA919D9B1C700635092 /* BBUConfirmationFooter.m */; };
 		A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */; };
 		A1CCBD8319BF259300878BF9 /* BBUS3SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */; };
+		A1CFC35C19D95CB0003F2EF9 /* Failed.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CFC35A19D95CB0003F2EF9 /* Failed.png */; };
+		A1CFC35D19D95CB0003F2EF9 /* Failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CFC35B19D95CB0003F2EF9 /* Failed@2x.png */; };
 		A1D01CEC19D4367000EB9531 /* BBUHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */; };
 		A1D01CEF19D43EE300EB9531 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CED19D43EE300EB9531 /* close.png */; };
 		A1D01CF019D43EE300EB9531 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CEE19D43EE300EB9531 /* Line.png */; };
@@ -77,7 +80,8 @@
 /* Begin PBXFileReference section */
 		79302297BDDD4879A2F47997 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.debug.xcconfig"; sourceTree = "<group>"; };
-		A10FC6D519AE11D600C45BA3 /* failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failure.png; sourceTree = "<group>"; };
+		A10D832B19D5EBBE00314284 /* BBUDragHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDragHintView.h; sourceTree = "<group>"; };
+		A10D832C19D5EBBE00314284 /* BBUDragHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDragHintView.m; sourceTree = "<group>"; };
 		A10FC71319AE324400C45BA3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/Realm/realm-cocoapods-0.83.0/osx/Realm.framework"; sourceTree = "<group>"; };
 		A14BDCA319D36E29008B8E7B /* BBUAppStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAppStyle.h; sourceTree = "<group>"; };
 		A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAppStyle.m; sourceTree = "<group>"; };
@@ -98,10 +102,15 @@
 		A19FB0D319A3445500A5659C /* BBUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuViewController.m; sourceTree = "<group>"; };
 		A19FB0D519A347BE00A5659C /* BBUMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuCell.h; sourceTree = "<group>"; };
 		A19FB0D619A347BE00A5659C /* BBUMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuCell.m; sourceTree = "<group>"; };
-		A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failure@2x.png"; sourceTree = "<group>"; };
+		A1CA18A419D993D6001888AC /* BBUDraggedFileFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFileFormatter.h; sourceTree = "<group>"; };
+		A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFileFormatter.m; sourceTree = "<group>"; };
+		A1CA2AA819D9B1C700635092 /* BBUConfirmationFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUConfirmationFooter.h; sourceTree = "<group>"; };
+		A1CA2AA919D9B1C700635092 /* BBUConfirmationFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUConfirmationFooter.m; sourceTree = "<group>"; };
 		A1CCBD7F19BF259300878BF9 /* BBUS3SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUS3SettingsViewController.h; sourceTree = "<group>"; };
 		A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUS3SettingsViewController.m; sourceTree = "<group>"; };
 		A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBUS3SettingsViewController.xib; sourceTree = "<group>"; };
+		A1CFC35A19D95CB0003F2EF9 /* Failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Failed.png; sourceTree = "<group>"; };
+		A1CFC35B19D95CB0003F2EF9 /* Failed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Failed@2x.png"; sourceTree = "<group>"; };
 		A1D01CEA19D4367000EB9531 /* BBUHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUHeaderView.h; sourceTree = "<group>"; };
 		A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUHeaderView.m; sourceTree = "<group>"; };
 		A1D01CED19D43EE300EB9531 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
@@ -160,6 +169,12 @@
 				A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */,
 				A1F834D819A2033300282AE9 /* BBUCollectionView.h */,
 				A1F834D919A2033300282AE9 /* BBUCollectionView.m */,
+				A1CA2AA819D9B1C700635092 /* BBUConfirmationFooter.h */,
+				A1CA2AA919D9B1C700635092 /* BBUConfirmationFooter.m */,
+				A1CA18A419D993D6001888AC /* BBUDraggedFileFormatter.h */,
+				A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */,
+				A10D832B19D5EBBE00314284 /* BBUDragHintView.h */,
+				A10D832C19D5EBBE00314284 /* BBUDragHintView.m */,
 				A1D912A419D19EAE007D00DD /* BBUEmptyViewController.h */,
 				A1D912A519D19EAE007D00DD /* BBUEmptyViewController.m */,
 				A1D01CEA19D4367000EB9531 /* BBUHeaderView.h */,
@@ -251,26 +266,26 @@
 		A1D4A815199BEDCC0021EEA6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A16E72A419D5E8E900D82C93 /* Check.png */,
-				A16E72A519D5E8E900D82C93 /* Check@2x.png */,
-				A16E72A619D5E8E900D82C93 /* close@2x.png */,
-				A16E72A719D5E8E900D82C93 /* cloud@2x.png */,
-				A16E72A819D5E8E900D82C93 /* Line@2x.png */,
-				A16E72A919D5E8E900D82C93 /* Logo@2x.png */,
-				A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */,
 				A1D912A619D19EAE007D00DD /* BBUEmptyViewController.xib */,
 				A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */,
+				A16E72A419D5E8E900D82C93 /* Check.png */,
+				A16E72A519D5E8E900D82C93 /* Check@2x.png */,
 				A1D01CED19D43EE300EB9531 /* close.png */,
+				A16E72A619D5E8E900D82C93 /* close@2x.png */,
 				A1D9129E19D19DC5007D00DD /* cloud.png */,
+				A16E72A719D5E8E900D82C93 /* cloud@2x.png */,
 				A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */,
-				A10FC6D519AE11D600C45BA3 /* failure.png */,
-				A1B91A1F19AF4FB5005F99F3 /* failure@2x.png */,
+				A1CFC35A19D95CB0003F2EF9 /* Failed.png */,
+				A1CFC35B19D95CB0003F2EF9 /* Failed@2x.png */,
 				A1D912A919D19EE0007D00DD /* Fonts */,
 				A1D4A7F9199BED850021EEA6 /* Images.xcassets */,
 				A1D01CEE19D43EE300EB9531 /* Line.png */,
+				A16E72A819D5E8E900D82C93 /* Line@2x.png */,
 				A1D912A219D19E4C007D00DD /* Logo.png */,
+				A16E72A919D5E8E900D82C93 /* Logo@2x.png */,
 				A1D4A818199BEE970021EEA6 /* MainMenu.xib */,
 				A1D9129F19D19DC5007D00DD /* Rectangle 20.png */,
+				A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -357,17 +372,17 @@
 				A1D4A7FA199BED850021EEA6 /* Images.xcassets in Resources */,
 				A1D4A817199BEE8E0021EEA6 /* Credits.rtf in Resources */,
 				A1D01CF019D43EE300EB9531 /* Line.png in Resources */,
-				A1B91A2119AF4FB5005F99F3 /* failure@2x.png in Resources */,
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
 				A16E72AF19D5E8E900D82C93 /* Line@2x.png in Resources */,
 				A1D912A119D19DC5007D00DD /* Rectangle 20.png in Resources */,
 				A16E72AC19D5E8E900D82C93 /* Check@2x.png in Resources */,
 				A16E72AE19D5E8E900D82C93 /* cloud@2x.png in Resources */,
-				A10FC6D619AE11D600C45BA3 /* failure.png in Resources */,
+				A1CFC35D19D95CB0003F2EF9 /* Failed@2x.png in Resources */,
 				A16E72B119D5E8E900D82C93 /* Rectangle 20@2x.png in Resources */,
 				A1D912A019D19DC5007D00DD /* cloud.png in Resources */,
 				A1D912A319D19E4C007D00DD /* Logo.png in Resources */,
 				A16E72AD19D5E8E900D82C93 /* close@2x.png in Resources */,
+				A1CFC35C19D95CB0003F2EF9 /* Failed.png in Resources */,
 				A1D912A819D19EAE007D00DD /* BBUEmptyViewController.xib in Resources */,
 				A16E72AB19D5E8E900D82C93 /* Check.png in Resources */,
 				A1CCBD8319BF259300878BF9 /* BBUS3SettingsViewController.xib in Resources */,
@@ -432,13 +447,16 @@
 				A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */,
 				A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */,
 				A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */,
+				A1CA2AAA19D9B1C700635092 /* BBUConfirmationFooter.m in Sources */,
 				A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */,
+				A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */,
 				A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */,
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,
 				A1D01CEC19D4367000EB9531 /* BBUHeaderView.m in Sources */,
 				A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */,
 				A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */,
 				A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */,
+				A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */,
 				A1D912A719D19EAE007D00DD /* BBUEmptyViewController.m in Sources */,
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
 				A1D5AC4119C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m in Sources */,

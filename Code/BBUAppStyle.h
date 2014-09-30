@@ -14,7 +14,9 @@
 
 @property (nonatomic, readonly) NSColor* backgroundColor;
 @property (nonatomic, readonly) NSColor* darkBackgroundColor;
+@property (nonatomic, readonly) NSColor* informationColor;
 @property (nonatomic, readonly) NSColor* lightBackgroundColor;
+@property (nonatomic, readonly) NSColor* primaryButtonColor;
 @property (nonatomic, readonly) NSColor* selectionColor;
 @property (nonatomic, readonly) NSFont* subtitleFont;
 @property (nonatomic, readonly) NSColor* textColor;

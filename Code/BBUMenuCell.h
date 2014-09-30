@@ -18,5 +18,6 @@ typedef void(^BBUMenuTextChanged)(BBUMenuCell* menuCell, NSString* text);
 @property (nonatomic, copy) BBUMenuEndEditing endEditingHandler;
 @property (nonatomic, copy) BBUMenuTextChanged textChangedHandler;
 @property (nonatomic) NSString* title;
+@property (nonatomic, readonly) NSString* value;
 
 @end

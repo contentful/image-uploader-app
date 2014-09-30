@@ -35,11 +35,19 @@
                            alpha:1.0];
 }
 
+-(NSColor*)informationColor {
+    return [NSColor colorWithCalibratedRed:0.800 green:0.761 blue:0.463 alpha:1.000];
+}
+
 -(NSColor*)lightBackgroundColor {
     return [NSColor colorWithRed:83.0/255.0
                            green:90.0/255.0
                             blue:98.0/255.0
                            alpha:1.0];
+}
+
+-(NSColor*)primaryButtonColor {
+    return [NSColor colorWithCalibratedRed:0.271 green:0.506 blue:0.847 alpha:1.000];
 }
 
 -(NSColor*)selectionColor {

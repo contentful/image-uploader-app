@@ -11,6 +11,8 @@
 #import "BBUAppStyle.h"
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
+#import "BBUDraggedFileFormatter.h"
+#import "BBUDragHintView.h"
 #import "BBUEmptyViewController.h"
 #import "BBUHeaderView.h"
 #import "BBUImageCell.h"
@@ -23,11 +25,13 @@
 
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSString* currentSpaceId;
+@property (nonatomic, readonly) BBUDragHintView* dragHintView;
 @property (nonatomic, readonly) NSArray* filteredFiles;
 @property (nonatomic) NSMutableArray* files;
 @property (weak) IBOutlet NSSegmentedControl *filterSelection;
 @property (nonatomic) BBUHeaderView* headerView;
 @property (nonatomic, readonly) BBUEmptyViewController* helpViewController;
+@property (nonatomic) NSUInteger lastNumberOfUploads;
 @property (nonatomic) NSUInteger numberOfUploads;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
@@ -38,6 +42,7 @@
 
 @implementation BBUImageViewController
 
+@synthesize dragHintView = _dragHintView;
 @synthesize helpViewController = _helpViewController;
 
 #pragma mark -
@@ -92,6 +97,9 @@
     self.helpViewController.view.y = 0.0;
     self.helpViewController.view.width = self.view.window.frame.size.width;
 
+    self.dragHintView.hidden = !self.helpViewController.view.isHidden;
+    self.dragHintView.width = self.view.width;
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
                    dispatch_get_main_queue(), ^{
                        self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
@@ -107,6 +115,20 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:NSWindowDidResizeNotification
                                                   object:nil];
+}
+
+- (BBUDraggedFile*)draggedFileAtIndexPath:(NSIndexPath*)indexPath {
+    return self.filteredFiles[[indexPath indexAtPosition:1]];
+}
+
+- (BBUDragHintView *)dragHintView {
+    if (!_dragHintView) {
+        _dragHintView = [[BBUDragHintView alloc] initWithFrame:NSMakeRect(0.0, 0.0,
+                                                                          self.view.width, 60.0)];
+        [self.view.superview addSubview:self.dragHintView];
+    }
+
+    return _dragHintView;
 }
 
 - (NSArray *)filteredFiles {
@@ -134,6 +156,7 @@
 - (BBUEmptyViewController *)helpViewController {
     if (!_helpViewController) {
         _helpViewController = [BBUEmptyViewController new];
+        _helpViewController.view.y = self.view.y;
         _helpViewController.view.hidden = YES;
         [self.view.superview addSubview:_helpViewController.view];
     }
@@ -151,13 +174,19 @@
         [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
         [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:note];
 
+        self.lastNumberOfUploads = self.numberOfUploads;
         self.numberOfUploads = 0;
         self.totalNumberOfUploads = 0;
     }
 }
 
 - (void)updateHeaderView {
-    NSUInteger percentage = self.totalNumberOfUploads == 0 ? 0 : (self.numberOfUploads / self.totalNumberOfUploads) * 100;
+    if (self.uploadQueue.operationCount == 0) {
+        self.headerView.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%d file(s) successfully uploaded", nil), self.lastNumberOfUploads];
+        return;
+    }
+
+    NSUInteger percentage = self.totalNumberOfUploads == 0 ? 0 : ((float)self.numberOfUploads / self.totalNumberOfUploads) * 100;
 
     self.headerView.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploaded %d of %d file(s) %d%% done.", nil), self.numberOfUploads, self.totalNumberOfUploads, percentage];
 }
@@ -165,6 +194,8 @@
 - (void)windowResize {
     self.helpViewController.view.width = self.view.window.frame.size.width;
     self.helpViewController.view.height = self.view.height;
+
+    self.dragHintView.width = MAX(self.view.width, 20.0);
 }
 
 #pragma mark - Actions
@@ -185,6 +216,8 @@
     self.filterSelection.enabled = draggedFiles.count > 0;
     self.headerView.hidden = draggedFiles.count == 0;
     self.helpViewController.view.hidden = draggedFiles.count > 0;
+
+    self.dragHintView.hidden = !self.helpViewController.view.isHidden;
 
     [self.files addObjectsFromArray:draggedFiles];
     [collectionView reloadData];
@@ -213,8 +246,6 @@
                 }
 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.headerView.hidden = self.uploadQueue.operationCount == 0;
-
                     [self.collectionView reloadData];
                     [self postSuccessNotificationIfNeeded];
                     [self updateHeaderView];
@@ -235,7 +266,7 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BBUImageCell* imageCell = (BBUImageCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
 
-    BBUDraggedFile* draggedFile = self.filteredFiles[[indexPath indexAtPosition:1]];
+    BBUDraggedFile* draggedFile = [self draggedFileAtIndexPath:indexPath];
     imageCell.draggedFile = draggedFile;
 
     return imageCell;
@@ -250,6 +281,7 @@
     BBUHeaderView* headerView = (BBUHeaderView*)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifer:NSStringFromClass(self.class)];
     headerView.backgroundColor = [BBUAppStyle defaultStyle].lightBackgroundColor;
     headerView.hidden = self.headerView.isHidden;
+    headerView.titleLabel.stringValue = self.headerView.titleLabel.stringValue ?: @"";
 
     self.headerView = headerView;
     self.headerView.closeButton.hidden = NO;
@@ -262,8 +294,30 @@
 }
 
 -(void)updateSelectionForCellAtIndexPath:(NSIndexPath*)indexPath {
+    NSMutableDictionary* info = [@{} mutableCopy];
+
+    switch (self.collectionView.indexPathsForSelectedItems.count ) {
+        case 0:
+            break;
+
+        case 1:
+            info[NSLocalizedDescriptionKey] = [[BBUDraggedFileFormatter new] stringForObjectValue:[self draggedFileAtIndexPath:self.collectionView.indexPathsForSelectedItems.firstObject]];
+            break;
+
+        default: {
+            NSMutableArray* selectedFiles = [@[] mutableCopy];
+            for (NSIndexPath* indexPath in self.collectionView.indexPathsForSelectedItems) {
+                [selectedFiles addObject:[self draggedFileAtIndexPath:indexPath]];
+            }
+
+            info[NSLocalizedDescriptionKey] = [[BBUDraggedFileFormatter new] stringForObjectValue:[selectedFiles copy]];
+            break;
+        }
+    }
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NSTableViewSelectionDidChangeNotification
-                                                        object:self.collectionView];
+                                                        object:self.collectionView
+                                                      userInfo:info];
 
     BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = cell.selected ? [[BBUAppStyle defaultStyle] selectionColor] : [NSColor clearColor];
