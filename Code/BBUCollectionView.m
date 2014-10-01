@@ -50,6 +50,20 @@
     return NSDragOperationNone;
 }
 
+-(void)mouseUp:(NSEvent *)theEvent {
+    [super mouseUp:theEvent];
+
+    NSPoint locationInView = NSMakePoint(theEvent.locationInWindow.x - self.frame.origin.x, self.window.frame.size.height - self.frame.origin.y - theEvent.locationInWindow.y);
+
+    for (JNWCollectionViewCell* cell in self.visibleCells) {
+        if (NSPointInRect(locationInView, cell.frame)) {
+            return;
+        }
+    }
+
+    [self deselectAllItems];
+}
+
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     return [NSImage canInitWithPasteboard:[sender draggingPasteboard]];
 }
