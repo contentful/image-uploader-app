@@ -33,6 +33,8 @@
 @property (nonatomic, readonly) BBUEmptyViewController* helpViewController;
 @property (nonatomic) NSUInteger lastNumberOfUploads;
 @property (nonatomic) NSUInteger numberOfUploads;
+@property (weak) IBOutlet NSMenu *sortingMenu;
+@property (nonatomic) NSInteger sortingType;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
 
@@ -150,7 +152,26 @@
             break;
     }
 
-    return predicate ? [self.files filteredArrayUsingPredicate:predicate] : self.files;
+    NSArray *files = predicate ? [self.files filteredArrayUsingPredicate:predicate] : self.files;
+
+    return [files sortedArrayUsingComparator:^NSComparisonResult(BBUDraggedFile* file1,
+                                                                 BBUDraggedFile* file2) {
+        switch (self.sortingType) {
+            case 2:
+                return file1.numberOfBytes > file2.numberOfBytes;
+
+            case 3:
+                return [file1.fileType compare:file2.fileType options:NSCaseInsensitiveSearch];
+
+            case 4:
+                return [file1.mtime compare:file2.mtime];
+
+            default:
+                break;
+        }
+
+        return [file1.title compare:file2.title options:NSCaseInsensitiveSearch];
+    }];
 }
 
 - (BBUEmptyViewController *)helpViewController {
@@ -201,6 +222,17 @@
 #pragma mark - Actions
 
 -(void)filterChanged {
+    [self.collectionView reloadData];
+}
+
+- (IBAction)sortingOptionSelected:(NSMenuItem*)menuItem {
+    for (NSMenuItem* item in self.sortingMenu.itemArray) {
+        item.state = NSOffState;
+    }
+
+    menuItem.state = NSOnState;
+    self.sortingType = menuItem.tag;
+
     [self.collectionView reloadData];
 }
 

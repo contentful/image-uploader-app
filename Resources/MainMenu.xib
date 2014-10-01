@@ -388,21 +388,54 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3p-Fe-3ot"/>
-                    <toolbarItem implicitItemIdentifier="0A487CBE-7385-442C-9FE6-70BE7CB34A02" label="" paletteLabel="Sort" image="NSIconViewTemplate" id="1Jn-cz-ipq">
+                    <toolbarItem implicitItemIdentifier="0A487CBE-7385-442C-9FE6-70BE7CB34A02" label="" paletteLabel="Sort" id="1Jn-cz-ipq">
                         <nil key="toolTip"/>
                         <size key="minSize" width="30" height="30"/>
                         <size key="maxSize" width="50" height="48"/>
                         <popUpButton key="view" id="Swn-4W-KVV">
                             <rect key="frame" x="0.0" y="14" width="50" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" title="Item 1" bezelStyle="regularSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="uOO-P1-CPe">
+                            <popUpButtonCell key="cell" type="bevel" title="None" bezelStyle="regularSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="uOO-P1-CPe">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" id="BV6-dk-wSp">
                                     <items>
-                                        <menuItem title="Item 1" image="NSIconViewTemplate" hidden="YES" id="TID-1s-lz1"/>
-                                        <menuItem title="Item 2" id="nX5-y0-SZl"/>
-                                        <menuItem title="Item 3" id="NKV-dU-0jW"/>
+                                        <menuItem title="None" hidden="YES" id="axB-14-076" userLabel="None">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="xHT-LP-HdB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Title" tag="1" id="nX5-y0-SZl" userLabel="Title">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="grW-Xf-76S"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Size" tag="2" id="NKV-dU-0jW" userLabel="Size">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="J33-tt-2xY"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="File type" tag="3" id="7JB-wm-AE8" userLabel="File type">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="TcF-uE-ugs"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Date created" tag="4" id="l1H-jn-0w5" userLabel="Date created">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="UpI-yw-z7H"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="None" id="Qh5-z4-8vU" userLabel="None">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="RUv-N0-XCf"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
@@ -435,6 +468,7 @@
         <viewController nibName="" id="tEa-S3-mQX" userLabel="ImageViewController" customClass="BBUImageViewController">
             <connections>
                 <outlet property="filterSelection" destination="DDL-Ji-oG6" id="fKo-1J-ma5"/>
+                <outlet property="sortingMenu" destination="BV6-dk-wSp" id="Jcb-oT-cSl"/>
                 <outlet property="view" destination="UVq-Jw-jv9" id="A2Z-ac-Gd3"/>
             </connections>
         </viewController>
@@ -445,7 +479,4 @@
             </connections>
         </viewController>
     </objects>
-    <resources>
-        <image name="NSIconViewTemplate" width="10" height="10"/>
-    </resources>
 </document>
