@@ -13,6 +13,7 @@
 
 NSString* const kContentfulServiceType  = @"com.contentful";
 NSString* const kContentfulSpaceChanged = @"ContentfulSpaceChangedKey";
+static NSString* const kUserAgent       = @"Contentful Media Uploader/1.0";
 
 static const char* kSharedSpace         = "SharedSpace";
 static const char* kSharedSpaceKey      = "SharedSpaceKey";
@@ -33,7 +34,10 @@ static const char* kSharedSpaceKey      = "SharedSpaceKey";
     dispatch_once(&once, ^ {
         NSString* token = [SSKeychain passwordForService:kContentfulServiceType account:kContentfulServiceType];
 
-        sharedClient = [[CMAClient alloc] initWithAccessToken:token];
+        CDAConfiguration* configuration = [CDAConfiguration defaultConfiguration];
+        configuration.userAgent = kUserAgent;
+
+        sharedClient = [[CMAClient alloc] initWithAccessToken:token configuration:configuration];
     });
     return sharedClient;
 }
@@ -51,14 +55,17 @@ static const char* kSharedSpaceKey      = "SharedSpaceKey";
     }
 
     NSParameterAssert(self.sharedSpaceKey);
-    return [self fetchSpaceWithIdentifier:self.sharedSpaceKey
-                                  success:^(CDAResponse *response, CMASpace *space) {
-                                      self.sharedSpace = space;
+    CDARequest* request = [self fetchSpaceWithIdentifier:self.sharedSpaceKey
+                                                 success:^(CDAResponse *response, CMASpace *space) {
+                                                     self.sharedSpace = space;
 
-                                      if (success) {
-                                          success(response, space);
-                                      }
-                                  } failure:failure];
+                                                     if (success) {
+                                                         success(response, space);
+                                                     }
+                                                 } failure:failure];
+
+    NSAssert([request.request.allHTTPHeaderFields[@"User-Agent"] hasPrefix:kUserAgent], @"");
+    return request;
 }
 
 #pragma mark -
