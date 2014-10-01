@@ -30,6 +30,10 @@
 
 #pragma mark -
 
+- (IBAction)aboutUsClicked:(id)sender {
+    [NSApp orderFrontStandardAboutPanel:nil];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 

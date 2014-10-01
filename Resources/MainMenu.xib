@@ -453,6 +453,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="aboutUsClicked:" target="Voe-Tx-rLC" id="Mai-QS-X6R"/>
+                        </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
