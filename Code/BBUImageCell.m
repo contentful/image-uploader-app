@@ -327,7 +327,11 @@
 }
 
 -(void)updateTitleLabel {
-    self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %.0f%%", nil), self.draggedFile.progress * 100];
+    if (self.draggedFile.error) {
+        self.titleLabel.stringValue = self.draggedFile.error.localizedDescription;
+    } else {
+        self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %.0f%%", nil), self.draggedFile.progress * 100];
+    }
 }
 
 #pragma mark - Actions
