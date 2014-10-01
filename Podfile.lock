@@ -17,7 +17,7 @@ PODS:
   - AFNetworking/Reachability (2.3.1)
   - AFNetworking/Security (2.3.1)
   - AFNetworking/Serialization (2.3.1)
-  - ContentfulDeliveryAPI (1.4.3):
+  - ContentfulDeliveryAPI (1.4.4):
     - AFNetworking
     - HRCoder
     - ISO8601DateFormatter
@@ -32,8 +32,10 @@ PODS:
     - JNWScrollView
   - JNWScrollView (0.1)
   - KVOController (1.0.1)
-  - MASPreferences (1.1)
-  - Realm (0.83.0)
+  - MASPreferences (1.1.2)
+  - Realm (0.85.0):
+    - Realm/Headers
+  - Realm/Headers (0.85.0)
   - SSKeychain (1.2.2)
 
 DEPENDENCIES:
@@ -52,7 +54,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  ContentfulDeliveryAPI: 442cc428552c01e029f922f5d1dd6b634a731705
+  ContentfulDeliveryAPI: 8a90c97ccd75beebab3d47e29e9647308bcc7024
   ContentfulManagementAPI: c03d420429097b9ed907c80bf2fad3dc0ea32dcc
   DJProgressHUD: 6d8a7a42768beacca4452bd59b1e2663061b7c1d
   HRCoder: 492f8e2e0b69b54842564d4bbeb1c0e151d4f95f
@@ -61,8 +63,8 @@ SPEC CHECKSUMS:
   JNWCollectionView: 879df2734740bdad82806dc381de2090d6c08a58
   JNWScrollView: 1c343fd858ab1d7826f83cb9d6dc0d1753f0bdea
   KVOController: e6ad4a058ab0ceed546802361adb89d322a22cf2
-  MASPreferences: 971d03da4b3818f8ea0d0ef10b86b02b2c052d17
-  Realm: b37a36efdb3b592febd267e3ebab464c25b4a3bb
+  MASPreferences: 48debf3a161039bb979e617b7416bc07bd879f75
+  Realm: 01c074b534be68b55ba4228a3b16cf41da7af14d
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 
-COCOAPODS: 0.34.0
+COCOAPODS: 0.34.1

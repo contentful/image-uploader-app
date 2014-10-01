@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D832C19D5EBBE00314284 /* BBUDragHintView.m */; };
-		A10FC71419AE324400C45BA3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10FC71319AE324400C45BA3 /* Realm.framework */; };
-		A12039C419AE357F0097871C /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A10FC71319AE324400C45BA3 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */; };
 		A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */; };
 		A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61C219A23105006B1551 /* NSView+Geometry.m */; };
@@ -54,17 +52,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A12039C519AE357F0097871C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A12039C419AE357F0097871C /* Realm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A1D912AB19D19FCF007D00DD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,7 +140,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A10FC71419AE324400C45BA3 /* Realm.framework in Frameworks */,
 				A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */,
 				A23D4E3A868943879EE69000 /* libPods-image-uploader.a in Frameworks */,
 			);
@@ -321,7 +307,6 @@
 				A1D4A7DC199BED850021EEA6 /* Resources */,
 				251A6A48004640E59EF0B99C /* Copy Pods Resources */,
 				A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */,
-				A12039C519AE357F0097871C /* Embed Frameworks */,
 				A1D912AB19D19FCF007D00DD /* CopyFiles */,
 			);
 			buildRules = (
@@ -546,10 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/Realm/realm-cocoapods-0.83.0/osx",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/image-uploader-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/image-uploader-Info.plist";
@@ -565,10 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/Realm/realm-cocoapods-0.83.0/osx",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/image-uploader-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/image-uploader-Info.plist";
