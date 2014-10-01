@@ -221,6 +221,13 @@
 
 #pragma mark - Actions
 
+-(void)copyURLClicked:(NSMenuItem*)menuItem {
+    BBUDraggedFile* draggedFile = menuItem.representedObject;
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:draggedFile.asset.URL.absoluteString forType:NSStringPboardType];
+
+}
+
 -(void)filterChanged {
     [self.collectionView reloadData];
 }
@@ -359,6 +366,28 @@
 
 -(void)collectionView:(JNWCollectionView *)colview didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self updateSelectionForCellAtIndexPath:indexPath];
+}
+
+-(void)collectionView:(JNWCollectionView *)colview didRightClickItemAtIndexPath:(NSIndexPath *)indexPath {
+    BBUDraggedFile* draggedFile = [self draggedFileAtIndexPath:indexPath];
+
+    if (!draggedFile.asset.URL) {
+        return;
+    }
+
+    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@""];
+    theMenu.autoenablesItems = YES;
+
+    NSMenuItem* menuItem = [theMenu insertItemWithTitle:NSLocalizedString(@"Copy URL", nil)
+                                                 action:@selector(copyURLClicked:)
+                                          keyEquivalent:@""
+                                                atIndex:0];
+    menuItem.representedObject = draggedFile;
+    menuItem.target = self;
+
+    [NSMenu popUpContextMenu:theMenu
+                   withEvent:[NSApp currentEvent]
+                     forView:[self.collectionView cellForItemAtIndexPath:indexPath]];
 }
 
 -(void)collectionView:(JNWCollectionView *)colview didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
