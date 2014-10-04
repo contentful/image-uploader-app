@@ -217,17 +217,21 @@
     self.showFailure = draggedFile.error != nil;
 
     [self.kvoController observe:draggedFile keyPath:@"asset" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
-        if (draggedFile.asset.URL) {
-            self.editable = YES;
-            self.showSuccess = YES;
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (draggedFile.asset.URL) {
+                self.editable = YES;
+                self.showSuccess = YES;
+            }
+        });
     }];
 
     [self.kvoController observe:draggedFile keyPath:@"error" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
-        if (draggedFile.error) {
-            self.editable = YES;
-            self.showFailure = YES;
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (draggedFile.error) {
+                self.editable = YES;
+                self.showFailure = YES;
+            }
+        });
     }];
 
     [self.kvoController observe:draggedFile keyPath:@"progress" options:0 block:^(id observer, id object, NSDictionary *change) {
@@ -248,7 +252,7 @@
         self.progressIndicator.hidden = YES;
 
         self.infoLabel.hidden = NO;
-        self.titleLabel.stringValue = self.draggedFile.title;
+        self.titleLabel.stringValue = self.draggedFile.error ? self.draggedFile.error.localizedDescription : self.draggedFile.title;
     } else {
         self.progressIndicator.hidden = NO;
 
