@@ -24,11 +24,17 @@
 
 @implementation BBUS3SettingsViewController
 
--(void)viewDidDisappear {
+-(BOOL)commitEditing {
     [SSKeychain setPassword:self.awsKeyTextField.stringValue forService:kS3Key account:kS3Key];
     [SSKeychain setPassword:self.awsSecretTextField.stringValue forService:kS3Secret account:kS3Secret];
     [SSKeychain setPassword:self.s3BucketTextField.stringValue forService:kS3Bucket account:kS3Bucket];
     [SSKeychain setPassword:self.uploadPathTextField.stringValue forService:kS3Path account:kS3Path];
+
+    return YES;
+}
+
+-(id)init {
+    return [self initWithNibName:NSStringFromClass(self.class) bundle:nil];
 }
 
 #pragma mark - MASPreferencesViewController 
