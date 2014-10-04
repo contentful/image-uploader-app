@@ -119,6 +119,8 @@ static const NSTimeInterval kProcessWait = 1.0;
 
     [[BBUS3Uploader sharedUploader] uploadImage:self.draggedFile.image completionHandler:^(NSURL *uploadURL, NSError *error) {
         if (!uploadURL) {
+            self.draggedFile.error = error;
+
             [self changeOperationStatusWithDone:YES];
             return;
         }
@@ -135,9 +137,13 @@ static const NSTimeInterval kProcessWait = 1.0;
 
                 [self handleProcessing];
             } failure:^(CDAResponse *response, NSError *error) {
+                self.draggedFile.error = error;
+
                 [self changeOperationStatusWithDone:YES];
             }];
         } failure:^(CDAResponse *response, NSError *error) {
+            self.draggedFile.error = error;
+
             [self changeOperationStatusWithDone:YES];
         }];
     } progressHandler:nil];
