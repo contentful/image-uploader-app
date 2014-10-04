@@ -48,7 +48,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cloud" id="06r-Oe-RmD"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2W9-pC-hqp">
-                    <rect key="frame" x="204" y="216" width="314" height="20"/>
+                    <rect key="frame" x="205" y="216" width="314" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="OX3-98-F5v"/>
                         <constraint firstAttribute="width" constant="310" id="Zk7-Fl-WSC"/>
@@ -62,18 +62,30 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="arP-pK-hvA" userLabel="Space Label">
-                    <rect key="frame" x="204" y="199" width="314" height="17"/>
+                    <rect key="frame" x="205" y="199" width="314" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="i8Z-YJ-7y9">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aNI-eS-cfk">
+                    <rect key="frame" x="271" y="122" width="180" height="32"/>
+                    <buttonCell key="cell" type="push" title="Browse your computer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cND-F5-0up">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="browseClicked:" target="-2" id="yMi-da-L2P"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="arP-pK-hvA" firstAttribute="trailing" secondItem="2W9-pC-hqp" secondAttribute="trailing" id="0ou-8z-XFT"/>
+                <constraint firstItem="arP-pK-hvA" firstAttribute="bottom" secondItem="aNI-eS-cfk" secondAttribute="bottom" constant="-70" id="Ae8-fj-Fj3"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="CM0-tO-vSZ"/>
                 <constraint firstItem="e0k-9f-4h8" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="CWX-0C-7BK"/>
+                <constraint firstItem="TJv-oO-oFr" firstAttribute="centerX" secondItem="aNI-eS-cfk" secondAttribute="centerX" id="FO3-ij-BmR"/>
                 <constraint firstItem="e0k-9f-4h8" firstAttribute="centerX" secondItem="arP-pK-hvA" secondAttribute="centerX" id="FfO-Jl-K8b"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="centerY" secondItem="e0k-9f-4h8" secondAttribute="centerY" id="H02-xn-f6D"/>
                 <constraint firstItem="mnu-iW-y9i" firstAttribute="leading" secondItem="HD1-Ms-5Ia" secondAttribute="trailing" constant="2" id="JYp-uy-Wsp"/>

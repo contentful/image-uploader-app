@@ -115,11 +115,15 @@
 }
 
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem *)item {
+    NSString* urlString = [item stringForType:(NSString*)kUTTypeFileURL];
+    NSURL* url = [NSURL URLWithString:urlString];
+
+    return [self initWithURL:url];
+}
+
+-(instancetype)initWithURL:(NSURL*)url {
     self = [super init];
     if (self) {
-        NSString* urlString = [item stringForType:(NSString*)kUTTypeFileURL];
-        NSURL* url = [NSURL URLWithString:urlString];
-
         self.fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url.path
                                                                                error:nil];
         self.image = [[NSImage alloc] initWithContentsOfURL:url];

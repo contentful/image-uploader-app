@@ -31,6 +31,12 @@
     }
 }
 
+- (IBAction)browseClicked:(NSButton *)sender {
+    if (self.browseAction) {
+        self.browseAction(sender);
+    }
+}
+
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kContentfulSpaceChanged object:nil];
 }

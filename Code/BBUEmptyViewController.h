@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef void(^BBUBrowseClickAction)(NSButton* button);
+
 @interface BBUEmptyViewController : NSViewController
+
+@property (nonatomic, copy) BBUBrowseClickAction browseAction;
 
 @end

@@ -180,6 +180,25 @@
         _helpViewController.view.y = self.view.y;
         _helpViewController.view.hidden = YES;
         [self.view.superview addSubview:_helpViewController.view];
+
+        __weak typeof(self) welf = self;
+        _helpViewController.browseAction = ^(NSButton* button) {
+            NSOpenPanel* openPanel = [NSOpenPanel openPanel];
+            openPanel.allowedFileTypes = @[ @"png", @"jpg", @"jpeg", @"bmp", @"tiff" ];
+            openPanel.allowsMultipleSelection = YES;
+            openPanel.canChooseFiles = YES;
+            openPanel.canChooseDirectories = NO;
+            [openPanel runModal];
+
+            if (openPanel.URLs.count > 0) {
+                NSMutableArray* files = [@[] mutableCopy];
+                for (NSURL* url in openPanel.URLs) {
+                    [files addObject:[[BBUDraggedFile alloc] initWithURL:url]];
+                }
+
+                [welf collectionView:welf.collectionView didDragFiles:[files copy]];
+            }
+        };
     }
 
     return _helpViewController;

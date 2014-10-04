@@ -29,6 +29,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 
 -(NSOperation*)creationOperationForSpace:(CMASpace*)space;
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem*)item;
+-(instancetype)initWithURL:(NSURL*)url;
 
 -(void)createWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
 -(void)deleteWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
