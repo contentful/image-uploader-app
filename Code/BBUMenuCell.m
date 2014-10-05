@@ -26,6 +26,11 @@
 
 #pragma mark -
 
+-(BOOL)becomeFirstResponder {
+    [super becomeFirstResponder];
+    return [self.entryField becomeFirstResponder];
+}
+
 -(void)drawRect:(NSRect)dirtyRect {
     self.backgroundColor = [NSColor clearColor];
 

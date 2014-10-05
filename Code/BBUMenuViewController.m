@@ -87,6 +87,9 @@
 -(void)selectionDidChange:(NSNotification*)note {
     self.titleForSelection = note.userInfo[NSLocalizedDescriptionKey];
     [self.collectionView reloadData];
+
+    BBUMenuCell* cell = (BBUMenuCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:0 inSection:0]];
+    [cell becomeFirstResponder];
 }
 
 -(NSString*)valueForRow:(NSUInteger)row {
