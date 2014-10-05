@@ -251,6 +251,24 @@
     [self.collectionView reloadData];
 }
 
+- (IBAction)nextClicked:(NSMenuItem *)sender {
+    NSIndexPath* indexPath = self.collectionView.indexPathsForSelectedItems.firstObject;
+
+    if (!indexPath) {
+        indexPath = [NSIndexPath jnw_indexPathForItem:0 inSection:0];
+    } else {
+        NSInteger item = indexPath.jnw_item + 1 % self.filteredFiles.count;
+        indexPath = [NSIndexPath jnw_indexPathForItem:item inSection:0];
+    }
+
+    [self.collectionView deselectAllItems];
+    [self.collectionView selectItemAtIndexPath:indexPath atScrollPosition:JNWCollectionViewScrollPositionNone animated:YES];
+}
+
+- (IBAction)previousClicked:(NSMenuItem *)sender {
+}
+
+
 - (IBAction)sortingOptionSelected:(NSMenuItem*)menuItem {
     for (NSMenuItem* item in self.sortingMenu.itemArray) {
         item.state = NSOffState;

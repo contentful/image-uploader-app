@@ -296,6 +296,23 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Navigate" id="HG5-vY-eON" userLabel="Navigate">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Navigate" id="cBQ-ab-LMT">
+                        <items>
+                            <menuItem title="Previous" keyEquivalent="" id="g1R-bc-QgD" userLabel="Previous Item">
+                                <connections>
+                                    <action selector="previousClicked:" target="tEa-S3-mQX" id="DEe-Bw-uox"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Next" keyEquivalent="" id="xun-pT-eZY" userLabel="Next Item">
+                                <connections>
+                                    <action selector="nextClicked:" target="tEa-S3-mQX" id="PdA-Xq-3Go"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
         </menu>
         <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
