@@ -58,9 +58,15 @@
 }
 
 -(void)deleteAsset {
+    self.editable = NO;
+
     [self.draggedFile deleteWithCompletionHandler:^(BOOL success) {
         if (success) {
             self.progressIndicator.hidden = YES;
+
+            if (self.deletionHandler) {
+                self.deletionHandler(self);
+            }
         } else {
             self.editable = YES;
             self.showFailure = YES;
@@ -349,8 +355,6 @@
 #pragma mark - Actions
 
 -(void)deleteClicked:(id)sender {
-    self.editable = NO;
-
     [self deleteAsset];
 }
 

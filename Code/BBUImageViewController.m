@@ -265,6 +265,15 @@
 
 }
 
+- (IBAction)deleteClicked:(NSMenuItem *)sender {
+    for (NSIndexPath* indexPath in self.collectionView.indexPathsForSelectedItems) {
+        BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        [cell deleteAsset];
+    }
+
+    [self.collectionView deselectAllItems];
+}
+
 -(void)filterChanged {
     [self.collectionView reloadData];
 }
@@ -352,6 +361,14 @@
 
     BBUDraggedFile* draggedFile = [self draggedFileAtIndexPath:indexPath];
     imageCell.draggedFile = draggedFile;
+
+    __weak typeof(self) welf = self;
+    imageCell.deletionHandler = ^(BBUImageCell* cell) {
+        __strong typeof(self) sself = welf;
+
+        [sself.files removeObject:cell.draggedFile];
+        [sself.collectionView reloadData];
+    };
 
     return imageCell;
 }

@@ -300,6 +300,14 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Navigate" id="cBQ-ab-LMT">
                         <items>
+                            <menuItem title="Delete Item" id="NOL-hV-kPP">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                <connections>
+                                    <action selector="deleteClicked:" target="tEa-S3-mQX" id="YPZ-hY-O66"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Previous" keyEquivalent="" id="g1R-bc-QgD" userLabel="Previous Item">
                                 <connections>
                                     <action selector="previousClicked:" target="tEa-S3-mQX" id="DEe-Bw-uox"/>
