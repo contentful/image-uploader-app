@@ -34,7 +34,9 @@
 @property (nonatomic) NSUInteger lastNumberOfUploads;
 @property (nonatomic) NSUInteger numberOfUploads;
 @property (weak) IBOutlet NSMenu *sortingMenu;
+@property (weak) IBOutlet NSToolbarItem *sortingToolbarItem;
 @property (nonatomic) NSInteger sortingType;
+@property (weak) IBOutlet NSToolbarItem *spaceSelection;
 @property (nonatomic) NSUInteger totalNumberOfUploads;
 @property (nonatomic) NSOperationQueue* uploadQueue;
 
@@ -71,6 +73,8 @@
     self.filterSelection.enabled = NO;
     self.filterSelection.action = @selector(filterChanged);
     self.filterSelection.target = self;
+
+    self.sortingToolbarItem.enabled = NO;
 
     self.uploadQueue = [NSOperationQueue new];
     self.uploadQueue.maxConcurrentOperationCount = 3;
@@ -232,6 +236,8 @@
         [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
         [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:note];
 
+        self.spaceSelection.enabled = YES;
+
         self.lastNumberOfUploads = self.numberOfUploads;
         self.numberOfUploads = 0;
         self.totalNumberOfUploads = 0;
@@ -309,6 +315,8 @@
     self.filterSelection.enabled = draggedFiles.count > 0;
     self.headerView.hidden = draggedFiles.count == 0;
     self.helpViewController.view.hidden = draggedFiles.count > 0;
+    self.sortingToolbarItem.enabled = draggedFiles.count > 0;
+    self.spaceSelection.enabled = draggedFiles.count == 0;
 
     self.dragHintView.hidden = !self.helpViewController.view.isHidden;
 
