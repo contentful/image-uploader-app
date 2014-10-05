@@ -31,6 +31,7 @@
 		A1D01CEF19D43EE300EB9531 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CED19D43EE300EB9531 /* close.png */; };
 		A1D01CF019D43EE300EB9531 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CEE19D43EE300EB9531 /* Line.png */; };
 		A1D10C2819B5C23F009CA6CA /* contentful_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */; };
+		A1D49CE719E041690083B816 /* NSButton+Contentful.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D49CE619E041690083B816 /* NSButton+Contentful.m */; };
 		A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D4A7E1199BED850021EEA6 /* Cocoa.framework */; };
 		A1D4A7EE199BED850021EEA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D4A7ED199BED850021EEA6 /* main.m */; };
 		A1D4A7F5199BED850021EEA6 /* BBUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D4A7F4199BED850021EEA6 /* BBUAppDelegate.m */; };
@@ -103,6 +104,8 @@
 		A1D01CED19D43EE300EB9531 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A1D01CEE19D43EE300EB9531 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
 		A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentful_logo_big.png; sourceTree = "<group>"; };
+		A1D49CE519E041690083B816 /* NSButton+Contentful.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+Contentful.h"; sourceTree = "<group>"; };
+		A1D49CE619E041690083B816 /* NSButton+Contentful.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+Contentful.m"; sourceTree = "<group>"; };
 		A1D4A7DE199BED850021EEA6 /* image-uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D4A7E1199BED850021EEA6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A1D4A7E4199BED850021EEA6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -175,6 +178,8 @@
 				A19FB0D319A3445500A5659C /* BBUMenuViewController.m */,
 				A1CCBD7F19BF259300878BF9 /* BBUS3SettingsViewController.h */,
 				A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */,
+				A1D49CE519E041690083B816 /* NSButton+Contentful.h */,
+				A1D49CE619E041690083B816 /* NSButton+Contentful.m */,
 				A15A61C119A23105006B1551 /* NSView+Geometry.h */,
 				A15A61C219A23105006B1551 /* NSView+Geometry.m */,
 			);
@@ -434,6 +439,7 @@
 				A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */,
 				A1CA2AAA19D9B1C700635092 /* BBUConfirmationFooter.m in Sources */,
 				A15A61C619A23E9E006B1551 /* CMAClient+SharedClient.m in Sources */,
+				A1D49CE719E041690083B816 /* NSButton+Contentful.m in Sources */,
 				A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */,
 				A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */,
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,

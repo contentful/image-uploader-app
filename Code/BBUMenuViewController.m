@@ -14,6 +14,7 @@
 #import "BBUImageCell.h"
 #import "BBUMenuCell.h"
 #import "BBUMenuViewController.h"
+#import "NSButton+Contentful.h"
 #import "NSView+Geometry.h"
 
 @interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewListLayoutDelegate>
@@ -169,10 +170,8 @@
     if ([kind isEqualToString:JNWCollectionViewListLayoutFooterKind]) {
         BBUConfirmationFooter* footerView = (BBUConfirmationFooter*)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifer:NSStringFromClass(self.class)];
 
-        NSMutableAttributedString *colorTitle = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Update selected", nil) attributes:nil];
-        NSRange titleRange = NSMakeRange(0, [colorTitle length]);
-        [colorTitle addAttribute:NSForegroundColorAttributeName value:[NSColor whiteColor] range:titleRange];
-        [footerView.confirmationButton setAttributedTitle:colorTitle];
+        [footerView.confirmationButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Update selected",
+                                                                                   nil)];
 
         footerView.confirmationButton.action = @selector(confirmClicked:);
         footerView.confirmationButton.target = self;

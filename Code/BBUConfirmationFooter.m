@@ -8,6 +8,7 @@
 
 #import "BBUAppStyle.h"
 #import "BBUConfirmationFooter.h"
+#import "NSButton+Contentful.h"
 #import "NSView+Geometry.h"
 
 @implementation BBUConfirmationFooter
@@ -19,11 +20,8 @@
 
 -(NSButton *)confirmationButton {
     if (!_confirmationButton) {
-        _confirmationButton = [[NSButton alloc] initWithFrame:NSMakeRect(20.0, 0.0, 100.0, 40.0)];
-        _confirmationButton.alignment = NSLeftTextAlignment;
-        _confirmationButton.bordered = NO;
-        _confirmationButton.font = [BBUAppStyle defaultStyle].titleFont;
-        [_confirmationButton.cell setBackgroundColor:[BBUAppStyle defaultStyle].primaryButtonColor];
+        _confirmationButton = [NSButton primaryContentfulButton];
+        _confirmationButton.x = 20.0;
         [self addSubview:_confirmationButton];
     }
 
