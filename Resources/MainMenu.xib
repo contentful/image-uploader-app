@@ -64,6 +64,19 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="File" id="Av3-yh-KSB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="File" id="ciA-X8-DDr">
+                        <items>
+                            <menuItem title="Logout" id="At2-Pf-4eI">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="logoutClicked:" target="Voe-Tx-rLC" id="5jC-ep-0M6"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Edit" id="8sj-BM-caj">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="0iW-6h-yBH">

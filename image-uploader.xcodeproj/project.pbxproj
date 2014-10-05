@@ -27,6 +27,8 @@
 		A1CCBD8319BF259300878BF9 /* BBUS3SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */; };
 		A1CFC35C19D95CB0003F2EF9 /* Failed.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CFC35A19D95CB0003F2EF9 /* Failed.png */; };
 		A1CFC35D19D95CB0003F2EF9 /* Failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CFC35B19D95CB0003F2EF9 /* Failed@2x.png */; };
+		A1CFF4D619E144FC002CB57C /* BBULoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CFF4D419E144FC002CB57C /* BBULoginController.m */; };
+		A1CFF4D719E144FC002CB57C /* BBULoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CFF4D519E144FC002CB57C /* BBULoginController.xib */; };
 		A1D01CEC19D4367000EB9531 /* BBUHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */; };
 		A1D01CEF19D43EE300EB9531 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CED19D43EE300EB9531 /* close.png */; };
 		A1D01CF019D43EE300EB9531 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CEE19D43EE300EB9531 /* Line.png */; };
@@ -99,6 +101,9 @@
 		A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBUS3SettingsViewController.xib; sourceTree = "<group>"; };
 		A1CFC35A19D95CB0003F2EF9 /* Failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Failed.png; sourceTree = "<group>"; };
 		A1CFC35B19D95CB0003F2EF9 /* Failed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Failed@2x.png"; sourceTree = "<group>"; };
+		A1CFF4D319E144FC002CB57C /* BBULoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBULoginController.h; sourceTree = "<group>"; };
+		A1CFF4D419E144FC002CB57C /* BBULoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBULoginController.m; sourceTree = "<group>"; };
+		A1CFF4D519E144FC002CB57C /* BBULoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBULoginController.xib; sourceTree = "<group>"; };
 		A1D01CEA19D4367000EB9531 /* BBUHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUHeaderView.h; sourceTree = "<group>"; };
 		A1D01CEB19D4367000EB9531 /* BBUHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUHeaderView.m; sourceTree = "<group>"; };
 		A1D01CED19D43EE300EB9531 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
@@ -172,6 +177,8 @@
 				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
 				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
 				A1EF194D199CA00C00AE864E /* BBUImageViewController.m */,
+				A1CFF4D319E144FC002CB57C /* BBULoginController.h */,
+				A1CFF4D419E144FC002CB57C /* BBULoginController.m */,
 				A19FB0D519A347BE00A5659C /* BBUMenuCell.h */,
 				A19FB0D619A347BE00A5659C /* BBUMenuCell.m */,
 				A19FB0D219A3445500A5659C /* BBUMenuViewController.h */,
@@ -258,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D912A619D19EAE007D00DD /* BBUEmptyViewController.xib */,
+				A1CFF4D519E144FC002CB57C /* BBULoginController.xib */,
 				A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */,
 				A16E72A419D5E8E900D82C93 /* Check.png */,
 				A16E72A519D5E8E900D82C93 /* Check@2x.png */,
@@ -365,6 +373,7 @@
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
 				A16E72AF19D5E8E900D82C93 /* Line@2x.png in Resources */,
 				A1D912A119D19DC5007D00DD /* Rectangle 20.png in Resources */,
+				A1CFF4D719E144FC002CB57C /* BBULoginController.xib in Resources */,
 				A16E72AC19D5E8E900D82C93 /* Check@2x.png in Resources */,
 				A16E72AE19D5E8E900D82C93 /* cloud@2x.png in Resources */,
 				A1CFC35D19D95CB0003F2EF9 /* Failed@2x.png in Resources */,
@@ -453,6 +462,7 @@
 				A1D5AC4119C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m in Sources */,
 				A1D4A7EE199BED850021EEA6 /* main.m in Sources */,
 				A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */,
+				A1CFF4D619E144FC002CB57C /* BBULoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

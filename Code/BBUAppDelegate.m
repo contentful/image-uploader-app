@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
-#import <CocoaPods-Keys/ImageUploaderKeys.h>
 #import <DJProgressHUD/DJProgressHUD.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <SSKeychain/SSKeychain.h>
 
 #import "BBUAppDelegate.h"
+#import "BBULoginController.h"
 #import "BBUS3SettingsViewController.h"
 #import "CMAClient+SharedClient.h"
 
@@ -110,6 +110,12 @@
     }
 }
 
+- (IBAction)logoutClicked:(NSMenuItem *)sender {
+    [SSKeychain deletePasswordForService:kContentfulServiceType account:kContentfulServiceType];
+
+    [self startOAuthFlow];
+}
+
 - (NSView*)mainView {
     return [[NSApp windows][0] contentView];
 }
@@ -138,11 +144,7 @@
 }
 
 - (void)startOAuthFlow {
-    [DJProgressHUD showStatus:NSLocalizedString(@"Waiting for authentication...", nil)
-                     FromView:self.mainView];
-
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", [ImageUploaderKeys new].contentfulOAuthClient]];
-    [[NSWorkspace sharedWorkspace] openURL:url];
+    [BBULoginController presentLogin];
 }
 
 @end
