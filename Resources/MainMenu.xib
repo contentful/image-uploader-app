@@ -326,7 +326,7 @@ CA
         <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -426,7 +426,7 @@ CA
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="KiG-gI-mbh"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="z3p-Fe-3ot"/>
-                    <toolbarItem implicitItemIdentifier="0A487CBE-7385-442C-9FE6-70BE7CB34A02" label="" paletteLabel="Sort" id="1Jn-cz-ipq">
+                    <toolbarItem implicitItemIdentifier="0A487CBE-7385-442C-9FE6-70BE7CB34A02" label="" paletteLabel="Sort" image="NSIconViewTemplate" id="1Jn-cz-ipq">
                         <nil key="toolTip"/>
                         <size key="minSize" width="30" height="30"/>
                         <size key="maxSize" width="50" height="48"/>
@@ -438,7 +438,7 @@ CA
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" id="BV6-dk-wSp">
                                     <items>
-                                        <menuItem title="None" hidden="YES" id="axB-14-076" userLabel="None">
+                                        <menuItem title="None" image="NSIconViewTemplate" hidden="YES" id="axB-14-076" userLabel="None">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="sortingOptionSelected:" target="tEa-S3-mQX" id="xHT-LP-HdB"/>
@@ -520,4 +520,7 @@ CA
             </connections>
         </viewController>
     </objects>
+    <resources>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
+    </resources>
 </document>
