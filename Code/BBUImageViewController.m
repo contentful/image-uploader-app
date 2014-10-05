@@ -352,6 +352,12 @@
 }
 
 -(void)updateSelectionForCellAtIndexPath:(NSIndexPath*)indexPath {
+    BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+
+    if (!cell.selectable) {
+        return;
+    }
+
     NSMutableDictionary* info = [@{} mutableCopy];
 
     switch (self.collectionView.indexPathsForSelectedItems.count ) {
@@ -377,7 +383,6 @@
                                                         object:self.collectionView
                                                       userInfo:info];
 
-    BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = cell.selected ? [[BBUAppStyle defaultStyle] selectionColor] : [NSColor clearColor];
 }
 

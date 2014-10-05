@@ -67,7 +67,9 @@
 
     for (NSIndexPath* indexPath in self.relatedCollectionView.indexPathsForSelectedItems) {
         BBUImageCell* cell = (BBUImageCell*)[self.relatedCollectionView cellForItemAtIndexPath:indexPath];
-        block(cell);
+        if (cell.selectable) {
+            block(cell);
+        }
     }
 }
 

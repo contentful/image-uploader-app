@@ -173,6 +173,10 @@
 }
 
 -(void)mouseEntered:(NSEvent *)theEvent {
+    if (!self.draggedFile.asset.URL) {
+        return;
+    }
+
     self.deleteButton.hidden = NO;
 }
 
@@ -192,6 +196,10 @@
     }
 
     return _progressIndicator;
+}
+
+- (BOOL)selectable {
+    return self.draggedFile.asset.URL != nil;
 }
 
 - (void)setAssetDescription:(NSString *)assetDescription {
