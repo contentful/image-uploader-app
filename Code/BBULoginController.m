@@ -29,6 +29,7 @@
 }
 
 - (IBAction)linkClicked:(NSButton *)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.contentful.com"]];
 }
 
 - (IBAction)loginClicked:(NSButton *)sender {
@@ -46,6 +47,7 @@
     NSButton* loginButton = [NSButton primaryContentfulButton];
     loginButton.action = @selector(loginClicked:);
     loginButton.target = self;
+    loginButton.width = 160.0;
     loginButton.x = (contentView.width - loginButton.width) / 2;
     loginButton.y = 40.0;
     [loginButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Go to Contentful login page", nil)];

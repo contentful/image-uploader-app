@@ -100,6 +100,7 @@
             return;
         }
 
+        [NSApp stopModal];
         [NSApp activateIgnoringOtherApps:YES];
 
         [SSKeychain setPassword:components[1]
