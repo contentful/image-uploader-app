@@ -112,6 +112,11 @@
                        self.collectionView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
                        self.collectionView.borderType = NSNoBorder;
                    });
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(spaceChanged:)
+                                                 name:kContentfulSpaceChanged
+                                               object:nil];
 }
 
 - (BBUCollectionView *)collectionView {
@@ -121,6 +126,10 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:NSWindowDidResizeNotification
+                                                  object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kContentfulSpaceChanged
                                                   object:nil];
 }
 
@@ -245,6 +254,23 @@
     }
 }
 
+- (void)refresh {
+    self.filterSelection.enabled = self.files.count > 0;
+    self.headerView.hidden = self.files.count == 0;
+    self.helpViewController.view.hidden = self.files.count > 0;
+    self.sortingToolbarItem.enabled = self.files.count > 0;
+    self.spaceSelection.enabled = self.files.count == 0;
+
+    self.dragHintView.hidden = !self.helpViewController.view.isHidden;
+
+    [self.collectionView reloadData];
+}
+
+- (void)spaceChanged:(NSNotification*)note {
+    [self.files removeAllObjects];
+    [self refresh];
+}
+
 - (void)updateHeaderView {
     if (self.uploadQueue.operationCount == 0) {
         self.headerView.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%d file(s) successfully uploaded", nil), self.lastNumberOfUploads];
@@ -313,16 +339,8 @@
         return;
     }
 
-    self.filterSelection.enabled = draggedFiles.count > 0;
-    self.headerView.hidden = draggedFiles.count == 0;
-    self.helpViewController.view.hidden = draggedFiles.count > 0;
-    self.sortingToolbarItem.enabled = draggedFiles.count > 0;
-    self.spaceSelection.enabled = draggedFiles.count == 0;
-
-    self.dragHintView.hidden = !self.helpViewController.view.isHidden;
-
     [self.files addObjectsFromArray:draggedFiles];
-    [collectionView reloadData];
+    [self refresh];
 
     [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
         self.currentSpaceId = space.identifier;
