@@ -224,7 +224,7 @@
 
     if (indexPath) {
         if (forward) {
-            item = indexPath.jnw_item + 1 % self.filteredFiles.count;
+            item = (indexPath.jnw_item + 1) % self.filteredFiles.count;
         } else {
             item = indexPath.jnw_item == 0 ? self.filteredFiles.count - 1 : indexPath.jnw_item - 1;
         }
@@ -233,7 +233,7 @@
     indexPath = [NSIndexPath jnw_indexPathForItem:item inSection:0];
 
     [self.collectionView deselectAllItems];
-    [self.collectionView selectItemAtIndexPath:indexPath atScrollPosition:JNWCollectionViewScrollPositionNone animated:YES];
+    [self.collectionView selectItemAtIndexPath:indexPath atScrollPosition:JNWCollectionViewScrollPositionMiddle animated:YES];
 }
 
 - (void)postSuccessNotificationIfNeeded {
