@@ -29,7 +29,7 @@
 -(void)awakeFromNib {
     [super awakeFromNib];
 
-    self.linkDropboxButton.enabled = ![DBSession sharedSession].isLinked;
+    [self updateButton];
 }
 
 -(BOOL)commitEditing {
@@ -54,12 +54,28 @@
 
 -(void)loadingStateChanged:(NSNotification*)note {
     self.linkDropboxButton.enabled = ![DBAuthHelperOSX sharedHelper].loading;
+
+    [self updateButton];
+}
+
+-(void)updateButton {
+    if ([DBSession sharedSession].isLinked) {
+        self.linkDropboxButton.title = NSLocalizedString(@"Unlink Dropbox", nil);
+    } else {
+        self.linkDropboxButton.title = NSLocalizedString(@"Link Dropbox", nil);
+    }
 }
 
 #pragma mark - Actions
 
 - (IBAction)linkDropboxClicked:(NSButton *)sender {
-    [[DBAuthHelperOSX sharedHelper] authenticate];
+    if ([DBSession sharedSession].isLinked) {
+        [[DBSession sharedSession] unlinkAll];
+    } else {
+        [[DBAuthHelperOSX sharedHelper] authenticate];
+    }
+
+    [self updateButton];
 }
 
 #pragma mark - MASPreferencesViewController 
