@@ -54,6 +54,7 @@
     [super mouseUp:theEvent];
 
     NSPoint locationInView = NSMakePoint(theEvent.locationInWindow.x - self.frame.origin.x, self.window.frame.size.height - self.frame.origin.y - theEvent.locationInWindow.y);
+    locationInView.y += self.documentVisibleRect.origin.y;
 
     for (JNWCollectionViewCell* cell in self.visibleCells) {
         if (NSPointInRect(locationInView, cell.frame)) {
