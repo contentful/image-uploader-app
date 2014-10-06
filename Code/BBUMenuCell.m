@@ -61,6 +61,10 @@
     self.titleLabel.stringValue = title;
 }
 
+-(void)setValue:(NSString *)value {
+    self.entryField.stringValue = value;
+}
+
 -(NSString *)title {
     return self.titleLabel.stringValue;
 }
@@ -84,18 +88,6 @@
 }
 
 #pragma mark - NSTextFieldDelegate
-
--(void)controlTextDidEndEditing:(NSNotification *)obj {
-    if (self.endEditingHandler) {
-        self.endEditingHandler(self);
-    }
-}
-
--(void)controlTextDidChange:(NSNotification *)obj {
-    if (self.textChangedHandler) {
-        self.textChangedHandler(self, self.entryField.stringValue);
-    }
-}
 
 -(BOOL)control:(NSControl*)control
       textView:(NSTextView*)textView doCommandBySelector:(SEL)commandSelector {

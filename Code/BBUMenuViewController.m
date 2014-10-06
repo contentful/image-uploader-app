@@ -20,6 +20,7 @@
 @interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewListLayoutDelegate>
 
 @property (nonatomic, readonly) JNWCollectionView* collectionView;
+@property (nonatomic, readonly) BBUImageCell* selectedCell;
 @property (nonatomic) NSString* titleForSelection;
 
 @end
@@ -84,6 +85,15 @@
     return self;
 }
 
+-(BBUImageCell*)selectedCell {
+    if (self.relatedCollectionView.indexPathsForSelectedItems.count != 1) {
+        return nil;
+    }
+
+    NSIndexPath* indexPath = self.relatedCollectionView.indexPathsForSelectedItems.firstObject;
+    return (BBUImageCell*)[self.relatedCollectionView cellForItemAtIndexPath:indexPath];
+}
+
 -(void)selectionDidChange:(NSNotification*)note {
     self.titleForSelection = note.userInfo[NSLocalizedDescriptionKey];
     [self.collectionView reloadData];
@@ -106,6 +116,8 @@
     [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
         cell.assetDescription = description;
         cell.title = title;
+
+        [cell updateAsset];
     }];
 }
 
@@ -116,34 +128,22 @@
     BBUMenuCell* cell = (BBUMenuCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
 
     switch ([indexPath indexAtPosition:1]) {
-        case 0: {
-            cell.textChangedHandler = ^(BBUMenuCell* cell, NSString* text) {
-                [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
-                    cell.title = text;
-                }];
-            };
-
+        case 0:
             cell.title = NSLocalizedString(@"Title", nil);
+
+            if (self.selectedCell.title) {
+                cell.value = self.selectedCell.title;
+            }
             break;
-        }
 
-        case 1: {
-            cell.textChangedHandler = ^(BBUMenuCell* cell, NSString* text) {
-                [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
-                    cell.assetDescription = text;
-                }];
-            };
-
+        case 1:
             cell.title = NSLocalizedString(@"Description", nil);
-            break;
-        }
-    }
 
-    cell.endEditingHandler = ^(BBUMenuCell* cell) {
-        [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
-            [cell updateAsset];
-        }];
-    };
+            if (self.selectedCell.assetDescription) {
+                cell.value = self.selectedCell.assetDescription;
+            }
+            break;
+    }
 
     return cell;
 }
@@ -180,6 +180,7 @@
 
         footerView.confirmationButton.action = @selector(confirmClicked:);
         footerView.confirmationButton.target = self;
+        footerView.confirmationButton.width = 130.0;
 
         footerView.informationLabel.hidden = self.relatedCollectionView.indexPathsForSelectedItems.count <= 1;
         footerView.informationLabel.stringValue = NSLocalizedString(@"Title or description changes will be applied to all selected files", nil);
