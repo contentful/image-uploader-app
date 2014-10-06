@@ -136,7 +136,7 @@
 
 - (NSImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 200.0)];
+        _imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 100.0)];
 
 #if 0
         NSShadow *dropShadow = [[NSShadow alloc] init];
