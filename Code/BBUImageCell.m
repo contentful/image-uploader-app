@@ -266,13 +266,13 @@
         self.progressIndicator.hidden = YES;
 
         self.infoLabel.hidden = NO;
-        self.titleLabel.stringValue = self.draggedFile.error ? self.draggedFile.error.localizedDescription : self.draggedFile.title;
     } else {
         self.progressIndicator.hidden = NO;
 
         self.infoLabel.hidden = YES;
-        [self updateTitleLabel];
     }
+
+    [self updateTitleLabel];
 
     self.imageView.alphaValue = editable ? 1.0 : 0.3;
 }
@@ -346,7 +346,9 @@
 
 -(void)updateTitleLabel {
     if (self.draggedFile.error) {
-        self.titleLabel.stringValue = self.draggedFile.error.localizedDescription;
+        self.titleLabel.stringValue = self.draggedFile.error.localizedDescription ?: NSLocalizedString(@"Unknown error", nil);
+    } else if (self.draggedFile.asset.URL) {
+        self.titleLabel.stringValue = self.draggedFile.title;
     } else {
         self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %.0f%%", nil), self.draggedFile.progress * 100];
     }
