@@ -26,7 +26,22 @@
     NSMutableAttributedString *colorTitle = [[NSMutableAttributedString alloc] initWithString:title
                                                                                    attributes:nil];
     NSRange titleRange = NSMakeRange(0, [colorTitle length]);
-    [colorTitle addAttribute:NSForegroundColorAttributeName value:[NSColor whiteColor] range:titleRange];
+
+    [colorTitle addAttribute:NSFontAttributeName
+                       value:[BBUAppStyle defaultStyle].titleFont
+                       range:titleRange];
+
+    [colorTitle addAttribute:NSForegroundColorAttributeName
+                       value:[NSColor whiteColor]
+                       range:titleRange];
+
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.alignment = NSCenterTextAlignment;
+
+    [colorTitle addAttribute:NSParagraphStyleAttributeName
+                       value:paragraph
+                       range:titleRange];
+
     [self setAttributedTitle:colorTitle];
 }
 
