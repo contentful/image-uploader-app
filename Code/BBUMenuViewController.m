@@ -104,7 +104,7 @@
 
 -(NSString*)valueForRow:(NSUInteger)row {
     BBUMenuCell* cell = (BBUMenuCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:row inSection:0]];
-    return cell.value;
+    return cell.entryField.stringValue;
 }
 
 #pragma mark - Actions
@@ -126,13 +126,14 @@
 -(JNWCollectionViewCell *)collectionView:(JNWCollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BBUMenuCell* cell = (BBUMenuCell*)[collectionView dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+    NSInteger row = [indexPath indexAtPosition:1];
 
-    switch ([indexPath indexAtPosition:1]) {
+    switch (row) {
         case 0:
             cell.title = NSLocalizedString(@"Title", nil);
 
             if (self.selectedCell.title) {
-                cell.value = self.selectedCell.title;
+                cell.entryField.stringValue = self.selectedCell.title;
             }
             break;
 
@@ -140,10 +141,15 @@
             cell.title = NSLocalizedString(@"Description", nil);
 
             if (self.selectedCell.assetDescription) {
-                cell.value = self.selectedCell.assetDescription;
+                cell.entryField.stringValue = self.selectedCell.assetDescription;
             }
             break;
     }
+
+    cell.tabKeyAction = ^(BBUMenuCell* cell) {
+        BBUMenuCell* otherCell = (BBUMenuCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:row == 0 ? 1 : 0 inSection:0]];
+        [otherCell.entryField becomeFirstResponder];
+    };
 
     return cell;
 }

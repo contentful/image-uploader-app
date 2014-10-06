@@ -12,7 +12,6 @@
 
 @interface BBUMenuCell () <NSTextFieldDelegate>
 
-@property (nonatomic, readonly) NSTextField* entryField;
 @property (nonatomic, readonly) NSTextField* titleLabel;
 
 @end
@@ -61,10 +60,6 @@
     self.titleLabel.stringValue = title;
 }
 
--(void)setValue:(NSString *)value {
-    self.entryField.stringValue = value;
-}
-
 -(NSString *)title {
     return self.titleLabel.stringValue;
 }
@@ -83,10 +78,6 @@
     return _titleLabel;
 }
 
--(NSString*)value {
-    return self.entryField.stringValue;
-}
-
 #pragma mark - NSTextFieldDelegate
 
 -(BOOL)control:(NSControl*)control
@@ -95,6 +86,14 @@
 
     if (commandSelector == @selector(insertNewline:)) {
         [textView insertNewlineIgnoringFieldEditor:self];
+        result = YES;
+    }
+
+    if (commandSelector == @selector(insertTab:)) {
+        if (self.tabKeyAction) {
+            self.tabKeyAction(self);
+        }
+        
         result = YES;
     }
 

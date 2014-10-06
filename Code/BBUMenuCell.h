@@ -8,9 +8,14 @@
 
 #import "JNWCollectionViewCell.h"
 
+@class BBUMenuCell;
+
+typedef void(^BBUTabKeyAction)(BBUMenuCell* currentCell);
+
 @interface BBUMenuCell : JNWCollectionViewCell
 
+@property (nonatomic, readonly) NSTextField* entryField;
+@property (nonatomic, copy) BBUTabKeyAction tabKeyAction;
 @property (nonatomic) NSString* title;
-@property (nonatomic) NSString* value;
 
 @end
