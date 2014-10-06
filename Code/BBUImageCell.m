@@ -231,6 +231,8 @@
     self.showSuccess = draggedFile.asset.URL != nil;
     self.showFailure = draggedFile.error != nil;
 
+    [self.kvoController unobserveAll];
+
     [self.kvoController observe:draggedFile keyPath:@"asset" options:0 block:^(id observer, BBUDraggedFile* draggedFile, NSDictionary *change) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (draggedFile.asset.URL) {
