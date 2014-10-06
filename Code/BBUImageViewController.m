@@ -283,6 +283,7 @@
 }
 
 - (void)windowResize {
+    self.helpViewController.view.y = 40.0;
     self.helpViewController.view.width = self.view.window.frame.size.width;
     self.helpViewController.view.height = self.view.height;
 
@@ -295,7 +296,6 @@
     BBUDraggedFile* draggedFile = menuItem.representedObject;
     [[NSPasteboard generalPasteboard] clearContents];
     [[NSPasteboard generalPasteboard] setString:draggedFile.asset.URL.absoluteString forType:NSStringPboardType];
-
 }
 
 - (IBAction)deleteClicked:(NSMenuItem *)sender {
@@ -489,6 +489,10 @@
 }
 
 #pragma mark - JNWCollectionViewGridLayoutDelegate
+
+-(CGFloat)collectionView:(JNWCollectionView *)collectionView heightForFooterInSection:(NSInteger)index {
+    return 60.0;
+}
 
 -(CGFloat)collectionView:(JNWCollectionView *)collectionView heightForHeaderInSection:(NSInteger)index {
     return self.headerView.isHidden ? 0.0 : 40.0;
