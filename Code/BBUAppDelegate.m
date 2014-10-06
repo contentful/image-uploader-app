@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import <CocoaPods-Keys/ImageUploaderKeys.h>
 #import <DJProgressHUD/DJProgressHUD.h>
+#import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <SSKeychain/SSKeychain.h>
 
@@ -35,6 +37,12 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    DBSession *dbSession = [[DBSession alloc]
+                            initWithAppKey:[ImageUploaderKeys new].dropboxOAuthKey
+                            appSecret:[ImageUploaderKeys new].dropboxOAuthSecret
+                            root:kDBRootAppFolder];
+    [DBSession setSharedSession:dbSession];
+
     [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 
     if ([SSKeychain passwordForService:kContentfulServiceType account:kContentfulServiceType].length == 0) {
@@ -87,6 +95,10 @@
     [DJProgressHUD dismiss];
 
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+
+    if ([url hasPrefix:@"db-"]) {
+        return;
+    }
 
     NSArray* components = [url componentsSeparatedByString:@"#"];
     if (components.count == 2 && [components[1] hasPrefix:@"access_token"]) {

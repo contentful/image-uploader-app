@@ -7,6 +7,7 @@
 //
 
 #import <ContentfulManagementAPI/ContentfulManagementAPI.h>
+#import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <IAmUpload/BBUUploadsImUploader.h>
 
 #import "BBUAssetUploadOperation.h"
@@ -19,8 +20,9 @@ const NSUInteger kProcessingFailedErrorCode = 0xFF;
 static const NSUInteger kNumberOfRetries = 15;
 static const NSTimeInterval kProcessWait = 1.0;
 
-@interface BBUAssetUploadOperation ()
+@interface BBUAssetUploadOperation () <DBRestClientDelegate>
 
+@property (nonatomic) DBRestClient* client;
 @property (nonatomic) BOOL done;
 @property (nonatomic) BBUDraggedFile* draggedFile;
 @property (nonatomic) NSUInteger retries;
@@ -41,6 +43,7 @@ static const NSTimeInterval kProcessWait = 1.0;
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
 
+    self.client = nil;
     self.done = done;
     self.draggedFile.progress = done ? 1.0 : self.draggedFile.progress;
 
@@ -80,6 +83,31 @@ static const NSTimeInterval kProcessWait = 1.0;
     });
 }
 
+
+-(void)performUploadToContentfulWithUploadURL:(NSURL*)uploadURL {
+    self.draggedFile.progress = 0.4;
+
+    NSDictionary* uploads = @{ self.draggedFile.asset.locale: uploadURL.absoluteString };
+
+    [self.draggedFile.asset updateWithLocalizedUploads:uploads success:^{
+        self.draggedFile.progress = 0.5;
+
+        [self.draggedFile.asset processWithSuccess:^{
+            self.draggedFile.progress = 0.6;
+
+            [self handleProcessing];
+        } failure:^(CDAResponse *response, NSError *error) {
+            self.draggedFile.error = error;
+
+            [self changeOperationStatusWithDone:YES];
+        }];
+    } failure:^(CDAResponse *response, NSError *error) {
+        self.draggedFile.error = error;
+
+        [self changeOperationStatusWithDone:YES];
+    }];
+}
+
 -(id)initWithDraggedFile:(BBUDraggedFile *)draggedFile {
     self = [super init];
     if (self) {
@@ -117,6 +145,21 @@ static const NSTimeInterval kProcessWait = 1.0;
     [self changeOperationStatusWithDone:NO];
     self.retries = 0;
 
+    if ([DBSession sharedSession].isLinked) {
+        self.client = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        self.client.delegate = self;
+
+        NSString* path = self.draggedFile.originalPath;
+        NSString* fileName = [[NSUUID UUID] UUIDString];
+        fileName = [fileName stringByAppendingPathExtension:path.pathExtension];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.client uploadFile:fileName toPath:@"/" withParentRev:nil fromPath:path];
+        });
+        
+        return;
+    }
+
     [[BBUS3Uploader sharedUploader] uploadImage:self.draggedFile.image completionHandler:^(NSURL *uploadURL, NSError *error) {
         if (!uploadURL) {
             self.draggedFile.error = error;
@@ -125,32 +168,37 @@ static const NSTimeInterval kProcessWait = 1.0;
             return;
         }
 
-        self.draggedFile.progress = 0.4;
-
-        NSDictionary* uploads = @{ self.draggedFile.asset.locale: uploadURL.absoluteString };
-
-        [self.draggedFile.asset updateWithLocalizedUploads:uploads success:^{
-            self.draggedFile.progress = 0.5;
-
-            [self.draggedFile.asset processWithSuccess:^{
-                self.draggedFile.progress = 0.6;
-
-                [self handleProcessing];
-            } failure:^(CDAResponse *response, NSError *error) {
-                self.draggedFile.error = error;
-
-                [self changeOperationStatusWithDone:YES];
-            }];
-        } failure:^(CDAResponse *response, NSError *error) {
-            self.draggedFile.error = error;
-
-            [self changeOperationStatusWithDone:YES];
-        }];
+        [self performUploadToContentfulWithUploadURL:uploadURL];
     } progressHandler:nil];
 }
 
 -(dispatch_time_t)time {
     return dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kProcessWait * NSEC_PER_SEC));
+}
+
+#pragma mark - DBRestClientDelegate
+
+- (void)restClient:(DBRestClient*)restClient loadedSharableLink:(NSString*)link
+           forFile:(NSString*)path {
+    link = [link stringByReplacingOccurrencesOfString:@"dl=0" withString:@"dl=1"];
+    [self performUploadToContentfulWithUploadURL:[NSURL URLWithString:link]];
+}
+
+- (void)restClient:(DBRestClient*)restClient loadSharableLinkFailedWithError:(NSError*)error {
+    self.draggedFile.error = error;
+
+    [self changeOperationStatusWithDone:YES];
+}
+
+- (void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath from:(NSString*)srcPath
+          metadata:(DBMetadata*)metadata {
+    [client loadSharableLinkForFile:destPath shortUrl:NO];
+}
+
+- (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error {
+    self.draggedFile.error = error;
+
+    [self changeOperationStatusWithDone:YES];
 }
 
 @end

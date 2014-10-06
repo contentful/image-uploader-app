@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="awsKeyTextField" destination="gbV-k4-yO2" id="Fw2-a0-Y0W"/>
                 <outlet property="awsSecretTextField" destination="HOu-Su-lQX" id="8wU-q5-Oh3"/>
+                <outlet property="linkDropboxButton" destination="XIW-L0-vPB" id="ZCD-pW-YYB"/>
                 <outlet property="s3BucketTextField" destination="iYW-jJ-ang" id="f2g-om-XL3"/>
                 <outlet property="uploadPathTextField" destination="Oof-YB-8sg" id="zuN-e9-6DV"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -37,7 +38,7 @@
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDP-bu-0Wz">
                     <rect key="frame" x="18" y="236" width="102" height="18"/>
-                    <buttonCell key="cell" type="check" title="Use S3" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kZG-kB-c7e">
+                    <buttonCell key="cell" type="check" title="Use S3" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="kZG-kB-c7e">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -90,6 +91,16 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIW-L0-vPB">
+                    <rect key="frame" x="14" y="30" width="123" height="32"/>
+                    <buttonCell key="cell" type="push" title="Link Dropbox" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9ri-mS-hu3">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="linkDropboxClicked:" target="-2" id="55O-4o-7qM"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
     </objects>

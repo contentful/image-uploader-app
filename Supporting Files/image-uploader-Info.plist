@@ -36,6 +36,14 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
+			<string>com.contentful.dropbox</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>db-nrx6yzg8yxgszby</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
 			<string>com.contentful.image-uploader.url</string>
 			<key>CFBundleURLSchemes</key>
 			<array>

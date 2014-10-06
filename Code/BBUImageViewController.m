@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <JNWCollectionView/JNWCollectionView.h>
 
 #import "BBUAppStyle.h"
@@ -306,7 +307,7 @@
 #pragma mark - BBUCollectionViewDelegate
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
-    if (![BBUS3Uploader hasValidCredentials]) {
+    if (![BBUS3Uploader hasValidCredentials] && ![DBSession sharedSession].isLinked) {
         NSAlert* alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Please provide your Amazon S3 credentials in the Preferences before uploading files.", nil) defaultButton:NSLocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
         [alert runModal];
         return;

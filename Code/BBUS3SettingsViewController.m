@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <SSKeychain/SSKeychain.h>
 
 #import "BBUS3SettingsViewController.h"
@@ -15,6 +16,7 @@
 
 @property (weak) IBOutlet NSTextField *awsKeyTextField;
 @property (weak) IBOutlet NSTextField *awsSecretTextField;
+@property (weak) IBOutlet NSButton *linkDropboxButton;
 @property (weak) IBOutlet NSTextField *s3BucketTextField;
 @property (weak) IBOutlet NSTextField *uploadPathTextField;
 
@@ -23,6 +25,12 @@
 #pragma mark -
 
 @implementation BBUS3SettingsViewController
+
+-(void)awakeFromNib {
+    [super awakeFromNib];
+
+    self.linkDropboxButton.enabled = ![DBSession sharedSession].isLinked;
+}
 
 -(BOOL)commitEditing {
     [SSKeychain setPassword:self.awsKeyTextField.stringValue forService:kS3Key account:kS3Key];
@@ -34,7 +42,24 @@
 }
 
 -(id)init {
-    return [self initWithNibName:NSStringFromClass(self.class) bundle:nil];
+    self = [self initWithNibName:NSStringFromClass(self.class) bundle:nil];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(loadingStateChanged:)
+                                                     name:DBAuthHelperOSXStateChangedNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
+-(void)loadingStateChanged:(NSNotification*)note {
+    self.linkDropboxButton.enabled = ![DBAuthHelperOSX sharedHelper].loading;
+}
+
+#pragma mark - Actions
+
+- (IBAction)linkDropboxClicked:(NSButton *)sender {
+    [[DBAuthHelperOSX sharedHelper] authenticate];
 }
 
 #pragma mark - MASPreferencesViewController 
@@ -52,7 +77,7 @@
 }
 
 -(NSString *)toolbarItemLabel {
-    return NSLocalizedString(@"S3", nil);
+    return NSLocalizedString(@"Upload", nil);
 }
 
 @end

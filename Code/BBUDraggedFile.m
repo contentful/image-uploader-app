@@ -16,7 +16,7 @@
 @property (nonatomic) CMAAsset* asset;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
-@property (nonatomic) NSString* originalFileName;
+@property (nonatomic) NSString* originalPath;
 @property (nonatomic) CMASpace* space;
 
 @end
@@ -88,7 +88,7 @@
 
 -(NSString *)description {
     return [NSString stringWithFormat:@"BBUDraggedFile with name '%@', attributes %@",
-            self.originalFileName, self.fileAttributes];
+            self.originalPath.lastPathComponent, self.fileAttributes];
 }
 
 -(void)fetchWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
@@ -107,7 +107,7 @@
 }
 
 -(NSString *)fileType {
-    return [self.originalFileName.pathExtension uppercaseString];
+    return [self.originalPath.lastPathComponent.pathExtension uppercaseString];
 }
 
 -(CGFloat)height {
@@ -127,7 +127,7 @@
         self.fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url.path
                                                                                error:nil];
         self.image = [[NSImage alloc] initWithContentsOfURL:url];
-        self.originalFileName = url.path.lastPathComponent;
+        self.originalPath = url.path;
     }
     return self;
 }
@@ -141,7 +141,7 @@
 }
 
 -(NSString *)title {
-    return self.asset.title ?: [self.originalFileName stringByDeletingPathExtension];
+    return self.asset.title ?: [self.originalPath.lastPathComponent stringByDeletingPathExtension];
 }
 
 -(void)updateWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
