@@ -331,7 +331,7 @@ CA
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grA-As-ZiJ" userLabel="Menu" customClass="JNWCollectionView">
+                    <scrollView appearanceType="aqua" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grA-As-ZiJ" userLabel="Menu" customClass="JNWCollectionView">
                         <rect key="frame" x="449" y="0.0" width="250" height="564"/>
                         <clipView key="contentView" id="u7D-jK-JAV">
                             <rect key="frame" x="1" y="1" width="181" height="562"/>
@@ -345,16 +345,16 @@ CA
                         <constraints>
                             <constraint firstAttribute="width" constant="250" id="EgF-oD-alV"/>
                         </constraints>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="wg2-rd-U90">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="wg2-rd-U90">
                             <rect key="frame" x="1" y="547" width="181" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="rfX-R2-vMh">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="rfX-R2-vMh">
                             <rect key="frame" x="166" y="1" width="16" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <scrollView appearanceType="aqua" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images view" customClass="BBUCollectionView">
+                    <scrollView appearanceType="aqua" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVq-Jw-jv9" userLabel="Images view" customClass="BBUCollectionView">
                         <rect key="frame" x="0.0" y="0.0" width="449" height="564"/>
                         <clipView key="contentView" id="0Lk-no-bwt">
                             <rect key="frame" x="1" y="1" width="514" height="562"/>
@@ -365,11 +365,11 @@ CA
                                 </view>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="9A3-I5-YH9">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9A3-I5-YH9">
                             <rect key="frame" x="1" y="547" width="514" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="lH6-5M-7qf">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="lH6-5M-7qf">
                             <rect key="frame" x="499" y="1" width="16" height="562"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
