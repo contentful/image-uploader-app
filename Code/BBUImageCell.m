@@ -227,6 +227,7 @@
     self.editable = draggedFile.asset.URL || draggedFile.error;
     self.imageView.image = self.draggedFile.image;
     self.infoLabel.stringValue = [[BBUDraggedFileFormatter new] stringForObjectValue:self.draggedFile];
+    self.progressIndicator.doubleValue = self.draggedFile.progress;
     self.showSuccess = draggedFile.asset.URL != nil;
     self.showFailure = draggedFile.error != nil;
 
