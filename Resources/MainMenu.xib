@@ -300,7 +300,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Navigate" id="cBQ-ab-LMT">
                         <items>
-                            <menuItem title="Delete Item" id="NOL-hV-kPP">
+                            <menuItem title="Delete" id="NOL-hV-kPP">
                                 <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
