@@ -93,6 +93,9 @@
 
 - (void)getUrl:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
     [DJProgressHUD dismiss];
+    
+    [NSApp stopModal];
+    [NSApp activateIgnoringOtherApps:YES];
 
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
 
@@ -111,9 +114,6 @@
         if (components.count != 2) {
             return;
         }
-
-        [NSApp stopModal];
-        [NSApp activateIgnoringOtherApps:YES];
 
         [SSKeychain setPassword:components[1]
                      forService:kContentfulServiceType
