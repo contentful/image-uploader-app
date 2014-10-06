@@ -21,6 +21,8 @@
 -(NSButton *)confirmationButton {
     if (!_confirmationButton) {
         _confirmationButton = [NSButton primaryContentfulButton];
+        _confirmationButton.keyEquivalent =  @"\r";
+        _confirmationButton.keyEquivalentModifierMask = NSCommandKeyMask;
         _confirmationButton.x = 20.0;
         [self addSubview:_confirmationButton];
     }
