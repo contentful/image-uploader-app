@@ -42,7 +42,7 @@
                         <rect key="frame" x="18" y="88" width="266" height="79"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="5Ci-oH-e0Z">
                             <font key="font" metaFont="system"/>
-                            <string key="title">To access Media Uploader, you need to sign in with your Contentful account on the Web. You will be taken to the Contentul login page.</string>
+                            <string key="title">To access Media Uploader, you need to sign in with your Contentful account on the Web. You will be taken to the Contenful login page.</string>
                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
