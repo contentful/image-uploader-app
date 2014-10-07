@@ -66,6 +66,13 @@
     }
 }
 
+-(void)viewWillAppear {
+    self.awsKeyTextField.stringValue = [SSKeychain passwordForService:kS3Key account:kS3Key] ?: @"";
+    self.awsSecretTextField.stringValue = [SSKeychain passwordForService:kS3Secret account:kS3Secret] ?: @"";
+    self.s3BucketTextField.stringValue = [SSKeychain passwordForService:kS3Bucket account:kS3Bucket] ?: @"";
+    self.uploadPathTextField.stringValue = [SSKeychain passwordForService:kS3Path account:kS3Path] ?: @"";
+}
+
 #pragma mark - Actions
 
 - (IBAction)linkDropboxClicked:(NSButton *)sender {
