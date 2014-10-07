@@ -47,6 +47,8 @@
 		A1D912A719D19EAE007D00DD /* BBUEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D912A519D19EAE007D00DD /* BBUEmptyViewController.m */; };
 		A1D912A819D19EAE007D00DD /* BBUEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D912A619D19EAE007D00DD /* BBUEmptyViewController.xib */; };
 		A1D912AC19D19FD9007D00DD /* Fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = A1D912A919D19EE0007D00DD /* Fonts */; };
+		A1DDF98819E42895009E579B /* OtherLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DDF98619E42895009E579B /* OtherLogo.png */; };
+		A1DDF98919E42895009E579B /* OtherLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DDF98719E42895009E579B /* OtherLogo@2x.png */; };
 		A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EF194D199CA00C00AE864E /* BBUImageViewController.m */; };
 		A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EF1950199CA50A00AE864E /* BBUImageCell.m */; };
 		A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */; };
@@ -132,6 +134,8 @@
 		A1D912A519D19EAE007D00DD /* BBUEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUEmptyViewController.m; sourceTree = "<group>"; };
 		A1D912A619D19EAE007D00DD /* BBUEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBUEmptyViewController.xib; sourceTree = "<group>"; };
 		A1D912A919D19EE0007D00DD /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		A1DDF98619E42895009E579B /* OtherLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OtherLogo.png; sourceTree = "<group>"; };
+		A1DDF98719E42895009E579B /* OtherLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OtherLogo@2x.png"; sourceTree = "<group>"; };
 		A1EF194C199CA00C00AE864E /* BBUImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUImageViewController.h; sourceTree = "<group>"; };
 		A1EF194D199CA00C00AE864E /* BBUImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUImageViewController.m; sourceTree = "<group>"; };
 		A1EF194F199CA50A00AE864E /* BBUImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUImageCell.h; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				A1D912A219D19E4C007D00DD /* Logo.png */,
 				A16E72A919D5E8E900D82C93 /* Logo@2x.png */,
 				A1D4A818199BEE970021EEA6 /* MainMenu.xib */,
+				A1DDF98619E42895009E579B /* OtherLogo.png */,
+				A1DDF98719E42895009E579B /* OtherLogo@2x.png */,
 				A1D9129F19D19DC5007D00DD /* Rectangle 20.png */,
 				A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */,
 			);
@@ -376,9 +382,11 @@
 				A1CFF4D719E144FC002CB57C /* BBULoginController.xib in Resources */,
 				A16E72AC19D5E8E900D82C93 /* Check@2x.png in Resources */,
 				A16E72AE19D5E8E900D82C93 /* cloud@2x.png in Resources */,
+				A1DDF98919E42895009E579B /* OtherLogo@2x.png in Resources */,
 				A1CFC35D19D95CB0003F2EF9 /* Failed@2x.png in Resources */,
 				A16E72B119D5E8E900D82C93 /* Rectangle 20@2x.png in Resources */,
 				A1D912A019D19DC5007D00DD /* cloud.png in Resources */,
+				A1DDF98819E42895009E579B /* OtherLogo.png in Resources */,
 				A1D912A319D19E4C007D00DD /* Logo.png in Resources */,
 				A16E72AD19D5E8E900D82C93 /* close@2x.png in Resources */,
 				A1CFC35C19D95CB0003F2EF9 /* Failed.png in Resources */,

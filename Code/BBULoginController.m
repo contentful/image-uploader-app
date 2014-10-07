@@ -50,7 +50,7 @@
     loginButton.width = 190.0;
     loginButton.x = (contentView.width - loginButton.width) / 2;
     loginButton.y = 40.0;
-    [loginButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Go to Contentful login page", nil)];
+    [loginButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Login to Contentful", nil)];
     [contentView addSubview:loginButton];
 }
 

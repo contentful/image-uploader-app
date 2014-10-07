@@ -13,22 +13,22 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="302" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="553" height="456"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="302" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="553" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd2-GE-uFQ" userLabel="Logo">
-                        <rect key="frame" x="69" y="202" width="48" height="48"/>
+                        <rect key="frame" x="194" y="261" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="lcJ-bq-Wup"/>
                             <constraint firstAttribute="width" constant="48" id="p6y-pR-wpP"/>
                         </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="Zyh-Uw-eBr"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="OtherLogo" id="Zyh-Uw-eBr"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0m-Uf-Icq">
-                        <rect key="frame" x="117" y="221" width="119" height="19"/>
+                        <rect key="frame" x="242" y="280" width="119" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="kYn-WP-MRs"/>
                         </constraints>
@@ -39,7 +39,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OYi-LI-fCZ">
-                        <rect key="frame" x="18" y="88" width="266" height="79"/>
+                        <rect key="frame" x="143" y="147" width="266" height="79"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="5Ci-oH-e0Z">
                             <font key="font" metaFont="system"/>
                             <string key="title">To access Media Uploader, you need to sign in with your Contentful account on the Web. You will be taken to the Contenful login page.</string>
@@ -48,7 +48,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-sX-A26">
-                        <rect key="frame" x="65" y="175" width="172" height="38"/>
+                        <rect key="frame" x="190" y="234" width="172" height="38"/>
                         <buttonCell key="cell" type="bevel" title="www.contentful.com" bezelStyle="regularSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="mW9-i8-7qx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -65,10 +65,10 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="236" y="330"/>
+            <point key="canvasLocation" x="361.5" y="333"/>
         </window>
     </objects>
     <resources>
-        <image name="Logo" width="36" height="37"/>
+        <image name="OtherLogo" width="36" height="37"/>
     </resources>
 </document>
