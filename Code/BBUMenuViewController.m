@@ -110,6 +110,8 @@
 #pragma mark - Actions
 
 -(void)confirmClicked:(NSButton*)button {
+    button.enabled = NO;
+
     NSString* title = [self valueForRow:0];
     NSString* description = [self valueForRow:1];
 
