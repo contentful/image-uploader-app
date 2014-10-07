@@ -53,6 +53,10 @@
     return fitRectIntoRectWithDimension(imageRect, self.imageView.bounds, RectAxisVertical);
 }
 
+- (NSString *)assetDescription {
+    return self.draggedFile.asset.description;
+}
+
 -(void)dealloc {
     [self.kvoController unobserveAll];
 }
