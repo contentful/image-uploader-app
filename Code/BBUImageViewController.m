@@ -267,6 +267,7 @@
 }
 
 - (void)spaceChanged:(NSNotification*)note {
+    [self.collectionView deselectAllItems];
     [self.files removeAllObjects];
     [self refresh];
 }
