@@ -34,6 +34,7 @@
 
 -(void)createWithCompletionHandler:(BBUBoolResultBlock)completionHandler {
     NSParameterAssert(completionHandler);
+    NSParameterAssert(self.space);
 
     self.progress = 0.0;
 

@@ -17,15 +17,6 @@ NSString* const kContentfulSpaceChanged = @"ContentfulSpaceChangedKey";
 static NSString* const kUserAgent       = @"Contentful Media Uploader/1.0";
 
 static const char* kSharedSpace         = "SharedSpace";
-static const char* kSharedSpaceKey      = "SharedSpaceKey";
-
-@interface CMAClient ()
-
-@property (nonatomic) CMASpace* sharedSpace;
-
-@end
-
-#pragma mark -
 
 @implementation CMAClient (SharedClient)
 
@@ -49,46 +40,12 @@ static const char* kSharedSpaceKey      = "SharedSpaceKey";
 
 #pragma mark -
 
--(CDARequest*)fetchSharedSpaceWithSuccess:(CMASpaceFetchedBlock)success
-                                  failure:(CDARequestFailureBlock)failure {
-    if ([self.sharedSpace.identifier isEqualToString:self.sharedSpaceKey]) {
-        if (success) {
-            success(nil, self.sharedSpace);
-        }
-
-        return nil;
-    }
-
-    NSParameterAssert(self.sharedSpaceKey);
-    CDARequest* request = [self fetchSpaceWithIdentifier:self.sharedSpaceKey
-                                                 success:^(CDAResponse *response, CMASpace *space) {
-                                                     self.sharedSpace = space;
-
-                                                     if (success) {
-                                                         success(response, space);
-                                                     }
-                                                 } failure:failure];
-
-    NSAssert([request.request.allHTTPHeaderFields[@"User-Agent"] hasPrefix:kUserAgent], @"");
-    return request;
-}
-
-#pragma mark -
-
 -(void)setSharedSpace:(CMASpace *)sharedSpace {
     objc_setAssociatedObject(self, kSharedSpace, sharedSpace, OBJC_ASSOCIATION_RETAIN);
 }
 
--(void)setSharedSpaceKey:(NSString *)sharedSpaceKey {
-    objc_setAssociatedObject(self, kSharedSpaceKey, sharedSpaceKey, OBJC_ASSOCIATION_RETAIN);
-}
-
 -(CMASpace *)sharedSpace {
     return objc_getAssociatedObject(self, kSharedSpace);
-}
-
--(NSString *)sharedSpaceKey {
-    return objc_getAssociatedObject(self, kSharedSpaceKey);
 }
 
 @end

@@ -343,42 +343,38 @@
     [self.files addObjectsFromArray:draggedFiles];
     [self refresh];
 
-    [[CMAClient sharedClient] fetchSharedSpaceWithSuccess:^(CDAResponse *response, CMASpace *space) {
-        self.currentSpaceId = space.identifier;
+    CMASpace* sharedSpace = [CMAClient sharedClient].sharedSpace;
+    self.currentSpaceId = sharedSpace.identifier;
 
-        for (BBUDraggedFile* draggedFile in draggedFiles) {
-            if (!draggedFile.image) {
-                continue;
+    for (BBUDraggedFile* draggedFile in draggedFiles) {
+        if (!draggedFile.image) {
+            continue;
+        }
+
+        self.totalNumberOfUploads++;
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateHeaderView];
+        });
+
+        NSOperation* operation = [draggedFile creationOperationForSpace:sharedSpace];
+
+        operation.completionBlock = ^{
+            NSError* error = draggedFile.error;
+
+            if (!error) {
+                self.numberOfUploads++;
             }
 
-            self.totalNumberOfUploads++;
-
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+                [self postSuccessNotificationIfNeeded];
                 [self updateHeaderView];
             });
+        };
 
-            NSOperation* operation = [draggedFile creationOperationForSpace:space];
-
-            operation.completionBlock = ^{
-                NSError* error = draggedFile.error;
-
-                if (!error) {
-                    self.numberOfUploads++;
-                }
-
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.collectionView reloadData];
-                    [self postSuccessNotificationIfNeeded];
-                    [self updateHeaderView];
-                });
-            };
-
-            [self.uploadQueue addOperation:operation];
-        }
-    } failure:^(CDAResponse *response, NSError *error) {
-        NSAlert* alert = [NSAlert alertWithError:error];
-        [alert runModal];
-    }];
+        [self.uploadQueue addOperation:operation];
+    }
 }
 
 #pragma mark - JNWCollectionViewDataSource

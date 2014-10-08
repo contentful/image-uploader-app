@@ -13,11 +13,8 @@ extern NSString* const kContentfulSpaceChanged;
 
 @interface CMAClient (SharedClient)
 
-@property (nonatomic) NSString* sharedSpaceKey;
+@property (nonatomic) CMASpace* sharedSpace;
 
 +(instancetype)sharedClient;
-
--(CDARequest*)fetchSharedSpaceWithSuccess:(CMASpaceFetchedBlock)success
-                                  failure:(CDARequestFailureBlock)failure;
 
 @end

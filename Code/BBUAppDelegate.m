@@ -147,7 +147,7 @@
 
 - (void)selectSpace:(CMASpace*)space {
     self.spaceSelection.title = space.name;
-    [CMAClient sharedClient].sharedSpaceKey = space.identifier;
+    [CMAClient sharedClient].sharedSpace = space;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:kContentfulSpaceChanged object:nil userInfo:@{ kContentfulSpaceChanged: space }];
 }
