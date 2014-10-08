@@ -41,6 +41,7 @@
 		A1D4A817199BEE8E0021EEA6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A1D4A816199BEE8E0021EEA6 /* Credits.rtf */; };
 		A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D4A818199BEE970021EEA6 /* MainMenu.xib */; };
 		A1D5AC4119C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D5AC4019C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m */; };
+		A1D603AF19E53387001BACAB /* BBUNetworkRequestLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D603AE19E53387001BACAB /* BBUNetworkRequestLogger.m */; };
 		A1D912A019D19DC5007D00DD /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9129E19D19DC5007D00DD /* cloud.png */; };
 		A1D912A119D19DC5007D00DD /* Rectangle 20.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9129F19D19DC5007D00DD /* Rectangle 20.png */; };
 		A1D912A319D19E4C007D00DD /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D912A219D19E4C007D00DD /* Logo.png */; };
@@ -127,6 +128,8 @@
 		A1D4A818199BEE970021EEA6 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		A1D5AC3F19C0721C00C86F53 /* BBUS3Uploader+SharedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BBUS3Uploader+SharedSettings.h"; sourceTree = "<group>"; };
 		A1D5AC4019C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BBUS3Uploader+SharedSettings.m"; sourceTree = "<group>"; };
+		A1D603AD19E53387001BACAB /* BBUNetworkRequestLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUNetworkRequestLogger.h; sourceTree = "<group>"; };
+		A1D603AE19E53387001BACAB /* BBUNetworkRequestLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUNetworkRequestLogger.m; sourceTree = "<group>"; };
 		A1D9129E19D19DC5007D00DD /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		A1D9129F19D19DC5007D00DD /* Rectangle 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 20.png"; sourceTree = "<group>"; };
 		A1D912A219D19E4C007D00DD /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */,
 				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
 				A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */,
+				A1D603AD19E53387001BACAB /* BBUNetworkRequestLogger.h */,
+				A1D603AE19E53387001BACAB /* BBUNetworkRequestLogger.m */,
 			);
 			name = "Asset Handling";
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */,
 				A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */,
 				A1D912A719D19EAE007D00DD /* BBUEmptyViewController.m in Sources */,
+				A1D603AF19E53387001BACAB /* BBUNetworkRequestLogger.m in Sources */,
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
 				A1D5AC4119C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m in Sources */,
 				A1D4A7EE199BED850021EEA6 /* main.m in Sources */,

@@ -9,6 +9,7 @@
 #import <objc/runtime.h>
 #import <SSKeychain/SSKeychain.h>
 
+#import "BBUNetworkRequestLogger.h"
 #import "CMAClient+SharedClient.h"
 
 NSString* const kContentfulServiceType  = @"com.contentful";
@@ -38,6 +39,10 @@ static const char* kSharedSpaceKey      = "SharedSpaceKey";
         configuration.userAgent = kUserAgent;
 
         sharedClient = [[CMAClient alloc] initWithAccessToken:token configuration:configuration];
+
+#if 0
+        [[BBUNetworkRequestLogger sharedLogger] startLogging];
+#endif
     });
     return sharedClient;
 }
