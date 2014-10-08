@@ -47,6 +47,14 @@
 
                             completionHandler(YES);
                         } failure:^(CDAResponse *response, NSError *error) {
+                            if (error.code == 404) {
+                                NSMutableDictionary* info = [error.userInfo mutableCopy];
+                                info[NSLocalizedDescriptionKey] = NSLocalizedString(@"Asset creation not allowed.", nil);
+                                error = [NSError errorWithDomain:error.domain
+                                                            code:error.code
+                                                        userInfo:info];
+                            }
+
                             self.error = error;
 
                             completionHandler(NO);
