@@ -101,11 +101,9 @@
 
     self.helpViewController.view.hidden = [self collectionView:self.collectionView
                                         numberOfItemsInSection:0] > 0;
-    self.helpViewController.view.y = 0.0;
-    self.helpViewController.view.width = self.view.window.frame.size.width;
-
     self.dragHintView.hidden = !self.helpViewController.view.isHidden;
-    self.dragHintView.width = self.view.width;
+
+    [self performSelector:@selector(windowResize) withObject:nil afterDelay:0.1];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
                    dispatch_get_main_queue(), ^{
@@ -191,7 +189,6 @@
 - (BBUEmptyViewController *)helpViewController {
     if (!_helpViewController) {
         _helpViewController = [BBUEmptyViewController new];
-        _helpViewController.view.y = self.view.y;
         _helpViewController.view.hidden = YES;
         [self.view.superview addSubview:_helpViewController.view];
 
@@ -284,7 +281,7 @@
 }
 
 - (void)windowResize {
-    self.helpViewController.view.y = 40.0;
+    self.helpViewController.view.y = 0.0;
     self.helpViewController.view.width = self.view.window.frame.size.width;
     self.helpViewController.view.height = self.view.height;
 
