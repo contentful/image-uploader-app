@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="553" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd2-GE-uFQ" userLabel="Logo">
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bd2-GE-uFQ" userLabel="Logo">
                         <rect key="frame" x="194" y="261" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="lcJ-bq-Wup"/>
@@ -27,7 +27,7 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="OtherLogo" id="Zyh-Uw-eBr"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0m-Uf-Icq">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0m-Uf-Icq">
                         <rect key="frame" x="242" y="280" width="119" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="kYn-WP-MRs"/>
@@ -59,7 +59,10 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Bd2-GE-uFQ" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="147" id="F0X-Bc-nR6"/>
+                    <constraint firstItem="Bd2-GE-uFQ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="194" id="Q01-yo-Swo"/>
                     <constraint firstItem="k0m-Uf-Icq" firstAttribute="leading" secondItem="Bd2-GE-uFQ" secondAttribute="trailing" constant="2" id="QB5-gR-nIX"/>
+                    <constraint firstItem="k0m-Uf-Icq" firstAttribute="centerY" secondItem="Bd2-GE-uFQ" secondAttribute="centerY" constant="-4.5" id="cau-ln-Rhu"/>
                 </constraints>
             </view>
             <connections>
