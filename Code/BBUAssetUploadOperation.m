@@ -26,6 +26,7 @@ static const NSTimeInterval kProcessWait = 1.0;
 @property (nonatomic) BOOL done;
 @property (nonatomic) BBUDraggedFile* draggedFile;
 @property (nonatomic) NSUInteger retries;
+@property (nonatomic, readonly) NSURL* temporaryFilePath;
 @property (nonatomic, readonly) dispatch_time_t time;
 
 @end
@@ -33,6 +34,10 @@ static const NSTimeInterval kProcessWait = 1.0;
 #pragma mark -
 
 @implementation BBUAssetUploadOperation
+
+@synthesize temporaryFilePath = _temporaryFilePath;
+
+#pragma mark -
 
 - (void)changeOperationStatusToProcessingFailed {
     self.draggedFile.error = [NSError errorWithDomain:@"com.contentful.management" code:kProcessingFailedErrorCode userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Processing uploaded image failed, try again.", nil) }];
@@ -128,6 +133,10 @@ static const NSTimeInterval kProcessWait = 1.0;
     return self.done;
 }
 
+-(BOOL)shouldConvert {
+    return ![@[ @"JPG", @"JPEG", @"PNG", @"GIF" ] containsObject:self.draggedFile.fileType];
+}
+
 -(void)start {
     [self.draggedFile createWithCompletionHandler:^(BOOL success) {
         if (success) {
@@ -136,6 +145,16 @@ static const NSTimeInterval kProcessWait = 1.0;
             [self changeOperationStatusWithDone:YES];
         }
     }];
+}
+
+-(NSURL*)temporaryFilePath {
+    if (!_temporaryFilePath) {
+        NSString *fileName = [NSString stringWithFormat:@"%@_%@", [[NSProcessInfo processInfo] globallyUniqueString], @"_image.jpg"];
+        _temporaryFilePath = [NSURL fileURLWithPath:[NSTemporaryDirectory()
+                                                     stringByAppendingPathComponent:fileName]];
+    }
+
+    return _temporaryFilePath;
 }
 
 -(void)uploadImage {
@@ -150,6 +169,15 @@ static const NSTimeInterval kProcessWait = 1.0;
         self.client.delegate = self;
 
         NSString* path = self.draggedFile.originalPath;
+
+        if (self.shouldConvert) {
+            NSBitmapImageRep *imgRep = [[self.draggedFile.image representations] objectAtIndex:0];
+            NSData *data = [imgRep representationUsingType:NSJPEGFileType properties:nil];
+            [data writeToURL:self.temporaryFilePath atomically:YES];
+
+            path = self.temporaryFilePath.path;
+        }
+
         NSString* fileName = [[NSUUID UUID] UUIDString];
         fileName = [fileName stringByAppendingPathExtension:path.pathExtension];
 
@@ -160,7 +188,7 @@ static const NSTimeInterval kProcessWait = 1.0;
         return;
     }
 
-    [[BBUS3Uploader sharedUploader] uploadImage:self.draggedFile.image completionHandler:^(NSURL *uploadURL, NSError *error) {
+    BBUFileUploadHandler handler = ^(NSURL *uploadURL, NSError *error) {
         if (!uploadURL) {
             self.draggedFile.error = error;
 
@@ -169,7 +197,18 @@ static const NSTimeInterval kProcessWait = 1.0;
         }
 
         [self performUploadToContentfulWithUploadURL:uploadURL];
-    } progressHandler:nil];
+    };
+
+    if (self.shouldConvert) {
+        [[BBUS3Uploader sharedUploader] uploadImage:self.draggedFile.image
+                                  completionHandler:handler
+                                    progressHandler:nil];
+    } else {
+        NSData* data = [NSData dataWithContentsOfFile:self.draggedFile.originalPath];
+        [[BBUS3Uploader sharedUploader] uploadFileWithData:data
+                                         completionHandler:handler
+                                           progressHandler:nil];
+    }
 }
 
 -(dispatch_time_t)time {
@@ -180,6 +219,8 @@ static const NSTimeInterval kProcessWait = 1.0;
 
 - (void)restClient:(DBRestClient*)restClient loadedSharableLink:(NSString*)link
            forFile:(NSString*)path {
+    [[NSFileManager defaultManager] removeItemAtURL:self.temporaryFilePath error:nil];
+
     link = [link stringByReplacingOccurrencesOfString:@"dl=0" withString:@"dl=1"];
     [self performUploadToContentfulWithUploadURL:[NSURL URLWithString:link]];
 }
