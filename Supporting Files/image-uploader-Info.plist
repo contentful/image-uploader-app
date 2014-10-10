@@ -52,7 +52,7 @@
 		</dict>
 	</array>
 	<key>NSUserNotificationAlertStyle</key>
-	<string>alert</string>
+	<string>banner</string>
 	<key>ATSApplicationFontsPath</key>
 	<string>Fonts</string>
 </dict>
