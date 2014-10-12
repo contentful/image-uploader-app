@@ -19,6 +19,7 @@
 		A16E72AF19D5E8E900D82C93 /* Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72A819D5E8E900D82C93 /* Line@2x.png */; };
 		A16E72B019D5E8E900D82C93 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72A919D5E8E900D82C93 /* Logo@2x.png */; };
 		A16E72B119D5E8E900D82C93 /* Rectangle 20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */; };
+		A19469C619E8372900766AF0 /* Uploader_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A19469C519E8372900766AF0 /* Uploader_Tests.m */; };
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
 		A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */; };
@@ -55,7 +56,25 @@
 		A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */; };
 		A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F834D919A2033300282AE9 /* BBUCollectionView.m */; };
 		A23D4E3A868943879EE69000 /* libPods-image-uploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79302297BDDD4879A2F47997 /* libPods-image-uploader.a */; };
+		DA472A44A5615CFD9C3B8E59 /* libPods-Uploader Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5350AD0E92E7EAA646C2A3F2 /* libPods-Uploader Tests.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A13A44AF19EBC35D008DE506 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1D4A7D6199BED850021EEA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1D4A7DD199BED850021EEA6;
+			remoteInfo = "image-uploader";
+		};
+		A19469C719E8372900766AF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1D4A7D6199BED850021EEA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1D4A7DD199BED850021EEA6;
+			remoteInfo = "image-uploader";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A1D912AB19D19FCF007D00DD /* CopyFiles */ = {
@@ -71,6 +90,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2502DC8DDB16375802DBC873 /* Pods-Uploader Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.release.xcconfig"; sourceTree = "<group>"; };
+		5350AD0E92E7EAA646C2A3F2 /* libPods-Uploader Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uploader Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79302297BDDD4879A2F47997 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.debug.xcconfig"; sourceTree = "<group>"; };
 		A10D832B19D5EBBE00314284 /* BBUDragHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDragHintView.h; sourceTree = "<group>"; };
@@ -91,6 +112,10 @@
 		A16E72A819D5E8E900D82C93 /* Line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line@2x.png"; sourceTree = "<group>"; };
 		A16E72A919D5E8E900D82C93 /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
 		A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 20@2x.png"; sourceTree = "<group>"; };
+		A19469C119E8372900766AF0 /* Uploader Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Uploader Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A19469C419E8372900766AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A19469C519E8372900766AF0 /* Uploader_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploader_Tests.m; sourceTree = "<group>"; };
+		A19469CC19E8385200766AF0 /* AsyncTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTesting.h; sourceTree = "<group>"; };
 		A19FB0D219A3445500A5659C /* BBUMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuViewController.h; sourceTree = "<group>"; };
 		A19FB0D319A3445500A5659C /* BBUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuViewController.m; sourceTree = "<group>"; };
 		A19FB0D519A347BE00A5659C /* BBUMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuCell.h; sourceTree = "<group>"; };
@@ -148,9 +173,18 @@
 		A1F834D819A2033300282AE9 /* BBUCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUCollectionView.h; sourceTree = "<group>"; };
 		A1F834D919A2033300282AE9 /* BBUCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUCollectionView.m; sourceTree = "<group>"; };
 		A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.release.xcconfig"; sourceTree = "<group>"; };
+		D4957160548C3F47EE7E4D90 /* Pods-Uploader Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A19469BE19E8372900766AF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA472A44A5615CFD9C3B8E59 /* libPods-Uploader Tests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1D4A7DB199BED850021EEA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +197,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A19469C219E8372900766AF0 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A19469CC19E8385200766AF0 /* AsyncTesting.h */,
+				A19469C519E8372900766AF0 /* Uploader_Tests.m */,
+				A19469C419E8372900766AF0 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		A1B151A919B9AF7400C9C97E /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,10 +264,11 @@
 			children = (
 				A1D4A7E7199BED850021EEA6 /* Code */,
 				A1D4A7E0199BED850021EEA6 /* Frameworks */,
+				F8D0F218CD2CE0B7DFEB3287 /* Pods */,
 				A1D4A7DF199BED850021EEA6 /* Products */,
 				A1D4A815199BEDCC0021EEA6 /* Resources */,
 				A1D4A7E8199BED850021EEA6 /* Supporting Files */,
-				F8D0F218CD2CE0B7DFEB3287 /* Pods */,
+				A19469C219E8372900766AF0 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D4A7DE199BED850021EEA6 /* image-uploader.app */,
+				A19469C119E8372900766AF0 /* Uploader Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,6 +289,7 @@
 				A1D4A7E6199BED850021EEA6 /* Foundation.framework */,
 				A10FC71319AE324400C45BA3 /* Realm.framework */,
 				79302297BDDD4879A2F47997 /* libPods-image-uploader.a */,
+				5350AD0E92E7EAA646C2A3F2 /* libPods-Uploader Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,6 +361,8 @@
 			children = (
 				98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */,
 				A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */,
+				D4957160548C3F47EE7E4D90 /* Pods-Uploader Tests.debug.xcconfig */,
+				2502DC8DDB16375802DBC873 /* Pods-Uploader Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -321,6 +370,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A19469C019E8372900766AF0 /* Uploader Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A19469CB19E8372900766AF0 /* Build configuration list for PBXNativeTarget "Uploader Tests" */;
+			buildPhases = (
+				D89972D38B1C005BDE24590A /* Check Pods Manifest.lock */,
+				A19469BD19E8372900766AF0 /* Sources */,
+				A19469BE19E8372900766AF0 /* Frameworks */,
+				A19469BF19E8372900766AF0 /* Resources */,
+				64B72DF77DF3A6AB9CE8CC6B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A19469C819E8372900766AF0 /* PBXTargetDependency */,
+				A13A44B019EBC35D008DE506 /* PBXTargetDependency */,
+			);
+			name = "Uploader Tests";
+			productName = "Uploader Tests";
+			productReference = A19469C119E8372900766AF0 /* Uploader Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A1D4A7DD199BED850021EEA6 /* image-uploader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1D4A80F199BED850021EEA6 /* Build configuration list for PBXNativeTarget "image-uploader" */;
@@ -351,6 +421,12 @@
 				CLASSPREFIX = BBU;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Contentful GmbH";
+				TargetAttributes = {
+					A19469C019E8372900766AF0 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = A1D4A7DD199BED850021EEA6;
+					};
+				};
 			};
 			buildConfigurationList = A1D4A7D9199BED850021EEA6 /* Build configuration list for PBXProject "image-uploader" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -366,11 +442,20 @@
 			projectRoot = "";
 			targets = (
 				A1D4A7DD199BED850021EEA6 /* image-uploader */,
+				A19469C019E8372900766AF0 /* Uploader Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A19469BF19E8372900766AF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A13A44B119EBC457008DE506 /* contentful_logo_big.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1D4A7DC199BED850021EEA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,6 +519,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		64B72DF77DF3A6AB9CE8CC6B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,9 +548,32 @@
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | grep -v '/Pods/' | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
 		};
+		D89972D38B1C005BDE24590A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A19469BD19E8372900766AF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A19469C619E8372900766AF0 /* Uploader_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1D4A7DA199BED850021EEA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,7 +605,66 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A13A44B019EBC35D008DE506 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1D4A7DD199BED850021EEA6 /* image-uploader */;
+			targetProxy = A13A44AF19EBC35D008DE506 /* PBXContainerItemProxy */;
+		};
+		A19469C819E8372900766AF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1D4A7DD199BED850021EEA6 /* image-uploader */;
+			targetProxy = A19469C719E8372900766AF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A19469C919E8372900766AF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4957160548C3F47EE7E4D90 /* Pods-Uploader Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/image-uploader.app/Contents/MacOS/image-uploader";
+			};
+			name = Debug;
+		};
+		A19469CA19E8372900766AF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2502DC8DDB16375802DBC873 /* Pods-Uploader Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Uploader Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/image-uploader.app/Contents/MacOS/image-uploader";
+			};
+			name = Release;
+		};
 		A1D4A80D199BED850021EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -590,6 +772,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A19469CB19E8372900766AF0 /* Build configuration list for PBXNativeTarget "Uploader Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A19469C919E8372900766AF0 /* Debug */,
+				A19469CA19E8372900766AF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A1D4A7D9199BED850021EEA6 /* Build configuration list for PBXProject "image-uploader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

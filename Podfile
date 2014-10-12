@@ -17,3 +17,8 @@ pod 'SSKeychain'
 
 end
 
+target "Uploader Tests" do
+
+pod 'Realm'
+
+end

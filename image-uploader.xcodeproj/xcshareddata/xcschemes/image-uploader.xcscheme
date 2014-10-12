@@ -20,6 +20,20 @@
                ReferencedContainer = "container:image-uploader.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A19469C019E8372900766AF0"
+               BuildableName = "Uploader Tests.xctest"
+               BlueprintName = "Uploader Tests"
+               ReferencedContainer = "container:image-uploader.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +42,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A19469C019E8372900766AF0"
+               BuildableName = "Uploader Tests.xctest"
+               BlueprintName = "Uploader Tests"
+               ReferencedContainer = "container:image-uploader.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
