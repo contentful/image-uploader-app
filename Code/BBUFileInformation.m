@@ -39,6 +39,10 @@
     return @[@"error", @"space"];
 }
 
++(NSString *)primaryKey {
+    return @"originalPath";
+}
+
 #pragma mark -
 
 -(BOOL)hasAsset {

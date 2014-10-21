@@ -274,9 +274,14 @@
 
 -(void)writeToPersistentStore {
     BBUFileInformation* fileInformation = [BBUFileInformation fileInformationWithDraggedFile:self];
+    BBUFileInformation* oldInformation = [BBUFileInformation objectsWhere:[NSString stringWithFormat:@"originalPath == '%@'", self.originalPath]].firstObject;
 
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
+    if (oldInformation) {
+        [realm deleteObject:oldInformation];
+    }
+
     [realm addObject:fileInformation];
     [realm commitWriteTransaction];
 }
