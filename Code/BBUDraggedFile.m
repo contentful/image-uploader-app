@@ -37,6 +37,18 @@
                withCompletionHandler:completionHandler];
 }
 
++(void)fetchFilesForSpace:(CMASpace*)space fromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler {
+    NSParameterAssert(space);
+    NSParameterAssert(completionHandler);
+
+    RLMArray* fileInfos = [BBUFileInformation objectsWhere:[NSString stringWithFormat:@"spaceIdentifier == '%@'", space.identifier]];
+    NSMutableArray* result = [@[] mutableCopy];
+    [self fetchNextFileFromFileInfos:fileInfos
+                             atIndex:0
+                         resultArray:result
+               withCompletionHandler:completionHandler];
+}
+
 +(void)fetchNextFileFromFileInfos:(RLMArray*)fileInfos
                           atIndex:(NSUInteger)index
                       resultArray:(NSMutableArray*)result

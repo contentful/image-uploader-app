@@ -31,6 +31,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 @property (nonatomic, readonly) CGFloat width;
 
 +(void)fetchAllFilesFromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler;
++(void)fetchFilesForSpace:(CMASpace*)space fromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler;
 
 -(NSOperation*)creationOperationForSpace:(CMASpace*)space;
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem*)item;

@@ -121,6 +121,41 @@ static NSString* const SpaceIdentifier = @"fsnczri66h17";
     XCTAssertNotNil(file.image, @"");
 }
 
+-(void)testBasicSpaceFilter {
+    __block BBUDraggedFile* file = [self draggedFileMockWithAsset:YES error:NO path:YES];
+    [file writeToPersistentStore];
+
+    StartBlock();
+
+    [BBUDraggedFile fetchFilesForSpace:[self spaceMock] fromPersistentStoreWithCompletionHandler:
+     ^(NSArray *array) {
+        XCTAssertEqual(1, array.count, @"");
+        file = array.firstObject;
+
+        EndBlock();
+    }];
+
+    WaitUntilBlockCompletes();
+
+    XCTAssertNotNil(file, @"");
+    XCTAssertNotNil(file.image, @"");
+}
+
+-(void)testBasicFailingSpaceFilter {
+    __block BBUDraggedFile* file = [self draggedFileMockWithAsset:YES error:NO path:YES];
+    [file writeToPersistentStore];
+
+    StartBlock();
+
+    [BBUDraggedFile fetchFilesForSpace:[self assetMockWithIdentifier:@"foo"] fromPersistentStoreWithCompletionHandler:^(NSArray *array) {
+         XCTAssertEqual(0, array.count, @"");
+
+         EndBlock();
+     }];
+
+    WaitUntilBlockCompletes();
+}
+
 -(void)testError {
     __block BBUDraggedFile* file = [self draggedFileMockWithAsset:NO error:YES path:YES];
     [file writeToPersistentStore];
