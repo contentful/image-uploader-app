@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D832C19D5EBBE00314284 /* BBUDragHintView.m */; };
+		A13A44B119EBC457008DE506 /* contentful_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */; };
+		A13A44B419EBC4FF008DE506 /* BBUFileInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = A13A44B319EBC4FF008DE506 /* BBUFileInformation.m */; };
 		A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */; };
 		A15A61C019A222AA006B1551 /* BBUDraggedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */; };
 		A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A15A61C219A23105006B1551 /* NSView+Geometry.m */; };
@@ -19,7 +21,7 @@
 		A16E72AF19D5E8E900D82C93 /* Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72A819D5E8E900D82C93 /* Line@2x.png */; };
 		A16E72B019D5E8E900D82C93 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72A919D5E8E900D82C93 /* Logo@2x.png */; };
 		A16E72B119D5E8E900D82C93 /* Rectangle 20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */; };
-		A19469C619E8372900766AF0 /* Uploader_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A19469C519E8372900766AF0 /* Uploader_Tests.m */; };
+		A19469C619E8372900766AF0 /* AssetInfoPersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A19469C519E8372900766AF0 /* AssetInfoPersistenceTest.m */; };
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
 		A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */; };
@@ -97,6 +99,8 @@
 		A10D832B19D5EBBE00314284 /* BBUDragHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDragHintView.h; sourceTree = "<group>"; };
 		A10D832C19D5EBBE00314284 /* BBUDragHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDragHintView.m; sourceTree = "<group>"; };
 		A10FC71319AE324400C45BA3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/Realm/realm-cocoapods-0.83.0/osx/Realm.framework"; sourceTree = "<group>"; };
+		A13A44B219EBC4FF008DE506 /* BBUFileInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUFileInformation.h; sourceTree = "<group>"; };
+		A13A44B319EBC4FF008DE506 /* BBUFileInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUFileInformation.m; sourceTree = "<group>"; };
 		A14BDCA319D36E29008B8E7B /* BBUAppStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAppStyle.h; sourceTree = "<group>"; };
 		A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAppStyle.m; sourceTree = "<group>"; };
 		A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFile.h; sourceTree = "<group>"; };
@@ -114,7 +118,7 @@
 		A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 20@2x.png"; sourceTree = "<group>"; };
 		A19469C119E8372900766AF0 /* Uploader Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Uploader Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19469C419E8372900766AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A19469C519E8372900766AF0 /* Uploader_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploader_Tests.m; sourceTree = "<group>"; };
+		A19469C519E8372900766AF0 /* AssetInfoPersistenceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetInfoPersistenceTest.m; sourceTree = "<group>"; };
 		A19469CC19E8385200766AF0 /* AsyncTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTesting.h; sourceTree = "<group>"; };
 		A19FB0D219A3445500A5659C /* BBUMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuViewController.h; sourceTree = "<group>"; };
 		A19FB0D319A3445500A5659C /* BBUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuViewController.m; sourceTree = "<group>"; };
@@ -200,8 +204,8 @@
 		A19469C219E8372900766AF0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				A19469C519E8372900766AF0 /* AssetInfoPersistenceTest.m */,
 				A19469CC19E8385200766AF0 /* AsyncTesting.h */,
-				A19469C519E8372900766AF0 /* Uploader_Tests.m */,
 				A19469C419E8372900766AF0 /* Info.plist */,
 			);
 			path = Tests;
@@ -253,6 +257,8 @@
 				A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */,
 				A15A61BE19A222AA006B1551 /* BBUDraggedFile.h */,
 				A15A61BF19A222AA006B1551 /* BBUDraggedFile.m */,
+				A13A44B219EBC4FF008DE506 /* BBUFileInformation.h */,
+				A13A44B319EBC4FF008DE506 /* BBUFileInformation.m */,
 				A1D603AD19E53387001BACAB /* BBUNetworkRequestLogger.h */,
 				A1D603AE19E53387001BACAB /* BBUNetworkRequestLogger.m */,
 			);
@@ -570,7 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19469C619E8372900766AF0 /* Uploader_Tests.m in Sources */,
+				A19469C619E8372900766AF0 /* AssetInfoPersistenceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13A44B419EBC4FF008DE506 /* BBUFileInformation.m in Sources */,
 				A1D4A7F5199BED850021EEA6 /* BBUAppDelegate.m in Sources */,
 				A15A61C319A23105006B1551 /* NSView+Geometry.m in Sources */,
 				A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */,
@@ -742,6 +749,7 @@
 			baseConfigurationReference = 98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -758,6 +766,7 @@
 			baseConfigurationReference = A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

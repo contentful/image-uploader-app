@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^BBUArrayResultBlock)(NSArray* array);
 typedef void(^BBUBoolResultBlock)(BOOL success);
 
 @class CMAAsset;
@@ -24,9 +25,12 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 @property (nonatomic, readonly) NSUInteger numberOfBytes;
 @property (nonatomic, readonly) NSString* originalPath;
 @property (nonatomic) CGFloat progress;
+@property (nonatomic, readonly) CMASpace* space;
 @property (nonatomic, readonly) NSString* title;
 @property (nonatomic, readonly) NSURL* url;
 @property (nonatomic, readonly) CGFloat width;
+
++(void)fetchAllFilesFromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler;
 
 -(NSOperation*)creationOperationForSpace:(CMASpace*)space;
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem*)item;
@@ -36,5 +40,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 -(void)deleteWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
 -(void)fetchWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
 -(void)updateWithCompletionHandler:(BBUBoolResultBlock)completionHandler;
+
+-(void)writeToPersistentStore;
 
 @end

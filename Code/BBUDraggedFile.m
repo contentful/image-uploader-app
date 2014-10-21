@@ -10,6 +10,7 @@
 
 #import "BBUAssetUploadOperation.h"
 #import "BBUDraggedFile.h"
+#import "BBUFileInformation.h"
 
 @interface BBUDraggedFile ()
 
@@ -24,6 +25,71 @@
 #pragma mark -
 
 @implementation BBUDraggedFile
+
++(void)fetchAllFilesFromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler {
+    NSParameterAssert(completionHandler);
+
+    RLMArray* fileInfos = [BBUFileInformation allObjects];
+    NSMutableArray* result = [@[] mutableCopy];
+    [self fetchNextFileFromFileInfos:fileInfos
+                             atIndex:0
+                         resultArray:result
+               withCompletionHandler:completionHandler];
+}
+
++(void)fetchNextFileFromFileInfos:(RLMArray*)fileInfos
+                          atIndex:(NSUInteger)index
+                      resultArray:(NSMutableArray*)result
+            withCompletionHandler:(BBUArrayResultBlock)completionHandler {
+    if (index >= fileInfos.count) {
+        completionHandler(result);
+        return;
+    }
+
+    BBUFileInformation* currentFileInfo = fileInfos[index];
+    BBUDraggedFile* draggedFile = [[BBUDraggedFile alloc]
+                                   initWithURL:[NSURL fileURLWithPath:currentFileInfo.originalPath]];
+    draggedFile.error = currentFileInfo.error;
+
+    if (!currentFileInfo.hasAsset) {
+        if (draggedFile.error) {
+            [result addObject:draggedFile];
+        }
+
+        [self fetchNextFileFromFileInfos:fileInfos
+                                 atIndex:index + 1
+                             resultArray:result
+                   withCompletionHandler:completionHandler];
+        return;
+    }
+
+    [currentFileInfo fetchAssetWithSuccess:^(CDAResponse *response, CMAAsset *asset) {
+        draggedFile.asset = asset;
+        draggedFile.space = currentFileInfo.space;
+
+        if (!draggedFile.image) {
+            draggedFile.image = [[NSImage alloc] initWithContentsOfURL:asset.URL];
+
+            if (!draggedFile.image) {
+                return;
+            }
+        }
+
+        [result addObject:draggedFile];
+
+        [self fetchNextFileFromFileInfos:fileInfos
+                                 atIndex:index + 1
+                             resultArray:result
+                   withCompletionHandler:completionHandler];
+    } failure:^(CDAResponse *response, NSError *error) {
+        [self fetchNextFileFromFileInfos:fileInfos
+                                 atIndex:index + 1
+                             resultArray:result
+                   withCompletionHandler:completionHandler];
+    }];
+}
+
+#pragma mark -
 
 -(BBUAssetUploadOperation *)creationOperationForSpace:(CMASpace *)space {
     NSParameterAssert(space.defaultLocale);
@@ -192,6 +258,15 @@
 
 -(CGFloat)width {
     return self.image.size.width;
+}
+
+-(void)writeToPersistentStore {
+    BBUFileInformation* fileInformation = [BBUFileInformation fileInformationWithDraggedFile:self];
+
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addObject:fileInformation];
+    [realm commitWriteTransaction];
 }
 
 @end

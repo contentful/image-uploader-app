@@ -19,6 +19,6 @@ end
 
 target "Uploader Tests" do
 
-pod 'Realm'
+pod 'OCMock'
 
 end
