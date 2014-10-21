@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
+#import <DJProgressHUD/DJProgressHUD.h>
 #import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <JNWCollectionView/JNWCollectionView.h>
 
@@ -264,9 +265,19 @@
 }
 
 - (void)spaceChanged:(NSNotification*)note {
+    [self.files makeObjectsPerformSelector:@selector(writeToPersistentStore)];
     [self.collectionView deselectAllItems];
     [self.files removeAllObjects];
-    [self refresh];
+
+    [DJProgressHUD showStatus:NSLocalizedString(@"Restoring assets...", nil)
+                     FromView:self.view];
+
+    [BBUDraggedFile fetchFilesForSpace:note.userInfo[kContentfulSpaceChanged] fromPersistentStoreWithCompletionHandler:^(NSArray *array) {
+        [self.files addObjectsFromArray:array];
+        [self refresh];
+
+        [DJProgressHUD dismiss];
+    }];
 }
 
 - (void)updateHeaderView {
