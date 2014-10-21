@@ -253,11 +253,11 @@
 }
 
 - (void)refresh {
-    self.filterSelection.enabled = self.files.count > 0;
-    self.headerView.hidden = self.files.count == 0;
+    self.filterSelection.enabled = self.uploadQueue.operationCount > 0;
+    self.headerView.hidden = self.uploadQueue.operationCount == 0;
     self.helpViewController.view.hidden = self.files.count > 0;
-    self.sortingToolbarItem.enabled = self.files.count > 0;
-    self.spaceSelection.enabled = self.files.count == 0;
+    self.sortingToolbarItem.enabled = self.uploadQueue.operationCount > 0;
+    self.spaceSelection.enabled = self.uploadQueue.operationCount == 0;
 
     self.dragHintView.hidden = !self.helpViewController.view.isHidden;
 
@@ -383,6 +383,8 @@
 
         [self.uploadQueue addOperation:operation];
     }
+
+    [self refresh];
 }
 
 #pragma mark - JNWCollectionViewDataSource
