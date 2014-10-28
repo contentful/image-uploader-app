@@ -359,6 +359,8 @@
     } else {
         self.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploading %.0f%%", nil), self.draggedFile.progress * 100];
     }
+
+    self.titleLabel.toolTip = self.titleLabel.stringValue;
 }
 
 #pragma mark - Actions
