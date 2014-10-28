@@ -17,9 +17,10 @@
 #import "NSButton+Contentful.h"
 #import "NSView+Geometry.h"
 
-@interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewListLayoutDelegate>
+@interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewListLayoutDelegate, NSTextFieldDelegate>
 
 @property (nonatomic, readonly) JNWCollectionView* collectionView;
+@property (nonatomic) NSButton* confirmationButton;
 @property (nonatomic, readonly) BBUImageCell* selectedCell;
 @property (nonatomic) NSString* titleForSelection;
 
@@ -111,6 +112,7 @@
 
 -(void)confirmClicked:(NSButton*)button {
     button.enabled = NO;
+    [button bbu_setPrimaryButtonTitle:NSLocalizedString(@"Saved", nil)];
 
     NSString* title = [self valueForRow:0];
     NSString* description = [self valueForRow:1];
@@ -148,6 +150,7 @@
             break;
     }
 
+    cell.entryField.delegate = self;
     cell.tabKeyAction = ^(BBUMenuCell* cell) {
         BBUMenuCell* otherCell = (BBUMenuCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:row == 0 ? 1 : 0 inSection:0]];
         [otherCell.entryField becomeFirstResponder];
@@ -190,6 +193,8 @@
         footerView.confirmationButton.target = self;
         footerView.confirmationButton.width = 130.0;
 
+        self.confirmationButton = footerView.confirmationButton;
+
         footerView.informationLabel.hidden = self.relatedCollectionView.indexPathsForSelectedItems.count <= 1;
         footerView.informationLabel.stringValue = NSLocalizedString(@"Title or description changes will be applied to all selected files", nil);
 
@@ -207,6 +212,13 @@
     }
 
     return headerView;
+}
+
+#pragma mark - NSTextFieldDelegate
+
+-(void)controlTextDidChange:(NSNotification *)notification {
+    self.confirmationButton.enabled = YES;
+    [self.confirmationButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Update selected", nil)];
 }
 
 @end
