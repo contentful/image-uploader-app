@@ -21,6 +21,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 @property (nonatomic, readonly) NSString* fileType;
 @property (nonatomic, readonly) CGFloat height;
 @property (nonatomic, readonly) NSImage* image;
+@property (nonatomic, readonly) BOOL isImage;
 @property (nonatomic, readonly) NSDate* mtime;
 @property (nonatomic, readonly) NSUInteger numberOfBytes;
 @property (nonatomic, readonly) NSString* originalPath;

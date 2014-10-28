@@ -1,0 +1,3 @@
+[submodule "vendor/NSImage-QuickLook"]
+	path = vendor/NSImage-QuickLook
+	url = https://github.com/incbee/NSImage-QuickLook.git

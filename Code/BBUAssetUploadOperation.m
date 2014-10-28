@@ -134,7 +134,7 @@ static const NSTimeInterval kProcessWait = 1.0;
 }
 
 -(BOOL)shouldConvert {
-    return ![@[ @"JPG", @"JPEG", @"PNG", @"GIF" ] containsObject:self.draggedFile.fileType];
+    return ![@[ @"JPG", @"JPEG", @"PNG", @"GIF", @"PDF" ] containsObject:self.draggedFile.fileType] && self.draggedFile.isImage;
 }
 
 -(void)start {

@@ -24,6 +24,7 @@
 		A19469C619E8372900766AF0 /* AssetInfoPersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A19469C519E8372900766AF0 /* AssetInfoPersistenceTest.m */; };
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
+		A1C1803F19FFAD4900117DB3 /* NSImage+QuickLook.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C1803E19FFAD4900117DB3 /* NSImage+QuickLook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */; };
 		A1CA2AAA19D9B1C700635092 /* BBUConfirmationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA2AA919D9B1C700635092 /* BBUConfirmationFooter.m */; };
 		A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */; };
@@ -124,6 +125,8 @@
 		A19FB0D319A3445500A5659C /* BBUMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuViewController.m; sourceTree = "<group>"; };
 		A19FB0D519A347BE00A5659C /* BBUMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUMenuCell.h; sourceTree = "<group>"; };
 		A19FB0D619A347BE00A5659C /* BBUMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuCell.m; sourceTree = "<group>"; };
+		A1C1803D19FFAD4900117DB3 /* NSImage+QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+QuickLook.h"; path = "../vendor/NSImage-QuickLook/NSImage+QuickLook.h"; sourceTree = "<group>"; };
+		A1C1803E19FFAD4900117DB3 /* NSImage+QuickLook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+QuickLook.m"; path = "../vendor/NSImage-QuickLook/NSImage+QuickLook.m"; sourceTree = "<group>"; };
 		A1CA18A419D993D6001888AC /* BBUDraggedFileFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFileFormatter.h; sourceTree = "<group>"; };
 		A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFileFormatter.m; sourceTree = "<group>"; };
 		A1CA2AA819D9B1C700635092 /* BBUConfirmationFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUConfirmationFooter.h; sourceTree = "<group>"; };
@@ -265,6 +268,15 @@
 			name = "Asset Handling";
 			sourceTree = "<group>";
 		};
+		A1C1803419FFAD2000117DB3 /* NSImage-QuickLook */ = {
+			isa = PBXGroup;
+			children = (
+				A1C1803D19FFAD4900117DB3 /* NSImage+QuickLook.h */,
+				A1C1803E19FFAD4900117DB3 /* NSImage+QuickLook.m */,
+			);
+			name = "NSImage-QuickLook";
+			sourceTree = "<group>";
+		};
 		A1D4A7D5199BED850021EEA6 = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B151AA19B9AFB200C9C97E /* Asset Handling */,
+				A1C1803419FFAD2000117DB3 /* NSImage-QuickLook */,
 				A1B151A919B9AF7400C9C97E /* UI */,
 				A1D5AC4219C0722200C86F53 /* Upload */,
 				A1D4A7F3199BED850021EEA6 /* BBUAppDelegate.h */,
@@ -607,6 +620,7 @@
 				A1D4A7EE199BED850021EEA6 /* main.m in Sources */,
 				A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */,
 				A1CFF4D619E144FC002CB57C /* BBULoginController.m in Sources */,
+				A1C1803F19FFAD4900117DB3 /* NSImage+QuickLook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

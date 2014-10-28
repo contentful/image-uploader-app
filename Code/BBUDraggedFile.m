@@ -11,12 +11,14 @@
 #import "BBUAssetUploadOperation.h"
 #import "BBUDraggedFile.h"
 #import "BBUFileInformation.h"
+#import "NSImage+QuickLook.h"
 
 @interface BBUDraggedFile ()
 
 @property (nonatomic) CMAAsset* asset;
 @property (nonatomic) NSDictionary* fileAttributes;
 @property (nonatomic) NSImage* image;
+@property (nonatomic) BOOL isImage;
 @property (nonatomic) NSString* originalPath;
 @property (nonatomic) CMASpace* space;
 
@@ -220,8 +222,16 @@
     if (self) {
         self.fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:url.path
                                                                                error:nil];
-        self.image = [[NSImage alloc] initWithContentsOfURL:url];
         self.originalPath = url.path;
+
+        self.image = [[NSImage alloc] initWithContentsOfURL:url];
+        self.isImage = self.image != nil;
+
+        if (!self.image) {
+            self.image = [NSImage imageWithPreviewOfFileAtPath:self.originalPath
+                                                        ofSize:NSMakeSize(200.0, 190.0)
+                                                        asIcon:NO];
+        }
     }
     return self;
 }

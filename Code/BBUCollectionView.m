@@ -22,6 +22,10 @@
 #pragma mark - NSDraggingDestination
 
 -(void)draggingEnded:(id<NSDraggingInfo>)sender {
+    if (![self isValidDraggingInfo:sender]) {
+        return;
+    }
+
     NSMutableArray* draggedImages = [@[] mutableCopy];
 
     [sender enumerateDraggingItemsWithOptions:NSDraggingItemEnumerationConcurrent
@@ -42,12 +46,21 @@
 }
 
 -(NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender {
-    if ([NSImage canInitWithPasteboard:[sender draggingPasteboard]] &&
-        [sender draggingSourceOperationMask] & NSDragOperationCopy) {
+    if ([self isValidDraggingInfo:sender] && [sender draggingSourceOperationMask] & NSDragOperationCopy) {
         return NSDragOperationCopy;
     }
 
     return NSDragOperationNone;
+}
+
+-(BOOL)isValidDraggingInfo:(id<NSDraggingInfo>)sender {
+    NSPasteboard* pastboard = [sender draggingPasteboard];
+    NSURL* url = [NSURL URLFromPasteboard:pastboard];
+
+    BOOL isDirectory = NO;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:url.path isDirectory:&isDirectory];
+
+    return exists && !isDirectory;
 }
 
 -(void)mouseUp:(NSEvent *)theEvent {
@@ -66,7 +79,7 @@
 }
 
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
-    return [NSImage canInitWithPasteboard:[sender draggingPasteboard]];
+    return [self isValidDraggingInfo:sender];
 }
 
 -(void)setDraggingEnabled:(BOOL)draggingEnabled {
