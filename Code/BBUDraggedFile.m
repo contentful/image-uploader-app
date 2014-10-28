@@ -101,6 +101,13 @@
     }];
 }
 
++(void)initialize {
+    RLMRealm* realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm deleteObjects:[BBUFileInformation allObjects]];
+    [realm commitWriteTransaction];
+}
+
 #pragma mark -
 
 -(BBUAssetUploadOperation *)creationOperationForSpace:(CMASpace *)space {
