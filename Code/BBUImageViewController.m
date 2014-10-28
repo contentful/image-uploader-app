@@ -301,6 +301,12 @@
 
 #pragma mark - Actions
 
+-(void)openAssetClicked:(NSMenuItem*)menuItem {
+    BBUDraggedFile* draggedFile = menuItem.representedObject;
+    NSString* urlString = [NSString stringWithFormat:@"https://app.contentful.com/spaces/%@/assets/%@", draggedFile.space.identifier, draggedFile.asset.identifier];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+}
+
 -(void)copyURLClicked:(NSMenuItem*)menuItem {
     BBUDraggedFile* draggedFile = menuItem.representedObject;
     [[NSPasteboard generalPasteboard] clearContents];
@@ -483,6 +489,13 @@
                                                  action:@selector(copyURLClicked:)
                                           keyEquivalent:@""
                                                 atIndex:0];
+    menuItem.representedObject = draggedFile;
+    menuItem.target = self;
+
+    menuItem = [theMenu insertItemWithTitle:NSLocalizedString(@"Open Asset in Browser", nil)
+                                     action:@selector(openAssetClicked:)
+                              keyEquivalent:@""
+                                    atIndex:1];
     menuItem.representedObject = draggedFile;
     menuItem.target = self;
 
