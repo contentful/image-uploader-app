@@ -69,6 +69,11 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="File" id="ciA-X8-DDr">
                         <items>
+                            <menuItem title="Select Files to Upload..." keyEquivalent="o" id="TZz-BB-Aw1" userLabel="Select Files to Upload...">
+                                <connections>
+                                    <action selector="uploadFilesClicked:" target="tEa-S3-mQX" id="cuD-VZ-f5D"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Logout" id="At2-Pf-4eI">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>

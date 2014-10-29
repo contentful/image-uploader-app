@@ -195,21 +195,7 @@
 
         __weak typeof(self) welf = self;
         _helpViewController.browseAction = ^(NSButton* button) {
-            NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-            openPanel.allowedFileTypes = @[ @"png", @"jpg", @"jpeg", @"bmp", @"tiff" ];
-            openPanel.allowsMultipleSelection = YES;
-            openPanel.canChooseFiles = YES;
-            openPanel.canChooseDirectories = NO;
-            [openPanel runModal];
-
-            if (openPanel.URLs.count > 0) {
-                NSMutableArray* files = [@[] mutableCopy];
-                for (NSURL* url in openPanel.URLs) {
-                    [files addObject:[[BBUDraggedFile alloc] initWithURL:url]];
-                }
-
-                [welf collectionView:welf.collectionView didDragFiles:[files copy]];
-            }
+            [welf selectFilesToUpload];
         };
     }
 
@@ -262,6 +248,23 @@
     self.dragHintView.hidden = !self.helpViewController.view.isHidden;
 
     [self.collectionView reloadData];
+}
+
+- (void)selectFilesToUpload {
+    NSOpenPanel* openPanel = [NSOpenPanel openPanel];
+    openPanel.allowsMultipleSelection = YES;
+    openPanel.canChooseFiles = YES;
+    openPanel.canChooseDirectories = NO;
+    [openPanel runModal];
+
+    if (openPanel.URLs.count > 0) {
+        NSMutableArray* files = [@[] mutableCopy];
+        for (NSURL* url in openPanel.URLs) {
+            [files addObject:[[BBUDraggedFile alloc] initWithURL:url]];
+        }
+
+        [self collectionView:self.collectionView didDragFiles:[files copy]];
+    }
 }
 
 - (void)spaceChanged:(NSNotification*)note {
@@ -343,6 +346,10 @@
     self.sortingType = menuItem.tag;
 
     [self.collectionView reloadData];
+}
+
+- (IBAction)uploadFilesClicked:(NSMenuItem*)menuItem {
+    [self selectFilesToUpload];
 }
 
 #pragma mark - BBUCollectionViewDelegate
