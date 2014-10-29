@@ -12,6 +12,7 @@
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <SSKeychain/SSKeychain.h>
 
+#import "BBUAboutWindowController.h"
 #import "BBUAppDelegate.h"
 #import "BBULoginController.h"
 #import "BBUS3SettingsViewController.h"
@@ -19,6 +20,7 @@
 
 @interface BBUAppDelegate ()
 
+@property (nonatomic, readonly) BBUAboutWindowController* aboutWindowController;
 @property (nonatomic, readonly) NSView* mainView;
 @property (nonatomic, readonly) MASPreferencesWindowController* preferencesController;
 
@@ -28,12 +30,21 @@
 
 @implementation BBUAppDelegate
 
+@synthesize aboutWindowController = _aboutWindowController;
 @synthesize preferencesController = _preferencesController;
 
 #pragma mark -
 
 - (IBAction)aboutUsClicked:(id)sender {
-    [NSApp orderFrontStandardAboutPanel:nil];
+    [self.aboutWindowController showWindow:self];
+}
+
+-(BBUAboutWindowController *)aboutWindowController {
+    if (!_aboutWindowController) {
+        _aboutWindowController = [BBUAboutWindowController new];
+    }
+
+    return _aboutWindowController;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {

@@ -25,6 +25,8 @@
 		A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D319A3445500A5659C /* BBUMenuViewController.m */; };
 		A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19FB0D619A347BE00A5659C /* BBUMenuCell.m */; };
 		A1C1803F19FFAD4900117DB3 /* NSImage+QuickLook.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C1803E19FFAD4900117DB3 /* NSImage+QuickLook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A1C180481A013FC300117DB3 /* BBUAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C180461A013FC300117DB3 /* BBUAboutWindowController.m */; };
+		A1C180491A013FC300117DB3 /* BBUAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C180471A013FC300117DB3 /* BBUAboutWindowController.xib */; };
 		A1CA18A619D993D6001888AC /* BBUDraggedFileFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */; };
 		A1CA2AAA19D9B1C700635092 /* BBUConfirmationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA2AA919D9B1C700635092 /* BBUConfirmationFooter.m */; };
 		A1CCBD8219BF259300878BF9 /* BBUS3SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CCBD8019BF259300878BF9 /* BBUS3SettingsViewController.m */; };
@@ -127,6 +129,9 @@
 		A19FB0D619A347BE00A5659C /* BBUMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUMenuCell.m; sourceTree = "<group>"; };
 		A1C1803D19FFAD4900117DB3 /* NSImage+QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+QuickLook.h"; path = "../vendor/NSImage-QuickLook/NSImage+QuickLook.h"; sourceTree = "<group>"; };
 		A1C1803E19FFAD4900117DB3 /* NSImage+QuickLook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+QuickLook.m"; path = "../vendor/NSImage-QuickLook/NSImage+QuickLook.m"; sourceTree = "<group>"; };
+		A1C180451A013FC300117DB3 /* BBUAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAboutWindowController.h; sourceTree = "<group>"; };
+		A1C180461A013FC300117DB3 /* BBUAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAboutWindowController.m; sourceTree = "<group>"; };
+		A1C180471A013FC300117DB3 /* BBUAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BBUAboutWindowController.xib; path = ../Code/BBUAboutWindowController.xib; sourceTree = "<group>"; };
 		A1CA18A419D993D6001888AC /* BBUDraggedFileFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFileFormatter.h; sourceTree = "<group>"; };
 		A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFileFormatter.m; sourceTree = "<group>"; };
 		A1CA2AA819D9B1C700635092 /* BBUConfirmationFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUConfirmationFooter.h; sourceTree = "<group>"; };
@@ -217,6 +222,8 @@
 		A1B151A919B9AF7400C9C97E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A1C180451A013FC300117DB3 /* BBUAboutWindowController.h */,
+				A1C180461A013FC300117DB3 /* BBUAboutWindowController.m */,
 				A14BDCA319D36E29008B8E7B /* BBUAppStyle.h */,
 				A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */,
 				A1F834D819A2033300282AE9 /* BBUCollectionView.h */,
@@ -339,6 +346,7 @@
 		A1D4A815199BEDCC0021EEA6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1C180471A013FC300117DB3 /* BBUAboutWindowController.xib */,
 				A1D912A619D19EAE007D00DD /* BBUEmptyViewController.xib */,
 				A1CFF4D519E144FC002CB57C /* BBULoginController.xib */,
 				A1CCBD8119BF259300878BF9 /* BBUS3SettingsViewController.xib */,
@@ -488,6 +496,7 @@
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
 				A16E72AF19D5E8E900D82C93 /* Line@2x.png in Resources */,
 				A1D912A119D19DC5007D00DD /* Rectangle 20.png in Resources */,
+				A1C180491A013FC300117DB3 /* BBUAboutWindowController.xib in Resources */,
 				A1CFF4D719E144FC002CB57C /* BBULoginController.xib in Resources */,
 				A16E72AC19D5E8E900D82C93 /* Check@2x.png in Resources */,
 				A16E72AE19D5E8E900D82C93 /* cloud@2x.png in Resources */,
@@ -617,6 +626,7 @@
 				A1D603AF19E53387001BACAB /* BBUNetworkRequestLogger.m in Sources */,
 				A1EF194E199CA00C00AE864E /* BBUImageViewController.m in Sources */,
 				A1D5AC4119C0721C00C86F53 /* BBUS3Uploader+SharedSettings.m in Sources */,
+				A1C180481A013FC300117DB3 /* BBUAboutWindowController.m in Sources */,
 				A1D4A7EE199BED850021EEA6 /* main.m in Sources */,
 				A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */,
 				A1CFF4D619E144FC002CB57C /* BBULoginController.m in Sources */,
