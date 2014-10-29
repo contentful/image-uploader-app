@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BBUEmptyViewController">
@@ -13,11 +14,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="723" height="552"/>
+            <rect key="frame" x="0.0" y="0.0" width="864" height="552"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e0k-9f-4h8" userLabel="Outline">
-                    <rect key="frame" x="20" y="87" width="683" height="379"/>
+                    <rect key="frame" x="91" y="87" width="683" height="379"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Rectangle 20" id="8MG-Af-jLe"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HD1-Ms-5Ia" userLabel="Logo">
@@ -40,7 +41,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TJv-oO-oFr" userLabel="Cloud">
-                    <rect key="frame" x="330" y="244" width="63" height="64"/>
+                    <rect key="frame" x="401" y="244" width="63" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="iRy-6x-jJq"/>
                         <constraint firstAttribute="width" constant="63" id="yUT-A8-qpH"/>
@@ -48,7 +49,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cloud" id="06r-Oe-RmD"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2W9-pC-hqp">
-                    <rect key="frame" x="205" y="216" width="314" height="20"/>
+                    <rect key="frame" x="276" y="216" width="314" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="OX3-98-F5v"/>
                         <constraint firstAttribute="width" constant="310" id="Zk7-Fl-WSC"/>
@@ -62,7 +63,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="arP-pK-hvA" userLabel="Space Label">
-                    <rect key="frame" x="205" y="199" width="314" height="17"/>
+                    <rect key="frame" x="276" y="199" width="314" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="i8Z-YJ-7y9">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -70,7 +71,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aNI-eS-cfk">
-                    <rect key="frame" x="271" y="122" width="180" height="32"/>
+                    <rect key="frame" x="342" y="122" width="180" height="32"/>
                     <buttonCell key="cell" type="push" title="Browse your computer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cND-F5-0up">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -84,20 +85,20 @@
                 <constraint firstItem="arP-pK-hvA" firstAttribute="trailing" secondItem="2W9-pC-hqp" secondAttribute="trailing" id="0ou-8z-XFT"/>
                 <constraint firstItem="arP-pK-hvA" firstAttribute="bottom" secondItem="aNI-eS-cfk" secondAttribute="bottom" constant="-70" id="Ae8-fj-Fj3"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="CM0-tO-vSZ"/>
-                <constraint firstItem="e0k-9f-4h8" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="CWX-0C-7BK"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="centerX" secondItem="aNI-eS-cfk" secondAttribute="centerX" id="FO3-ij-BmR"/>
                 <constraint firstItem="e0k-9f-4h8" firstAttribute="centerX" secondItem="arP-pK-hvA" secondAttribute="centerX" id="FfO-Jl-K8b"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="centerY" secondItem="e0k-9f-4h8" secondAttribute="centerY" id="H02-xn-f6D"/>
                 <constraint firstItem="mnu-iW-y9i" firstAttribute="leading" secondItem="HD1-Ms-5Ia" secondAttribute="trailing" constant="2" id="JYp-uy-Wsp"/>
                 <constraint firstItem="2W9-pC-hqp" firstAttribute="leading" secondItem="arP-pK-hvA" secondAttribute="leading" id="Jb1-0E-oal"/>
                 <constraint firstItem="2W9-pC-hqp" firstAttribute="centerX" secondItem="TJv-oO-oFr" secondAttribute="centerX" id="P1r-RI-rXt"/>
+                <constraint firstAttribute="centerX" secondItem="e0k-9f-4h8" secondAttribute="centerX" id="Sz9-iL-nnw"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="top" secondItem="mnu-iW-y9i" secondAttribute="bottom" constant="64" id="TWu-4X-kN9"/>
                 <constraint firstItem="arP-pK-hvA" firstAttribute="top" secondItem="2W9-pC-hqp" secondAttribute="bottom" id="aNk-AM-rxr"/>
                 <constraint firstItem="2W9-pC-hqp" firstAttribute="top" secondItem="TJv-oO-oFr" secondAttribute="bottom" constant="8" symbolic="YES" id="bBv-Dq-wKt"/>
                 <constraint firstItem="HD1-Ms-5Ia" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="307" id="hKc-X8-0uc"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="top" secondItem="HD1-Ms-5Ia" secondAttribute="bottom" constant="45" id="rtM-GZ-1gY"/>
             </constraints>
-            <point key="canvasLocation" x="269.5" y="377"/>
+            <point key="canvasLocation" x="340" y="377"/>
         </customView>
     </objects>
     <resources>
