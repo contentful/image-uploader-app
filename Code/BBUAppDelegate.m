@@ -95,7 +95,7 @@
     [DJProgressHUD dismiss];
     
     [NSApp stopModal];
-    [NSApp activateIgnoringOtherApps:YES];
+    [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
 
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
 
