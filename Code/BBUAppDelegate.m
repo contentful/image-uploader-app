@@ -15,7 +15,7 @@
 #import "BBUAboutWindowController.h"
 #import "BBUAppDelegate.h"
 #import "BBULoginController.h"
-#import "BBUS3SettingsViewController.h"
+#import "BBUUploaderPreferences.h"
 #import "CMAClient+SharedClient.h"
 
 @interface BBUAppDelegate ()
@@ -153,7 +153,7 @@
 
 - (MASPreferencesWindowController *)preferencesController {
     if (!_preferencesController) {
-        _preferencesController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[ [BBUS3SettingsViewController new] ]];
+        _preferencesController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[ [BBUUploaderPreferences new] ]];
     }
 
     return _preferencesController;

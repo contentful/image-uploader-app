@@ -17,5 +17,6 @@ extern NSString* const kS3Secret;
 
 +(BOOL)hasValidCredentials;
 +(instancetype)sharedUploader;
++(void)unlink;
 
 @end

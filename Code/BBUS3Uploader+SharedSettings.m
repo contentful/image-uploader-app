@@ -43,4 +43,11 @@ NSString* const kS3Secret   = @"S3SecretKey";
     return sharedUploader;
 }
 
++(void)unlink {
+    [SSKeychain setPassword:@"" forService:kS3Key account:kS3Key];
+    [SSKeychain setPassword:@"" forService:kS3Secret account:kS3Secret];
+    [SSKeychain setPassword:@"" forService:kS3Bucket account:kS3Bucket];
+    [SSKeychain setPassword:@"" forService:kS3Path account:kS3Path];
+}
+
 @end
