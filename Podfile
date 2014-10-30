@@ -5,6 +5,7 @@ platform :osx, '10.9'
 target "image-uploader" do
 
 pod 'IAmUpload'
+pod 'ContentfulDeliveryAPI', :head
 pod 'ContentfulManagementAPI', :head
 pod 'DJProgressHUD', :podspec => 'vendor/DJProgressHUD.podspec'
 pod 'Dropbox-OSX-SDK', :inhibit_warnings => true
