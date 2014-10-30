@@ -28,7 +28,9 @@
 @property (nonatomic, readonly) BBUCollectionView* collectionView;
 @property (nonatomic) NSString* currentSpaceId;
 @property (nonatomic, readonly) BBUDragHintView* dragHintView;
+@property (nonatomic, readonly) NSArray* fileTypes;
 @property (nonatomic, readonly) NSArray* filteredFiles;
+@property (nonatomic, readonly) NSDictionary* filteredFilesByType;
 @property (nonatomic) NSMutableArray* files;
 @property (weak) IBOutlet NSSegmentedControl *filterSelection;
 @property (nonatomic) BBUHeaderView* headerView;
@@ -49,6 +51,8 @@
 @implementation BBUImageViewController
 
 @synthesize dragHintView = _dragHintView;
+@synthesize fileTypes = _fileTypes;
+@synthesize filteredFilesByType = _filteredFilesByType;
 @synthesize helpViewController = _helpViewController;
 
 #pragma mark -
@@ -133,6 +137,11 @@
 }
 
 - (BBUDraggedFile*)draggedFileAtIndexPath:(NSIndexPath*)indexPath {
+    if (self.sortingType == 3) {
+        NSString* key = self.fileTypes[indexPath.jnw_section];
+        return self.filteredFilesByType[key][indexPath.jnw_item];
+    }
+    
     return self.filteredFiles[[indexPath indexAtPosition:1]];
 }
 
@@ -144,6 +153,14 @@
     }
 
     return _dragHintView;
+}
+
+- (NSArray *)fileTypes {
+    if (!_fileTypes) {
+        _fileTypes = [self.filteredFilesByType.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    }
+
+    return _fileTypes;
 }
 
 - (NSArray *)filteredFiles {
@@ -185,6 +202,27 @@
 
         return [file1.title compare:file2.title options:NSCaseInsensitiveSearch];
     }];
+}
+
+- (NSDictionary*)filteredFilesByType {
+    if (!_filteredFilesByType) {
+        NSMutableDictionary* filteredFiles = [@{} mutableCopy];
+
+        for (BBUDraggedFile* file in self.files) {
+            NSMutableArray* filesByType = filteredFiles[file.fileType];
+            if (!filesByType) {
+                filesByType = [@[] mutableCopy];
+                filteredFiles[file.fileType] = filesByType;
+            }
+
+            [filesByType addObject:file];
+        }
+
+        _fileTypes = nil;
+        _filteredFilesByType = [filteredFiles copy];
+    }
+
+    return _filteredFilesByType;
 }
 
 - (BBUEmptyViewController *)helpViewController {
@@ -361,6 +399,8 @@
         return;
     }
 
+    _filteredFilesByType = nil;
+
     [self.files addObjectsFromArray:draggedFiles];
     [self refresh];
 
@@ -422,23 +462,39 @@
 
 -(NSUInteger)collectionView:(JNWCollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
+    if (self.sortingType == 3) {
+        NSString* key = self.fileTypes[section];
+        return [self.filteredFilesByType[key] count];
+    }
+
     return self.filteredFiles.count;
 }
 
 -(JNWCollectionViewReusableView *)collectionView:(JNWCollectionView *)collectionView viewForSupplementaryViewOfKind:(NSString *)kind inSection:(NSInteger)section {
     BBUHeaderView* headerView = (BBUHeaderView*)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifer:NSStringFromClass(self.class)];
+
+    if (section != 0) {
+        if (self.headerView == headerView) {
+            self.headerView = nil;
+        }
+
+        headerView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
+        headerView.titleLabel.stringValue = self.fileTypes[section];
+        return headerView;
+    }
+
     headerView.backgroundColor = [BBUAppStyle defaultStyle].lightBackgroundColor;
     headerView.hidden = self.headerView.isHidden;
-    headerView.titleLabel.stringValue = self.headerView.titleLabel.stringValue ?: @"";
 
     self.headerView = headerView;
     self.headerView.closeButton.hidden = NO;
     
+    [self updateHeaderView];
     return headerView;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(JNWCollectionView *)collectionView {
-    return 1;
+    return self.sortingType == 3 ? self.filteredFilesByType.allKeys.count : 1;
 }
 
 -(void)updateSelectionForCellAtIndexPath:(NSIndexPath*)indexPath {
@@ -518,7 +574,7 @@
 #pragma mark - JNWCollectionViewGridLayoutDelegate
 
 -(CGFloat)collectionView:(JNWCollectionView *)collectionView heightForFooterInSection:(NSInteger)index {
-    return 60.0;
+    return index == [self numberOfSectionsInCollectionView:collectionView] - 1 ? 60.0 : 0.0;
 }
 
 -(CGFloat)collectionView:(JNWCollectionView *)collectionView heightForHeaderInSection:(NSInteger)index {
