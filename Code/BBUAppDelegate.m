@@ -68,8 +68,11 @@
 }
 
 - (void)fetchSpaces {
-    [DJProgressHUD showStatus:NSLocalizedString(@"Fetching Spaces...", nil)
-                     FromView:self.mainView];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+                       [DJProgressHUD showStatus:NSLocalizedString(@"Fetching Spaces...", nil)
+                                        FromView:self.mainView];
+                   });
 
     [[CMAClient sharedClient] fetchAllSpacesWithSuccess:^(CDAResponse *response, CDAArray *array) {
         [self fillMenuWithSpaces:array.items];
