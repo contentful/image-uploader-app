@@ -151,6 +151,7 @@
 		A1C180611A02600900117DB3 /* BBUS3SettingsSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUS3SettingsSheet.h; sourceTree = "<group>"; };
 		A1C180621A02600900117DB3 /* BBUS3SettingsSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUS3SettingsSheet.m; sourceTree = "<group>"; };
 		A1C180631A02600900117DB3 /* BBUS3SettingsSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BBUS3SettingsSheet.xib; path = ../Code/BBUS3SettingsSheet.xib; sourceTree = "<group>"; };
+		A1C1806A1A0398CA00117DB3 /* image-uploader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "image-uploader.entitlements"; sourceTree = "<group>"; };
 		A1CA18A419D993D6001888AC /* BBUDraggedFileFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFileFormatter.h; sourceTree = "<group>"; };
 		A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFileFormatter.m; sourceTree = "<group>"; };
 		A1CA2AA819D9B1C700635092 /* BBUConfirmationFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUConfirmationFooter.h; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 		A1D4A7D5199BED850021EEA6 = {
 			isa = PBXGroup;
 			children = (
+				A1C1806A1A0398CA00117DB3 /* image-uploader.entitlements */,
 				A1D4A7E7199BED850021EEA6 /* Code */,
 				A1D4A7E0199BED850021EEA6 /* Frameworks */,
 				F8D0F218CD2CE0B7DFEB3287 /* Pods */,
@@ -509,6 +511,13 @@
 					A19469C019E8372900766AF0 = {
 						CreatedOnToolsVersion = 6.0.1;
 						TestTargetID = A1D4A7DD199BED850021EEA6;
+					};
+					A1D4A7DD199BED850021EEA6 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -837,6 +846,7 @@
 			baseConfigurationReference = 98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "image-uploader.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -854,6 +864,7 @@
 			baseConfigurationReference = A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "image-uploader.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
