@@ -161,6 +161,18 @@
     };
 
     cell.textChangedAction = ^(BBUMenuCell* cell, NSString* newText) {
+        [self enumerateCellsInRelatedCollectionViewUsingBlock:^(BBUImageCell *cell) {
+            switch (row) {
+                case 0:
+                    cell.title = newText;
+                    break;
+
+                case 1:
+                    cell.assetDescription = newText;
+                    break;
+            }
+        }];
+
         [self updateConfirmationButton];
     };
 
