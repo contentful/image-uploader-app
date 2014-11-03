@@ -17,7 +17,7 @@
 
 const NSUInteger kProcessingFailedErrorCode = 0xFF;
 
-static const NSUInteger kNumberOfRetries = 15;
+static const NSUInteger kNumberOfRetries = 30;
 static const NSTimeInterval kProcessWait = 1.0;
 
 @interface BBUAssetUploadOperation () <DBRestClientDelegate>
