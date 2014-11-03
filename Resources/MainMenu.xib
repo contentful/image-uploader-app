@@ -315,11 +315,13 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem title="Previous" keyEquivalent="" id="g1R-bc-QgD" userLabel="Previous Item">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                 <connections>
                                     <action selector="previousClicked:" target="tEa-S3-mQX" id="DEe-Bw-uox"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Next" keyEquivalent="" id="xun-pT-eZY" userLabel="Next Item">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                 <connections>
                                     <action selector="nextClicked:" target="tEa-S3-mQX" id="PdA-Xq-3Go"/>
                                 </connections>
@@ -332,7 +334,7 @@ CA
         <window title="Contentful Media Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="290" y="148" width="699" height="564"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="1024" height="700"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="699" height="564"/>
