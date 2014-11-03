@@ -17,7 +17,7 @@
 #import "NSButton+Contentful.h"
 #import "NSView+Geometry.h"
 
-@interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewListLayoutDelegate, NSTextFieldDelegate>
+@interface BBUMenuViewController () <JNWCollectionViewDataSource, JNWCollectionViewListLayoutDelegate>
 
 @property (nonatomic, readonly) JNWCollectionView* collectionView;
 @property (nonatomic) NSButton* confirmationButton;
@@ -103,6 +103,11 @@
     [cell becomeFirstResponder];
 }
 
+-(void)updateConfirmationButton {
+    self.confirmationButton.enabled = YES;
+    [self.confirmationButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Update selected", nil)];
+}
+
 -(NSString*)valueForRow:(NSUInteger)row {
     BBUMenuCell* cell = (BBUMenuCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:row inSection:0]];
     return cell.entryField.stringValue;
@@ -150,10 +155,13 @@
             break;
     }
 
-    cell.entryField.delegate = self;
     cell.tabKeyAction = ^(BBUMenuCell* cell) {
         BBUMenuCell* otherCell = (BBUMenuCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath jnw_indexPathForItem:row == 0 ? 1 : 0 inSection:0]];
         [otherCell.entryField becomeFirstResponder];
+    };
+
+    cell.textChangedAction = ^(BBUMenuCell* cell, NSString* newText) {
+        [self updateConfirmationButton];
     };
 
     return cell;
@@ -212,13 +220,6 @@
     }
 
     return headerView;
-}
-
-#pragma mark - NSTextFieldDelegate
-
--(void)controlTextDidChange:(NSNotification *)notification {
-    self.confirmationButton.enabled = YES;
-    [self.confirmationButton bbu_setPrimaryButtonTitle:NSLocalizedString(@"Update selected", nil)];
 }
 
 @end

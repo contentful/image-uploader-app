@@ -80,6 +80,12 @@
 
 #pragma mark - NSTextFieldDelegate
 
+-(void)controlTextDidChange:(NSNotification *)notification {
+    if (self.textChangedAction) {
+        self.textChangedAction(self, self.entryField.stringValue);
+    }
+}
+
 -(BOOL)control:(NSControl*)control
       textView:(NSTextView*)textView doCommandBySelector:(SEL)commandSelector {
     BOOL result = NO;
