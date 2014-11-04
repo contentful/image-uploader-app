@@ -48,12 +48,15 @@ static const NSTimeInterval kProcessWait = 1.0;
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
 
-    self.client = nil;
     self.done = done;
     self.draggedFile.progress = done ? 1.0 : self.draggedFile.progress;
 
     [self didChangeValueForKey:@"isExecuting"];
     [self didChangeValueForKey:@"isFinished"];
+}
+
+-(void)dealloc {
+    self.client = nil;
 }
 
 -(void)handleProcessing {
