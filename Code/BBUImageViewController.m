@@ -155,6 +155,31 @@
     return _dragHintView;
 }
 
+- (void)enqueueOperationForDraggedFile:(BBUDraggedFile*)draggedFile {
+    CMASpace* sharedSpace = [CMAClient sharedClient].sharedSpace;
+    NSOperation* operation = [draggedFile creationOperationForSpace:sharedSpace];
+
+    if ([self.uploadQueue.operations containsObject:operation]) {
+        return;
+    }
+
+    operation.completionBlock = ^{
+        NSError* error = draggedFile.error;
+
+        if (!error) {
+            self.numberOfUploads++;
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+            [self postSuccessNotificationIfNeeded];
+            [self updateHeaderView];
+        });
+    };
+
+    [self.uploadQueue addOperation:operation];
+}
+
 - (NSArray *)fileTypes {
     if (!_fileTypes) {
         _fileTypes = [self.filteredFilesByType.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
@@ -327,6 +352,10 @@
         return;
     }
 
+    if (self.totalNumberOfUploads < self.numberOfUploads) {
+        self.totalNumberOfUploads = self.numberOfUploads;
+    }
+
     NSUInteger percentage = self.totalNumberOfUploads == 0 ? 0 : ((float)self.numberOfUploads / self.totalNumberOfUploads) * 100;
 
     self.headerView.titleLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Uploaded %d of %d file(s) %d%% done.", nil), self.numberOfUploads, self.totalNumberOfUploads, percentage];
@@ -418,23 +447,7 @@
             [self updateHeaderView];
         });
 
-        NSOperation* operation = [draggedFile creationOperationForSpace:sharedSpace];
-
-        operation.completionBlock = ^{
-            NSError* error = draggedFile.error;
-
-            if (!error) {
-                self.numberOfUploads++;
-            }
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.collectionView reloadData];
-                [self postSuccessNotificationIfNeeded];
-                [self updateHeaderView];
-            });
-        };
-
-        [self.uploadQueue addOperation:operation];
+        [self enqueueOperationForDraggedFile:draggedFile];
     }
 
     [self refresh];
@@ -501,6 +514,11 @@
     BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
 
     if (!cell.selectable) {
+        if (cell.draggedFile.error) {
+            [self enqueueOperationForDraggedFile:cell.draggedFile];
+            [self refresh];
+        }
+
         return;
     }
 

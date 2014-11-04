@@ -46,6 +46,8 @@
 		A1D01CEF19D43EE300EB9531 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CED19D43EE300EB9531 /* close.png */; };
 		A1D01CF019D43EE300EB9531 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D01CEE19D43EE300EB9531 /* Line.png */; };
 		A1D10C2819B5C23F009CA6CA /* contentful_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */; };
+		A1D39F401A08DD7400E8800E /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D39F3E1A08DD7400E8800E /* refresh.png */; };
+		A1D39F411A08DD7400E8800E /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D39F3F1A08DD7400E8800E /* refresh@2x.png */; };
 		A1D49CE719E041690083B816 /* NSButton+Contentful.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D49CE619E041690083B816 /* NSButton+Contentful.m */; };
 		A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D4A7E1199BED850021EEA6 /* Cocoa.framework */; };
 		A1D4A7EE199BED850021EEA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D4A7ED199BED850021EEA6 /* main.m */; };
@@ -151,7 +153,7 @@
 		A1C180611A02600900117DB3 /* BBUS3SettingsSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUS3SettingsSheet.h; sourceTree = "<group>"; };
 		A1C180621A02600900117DB3 /* BBUS3SettingsSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUS3SettingsSheet.m; sourceTree = "<group>"; };
 		A1C180631A02600900117DB3 /* BBUS3SettingsSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BBUS3SettingsSheet.xib; path = ../Code/BBUS3SettingsSheet.xib; sourceTree = "<group>"; };
-		A1C1806A1A0398CA00117DB3 /* image-uploader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "image-uploader.entitlements"; sourceTree = "<group>"; };
+		A1C1806A1A0398CA00117DB3 /* image-uploader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "image-uploader.entitlements"; path = "../image-uploader.entitlements"; sourceTree = "<group>"; };
 		A1CA18A419D993D6001888AC /* BBUDraggedFileFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDraggedFileFormatter.h; sourceTree = "<group>"; };
 		A1CA18A519D993D6001888AC /* BBUDraggedFileFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDraggedFileFormatter.m; sourceTree = "<group>"; };
 		A1CA2AA819D9B1C700635092 /* BBUConfirmationFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUConfirmationFooter.h; sourceTree = "<group>"; };
@@ -166,6 +168,8 @@
 		A1D01CED19D43EE300EB9531 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A1D01CEE19D43EE300EB9531 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
 		A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentful_logo_big.png; sourceTree = "<group>"; };
+		A1D39F3E1A08DD7400E8800E /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		A1D39F3F1A08DD7400E8800E /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
 		A1D49CE519E041690083B816 /* NSButton+Contentful.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+Contentful.h"; sourceTree = "<group>"; };
 		A1D49CE619E041690083B816 /* NSButton+Contentful.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+Contentful.m"; sourceTree = "<group>"; };
 		A1D4A7DE199BED850021EEA6 /* image-uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,7 +334,6 @@
 		A1D4A7D5199BED850021EEA6 = {
 			isa = PBXGroup;
 			children = (
-				A1C1806A1A0398CA00117DB3 /* image-uploader.entitlements */,
 				A1D4A7E7199BED850021EEA6 /* Code */,
 				A1D4A7E0199BED850021EEA6 /* Frameworks */,
 				F8D0F218CD2CE0B7DFEB3287 /* Pods */,
@@ -414,6 +417,7 @@
 				A1CFC35B19D95CB0003F2EF9 /* Failed@2x.png */,
 				A1D912A919D19EE0007D00DD /* Fonts */,
 				A1D4A7F9199BED850021EEA6 /* Images.xcassets */,
+				A1C1806A1A0398CA00117DB3 /* image-uploader.entitlements */,
 				A1D01CEE19D43EE300EB9531 /* Line.png */,
 				A16E72A819D5E8E900D82C93 /* Line@2x.png */,
 				A1D912A219D19E4C007D00DD /* Logo.png */,
@@ -423,6 +427,8 @@
 				A1DDF98719E42895009E579B /* OtherLogo@2x.png */,
 				A1D9129F19D19DC5007D00DD /* Rectangle 20.png */,
 				A16E72AA19D5E8E900D82C93 /* Rectangle 20@2x.png */,
+				A1D39F3E1A08DD7400E8800E /* refresh.png */,
+				A1D39F3F1A08DD7400E8800E /* refresh@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				A1D4A819199BEE970021EEA6 /* MainMenu.xib in Resources */,
 				A1C180651A02600900117DB3 /* BBUS3SettingsSheet.xib in Resources */,
 				A16E72AF19D5E8E900D82C93 /* Line@2x.png in Resources */,
+				A1D39F411A08DD7400E8800E /* refresh@2x.png in Resources */,
 				A1D912A119D19DC5007D00DD /* Rectangle 20.png in Resources */,
 				A1C180491A013FC300117DB3 /* BBUAboutWindowController.xib in Resources */,
 				A1C180551A02395C00117DB3 /* BBUUploaderPreferences.xib in Resources */,
@@ -572,6 +579,7 @@
 				A16E72AE19D5E8E900D82C93 /* cloud@2x.png in Resources */,
 				A1DDF98919E42895009E579B /* OtherLogo@2x.png in Resources */,
 				A1CFC35D19D95CB0003F2EF9 /* Failed@2x.png in Resources */,
+				A1D39F401A08DD7400E8800E /* refresh.png in Resources */,
 				A1C180601A024D2000117DB3 /* dropbox_logo@2x.png in Resources */,
 				A16E72B119D5E8E900D82C93 /* Rectangle 20@2x.png in Resources */,
 				A1D912A019D19DC5007D00DD /* cloud.png in Resources */,

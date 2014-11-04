@@ -116,6 +116,10 @@ static const NSTimeInterval kProcessWait = 1.0;
     }];
 }
 
+-(NSUInteger)hash {
+    return [self.draggedFile hash];
+}
+
 -(id)initWithDraggedFile:(BBUDraggedFile *)draggedFile {
     self = [super init];
     if (self) {
@@ -126,6 +130,14 @@ static const NSTimeInterval kProcessWait = 1.0;
 
 -(BOOL)isConcurrent {
     return YES;
+}
+
+-(BOOL)isEqual:(id)object {
+    if (![object isKindOfClass:self.class]) {
+        return NO;
+    }
+
+    return [self.draggedFile isEqual:((BBUAssetUploadOperation*)object).draggedFile];
 }
 
 -(BOOL)isExecuting {

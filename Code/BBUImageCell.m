@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSTextField* infoLabel;
 @property (nonatomic, readonly) FBKVOController* kvoController;
 @property (nonatomic, readonly) NSProgressIndicator* progressIndicator;
+@property (nonatomic, readonly) NSImageView* refreshImageView;
 @property (nonatomic) BOOL showFailure;
 @property (nonatomic) BOOL showSuccess;
 @property (nonatomic, readonly) NSImageView* successImageView;
@@ -42,6 +43,7 @@
 @synthesize infoLabel = _infoLabel;
 @synthesize kvoController = _kvoController;
 @synthesize progressIndicator = _progressIndicator;
+@synthesize refreshImageView = _refreshImageView;
 @synthesize successImageView = _successImageView;
 @synthesize titleLabel = _titleLabel;
 
@@ -107,6 +109,9 @@
 
     self.imageView.width = self.width - 20.0;
     self.imageView.y = self.height - self.imageView.height - 10.0;
+
+    self.refreshImageView.width = self.imageView.width;
+    self.refreshImageView.y = self.imageView.y;
 
     self.infoLabel.width = self.imageView.width;
     self.infoLabel.y = 20.0;
@@ -208,6 +213,18 @@
     return _progressIndicator;
 }
 
+- (NSImageView *)refreshImageView {
+    if (!_refreshImageView) {
+        _refreshImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 100.0)];
+        _refreshImageView.hidden = YES;
+        _refreshImageView.image = [NSImage imageNamed:@"refresh"];
+        _refreshImageView.toolTip = NSLocalizedString(@"Click to retry the upload.", nil);
+        [self addSubview:_refreshImageView];
+    }
+
+    return _refreshImageView;
+}
+
 - (BOOL)selectable {
     return self.draggedFile.asset.URL != nil;
 }
@@ -252,6 +269,13 @@
                 self.editable = YES;
                 self.showFailure = YES;
             }
+
+            if (self.showFailure && !draggedFile.error) {
+                self.editable = NO;
+                self.showFailure = NO;
+
+                [self updateTitleLabel];
+            }
         });
     }];
 
@@ -289,9 +313,11 @@
 
     if (showFailure) {
         self.failedImageView.hidden = NO;
+        self.refreshImageView.hidden = NO;
         self.successImageView.hidden = YES;
     } else {
         self.failedImageView.hidden = YES;
+        self.refreshImageView.hidden = YES;
     }
 }
 
@@ -300,6 +326,7 @@
 
     if (showSuccess) {
         self.failedImageView.hidden = YES;
+        self.refreshImageView.hidden = YES;
         self.successImageView.hidden = NO;
     } else {
         self.successImageView.hidden = YES;

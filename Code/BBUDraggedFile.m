@@ -115,6 +115,14 @@
 -(BBUAssetUploadOperation *)creationOperationForSpace:(CMASpace *)space {
     NSParameterAssert(space.defaultLocale);
 
+    if (self.asset) {
+        [self.asset deleteWithSuccess:nil failure:nil];
+    }
+
+    self.asset = nil;
+    self.error = nil;
+    self.progress = 0.0;
+
     self.space = space;
     return [[BBUAssetUploadOperation alloc] initWithDraggedFile:self];
 }
