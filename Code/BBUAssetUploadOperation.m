@@ -221,6 +221,7 @@ static const NSTimeInterval kProcessWait = 1.0;
     } else {
         NSData* data = [NSData dataWithContentsOfFile:self.draggedFile.originalPath];
         [[BBUS3Uploader sharedUploader] uploadFileWithData:data
+                                             fileExtension:self.draggedFile.originalPath.pathExtension
                                          completionHandler:handler
                                            progressHandler:nil];
     }
