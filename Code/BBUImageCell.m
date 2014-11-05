@@ -361,7 +361,7 @@
         [_titleLabel setDrawsBackground:NO];
         [_titleLabel setEditable:NO];
         [_titleLabel setFont:[BBUAppStyle defaultStyle].titleFont];
-        [_titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
+        [_titleLabel.cell setLineBreakMode:NSLineBreakByTruncatingTail];
         [_titleLabel setTextColor:[NSColor whiteColor]];
         [self addSubview:_titleLabel];
     }

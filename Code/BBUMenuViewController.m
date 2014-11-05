@@ -143,7 +143,7 @@
 
             if (self.selectedCell.title) {
                 cell.entryField.stringValue = self.selectedCell.title;
-                cell.entryField.usesSingleLineMode = YES;
+                [cell.entryField.cell setUsesSingleLineMode:YES];
             }
             break;
 
