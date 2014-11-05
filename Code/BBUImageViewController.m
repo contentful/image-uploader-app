@@ -559,26 +559,28 @@
 -(void)collectionView:(JNWCollectionView *)colview didRightClickItemAtIndexPath:(NSIndexPath *)indexPath {
     BBUDraggedFile* draggedFile = [self draggedFileAtIndexPath:indexPath];
 
-    if (!draggedFile.asset.URL) {
+    if (!draggedFile.asset) {
         return;
     }
 
     NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@""];
     theMenu.autoenablesItems = YES;
 
-    NSMenuItem* menuItem = [theMenu insertItemWithTitle:NSLocalizedString(@"Copy URL", nil)
-                                                 action:@selector(copyURLClicked:)
+    NSMenuItem* menuItem = [theMenu insertItemWithTitle:NSLocalizedString(@"Open Asset in Browser", nil)
+                                                 action:@selector(openAssetClicked:)
                                           keyEquivalent:@""
                                                 atIndex:0];
     menuItem.representedObject = draggedFile;
     menuItem.target = self;
 
-    menuItem = [theMenu insertItemWithTitle:NSLocalizedString(@"Open Asset in Browser", nil)
-                                     action:@selector(openAssetClicked:)
-                              keyEquivalent:@""
-                                    atIndex:1];
-    menuItem.representedObject = draggedFile;
-    menuItem.target = self;
+    if (draggedFile.asset.URL) {
+        menuItem = [theMenu insertItemWithTitle:NSLocalizedString(@"Copy URL", nil)
+                                         action:@selector(copyURLClicked:)
+                                  keyEquivalent:@""
+                                        atIndex:0];
+        menuItem.representedObject = draggedFile;
+        menuItem.target = self;
+    }
 
     [NSMenu popUpContextMenu:theMenu
                    withEvent:[NSApp currentEvent]
