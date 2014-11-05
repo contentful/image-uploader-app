@@ -313,8 +313,11 @@
 
     if (showFailure) {
         self.failedImageView.hidden = NO;
-        self.refreshImageView.hidden = NO;
         self.successImageView.hidden = YES;
+
+        if (!self.draggedFile.asset.URL) {
+            self.refreshImageView.hidden = NO;
+        }
     } else {
         self.failedImageView.hidden = YES;
         self.refreshImageView.hidden = YES;

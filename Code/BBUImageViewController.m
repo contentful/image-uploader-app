@@ -587,7 +587,7 @@
 
     BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
 
-    if (!cell.selectable && cell.draggedFile.error) {
+    if (!cell.selectable && cell.draggedFile.error && !cell.draggedFile.asset.URL) {
         [self enqueueOperationForDraggedFile:cell.draggedFile];
         [self refresh];
     }
