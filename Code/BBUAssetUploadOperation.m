@@ -40,7 +40,7 @@ static const NSTimeInterval kProcessWait = 1.0;
 #pragma mark -
 
 - (void)changeOperationStatusToProcessingFailed {
-    self.draggedFile.error = [NSError errorWithDomain:@"com.contentful.management" code:kProcessingFailedErrorCode userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Processing uploaded image failed, try again.", nil) }];
+    self.draggedFile.error = [NSError errorWithDomain:@"com.contentful.management" code:kProcessingFailedErrorCode userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Processing uploaded file failed, try again.", nil) }];
     [self changeOperationStatusWithDone:YES];
 }
 
