@@ -22,7 +22,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Rectangle 20" id="8MG-Af-jLe"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HD1-Ms-5Ia" userLabel="Logo">
-                    <rect key="frame" x="307" y="353" width="48" height="48"/>
+                    <rect key="frame" x="339" y="353" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="2QU-it-AxF"/>
                         <constraint firstAttribute="height" constant="48" id="Oex-AO-o1C"/>
@@ -30,7 +30,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="Ug1-3r-omy"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mnu-iW-y9i">
-                    <rect key="frame" x="355" y="372" width="119" height="19"/>
+                    <rect key="frame" x="387" y="372" width="119" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="115" id="tEb-l7-und"/>
                     </constraints>
@@ -95,7 +95,7 @@
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="top" secondItem="mnu-iW-y9i" secondAttribute="bottom" constant="64" id="TWu-4X-kN9"/>
                 <constraint firstItem="arP-pK-hvA" firstAttribute="top" secondItem="2W9-pC-hqp" secondAttribute="bottom" id="aNk-AM-rxr"/>
                 <constraint firstItem="2W9-pC-hqp" firstAttribute="top" secondItem="TJv-oO-oFr" secondAttribute="bottom" constant="8" symbolic="YES" id="bBv-Dq-wKt"/>
-                <constraint firstItem="HD1-Ms-5Ia" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="307" id="hKc-X8-0uc"/>
+                <constraint firstItem="TJv-oO-oFr" firstAttribute="trailing" secondItem="mnu-iW-y9i" secondAttribute="trailing" constant="-40" id="lsb-TH-WCA"/>
                 <constraint firstItem="TJv-oO-oFr" firstAttribute="top" secondItem="HD1-Ms-5Ia" secondAttribute="bottom" constant="45" id="rtM-GZ-1gY"/>
             </constraints>
             <point key="canvasLocation" x="340" y="377"/>
