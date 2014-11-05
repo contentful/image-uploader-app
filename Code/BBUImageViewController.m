@@ -514,11 +514,6 @@
     BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
 
     if (!cell.selectable) {
-        if (cell.draggedFile.error) {
-            [self enqueueOperationForDraggedFile:cell.draggedFile];
-            [self refresh];
-        }
-
         return;
     }
 
@@ -589,6 +584,13 @@
 
 -(void)collectionView:(JNWCollectionView *)colview didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self updateSelectionForCellAtIndexPath:indexPath];
+
+    BBUImageCell* cell = (BBUImageCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+
+    if (!cell.selectable && cell.draggedFile.error) {
+        [self enqueueOperationForDraggedFile:cell.draggedFile];
+        [self refresh];
+    }
 }
 
 #pragma mark - JNWCollectionViewGridLayoutDelegate
