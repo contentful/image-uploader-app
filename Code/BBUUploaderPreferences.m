@@ -123,6 +123,10 @@
 #pragma mark - JNWCollectionViewDelegate
 
 -(void)collectionView:(JNWCollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.settingsAvailable) {
+        return;
+    }
+
     NSInteger row = [indexPath indexAtPosition:1];
 
     switch (row) {
