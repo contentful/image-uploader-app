@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D832C19D5EBBE00314284 /* BBUDragHintView.m */; };
+		A11A47D01A0BBC79008D8B99 /* BBUSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = A11A47CF1A0BBC79008D8B99 /* BBUSeparator.m */; };
 		A13A44B119EBC457008DE506 /* contentful_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */; };
 		A13A44B419EBC4FF008DE506 /* BBUFileInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = A13A44B319EBC4FF008DE506 /* BBUFileInformation.m */; };
 		A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A14BDCA419D36E29008B8E7B /* BBUAppStyle.m */; };
@@ -111,6 +112,8 @@
 		A10D832B19D5EBBE00314284 /* BBUDragHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDragHintView.h; sourceTree = "<group>"; };
 		A10D832C19D5EBBE00314284 /* BBUDragHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDragHintView.m; sourceTree = "<group>"; };
 		A10FC71319AE324400C45BA3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/Realm/realm-cocoapods-0.83.0/osx/Realm.framework"; sourceTree = "<group>"; };
+		A11A47CE1A0BBC79008D8B99 /* BBUSeparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUSeparator.h; sourceTree = "<group>"; };
+		A11A47CF1A0BBC79008D8B99 /* BBUSeparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUSeparator.m; sourceTree = "<group>"; };
 		A13A44B219EBC4FF008DE506 /* BBUFileInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUFileInformation.h; sourceTree = "<group>"; };
 		A13A44B319EBC4FF008DE506 /* BBUFileInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUFileInformation.m; sourceTree = "<group>"; };
 		A14BDCA319D36E29008B8E7B /* BBUAppStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAppStyle.h; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 				A1EF1950199CA50A00AE864E /* BBUImageCell.m */,
 				A1EF194C199CA00C00AE864E /* BBUImageViewController.h */,
 				A1EF194D199CA00C00AE864E /* BBUImageViewController.m */,
+				A11A47CE1A0BBC79008D8B99 /* BBUSeparator.h */,
+				A11A47CF1A0BBC79008D8B99 /* BBUSeparator.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -700,6 +705,7 @@
 				A19FB0D419A3445500A5659C /* BBUMenuViewController.m in Sources */,
 				A1D01CEC19D4367000EB9531 /* BBUHeaderView.m in Sources */,
 				A19FB0D719A347BE00A5659C /* BBUMenuCell.m in Sources */,
+				A11A47D01A0BBC79008D8B99 /* BBUSeparator.m in Sources */,
 				A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */,
 				A14BDCA519D36E29008B8E7B /* BBUAppStyle.m in Sources */,
 				A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */,
