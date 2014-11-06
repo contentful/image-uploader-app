@@ -13,6 +13,14 @@
 #import "NSButton+Contentful.h"
 #import "NSView+Geometry.h"
 
+@interface BBULoginController ()
+
+@property (nonatomic) IBOutlet NSButton* linkButton;
+
+@end
+
+#pragma mark -
+
 @implementation BBULoginController
 
 +(instancetype)presentLogin {
@@ -22,6 +30,13 @@
 }
 
 #pragma mark -
+
+-(void)awakeFromNib {
+    [super awakeFromNib];
+
+    NSAttributedString* string = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"www.contentful.com", nil) attributes:@{ NSForegroundColorAttributeName: [NSColor whiteColor], NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle) }];
+    [self.linkButton setAttributedTitle:string];
+}
 
 -(id)init {
     self = [super initWithWindowNibName:NSStringFromClass(self.class)];

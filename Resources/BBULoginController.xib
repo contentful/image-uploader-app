@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BBULoginController">
             <connections>
+                <outlet property="linkButton" destination="ZG8-sX-A26" id="Dim-tA-DxA"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
