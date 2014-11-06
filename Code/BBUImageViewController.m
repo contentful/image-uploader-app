@@ -314,7 +314,43 @@
 
     self.dragHintView.hidden = !self.helpViewController.view.isHidden;
 
+    NSArray* selection = [self selectedFiles];
+    
     [self.collectionView reloadData];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+        [self restoreSelection:selection];
+    });
+}
+
+-(void)restoreSelection:(NSArray*)selection {
+    if (self.sortingType == 3) {
+        return;
+    }
+
+    for (BBUDraggedFile* draggedFile in selection) {
+        NSUInteger row = [self.filteredFiles indexOfObject:draggedFile];
+        if (row == NSNotFound) {
+            continue;
+        }
+
+        NSIndexPath* indexPath = [NSIndexPath jnw_indexPathForItem:row inSection:0];
+        [self.collectionView selectItemAtIndexPath:indexPath
+                                  atScrollPosition:JNWCollectionViewScrollPositionNone
+                                          animated:NO];
+    }
+}
+
+- (NSArray*)selectedFiles {
+    NSMutableArray* selectedFiles = [@[] mutableCopy];
+
+    for (NSIndexPath* indexPath in self.collectionView.indexPathsForSelectedItems) {
+        BBUDraggedFile* draggedFile = [self draggedFileAtIndexPath:indexPath];
+        [selectedFiles addObject:draggedFile];
+    }
+
+    return [selectedFiles copy];
 }
 
 - (void)selectFilesToUpload {
