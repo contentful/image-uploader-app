@@ -8,11 +8,13 @@
 
 #import "BBUAppStyle.h"
 #import "BBUHeaderView.h"
+#import "BBUSeparator.h"
 #import "NSView+Geometry.h"
 
 @implementation BBUHeaderView
 
 @synthesize closeButton = _closeButton;
+@synthesize separator = _separator;
 @synthesize subtitleLabel = _subtitleLabel;
 @synthesize titleLabel = _titleLabel;
 
@@ -37,6 +39,13 @@
 }
 
 -(void)drawRect:(NSRect)dirtyRect {
+    CGSize titleSize = [self.titleLabel.stringValue sizeWithAttributes:@{ NSFontAttributeName:
+                                                                              self.titleLabel.font }];
+
+    self.separator.x = titleSize.width + 40.0;
+    self.separator.width = self.width - self.separator.x - 10.0;
+    self.separator.y = self.height - self.separator.height - titleSize.height;
+
     self.closeButton.x = self.width - 20.0 - self.closeButton.width;
     self.closeButton.y = (self.height - self.closeButton.height) / 2;
 
@@ -48,6 +57,16 @@
     self.subtitleLabel.y = self.titleLabel.y - self.subtitleLabel.height;
 
     [super drawRect:dirtyRect];
+}
+
+-(NSBox *)separator {
+    if (!_separator) {
+        _separator = [[BBUSeparator alloc] initWithFrame:NSMakeRect(0.0, 0.0, 0.0, 2.0)];
+        _separator.hidden = YES;
+        [self addSubview:_separator];
+    }
+
+    return _separator;
 }
 
 -(void)setBackgroundColor:(NSColor *)backgroundColor {

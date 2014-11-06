@@ -532,6 +532,7 @@
         }
 
         headerView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
+        headerView.separator.hidden = NO;
         headerView.titleLabel.stringValue = self.fileTypes[section];
         return headerView;
     }
