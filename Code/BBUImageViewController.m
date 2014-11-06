@@ -208,25 +208,7 @@
     }
 
     NSArray *files = predicate ? [self.files filteredArrayUsingPredicate:predicate] : self.files;
-
-    return [files sortedArrayUsingComparator:^NSComparisonResult(BBUDraggedFile* file1,
-                                                                 BBUDraggedFile* file2) {
-        switch (self.sortingType) {
-            case 2:
-                return file1.numberOfBytes > file2.numberOfBytes;
-
-            case 3:
-                return [file1.fileType compare:file2.fileType options:NSCaseInsensitiveSearch];
-
-            case 4:
-                return [file1.mtime compare:file2.mtime];
-
-            default:
-                break;
-        }
-
-        return [file1.title compare:file2.title options:NSCaseInsensitiveSearch];
-    }];
+    return [self sortedArrayUsingCurrentFilter:files];
 }
 
 - (NSDictionary*)filteredFilesByType {
@@ -444,6 +426,27 @@
     [self moveSelectionForward:NO];
 }
 
+- (NSArray*)sortedArrayUsingCurrentFilter:(NSArray*)files {
+    return [files sortedArrayUsingComparator:^NSComparisonResult(BBUDraggedFile* file1,
+                                                                 BBUDraggedFile* file2) {
+        switch (self.sortingType) {
+            case 2:
+                return file1.numberOfBytes > file2.numberOfBytes;
+
+            case 3:
+                return [file1.fileType compare:file2.fileType options:NSCaseInsensitiveSearch];
+
+            case 4:
+                return [file1.mtime compare:file2.mtime];
+
+            default:
+                break;
+        }
+
+        return [file1.title compare:file2.title options:NSCaseInsensitiveSearch];
+    }];
+}
+
 - (IBAction)sortingOptionSelected:(NSMenuItem*)menuItem {
     for (NSMenuItem* item in self.sortingMenu.itemArray) {
         item.state = NSOffState;
@@ -476,7 +479,7 @@
     CMASpace* sharedSpace = [CMAClient sharedClient].sharedSpace;
     self.currentSpaceId = sharedSpace.identifier;
 
-    for (BBUDraggedFile* draggedFile in draggedFiles) {
+    for (BBUDraggedFile* draggedFile in [self sortedArrayUsingCurrentFilter:draggedFiles]) {
         if (!draggedFile.image) {
             continue;
         }
