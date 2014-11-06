@@ -353,7 +353,7 @@
 }
 
 - (NSString *)title {
-    return self.titleLabel.stringValue;
+    return self.draggedFile.asset.title;
 }
 
 - (NSTextField *)titleLabel {
@@ -376,6 +376,7 @@
     [self.draggedFile updateWithCompletionHandler:^(BOOL success) {
         if (success) {
             self.editable = YES;
+            self.showSuccess = YES;
         } else {
             self.showFailure = YES;
         }
