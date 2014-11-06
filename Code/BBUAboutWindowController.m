@@ -35,6 +35,10 @@
                                                       documentAttributes:nil];
 
     [[self.infoTextLabel textStorage] setAttributedString:string];
+
+    [self.infoTextLabel setLinkTextAttributes:@{ NSForegroundColorAttributeName: [NSColor whiteColor],
+                                                 NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),
+                                                 }];
 }
 
 -(instancetype)init {
