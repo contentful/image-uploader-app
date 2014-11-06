@@ -266,6 +266,10 @@
 }
 
 - (void)moveSelectionForward:(BOOL)forward {
+    if (self.sortingType == 3) {
+        return;
+    }
+
     NSIndexPath* indexPath = self.collectionView.indexPathsForSelectedItems.firstObject;
     NSInteger item = 0;
 
