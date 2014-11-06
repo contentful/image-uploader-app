@@ -27,6 +27,7 @@ static const char* kSharedSpace         = "SharedSpace";
         NSString* token = [SSKeychain passwordForService:kContentfulServiceType account:kContentfulServiceType];
 
         CDAConfiguration* configuration = [CDAConfiguration defaultConfiguration];
+        configuration.rateLimiting = YES;
         configuration.userAgent = kUserAgent;
 
         sharedClient = [[CMAClient alloc] initWithAccessToken:token configuration:configuration];
