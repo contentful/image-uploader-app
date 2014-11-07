@@ -535,6 +535,7 @@
         }
 
         headerView.backgroundColor = [BBUAppStyle defaultStyle].backgroundColor;
+        headerView.closeButton.hidden = YES;
         headerView.separator.hidden = NO;
         headerView.titleLabel.stringValue = self.fileTypes[section];
         return headerView;
@@ -545,6 +546,7 @@
 
     self.headerView = headerView;
     self.headerView.closeButton.hidden = NO;
+    self.headerView.separator.hidden = YES;
     
     [self updateHeaderView];
     return headerView;
