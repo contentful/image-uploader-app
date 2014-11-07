@@ -34,7 +34,7 @@
     self.imageView.height = self.height;
     self.imageView.width = self.imageView.height;
 
-    self.titleLabel.width = self.width - self.imageView.width;
+    self.titleLabel.width = self.width - self.imageView.width - 10.0;
     self.titleLabel.height = self.height;
     self.titleLabel.x = NSMaxX(self.imageView.frame);
 }
@@ -45,9 +45,8 @@
 
 -(NSImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 0.0, 0.0)];
+        _imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10.0, 0.0, 0.0, 0.0)];
         _imageView.wantsLayer = YES;
-        _imageView.layer.backgroundColor = [NSColor whiteColor].CGColor;
         [self.contentView addSubview:_imageView];
     }
 
@@ -76,10 +75,10 @@
 -(NSTextField *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[NSTextField alloc] initWithFrame:self.bounds];
-        [_titleLabel setBackgroundColor:[NSColor whiteColor]];
+        [_titleLabel setBackgroundColor:[NSColor controlColor]];
         [_titleLabel setBordered:NO];
         [_titleLabel setEditable:NO];
-        [_titleLabel setFont:[NSFont fontWithName:@"Lucida Grande" size:32.0]];
+        [_titleLabel setFont:[NSFont boldSystemFontOfSize:18.0]];
         [_titleLabel setTextColor:[NSColor blackColor]];
         [_titleLabel setWantsLayer:YES];
         [self.contentView addSubview:_titleLabel];

@@ -15,6 +15,7 @@ extern NSString* const kS3Secret;
 
 @interface BBUS3Uploader (SharedSettings)
 
++(NSString*)credentialString;
 +(BOOL)hasValidCredentials;
 +(instancetype)sharedUploader;
 +(void)unlink;

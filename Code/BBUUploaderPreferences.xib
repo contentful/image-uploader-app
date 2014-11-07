@@ -7,8 +7,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BBUUploaderPreferences">
             <connections>
+                <outlet property="actionButton" destination="LpV-Mw-YfJ" id="qlI-es-XUI"/>
                 <outlet property="collectionView" destination="qnh-Dm-nRN" id="vg0-24-gnC"/>
-                <outlet property="unlinkButton" destination="hNT-fR-u7J" id="Nh6-cZ-x5M"/>
+                <outlet property="informationLabel" destination="OKA-T4-ddO" id="gWh-0z-qBG"/>
+                <outlet property="mainView" destination="V1r-yf-4Z3" id="Z91-9C-Qqa"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -19,20 +21,41 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qnh-Dm-nRN" customClass="JNWCollectionView">
-                    <rect key="frame" x="0.0" y="55" width="480" height="217"/>
+                    <rect key="frame" x="0.0" y="0.0" width="194" height="272"/>
+                    <subviews>
+                        <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="xJ6-K6-Jfr">
+                            <rect key="frame" x="191" y="104" width="4" height="96"/>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <font key="titleFont" metaFont="system"/>
+                        </box>
+                    </subviews>
                 </customView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNT-fR-u7J">
-                    <rect key="frame" x="199" y="7" width="82" height="32"/>
-                    <buttonCell key="cell" type="push" title="Unlink" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ly-ME-APM">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="unlinkClicked:" target="-2" id="gNg-vy-Nhg"/>
-                    </connections>
-                </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1r-yf-4Z3" userLabel="Main View">
+                    <rect key="frame" x="193" y="0.0" width="287" height="272"/>
+                    <subviews>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKA-T4-ddO" userLabel="Information Label">
+                            <rect key="frame" x="18" y="65" width="251" height="187"/>
+                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Multiline Label" id="uZ5-vf-XPM">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LpV-Mw-YfJ" userLabel="Action Button">
+                            <rect key="frame" x="78" y="13" width="130" height="32"/>
+                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k9S-b3-4F0">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="actionButtonPressed:" target="-2" id="CSw-fR-wnt"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
             </subviews>
-            <point key="canvasLocation" x="273" y="356"/>
+            <point key="canvasLocation" x="114" y="232"/>
         </customView>
     </objects>
 </document>

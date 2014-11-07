@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef void(^BBUS3SettingsCompletionHandler)();
+
 @interface BBUS3SettingsSheet : NSWindowController
+
+@property (nonatomic, copy) BBUS3SettingsCompletionHandler completionHandler;
 
 @end

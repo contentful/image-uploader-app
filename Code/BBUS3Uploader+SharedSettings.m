@@ -17,6 +17,10 @@ NSString* const kS3Secret   = @"S3SecretKey";
 
 @implementation BBUS3Uploader (SharedSettings)
 
++(NSString*)credentialString {
+    return [NSString stringWithFormat:@"Bucket: %@\nPath: %@", [SSKeychain passwordForService:kS3Bucket account:kS3Bucket], [SSKeychain passwordForService:kS3Path account:kS3Path]];
+}
+
 +(BOOL)hasValidCredentials {
     NSString* bucket = [SSKeychain passwordForService:kS3Bucket account:kS3Bucket];
     NSString* key = [SSKeychain passwordForService:kS3Key account:kS3Key];

@@ -42,6 +42,14 @@
                                           NSAlert* alert = [NSAlert alertWithError:error];
                                           [alert runModal];
                                       });
+
+                                      [BBUS3Uploader unlink];
+                                  }
+
+                                  if (self.completionHandler) {
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          self.completionHandler();
+                                      });
                                   }
                               } progressHandler:nil];
 
@@ -67,6 +75,7 @@
     [self commitEditing];
 
     [NSApp endSheet:self.window];
+    [self close];
     [self.window orderOut:self];
 }
 
