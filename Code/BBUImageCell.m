@@ -129,6 +129,7 @@
     self.successImageView.x = self.failedImageView.x;
     self.successImageView.y = self.failedImageView.y;
 
+    [self addSubview:self.deleteButton];
     [super drawRect:dirtyRect];
 }
 
