@@ -10,6 +10,7 @@
 #import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <JNWCollectionView/JNWCollectionView.h>
 
+#import "BBUAppDelegate.h"
 #import "BBUAppStyle.h"
 #import "BBUCollectionView.h"
 #import "BBUDraggedFile.h"
@@ -466,8 +467,7 @@
 
 -(void)collectionView:(BBUCollectionView *)collectionView didDragFiles:(NSArray *)draggedFiles {
     if (![BBUS3Uploader hasValidCredentials] && ![DBSession sharedSession].isLinked) {
-        NSAlert* alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Please provide your Amazon S3 credentials or link your Dropbox account in the Preferences before uploading files.", nil) defaultButton:NSLocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
-        [alert runModal];
+        [[NSApp delegate] performSelector:@selector(showPreferences)];
         return;
     }
 

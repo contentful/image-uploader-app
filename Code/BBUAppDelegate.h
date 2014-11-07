@@ -16,4 +16,6 @@
 @property (weak) IBOutlet NSMenu *spaceSelectionMenu;
 @property (weak) IBOutlet NSWindow *window;
 
+-(void)showPreferences;
+
 @end

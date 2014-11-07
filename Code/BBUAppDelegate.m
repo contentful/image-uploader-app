@@ -148,7 +148,7 @@
 }
 
 - (IBAction)preferencesClicked:(NSMenuItem *)sender {
-    [self.preferencesController showWindow:nil];
+    [self showPreferences];
 }
 
 - (MASPreferencesWindowController *)preferencesController {
@@ -164,6 +164,10 @@
     [CMAClient sharedClient].sharedSpace = space;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:kContentfulSpaceChanged object:nil userInfo:@{ kContentfulSpaceChanged: space }];
+}
+
+- (void)showPreferences {
+    [self.preferencesController showWindow:nil];
 }
 
 - (void)spaceSelected:(NSMenuItem*)menuItem {
