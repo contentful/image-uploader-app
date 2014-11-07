@@ -510,6 +510,8 @@
         __strong typeof(self) sself = welf;
 
         [sself.files removeObject:cell.draggedFile];
+        _filteredFilesByType = nil;
+        
         [sself.collectionView reloadData];
     };
 
