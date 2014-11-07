@@ -244,6 +244,7 @@
         self.assetDescription = self.draggedFile.asset.description;
     }
 
+    self.deleteButton.enabled = YES;
     self.title = self.draggedFile.title;
     self.editable = draggedFile.asset.URL || draggedFile.error;
     self.imageView.image = self.draggedFile.image;
@@ -398,6 +399,8 @@
 #pragma mark - Actions
 
 -(void)deleteClicked:(id)sender {
+    self.deleteButton.enabled = NO;
+
     [self deleteAsset];
 }
 
