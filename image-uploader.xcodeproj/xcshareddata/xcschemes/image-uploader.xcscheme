@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A1D4A7DD199BED850021EEA6"
-               BuildableName = "image-uploader.app"
+               BuildableName = "Contentful Media Uploader.app"
                BlueprintName = "image-uploader"
                ReferencedContainer = "container:image-uploader.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1D4A7DD199BED850021EEA6"
-            BuildableName = "image-uploader.app"
+            BuildableName = "Contentful Media Uploader.app"
             BlueprintName = "image-uploader"
             ReferencedContainer = "container:image-uploader.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1D4A7DD199BED850021EEA6"
-            BuildableName = "image-uploader.app"
+            BuildableName = "Contentful Media Uploader.app"
             BlueprintName = "image-uploader"
             ReferencedContainer = "container:image-uploader.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1D4A7DD199BED850021EEA6"
-            BuildableName = "image-uploader.app"
+            BuildableName = "Contentful Media Uploader.app"
             BlueprintName = "image-uploader"
             ReferencedContainer = "container:image-uploader.xcodeproj">
          </BuildableReference>
