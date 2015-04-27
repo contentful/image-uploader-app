@@ -21,7 +21,7 @@ PODS:
     - AFNetworking
     - HRCoder
     - ISO8601DateFormatter
-  - ContentfulManagementAPI (HEAD based on 0.4.0):
+  - ContentfulManagementAPI (HEAD based on 0.5.0):
     - ContentfulDeliveryAPI (~> 1.4.7)
   - DJProgressHUD (0.0.1)
   - Dropbox-OSX-SDK (1.3.13)
@@ -77,21 +77,21 @@ EXTERNAL SOURCES:
     :podspec: vendor/DJProgressHUD.podspec
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  ContentfulDeliveryAPI: c3815bd863ddc5ae8a9039051bc7ab6962bfc031
-  ContentfulManagementAPI: 150a8b11901aabda30d1c0cd1035cee2e56f4f8a
-  DJProgressHUD: 6d8a7a42768beacca4452bd59b1e2663061b7c1d
-  Dropbox-OSX-SDK: bbcfc3398fd85874e15959d610cc856d61cc1b32
-  FormatterKit: 877ff970af3feb2f602ced0a9420e9fbc25f568c
-  HRCoder: 492f8e2e0b69b54842564d4bbeb1c0e151d4f95f
-  IAmUpload: e03387900fa9f12c92960651146d1e940abe4041
-  ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
-  JNWCollectionView: 879df2734740bdad82806dc381de2090d6c08a58
-  JNWScrollView: 1c343fd858ab1d7826f83cb9d6dc0d1753f0bdea
-  KVOController: e6ad4a058ab0ceed546802361adb89d322a22cf2
-  MASPreferences: 48debf3a161039bb979e617b7416bc07bd879f75
-  OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
-  Realm: 01c074b534be68b55ba4228a3b16cf41da7af14d
-  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
+  AFNetworking: 05b9f6e3aa5ac45bc383b4bb108ef338080a26c7
+  ContentfulDeliveryAPI: c2ab45bd3363bede7df91d5fed702af2f4c35ef3
+  ContentfulManagementAPI: 0cb87441b61450abf08955f3cc12455eeacb7b7e
+  DJProgressHUD: 00def70069f7bebcde6986a6e2abe062f59a7d10
+  Dropbox-OSX-SDK: 7558b741dfb8eac3d2352ad95bd4078debcf0e13
+  FormatterKit: 03b5d827cf91fa0f1398c00ab0d558bcb69ee168
+  HRCoder: 500ccf7f41e14a12fb9a8aca37793f0ace4c4e88
+  IAmUpload: 15ad3d842b200164ac6707499417364d3e81f5dc
+  ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  JNWCollectionView: df680ff829bcb6ca6d0874b886cb5fce03a68a1c
+  JNWScrollView: d98a3bf2b663e1251a20cdd3a306123f132a7033
+  KVOController: 25b46ed0a0a1c45e4bd6859e9659e9a048070b09
+  MASPreferences: 32d8a2c5ef1d60b63240f5676b011ff72e194cb1
+  OCMock: a73f69963a8a542b0b343e2617650e4dca0cbbc2
+  Realm: ebba96f47efc546489cce086b0e145215e36cd95
+  SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.4

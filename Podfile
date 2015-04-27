@@ -1,3 +1,11 @@
+plugin 'cocoapods-keys', {
+  :project => 'image-uploader',
+  :keys => [
+    'ContentfulOAuthClient',
+    'DropboxOAuthKey',
+    'DropboxOAuthSecret'
+  ]}
+
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :osx, '10.9'
