@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02122B3BAD07466EBB95E85B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 071CB6A491E40F35EFAD0D2A /* libPods.a */; };
+		109D4997ADD6F4D0EB332C0B /* libPods-Uploader Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D51E917D8CDAE1B45A29880 /* libPods-Uploader Tests.a */; };
 		A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D832C19D5EBBE00314284 /* BBUDragHintView.m */; };
 		A11A47D01A0BBC79008D8B99 /* BBUSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = A11A47CF1A0BBC79008D8B99 /* BBUSeparator.m */; };
 		A13A44B119EBC457008DE506 /* contentful_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D10C2719B5C23F009CA6CA /* contentful_logo_big.png */; };
@@ -70,8 +72,6 @@
 		A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EF1950199CA50A00AE864E /* BBUImageCell.m */; };
 		A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */; };
 		A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F834D919A2033300282AE9 /* BBUCollectionView.m */; };
-		A23D4E3A868943879EE69000 /* libPods-image-uploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79302297BDDD4879A2F47997 /* libPods-image-uploader.a */; };
-		DA472A44A5615CFD9C3B8E59 /* libPods-Uploader Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5350AD0E92E7EAA646C2A3F2 /* libPods-Uploader Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,10 +105,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2502DC8DDB16375802DBC873 /* Pods-Uploader Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.release.xcconfig"; sourceTree = "<group>"; };
-		5350AD0E92E7EAA646C2A3F2 /* libPods-Uploader Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uploader Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		79302297BDDD4879A2F47997 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.debug.xcconfig"; sourceTree = "<group>"; };
+		071CB6A491E40F35EFAD0D2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CC3417D8AD8833171900B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1D51E917D8CDAE1B45A29880 /* libPods-Uploader Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uploader Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5761E7C235050900F636FC5A /* Pods-Uploader Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8E5E2F206070A32C9BAA09A4 /* Pods-Uploader Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A10D832B19D5EBBE00314284 /* BBUDragHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDragHintView.h; sourceTree = "<group>"; };
 		A10D832C19D5EBBE00314284 /* BBUDragHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDragHintView.m; sourceTree = "<group>"; };
 		A10FC71319AE324400C45BA3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/Realm/realm-cocoapods-0.83.0/osx/Realm.framework"; sourceTree = "<group>"; };
@@ -208,8 +209,7 @@
 		A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAssetUploadOperation.m; sourceTree = "<group>"; };
 		A1F834D819A2033300282AE9 /* BBUCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUCollectionView.h; sourceTree = "<group>"; };
 		A1F834D919A2033300282AE9 /* BBUCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUCollectionView.m; sourceTree = "<group>"; };
-		A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.release.xcconfig"; sourceTree = "<group>"; };
-		D4957160548C3F47EE7E4D90 /* Pods-Uploader Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8388AB7CD5D2C2A54EE1FA7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,7 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA472A44A5615CFD9C3B8E59 /* libPods-Uploader Tests.a in Frameworks */,
+				109D4997ADD6F4D0EB332C0B /* libPods-Uploader Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,13 +226,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */,
-				A23D4E3A868943879EE69000 /* libPods-image-uploader.a in Frameworks */,
+				02122B3BAD07466EBB95E85B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AE53F6916E72413A88A1450 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8388AB7CD5D2C2A54EE1FA7 /* Pods.debug.xcconfig */,
+				0CC3417D8AD8833171900B25 /* Pods.release.xcconfig */,
+				8E5E2F206070A32C9BAA09A4 /* Pods-Uploader Tests.debug.xcconfig */,
+				5761E7C235050900F636FC5A /* Pods-Uploader Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A19469C219E8372900766AF0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,11 +352,11 @@
 			children = (
 				A1D4A7E7199BED850021EEA6 /* Code */,
 				A1D4A7E0199BED850021EEA6 /* Frameworks */,
-				F8D0F218CD2CE0B7DFEB3287 /* Pods */,
 				A1D4A7DF199BED850021EEA6 /* Products */,
 				A1D4A815199BEDCC0021EEA6 /* Resources */,
 				A1D4A7E8199BED850021EEA6 /* Supporting Files */,
 				A19469C219E8372900766AF0 /* Tests */,
+				5AE53F6916E72413A88A1450 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -365,8 +376,8 @@
 				A1D4A7E1199BED850021EEA6 /* Cocoa.framework */,
 				A1D4A7E6199BED850021EEA6 /* Foundation.framework */,
 				A10FC71319AE324400C45BA3 /* Realm.framework */,
-				79302297BDDD4879A2F47997 /* libPods-image-uploader.a */,
-				5350AD0E92E7EAA646C2A3F2 /* libPods-Uploader Tests.a */,
+				071CB6A491E40F35EFAD0D2A /* libPods.a */,
+				1D51E917D8CDAE1B45A29880 /* libPods-Uploader Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -453,17 +464,6 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		F8D0F218CD2CE0B7DFEB3287 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */,
-				A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */,
-				D4957160548C3F47EE7E4D90 /* Pods-Uploader Tests.debug.xcconfig */,
-				2502DC8DDB16375802DBC873 /* Pods-Uploader Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,11 +471,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A19469CB19E8372900766AF0 /* Build configuration list for PBXNativeTarget "Uploader Tests" */;
 			buildPhases = (
-				D89972D38B1C005BDE24590A /* Check Pods Manifest.lock */,
+				C49A1158FD24FF1C2105B4D8 /* Check Pods Manifest.lock */,
 				A19469BD19E8372900766AF0 /* Sources */,
 				A19469BE19E8372900766AF0 /* Frameworks */,
 				A19469BF19E8372900766AF0 /* Resources */,
-				64B72DF77DF3A6AB9CE8CC6B /* Copy Pods Resources */,
+				2EAFD8894CA92F20435279D8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -492,13 +492,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1D4A80F199BED850021EEA6 /* Build configuration list for PBXNativeTarget "image-uploader" */;
 			buildPhases = (
-				4E1B7F0C9A764020962CB936 /* Check Pods Manifest.lock */,
+				28A572746BE1F80D6F177309 /* Check Pods Manifest.lock */,
 				A1D4A7DA199BED850021EEA6 /* Sources */,
 				A1D4A7DB199BED850021EEA6 /* Frameworks */,
 				A1D4A7DC199BED850021EEA6 /* Resources */,
-				251A6A48004640E59EF0B99C /* Copy Pods Resources */,
 				A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */,
 				A1D912AB19D19FCF007D00DD /* CopyFiles */,
+				0190ADD33B65E5577A94DEA7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -516,7 +516,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BBU;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Contentful GmbH";
 				TargetAttributes = {
 					A19469C019E8372900766AF0 = {
@@ -601,7 +601,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		251A6A48004640E59EF0B99C /* Copy Pods Resources */ = {
+		0190ADD33B65E5577A94DEA7 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -613,10 +613,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4E1B7F0C9A764020962CB936 /* Check Pods Manifest.lock */ = {
+		28A572746BE1F80D6F177309 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -631,7 +631,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		64B72DF77DF3A6AB9CE8CC6B /* Copy Pods Resources */ = {
+		2EAFD8894CA92F20435279D8 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -660,7 +660,7 @@
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | grep -v '/Pods/' | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
 		};
-		D89972D38B1C005BDE24590A /* Check Pods Manifest.lock */ = {
+		C49A1158FD24FF1C2105B4D8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -739,7 +739,7 @@
 /* Begin XCBuildConfiguration section */
 		A19469C919E8372900766AF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4957160548C3F47EE7E4D90 /* Pods-Uploader Tests.debug.xcconfig */;
+			baseConfigurationReference = 8E5E2F206070A32C9BAA09A4 /* Pods-Uploader Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -757,6 +757,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.contentful.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/image-uploader.app/Contents/MacOS/image-uploader";
 			};
@@ -764,7 +765,7 @@
 		};
 		A19469CA19E8372900766AF0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2502DC8DDB16375802DBC873 /* Pods-Uploader Tests.release.xcconfig */;
+			baseConfigurationReference = 5761E7C235050900F636FC5A /* Pods-Uploader Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -778,6 +779,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.contentful.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/image-uploader.app/Contents/MacOS/image-uploader";
 			};
@@ -800,6 +802,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -857,7 +860,7 @@
 		};
 		A1D4A810199BED850021EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98581CCF0555076D88902C1F /* Pods-image-uploader.debug.xcconfig */;
+			baseConfigurationReference = F8388AB7CD5D2C2A54EE1FA7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "image-uploader.entitlements";
@@ -868,6 +871,7 @@
 				GCC_PREFIX_HEADER = "Supporting Files/image-uploader-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/image-uploader-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.contentful.image-uploader";
 				PRODUCT_NAME = "Contentful Media Uploader";
 				WRAPPER_EXTENSION = app;
 			};
@@ -875,7 +879,7 @@
 		};
 		A1D4A811199BED850021EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9926F5FCE44C8E870467B0B /* Pods-image-uploader.release.xcconfig */;
+			baseConfigurationReference = 0CC3417D8AD8833171900B25 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "image-uploader.entitlements";
@@ -886,6 +890,7 @@
 				GCC_PREFIX_HEADER = "Supporting Files/image-uploader-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/image-uploader-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.contentful.image-uploader";
 				PRODUCT_NAME = "Contentful Media Uploader";
 				WRAPPER_EXTENSION = app;
 			};

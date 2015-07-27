@@ -31,7 +31,7 @@
     [sender enumerateDraggingItemsWithOptions:NSDraggingItemEnumerationConcurrent
         forView:self
         classes:[NSArray arrayWithObject:[NSPasteboardItem class]]
-        searchOptions:nil
+        searchOptions:@{}
         usingBlock:^(NSDraggingItem *draggingItem, NSInteger idx, BOOL *stop) {
             BBUDraggedFile* file = [[BBUDraggedFile alloc] initWithPasteboardItem:draggingItem.item];
 

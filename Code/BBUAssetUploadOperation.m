@@ -186,8 +186,8 @@ static const NSTimeInterval kProcessWait = 1.0;
         NSString* path = self.draggedFile.originalPath;
 
         if (self.shouldConvert) {
-            NSBitmapImageRep *imgRep = [[self.draggedFile.image representations] objectAtIndex:0];
-            NSData *data = [imgRep representationUsingType:NSJPEGFileType properties:nil];
+            NSBitmapImageRep *imgRep = (NSBitmapImageRep*)[[self.draggedFile.image representations] objectAtIndex:0];
+            NSData *data = [imgRep representationUsingType:NSJPEGFileType properties:@{}];
             [data writeToURL:self.temporaryFilePath atomically:YES];
 
             path = self.temporaryFilePath.path;

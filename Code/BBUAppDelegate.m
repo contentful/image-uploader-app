@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Contentful GmbH. All rights reserved.
 //
 
-#import <CocoaPods-Keys/ImageUploaderKeys.h>
+#import <Keys/ImageUploaderKeys.h>
 #import <DJProgressHUD/DJProgressHUD.h>
 #import <Dropbox-OSX-SDK/DropboxOSX/DropboxOSX.h>
 #import <MASPreferences/MASPreferencesWindowController.h>

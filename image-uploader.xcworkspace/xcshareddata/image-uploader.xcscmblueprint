@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "19ED98E5E36E9B8AA1F8D5C3CCA0CBBA430B0047",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "19ED98E5E36E9B8AA1F8D5C3CCA0CBBA430B0047" : 0,
+    "08B96BDDFD2908CB7779D57DEBFE47D07FCA9227" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A39EDC00-8999-4DF6-8EFD-26BF2A346782",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "19ED98E5E36E9B8AA1F8D5C3CCA0CBBA430B0047" : "image-uploader",
+    "08B96BDDFD2908CB7779D57DEBFE47D07FCA9227" : "image-uploader\/vendor\/NSImage-QuickLook\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "image-uploader",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "image-uploader.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/incbee\/NSImage-QuickLook.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08B96BDDFD2908CB7779D57DEBFE47D07FCA9227"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:contentful\/image-uploader-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "19ED98E5E36E9B8AA1F8D5C3CCA0CBBA430B0047"
+    }
+  ]
+}

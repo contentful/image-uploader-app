@@ -1,63 +1,62 @@
 PODS:
-  - AFNetworking (2.3.1):
-    - AFNetworking/NSURLConnection (= 2.3.1)
-    - AFNetworking/NSURLSession (= 2.3.1)
-    - AFNetworking/Reachability (= 2.3.1)
-    - AFNetworking/Security (= 2.3.1)
-    - AFNetworking/Serialization (= 2.3.1)
-    - AFNetworking/UIKit (= 2.3.1)
-  - AFNetworking/NSURLConnection (2.3.1):
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.3.1):
+  - AFNetworking/NSURLSession (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.3.1)
-  - AFNetworking/Security (2.3.1)
-  - AFNetworking/Serialization (2.3.1)
-  - ContentfulDeliveryAPI (1.4.7):
-    - AFNetworking
-    - HRCoder
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - ContentfulDeliveryAPI (1.7.4):
+    - AFNetworking (>= 2.5.3)
     - ISO8601DateFormatter
-  - ContentfulManagementAPI (HEAD based on 0.5.0):
-    - ContentfulDeliveryAPI (~> 1.4.7)
+  - ContentfulManagementAPI (HEAD based on 0.5.1):
+    - ContentfulDeliveryAPI (~> 1.7.3)
   - DJProgressHUD (0.0.1)
   - Dropbox-OSX-SDK (1.3.13)
-  - FormatterKit (1.7.1):
-    - FormatterKit/AddressFormatter (= 1.7.1)
-    - FormatterKit/ArrayFormatter (= 1.7.1)
-    - FormatterKit/ColorFormatter (= 1.7.1)
-    - FormatterKit/LocationFormatter (= 1.7.1)
-    - FormatterKit/NameFormatter (= 1.7.1)
-    - FormatterKit/OrdinalNumberFormatter (= 1.7.1)
-    - FormatterKit/TimeIntervalFormatter (= 1.7.1)
-    - FormatterKit/UnitOfInformationFormatter (= 1.7.1)
-    - FormatterKit/URLRequestFormatter (= 1.7.1)
-  - FormatterKit/AddressFormatter (1.7.1)
-  - FormatterKit/ArrayFormatter (1.7.1)
-  - FormatterKit/ColorFormatter (1.7.1)
-  - FormatterKit/LocationFormatter (1.7.1)
-  - FormatterKit/NameFormatter (1.7.1)
-  - FormatterKit/OrdinalNumberFormatter (1.7.1)
-  - FormatterKit/TimeIntervalFormatter (1.7.1)
-  - FormatterKit/UnitOfInformationFormatter (1.7.1)
-  - FormatterKit/URLRequestFormatter (1.7.1)
-  - HRCoder (1.3.2)
-  - IAmUpload (0.3.0):
-    - AFNetworking (~> 2.3.1)
+  - FormatterKit (1.8.0):
+    - FormatterKit/AddressFormatter (= 1.8.0)
+    - FormatterKit/ArrayFormatter (= 1.8.0)
+    - FormatterKit/ColorFormatter (= 1.8.0)
+    - FormatterKit/LocationFormatter (= 1.8.0)
+    - FormatterKit/NameFormatter (= 1.8.0)
+    - FormatterKit/OrdinalNumberFormatter (= 1.8.0)
+    - FormatterKit/TimeIntervalFormatter (= 1.8.0)
+    - FormatterKit/UnitOfInformationFormatter (= 1.8.0)
+    - FormatterKit/URLRequestFormatter (= 1.8.0)
+  - FormatterKit/AddressFormatter (1.8.0)
+  - FormatterKit/ArrayFormatter (1.8.0)
+  - FormatterKit/ColorFormatter (1.8.0)
+  - FormatterKit/LocationFormatter (1.8.0)
+  - FormatterKit/NameFormatter (1.8.0)
+  - FormatterKit/OrdinalNumberFormatter (1.8.0)
+  - FormatterKit/TimeIntervalFormatter (1.8.0)
+  - FormatterKit/UnitOfInformationFormatter (1.8.0)
+  - FormatterKit/URLRequestFormatter (1.8.0)
+  - IAmUpload (0.3.1):
+    - AFNetworking (~> 2.5)
   - ISO8601DateFormatter (0.7)
-  - JNWCollectionView (1.2):
+  - JNWCollectionView (1.3):
     - JNWScrollView
   - JNWScrollView (0.1)
-  - KVOController (1.0.1)
+  - Keys (1.0.0)
+  - KVOController (1.0.3)
   - MASPreferences (1.1.2)
-  - OCMock (3.1.1)
+  - OCMock (3.1.2)
   - Realm (0.85.0):
     - Realm/Headers (= 0.85.0)
   - Realm/Headers (0.85.0)
-  - SSKeychain (1.2.2)
+  - SSKeychain (1.2.3)
 
 DEPENDENCIES:
   - ContentfulManagementAPI (HEAD)
@@ -66,32 +65,35 @@ DEPENDENCIES:
   - FormatterKit
   - IAmUpload
   - JNWCollectionView
+  - Keys (from `/Users/boris/Projects/image-uploader/Pods/CocoaPodsKeys/`)
   - KVOController
   - MASPreferences
   - OCMock
-  - Realm
+  - Realm (= 0.85.0)
   - SSKeychain
 
 EXTERNAL SOURCES:
   DJProgressHUD:
     :podspec: vendor/DJProgressHUD.podspec
+  Keys:
+    :path: /Users/boris/Projects/image-uploader/Pods/CocoaPodsKeys/
 
 SPEC CHECKSUMS:
-  AFNetworking: 05b9f6e3aa5ac45bc383b4bb108ef338080a26c7
-  ContentfulDeliveryAPI: c2ab45bd3363bede7df91d5fed702af2f4c35ef3
-  ContentfulManagementAPI: 0cb87441b61450abf08955f3cc12455eeacb7b7e
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  ContentfulDeliveryAPI: 84eb58ed01d97fec339844436239c39e999f8092
+  ContentfulManagementAPI: c567ffb97cc8e5f6e818aef5b54cab46183bb93f
   DJProgressHUD: 00def70069f7bebcde6986a6e2abe062f59a7d10
   Dropbox-OSX-SDK: 7558b741dfb8eac3d2352ad95bd4078debcf0e13
-  FormatterKit: 03b5d827cf91fa0f1398c00ab0d558bcb69ee168
-  HRCoder: 500ccf7f41e14a12fb9a8aca37793f0ace4c4e88
-  IAmUpload: 15ad3d842b200164ac6707499417364d3e81f5dc
+  FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
+  IAmUpload: 06abe512834ba58bca6e0fb7ad5e4786732001f9
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
-  JNWCollectionView: df680ff829bcb6ca6d0874b886cb5fce03a68a1c
+  JNWCollectionView: 3bad227492d5e8219c2664b7878e3ca20fd29f92
   JNWScrollView: d98a3bf2b663e1251a20cdd3a306123f132a7033
-  KVOController: 25b46ed0a0a1c45e4bd6859e9659e9a048070b09
+  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   MASPreferences: 32d8a2c5ef1d60b63240f5676b011ff72e194cb1
-  OCMock: a73f69963a8a542b0b343e2617650e4dca0cbbc2
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   Realm: ebba96f47efc546489cce086b0e145215e36cd95
-  SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
+  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.38.2
