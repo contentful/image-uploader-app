@@ -49,8 +49,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     DBSession *dbSession = [[DBSession alloc]
-                            initWithAppKey:[ImageUploaderKeys new].dropboxOAuthKey
-                            appSecret:[ImageUploaderKeys new].dropboxOAuthSecret
+                            initWithAppKey:[ImageuploaderKeys new].dropboxOAuthKey
+                            appSecret:[ImageuploaderKeys new].dropboxOAuthSecret
                             root:kDBRootAppFolder];
     [DBSession setSharedSession:dbSession];
 

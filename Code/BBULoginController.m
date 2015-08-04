@@ -50,7 +50,7 @@
 - (IBAction)loginClicked:(NSButton *)sender {
     sender.enabled = NO;
 
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", [ImageUploaderKeys new].contentfulOAuthClient]];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://be.contentful.com/oauth/authorize?response_type=token&client_id=%@&redirect_uri=contentful-uploader%%3a%%2f%%2ftoken&token&scope=content_management_manage", [ImageuploaderKeys new].contentfulOAuthClient]];
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 

@@ -65,7 +65,7 @@ DEPENDENCIES:
   - FormatterKit
   - IAmUpload
   - JNWCollectionView
-  - Keys (from `/Users/boris/Projects/image-uploader/Pods/CocoaPodsKeys/`)
+  - Keys (from `Pods/CocoaPodsKeys`)
   - KVOController
   - MASPreferences
   - OCMock
@@ -76,7 +76,7 @@ EXTERNAL SOURCES:
   DJProgressHUD:
     :podspec: vendor/DJProgressHUD.podspec
   Keys:
-    :path: /Users/boris/Projects/image-uploader/Pods/CocoaPodsKeys/
+    :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
