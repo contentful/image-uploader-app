@@ -164,9 +164,7 @@ static const NSTimeInterval kProcessWait = 1.0;
 
 -(NSURL*)temporaryFilePath {
     if (!_temporaryFilePath) {
-        NSString *fileName = [NSString stringWithFormat:@"%@_%@", [[NSProcessInfo processInfo] globallyUniqueString], @"_image.jpg"];
-        _temporaryFilePath = [NSURL fileURLWithPath:[NSTemporaryDirectory()
-                                                     stringByAppendingPathComponent:fileName]];
+        _temporaryFilePath = [BBUDraggedFile temporaryFilePath];
     }
 
     return _temporaryFilePath;

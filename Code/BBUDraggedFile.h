@@ -33,6 +33,7 @@ typedef void(^BBUBoolResultBlock)(BOOL success);
 
 +(void)fetchAllFilesFromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler;
 +(void)fetchFilesForSpace:(CMASpace*)space fromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler;
++(NSURL*)temporaryFilePath;
 
 -(NSOperation*)creationOperationForSpace:(CMASpace*)space;
 -(instancetype)initWithPasteboardItem:(NSPasteboardItem*)item;

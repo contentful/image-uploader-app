@@ -110,6 +110,11 @@
     [realm commitWriteTransaction];
 }
 
++(NSURL*)temporaryFilePath {
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@", [[NSProcessInfo processInfo] globallyUniqueString], @"_image.jpg"];
+    return [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:fileName]];
+}
+
 #pragma mark -
 
 -(BBUAssetUploadOperation *)creationOperationForSpace:(CMASpace *)space {
