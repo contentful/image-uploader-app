@@ -21,7 +21,9 @@ pod 'MASPreferences'
 pod 'Realm', '0.85.0'
 pod 'SSKeychain'
 
-target "Uploader Tests", :exclusive => true do
+target "Uploader Tests" do
+
+inherit! :search_paths
 
 pod 'OCMock'
 
