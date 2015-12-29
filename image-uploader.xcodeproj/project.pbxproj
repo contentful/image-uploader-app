@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02122B3BAD07466EBB95E85B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 071CB6A491E40F35EFAD0D2A /* libPods.a */; };
 		109D4997ADD6F4D0EB332C0B /* libPods-Uploader Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D51E917D8CDAE1B45A29880 /* libPods-Uploader Tests.a */; };
 		A10D832D19D5EBBE00314284 /* BBUDragHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D832C19D5EBBE00314284 /* BBUDragHintView.m */; };
 		A11A47D01A0BBC79008D8B99 /* BBUSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = A11A47CF1A0BBC79008D8B99 /* BBUSeparator.m */; };
@@ -72,6 +71,7 @@
 		A1EF1951199CA50A00AE864E /* BBUImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EF1950199CA50A00AE864E /* BBUImageCell.m */; };
 		A1F35BD219A6262D00654922 /* BBUAssetUploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F35BD119A6262D00654922 /* BBUAssetUploadOperation.m */; };
 		A1F834DA19A2033300282AE9 /* BBUCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F834D919A2033300282AE9 /* BBUCollectionView.m */; };
+		E08FDF307CBC936478FEF398 /* libPods-image-uploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0A34E858CD18C755EC48A5 /* libPods-image-uploader.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,8 +108,11 @@
 		071CB6A491E40F35EFAD0D2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC3417D8AD8833171900B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1D51E917D8CDAE1B45A29880 /* libPods-Uploader Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uploader Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		354D61A7DADC03DFDDD87593 /* Pods-image-uploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.debug.xcconfig"; sourceTree = "<group>"; };
 		5761E7C235050900F636FC5A /* Pods-Uploader Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.release.xcconfig"; sourceTree = "<group>"; };
+		6D0A34E858CD18C755EC48A5 /* libPods-image-uploader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-image-uploader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E5E2F206070A32C9BAA09A4 /* Pods-Uploader Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uploader Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9270C2B4CB7CD8BFC23A53FE /* Pods-image-uploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-uploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader.release.xcconfig"; sourceTree = "<group>"; };
 		A10D832B19D5EBBE00314284 /* BBUDragHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUDragHintView.h; sourceTree = "<group>"; };
 		A10D832C19D5EBBE00314284 /* BBUDragHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUDragHintView.m; sourceTree = "<group>"; };
 		A10FC71319AE324400C45BA3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/Realm/realm-cocoapods-0.83.0/osx/Realm.framework"; sourceTree = "<group>"; };
@@ -226,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1D4A7E2199BED850021EEA6 /* Cocoa.framework in Frameworks */,
-				02122B3BAD07466EBB95E85B /* libPods.a in Frameworks */,
+				E08FDF307CBC936478FEF398 /* libPods-image-uploader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +243,8 @@
 				0CC3417D8AD8833171900B25 /* Pods.release.xcconfig */,
 				8E5E2F206070A32C9BAA09A4 /* Pods-Uploader Tests.debug.xcconfig */,
 				5761E7C235050900F636FC5A /* Pods-Uploader Tests.release.xcconfig */,
+				354D61A7DADC03DFDDD87593 /* Pods-image-uploader.debug.xcconfig */,
+				9270C2B4CB7CD8BFC23A53FE /* Pods-image-uploader.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				A10FC71319AE324400C45BA3 /* Realm.framework */,
 				071CB6A491E40F35EFAD0D2A /* libPods.a */,
 				1D51E917D8CDAE1B45A29880 /* libPods-Uploader Tests.a */,
+				6D0A34E858CD18C755EC48A5 /* libPods-image-uploader.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				A19469BE19E8372900766AF0 /* Frameworks */,
 				A19469BF19E8372900766AF0 /* Resources */,
 				2EAFD8894CA92F20435279D8 /* Copy Pods Resources */,
+				5CAD92B409D008227D04BCA7 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -499,6 +506,7 @@
 				A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */,
 				A1D912AB19D19FCF007D00DD /* CopyFiles */,
 				0190ADD33B65E5577A94DEA7 /* Copy Pods Resources */,
+				03828EC7AB33B8E3C17090FC /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -613,7 +621,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		03828EC7AB33B8E3C17090FC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-image-uploader/Pods-image-uploader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		28A572746BE1F80D6F177309 /* Check Pods Manifest.lock */ = {
@@ -644,6 +667,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CAD92B409D008227D04BCA7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */ = {
@@ -860,7 +898,7 @@
 		};
 		A1D4A810199BED850021EEA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8388AB7CD5D2C2A54EE1FA7 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 354D61A7DADC03DFDDD87593 /* Pods-image-uploader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "image-uploader.entitlements";
@@ -879,7 +917,7 @@
 		};
 		A1D4A811199BED850021EEA6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CC3417D8AD8833171900B25 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 9270C2B4CB7CD8BFC23A53FE /* Pods-image-uploader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "image-uploader.entitlements";

@@ -1,26 +1,26 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
+  - AFNetworking/NSURLSession (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
   - ContentfulDeliveryAPI (1.7.4):
     - AFNetworking (>= 2.5.3)
     - ISO8601DateFormatter
-  - ContentfulManagementAPI (HEAD based on 0.5.1):
+  - ContentfulManagementAPI (0.5.1):
     - ContentfulDeliveryAPI (~> 1.7.3)
   - DJProgressHUD (0.0.1)
   - Dropbox-OSX-SDK (1.3.13)
@@ -46,20 +46,20 @@ PODS:
   - IAmUpload (0.3.1):
     - AFNetworking (~> 2.5)
   - ISO8601DateFormatter (0.7)
-  - JNWCollectionView (1.3):
+  - JNWCollectionView (1.4):
     - JNWScrollView
   - JNWScrollView (0.1)
   - Keys (1.0.0)
   - KVOController (1.0.3)
   - MASPreferences (1.1.2)
-  - OCMock (3.1.2)
-  - Realm (0.85.0):
-    - Realm/Headers (= 0.85.0)
-  - Realm/Headers (0.85.0)
-  - SSKeychain (1.2.3)
+  - OCMock (3.2)
+  - Realm (0.97.0):
+    - Realm/Headers (= 0.97.0)
+  - Realm/Headers (0.97.0)
+  - SSKeychain (1.3.1)
 
 DEPENDENCIES:
-  - ContentfulManagementAPI (HEAD)
+  - ContentfulManagementAPI
   - DJProgressHUD (from `vendor/DJProgressHUD.podspec`)
   - Dropbox-OSX-SDK
   - FormatterKit
@@ -69,7 +69,7 @@ DEPENDENCIES:
   - KVOController
   - MASPreferences
   - OCMock
-  - Realm (= 0.85.0)
+  - Realm
   - SSKeychain
 
 EXTERNAL SOURCES:
@@ -79,7 +79,7 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   ContentfulDeliveryAPI: 84eb58ed01d97fec339844436239c39e999f8092
   ContentfulManagementAPI: c567ffb97cc8e5f6e818aef5b54cab46183bb93f
   DJProgressHUD: 00def70069f7bebcde6986a6e2abe062f59a7d10
@@ -87,13 +87,15 @@ SPEC CHECKSUMS:
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   IAmUpload: 06abe512834ba58bca6e0fb7ad5e4786732001f9
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
-  JNWCollectionView: 3bad227492d5e8219c2664b7878e3ca20fd29f92
+  JNWCollectionView: b9b1a8d1b8bb3973a7c446b3f1e85f9d9ddc2399
   JNWScrollView: d98a3bf2b663e1251a20cdd3a306123f132a7033
-  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   MASPreferences: 32d8a2c5ef1d60b63240f5676b011ff72e194cb1
-  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
-  Realm: ebba96f47efc546489cce086b0e145215e36cd95
-  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
+  OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
+  Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
+  SSKeychain: 04c4ec40f4c3deda524e269bc76e5f30e638a174
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 7b56bdc9a189bc77150ee2eab91abdb546992939
+
+COCOAPODS: 0.39.0
