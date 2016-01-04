@@ -5,4 +5,5 @@ all:
 		-scheme 'image-uploader'|xcpretty
 
 setup:
-	pod install
+	bundle install
+	bundle exec pod install

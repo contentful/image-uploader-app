@@ -31,7 +31,7 @@
 +(void)fetchAllFilesFromPersistentStoreWithCompletionHandler:(BBUArrayResultBlock)completionHandler {
     NSParameterAssert(completionHandler);
 
-    RLMArray* fileInfos = [BBUFileInformation allObjects];
+    RLMArray* fileInfos = [self convertToArrayWithResults:[BBUFileInformation allObjects]];
     NSMutableArray* result = [@[] mutableCopy];
     [self fetchNextFileFromFileInfos:fileInfos
                              atIndex:0
@@ -43,7 +43,7 @@
     NSParameterAssert(space);
     NSParameterAssert(completionHandler);
 
-    RLMArray* fileInfos = [BBUFileInformation objectsWhere:[NSString stringWithFormat:@"spaceIdentifier == '%@'", space.identifier]];
+    RLMArray* fileInfos = [self convertToArrayWithResults:[BBUFileInformation objectsWhere:[NSString stringWithFormat:@"spaceIdentifier == '%@'", space.identifier]]];
     NSMutableArray* result = [@[] mutableCopy];
     [self fetchNextFileFromFileInfos:fileInfos
                              atIndex:0
@@ -110,6 +110,15 @@
     [realm commitWriteTransaction];
 }
 
++(RLMArray*)convertToArrayWithResults:(RLMResults*)results {
+    RLMArray* array = [[RLMArray alloc] initWithObjectClassName:results.objectClassName];
+    for (id object in results) {
+        [array addObject:object];
+    }
+    NSAssert(array.count == results.count, @"");
+    return array;
+}
+
 +(NSURL*)temporaryFilePath {
     NSString *fileName = [NSString stringWithFormat:@"%@_%@", [[NSProcessInfo processInfo] globallyUniqueString], @"_image.jpg"];
     return [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:fileName]];
@@ -121,7 +130,7 @@
     NSParameterAssert(space.defaultLocale);
 
     if (self.asset) {
-        [self.asset deleteWithSuccess:nil failure:nil];
+        [self.asset deleteWithSuccess:^{} failure:^(CDAResponse *r, NSError *e) {}];
     }
 
     self.asset = nil;

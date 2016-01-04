@@ -11,14 +11,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :osx, '10.9'
 
 pod 'IAmUpload'
-pod 'ContentfulManagementAPI', :head
+pod 'ContentfulManagementAPI'
 pod 'DJProgressHUD', :podspec => 'vendor/DJProgressHUD.podspec'
 pod 'Dropbox-OSX-SDK', :inhibit_warnings => true
 pod 'FormatterKit'
 pod 'JNWCollectionView', :inhibit_warnings => true
 pod 'KVOController'
 pod 'MASPreferences'
-pod 'Realm', '0.85.0'
+pod 'Realm'
 pod 'SSKeychain'
 
 target "Uploader Tests", :exclusive => true do

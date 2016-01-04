@@ -476,6 +476,7 @@
 				A19469BE19E8372900766AF0 /* Frameworks */,
 				A19469BF19E8372900766AF0 /* Resources */,
 				2EAFD8894CA92F20435279D8 /* Copy Pods Resources */,
+				74305E0D45F250ED6981DDC9 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -499,6 +500,7 @@
 				A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */,
 				A1D912AB19D19FCF007D00DD /* CopyFiles */,
 				0190ADD33B65E5577A94DEA7 /* Copy Pods Resources */,
+				6F034FEF22F57EE22FBD3E04 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -644,6 +646,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F034FEF22F57EE22FBD3E04 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74305E0D45F250ED6981DDC9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Uploader Tests/Pods-Uploader Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A10FC6D719AE1E0200C45BA3 /* Show FIXMEs and TODOs */ = {
